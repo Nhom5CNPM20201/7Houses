@@ -15,11 +15,4 @@ public class Welcome implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
-    @FXML
-    public void buttonClick(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText("Hello mike french!");
-        alert.showAndWait();
-    }
 }
