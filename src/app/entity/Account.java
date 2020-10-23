@@ -17,14 +17,16 @@ public class Account implements IEntity {
 
     }
 
-    public Account(int id, String name) {
+    public Account(int id, String name, String username, String password) {
         setId(id);
         setName(name);
+        setUsername(username);
+        setPassword(password);
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override

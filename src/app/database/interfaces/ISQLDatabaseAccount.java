@@ -47,7 +47,7 @@ public interface ISQLDatabaseAccount extends ISQLDatabase {
 
             return accountList;
         } catch (java.sql.SQLException e) {
-            throw new Exception("Error while getting all accounts", e);
+            throw e;
         }
     }
 
@@ -64,7 +64,9 @@ public interface ISQLDatabaseAccount extends ISQLDatabase {
     private Account extractAccount(ResultSet rs) throws SQLException {
         int accountID = rs.getInt(AccountConfig.ACCOUNT_ID);
         String accountName = rs.getString(AccountConfig.ACCOUNT_NAME);
+        String accountUsername = rs.getString(AccountConfig.ACCOUNT_USERNAME);
+        String accountPassword = rs.getString(AccountConfig.ACCOUNT_PASSWORD);
 
-        return new Account(accountID, accountName);
+        return new Account(accountID, accountName, accountUsername, accountPassword);
     }
 }

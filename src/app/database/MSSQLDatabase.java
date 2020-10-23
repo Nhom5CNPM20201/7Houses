@@ -52,9 +52,15 @@ public class MSSQLDatabase extends DatabaseManager implements ISQLDatabaseAccoun
     public static void main(String[] args) {
         try {
             System.out.println("Start connecting to DB...");
-            MSSQLDatabase testDB = new MSSQLDatabase("localhost", "QLDC", "", "");
-            var conn = testDB.getDatabase();
+            MSSQLDatabase testConn = new MSSQLDatabase("localhost", "QLNK_Quy", "", "");
+            var conn = testConn.getDatabase();
             System.out.println("Connected to DB successfully.");
+            System.out.println("Test get all accounts");
+            List<Account> accounts = testConn.getAllAccounts();
+            for(var item : accounts) {
+                System.out.println(item.getId() + " | " + item.getUsername().trim()
+                        + " | " + item.getName() + " | " + item.getPassword());
+            }
             conn.close();
         } catch (Exception e) {
             System.out.println("Error when connect to DB:");

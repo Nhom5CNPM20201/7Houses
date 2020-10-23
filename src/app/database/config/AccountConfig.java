@@ -6,7 +6,7 @@ public class AccountConfig {
     public static final String TABLE_NAME = "TaiKhoan";
 
 //    name of columns in table 'account'
-    public static  final String ACCOUNT_ID = "Id";
+    public static final String ACCOUNT_ID = "Id";
 
     public static final String ACCOUNT_USERNAME = "Username";
 
