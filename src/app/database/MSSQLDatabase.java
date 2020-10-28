@@ -2,6 +2,8 @@ package app.database;
 
 import app.database.base.DatabaseManager;
 import app.database.interfaces.ISQLDatabaseAccount;
+import app.database.interfaces.ISQLDatabaseHouseHold;
+import app.database.interfaces.ISQLDatabasePeople;
 import app.entity.Account;
 
 import java.sql.Array;
@@ -10,7 +12,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
-public class MSSQLDatabase extends DatabaseManager implements ISQLDatabaseAccount {
+public class MSSQLDatabase extends DatabaseManager implements ISQLDatabaseAccount, ISQLDatabaseHouseHold, ISQLDatabasePeople {
 
     private Connection databaseObject;
 
