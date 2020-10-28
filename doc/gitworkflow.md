@@ -1,12 +1,13 @@
 Git workflow of this app.
 
-1. Xác định nhánh của mình là gì, ví dụ: db_hung (tạo một service để quản lý nhân khẩu)
-2. Checkout nhánh release
-3. Tạo nhánh mới 'db_hung'
+1. Xác định nhánh của mình là gì, ví dụ: **_hung (tạo một service để quản lý nhân khẩu) (**
+là viết tắt của nhóm nhỏ: ui hoặc db)
+2. Checkout nhánh release (lưu ý:nhớ fetch và pull code tránh trường hợp không 
+cập nhật được code mới)
+3. Tạo nhánh mới. vd: 'db_hung' 
 4. Thay đổi mã nguồn của ứng dụng và test những thay đổi đó trên chính máy mình.
 5. Sau đó, Commit chúng và đẩy lên github (push)
 6. Buổi họp thông báo mình đã hoàn thành và đã đẩy code lên git.
-
 
 --------------
 1. Receive a ticket. Ex: 'db_hung' (Create a new service for manage people)
