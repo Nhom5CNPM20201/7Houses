@@ -1,43 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.GridPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.welcome.Welcome">
-    <right>
-        <AnchorPane prefHeight="700.0" prefWidth="350.0" BorderPane.alignment="CENTER">
-            <children>
-                <TextField layoutX="96.0" layoutY="216.0" promptText="Tài khoản" styleClass="text_field" />
-                <TextField layoutX="96.0" layoutY="292.0" promptText="Mật khẩu" styleClass="text_field" />
-                <FontAwesomeIconView fill="#048f68" glyphName="USER" layoutX="65.0" layoutY="243.0" size="20" />
-                <FontAwesomeIconView fill="#048f68" glyphName="LOCK" layoutX="65.0" layoutY="322.0" size="20" />
-                <FontAwesomeIconView fill="#048f68" glyphName="USERS" layoutX="143.0" layoutY="101.0" size="60" />
-                <Text fill="#048f68" layoutX="70.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đăng nhập hệ thống">
-                    <font>
-                        <Font size="23.0" />
-                    </font>
-                </Text>
-                <Button layoutX="128.0" layoutY="356.0" mnemonicParsing="false" style="-fx-background-color: #048F68;" text="Đăng nhập" textFill="WHITE" />
-                <Hyperlink layoutX="116.0" layoutY="440.0" text="Quên mật khẩu?" />
-            </children>
-        </AnchorPane>
-    </right>
-    <center>
-        <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #048F68;" BorderPane.alignment="CENTER">
-            <children>
-                <FontAwesomeIconView fill="WHITE" glyphName="Address-Book" layoutX="129.0" layoutY="204.0" size="100" text="" />
-                <Text fill="WHITE" layoutX="57.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7 HOUSES">
-                    <font>
-                        <Font size="52.0" />
-                    </font>
-                </Text>
-            </children>
-        </AnchorPane>
-    </center>
-</BorderPane>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="app.component.welcome.Welcome">
+</GridPane>
