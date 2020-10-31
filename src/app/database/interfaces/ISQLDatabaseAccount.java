@@ -35,19 +35,19 @@ public interface ISQLDatabaseAccount extends ISQLDatabase {
     @Override
     default List<Account> getAllAccounts() throws Exception {
         try {
-            Statement stmt = getDatabase().createStatement();
+            Statement stmt = this.getDatabase().createStatement();
             ResultSet rs = stmt.executeQuery("SELECT *" +
                     " FROM " + AccountConfig.TABLE_NAME + ";");
-
             List<Account> accountList = new ArrayList<>();
-
+            
             while (rs.next()) {
                 accountList.add(extractAccount(rs));
             }
 
             return accountList;
         } catch (java.sql.SQLException e) {
-            throw e;
+        	System.out.println(e.toString());
+             throw e;
         }
     }
 

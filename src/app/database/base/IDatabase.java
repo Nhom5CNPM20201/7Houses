@@ -1,6 +1,7 @@
 package app.database.base;
 
 import app.entity.Account;
+import app.entity.HouseHold;
 
 import java.sql.Connection;
 import java.util.List;
@@ -28,4 +29,14 @@ public interface IDatabase {
 //    People region
 
 //    HouseHold region
+    
+    void insertHouseHold(HouseHold houseHold) throws Exception;
+    
+    void updateHouseHold(HouseHold houseHold) throws Exception;
+    
+    void removeHouseHold(HouseHold houseHold) throws Exception;
+    
+    List<HouseHold> getAllHouseHold() throws Exception;
+    
+    
 }
