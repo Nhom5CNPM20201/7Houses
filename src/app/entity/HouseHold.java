@@ -5,21 +5,21 @@ import app.entity.IEntity;
 public class HouseHold implements IEntity {
 	private int id;
 	private int idAddress;
-	private String registrationBook;
+	private String houseHoldBook;
 	private int idOwner;
 	private String name;
 	
-	public HouseHold(int idAddress, String registrationBook, int idOwner, String name) {
+	public HouseHold(int idAddress, String houseHoldBook, int idOwner, String name) {
 		this.idAddress = idAddress;
 		this.idOwner = idOwner;
-		this.registrationBook = registrationBook;
+		this.houseHoldBook = houseHoldBook;
 		this.name = name;
 	}
-	public HouseHold(int id, int idAddress, String registrationBook, int idOwner, String name) {
+	public HouseHold(int id, int idAddress, String houseHoldBook, int idOwner, String name) {
 		this.id = id;
 		this.idAddress = idAddress;
 		this.idOwner = idOwner;
-		this.registrationBook = registrationBook;
+		this.houseHoldBook = houseHoldBook;
 		this.name = name;
 	}
 	
@@ -54,14 +54,11 @@ public class HouseHold implements IEntity {
 	public void setIdOwner(int idOwner) {
 		this.idOwner = idOwner;
 	}
-
-	public String getRegistrationBook() {
-		return registrationBook;
+	public String getHouseHoldBook() {
+		return houseHoldBook;
 	}
-
-	public void setRegistrationBook(String registrationBook) {
-		this.registrationBook = registrationBook;
+	public void setHouseHoldBook(String houseHoldBook) {
+		this.houseHoldBook = houseHoldBook;
 	}
-
 	
 }

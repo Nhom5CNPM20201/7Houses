@@ -56,7 +56,7 @@ public class MSSQLDatabase extends DatabaseManager implements ISQLDatabaseHouseH
         try {
             System.out.println("Start connecting to DB...");
             MSSQLDatabase testConn = new MSSQLDatabase("localhost", "QLNK_Quy", "", "");
-//            var conn = testConn.getDatabase();
+            var conn = testConn.getDatabase();
             System.out.println("Connected to DB successfully.");
             System.out.println("Test get all accounts");
             List<Account> accounts = testConn.getAllAccounts();
@@ -64,16 +64,17 @@ public class MSSQLDatabase extends DatabaseManager implements ISQLDatabaseHouseH
                 System.out.println(item.getId() + " | " + item.getUsername().trim()
                         + " | " + item.getName() + " | " + item.getPassword());
             }
-            HouseHold houseHold = new HouseHold(2, "LK103", 3, "testName");
-            testConn.insertHouseHold(houseHold);
+//          HouseHold houseHold = new HouseHold(4, "LK103", 3, "@@@");
+//          testConn.insertHouseHold(houseHold);
+//          testConn.updateHouseHold(houseHold);
+//         	testConn.removeHouseHold(houseHolds.get(4));
             List<HouseHold> houseHolds = testConn.getAllHouseHold();
-//            testConn.removeHouseHold(houseHolds.get(4));
             for(var i : houseHolds) {
-            	System.out.println(i.getId() + "\t" + i.getIdAddress() + "\t" + i.getRegistrationBook() + "\t"
+            	System.out.println(i.getId() + "\t" + i.getIdAddress() + "\t" + i.getHouseHoldBook() + "\t"
             			+ i.getIdOwner() + "\t" + i.getName());
             }
             
-//            conn.close();
+            conn.close();
         } catch (Exception e) {
             System.out.println("Error when connect to DB:");
             System.out.println(e.getMessage());

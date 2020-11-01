@@ -16,11 +16,11 @@ public interface ISQLDatabaseHouseHold extends ISQLDatabase {
 	default void insertHouseHold(HouseHold houseHold) throws Exception{
         try {
             PreparedStatement stmt = this.getDatabase().prepareStatement("INSERT INTO " + HouseHoldConfig.TABLE_NAME +
-                    " (" + HouseHoldConfig.HouseHold_IdAddress +"," +
-                    HouseHoldConfig.HouseHold_RegistrationBook + "," + HouseHoldConfig.HouseHold_IdOwner + "," 
-                    + HouseHoldConfig.HouseHold_OwnerName + ") " + " VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+                    " (" + HouseHoldConfig.HOUSEHOLD_IDADDRESS +"," +
+                    HouseHoldConfig.HOUSEHOLD_HOUSEHOLDBOOK + "," + HouseHoldConfig.HOUSEHOLD_IDOWNER + "," 
+                    + HouseHoldConfig.HOUSEHOLD_NAME + ") " + " VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, houseHold.getIdAddress());
-            stmt.setString(2, houseHold.getRegistrationBook());
+            stmt.setString(2, houseHold.getHouseHoldBook());
             stmt.setInt(3, houseHold.getIdOwner());
             stmt.setString(4, houseHold.getName());
             stmt.executeUpdate();
@@ -57,14 +57,28 @@ public interface ISQLDatabaseHouseHold extends ISQLDatabase {
 	
 	@Override
     default void updateHouseHold(HouseHold houseHold) throws Exception {
-//		Statement stmt = this.getDatabase().prepareStatement()
+		try {
+			PreparedStatement stmt = this.getDatabase().prepareStatement("UPDATE " + HouseHoldConfig.TABLE_NAME + " SET "
+					+ HouseHoldConfig.HOUSEHOLD_IDOWNER + "=? " + "," + HouseHoldConfig.HOUSEHOLD_NAME + "=?" 
+					+ " WHERE " + HouseHoldConfig.HOUSEHOLD_HOUSEHOLDBOOK + "=? " + "AND " 
+					+ HouseHoldConfig.HOUSEHOLD_IDADDRESS + "=?");
+			stmt.setInt(1, houseHold.getIdOwner());
+			stmt.setString(2, houseHold.getName());
+			stmt.setString(3, houseHold.getHouseHoldBook());
+			stmt.setInt(4, houseHold.getIdAddress());
+			stmt.executeUpdate();
+		}
+		catch(SQLException e) {
+			throw e;
+		}
+		
     }
 
     @Override
     default void removeHouseHold(HouseHold houseHold) throws Exception {
     	try {
     		PreparedStatement stmt = this.getDatabase().prepareStatement("DELETE FROM " + HouseHoldConfig.TABLE_NAME + " WHERE " 
-					+ HouseHoldConfig.HouseHold_Id + "=" + "?");
+					+ HouseHoldConfig.HOUSEHOLD_ID + "=" + "?");
     		stmt.setInt(1, houseHold.getId());
     		stmt.executeUpdate();
     	}
@@ -74,11 +88,11 @@ public interface ISQLDatabaseHouseHold extends ISQLDatabase {
     }
 
     private HouseHold extractHouseHold(ResultSet rs) throws SQLException {
-    	int id = rs.getInt(HouseHoldConfig.HouseHold_Id);
-        int idAddress = rs.getInt(HouseHoldConfig.HouseHold_IdAddress);
-        int idOwner = rs.getInt(HouseHoldConfig.HouseHold_IdOwner);
-        String houseBook = rs.getString(HouseHoldConfig.HouseHold_RegistrationBook);
-        String name = rs.getString(HouseHoldConfig.HouseHold_OwnerName);
+    	int id = rs.getInt(HouseHoldConfig.HOUSEHOLD_ID);
+        int idAddress = rs.getInt(HouseHoldConfig.HOUSEHOLD_IDADDRESS);
+        int idOwner = rs.getInt(HouseHoldConfig.HOUSEHOLD_IDOWNER);
+        String houseBook = rs.getString(HouseHoldConfig.HOUSEHOLD_HOUSEHOLDBOOK);
+        String name = rs.getString(HouseHoldConfig.HOUSEHOLD_NAME);
 
         return new HouseHold(id, idAddress, houseBook, idOwner, name);
     }
