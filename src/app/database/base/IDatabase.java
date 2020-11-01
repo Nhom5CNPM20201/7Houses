@@ -4,7 +4,7 @@ import app.entity.Account;
 
 import java.sql.Connection;
 import java.util.List;
-
+import app.entity.People;
 public interface IDatabase {
 
 //    Init database region
@@ -26,6 +26,15 @@ public interface IDatabase {
     void removeAccount(Account account) throws Exception;
 
 //    People region
+    void insertPeople(People people) throws Exception;
+
+    List<People> getAllPeoples() throws Exception;
+
+    void updatePeople(People people) throws Exception;
+
+    void removePeople(People people) throws Exception;
+
+	List<People> getAllPeople() throws Exception;    
 
 //    HouseHold region
 }
