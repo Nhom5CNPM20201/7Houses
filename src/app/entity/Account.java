@@ -1,45 +1,18 @@
 package app.entity;
 
-import app.common.AccountPositionEnum;
-
-public class Account implements IEntity {
+public class Account{
     private int id;
-
+    private String username;
+    private String pass;
+    private int Service;
     private String name;
 
-    private String username;
-
-    private String password;
-
-    private AccountPositionEnum accountPositionEnum;
-
-    public Account() {
-
-    }
-
-    public Account(int id, String name, String username, String password) {
-        setId(id);
-        setName(name);
-        setUsername(username);
-        setPassword(password);
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
     public int getId() {
-        return 0;
+        return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getUsername() {
@@ -50,19 +23,35 @@ public class Account implements IEntity {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPass() {
+        return pass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
-    public int getAccountPosition() {
-        return accountPositionEnum.getValue();
+    public int getService() {
+        return Service;
     }
 
-    public void setAccountPositionEnum(AccountPositionEnum accountPositionEnum) {
-        this.accountPositionEnum = accountPositionEnum;
+    public void setService(int Service) {
+        this.Service = Service;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Account(int id, String username, String pass, int Service, String name) {
+        this.id = id;
+        this.username = username;
+        this.pass = pass;
+        this.Service = Service;
+        this.name = name;
     }
 }

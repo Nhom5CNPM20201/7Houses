@@ -2,6 +2,7 @@
   <library name="lib">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/lib/javafx-sdk-11.0.2/lib" />
+      <root url="jar://D:/sqljdbc_8.4.1.0_enu/sqljdbc_8.4/enu/mssql-jdbc-8.4.1.jre14.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
