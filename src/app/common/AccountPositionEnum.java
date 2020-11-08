@@ -12,6 +12,15 @@ public enum AccountPositionEnum {
 
     private int value;
 
+    public AccountPositionEnum setValue(int pos) {
+        switch (pos) {
+            case 0: return LEADER;
+            case 1: return VICE_LEADER;
+            case 2: return ACCOUNTANT;
+            default: return NONE;
+        }
+    }
+
     public int getValue() {
         return value;
     }

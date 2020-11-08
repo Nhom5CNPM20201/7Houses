@@ -3,6 +3,7 @@ package app.database.interfaces;
 import app.database.base.ISQLDatabase;
 import app.database.config.AccountConfig;
 import app.entity.Account;
+import app.services.common.LogService;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,9 +17,9 @@ public interface ISQLDatabaseAccount extends ISQLDatabase {
             PreparedStatement stmt = this.getDatabase().prepareStatement("INSERT INTO " + AccountConfig.TABLE_NAME +
                     " (" + AccountConfig.ACCOUNT_USERNAME + "," + AccountConfig.ACCOUNT_PASSWORD +"," +
                     AccountConfig.ACCOUNT_NAME + "," + AccountConfig.ACCOUNT_POSITION + " VALUES (?, ?, ?, ?)");
-            stmt.setString(1, account.getUsername());
-            stmt.setString(2, account.getPassword());
-            stmt.setString(3, account.getName());
+            stmt.setString(1, account.getUsername().toLowerCase());
+            stmt.setString(2, account.getPassword().toLowerCase());
+            stmt.setString(3, account.getName().toLowerCase());
             stmt.setInt(4, account.getAccountPosition());
             stmt.executeUpdate();
 
@@ -35,7 +36,7 @@ public interface ISQLDatabaseAccount extends ISQLDatabase {
     @Override
     default List<Account> getAllAccounts() throws Exception {
         try {
-            Statement stmt = getDatabase().createStatement();
+            Statement stmt = this.getDatabase().createStatement();
             ResultSet rs = stmt.executeQuery("SELECT *" +
                     " FROM " + AccountConfig.TABLE_NAME + ";");
 
@@ -61,12 +62,31 @@ public interface ISQLDatabaseAccount extends ISQLDatabase {
 
     }
 
+    @Override
+    default Account searchAccount(String username) throws Exception {
+        try {
+            Statement stmt = this.getDatabase().createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT TOP 1 * " +
+                    "FROM " + AccountConfig.TABLE_NAME + " WHERE " + AccountConfig.ACCOUNT_USERNAME + " LIKE '%" + username + "%';");
+
+            if (rs.next()) {
+                return extractAccount(rs);
+            } else {
+                return null;
+            }
+        } catch (java.sql.SQLException e) {
+            LogService.error("[DBAccount] " + e.getMessage());
+            return null;
+        }
+    }
+
     private Account extractAccount(ResultSet rs) throws SQLException {
         int accountID = rs.getInt(AccountConfig.ACCOUNT_ID);
-        String accountName = rs.getString(AccountConfig.ACCOUNT_NAME);
-        String accountUsername = rs.getString(AccountConfig.ACCOUNT_USERNAME);
-        String accountPassword = rs.getString(AccountConfig.ACCOUNT_PASSWORD);
+        int accountPosition = rs.getInt(AccountConfig.ACCOUNT_POSITION);
+        String accountName = rs.getString(AccountConfig.ACCOUNT_NAME).trim();
+        String accountUsername = rs.getString(AccountConfig.ACCOUNT_USERNAME).trim();
+        String accountPassword = rs.getString(AccountConfig.ACCOUNT_PASSWORD).trim();
 
-        return new Account(accountID, accountName, accountUsername, accountPassword);
+        return new Account(accountID, accountPosition, accountName, accountUsername, accountPassword);
     }
 }

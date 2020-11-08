@@ -17,9 +17,10 @@ public class Account implements IEntity {
 
     }
 
-    public Account(int id, String name, String username, String password) {
+    public Account(int id, int position, String name, String username, String password) {
         setId(id);
         setName(name);
+        setAccountPosition(position);
         setUsername(username);
         setPassword(password);
     }
@@ -62,7 +63,15 @@ public class Account implements IEntity {
         return accountPositionEnum.getValue();
     }
 
-    public void setAccountPositionEnum(AccountPositionEnum accountPositionEnum) {
+    public AccountPositionEnum getAccountPositionEnum() {
+        return accountPositionEnum;
+    }
+
+    public void setAccountPosition(AccountPositionEnum accountPositionEnum) {
         this.accountPositionEnum = accountPositionEnum;
+    }
+
+    public void setAccountPosition(int pos) {
+        this.accountPositionEnum = AccountPositionEnum.NONE.setValue(pos);
     }
 }

@@ -27,6 +27,8 @@ public interface IDatabase {
 
     void removeAccount(Account account) throws Exception;
 
+    Account searchAccount(String username) throws Exception;
+
 //    People region
 
 //    void insertPerson(Person people) throws Exception;
