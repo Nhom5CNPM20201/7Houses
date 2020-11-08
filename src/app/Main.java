@@ -33,8 +33,6 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-
-
         Mediator.unSubscribe("onGoingDashboard");
         Mediator.subscribe("onGoingDashboard", event -> onGoingDashboard(null));
     }
