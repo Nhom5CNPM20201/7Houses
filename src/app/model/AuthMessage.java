@@ -13,7 +13,7 @@ public class AuthMessage {
         this.message = message;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
