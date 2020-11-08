@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.MainView">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="265.0" prefHeight="300.0" prefWidth="808.0" styleClass="text_box" stylesheets="@MainViewStyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="82.0">
+         <children>
+            <HBox alignment="CENTER" layoutX="384.0" layoutY="15.41796875" prefHeight="52.0" prefWidth="808.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kết quả tìm kiếm">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox layoutX="1.0" layoutY="53.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
+               <children>
+                  <AnchorPane prefHeight="240.0" prefWidth="796.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TableView prefHeight="246.0" prefWidth="796.0" style="-fx-background-radius: 5px; -fx-border-color: #FFFFFF; -fx-border-radius: 5px;" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
+                           <columns>
+                              <TableColumn maxWidth="78.0" prefWidth="56.0" resizable="false" styleClass="column_header" text="STT" />
+                              <TableColumn prefWidth="239.66668701171875" styleClass="column_header" text="Chủ hộ" />
+                              <TableColumn prefWidth="321.4443359375" styleClass="column_header" text="Địa chỉ" />
+                              <TableColumn minWidth="0.0" prefWidth="159.963134765625" styleClass="column_header" text="Ngày thêm" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-33.0" prefHeight="64.0" prefWidth="810.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <FontAwesomeIconView glyphName="SEARCH" layoutX="535.0" layoutY="38.0" size="18" />
+            <HBox alignment="CENTER" layoutX="31.0" layoutY="17.0" stylesheets="@MainViewStyle.css">
+               <children>
+                  <ComboBox pickOnBounds="false" prefHeight="31.0" prefWidth="137.0" promptText="Tùy chọn" styleClass="header_box" stylesheets="@MainViewStyle.css" />
+               </children>
+            </HBox>
+            <TextField layoutX="313.0" layoutY="17.0" prefHeight="31.0" prefWidth="257.0" promptText="Tìm kiếm" styleClass="header_box" stylesheets="@MainViewStyle.css" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
