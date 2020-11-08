@@ -1,5 +1,6 @@
 package app.database;
 
+import app.config.AppConfig;
 import app.database.base.DatabaseManager;
 import app.database.interfaces.ISQLDatabaseAccount;
 import app.database.interfaces.ISQLDatabaseHouseHold;
@@ -36,6 +37,12 @@ public class MSSQLDatabase extends DatabaseManager implements ISQLDatabaseAccoun
         initializeDatabase();
     }
 
+    private static MSSQLDatabase instance;
+    public static MSSQLDatabase getInstance() throws Exception  {
+        if (instance == null) instance = new MSSQLDatabase(AppConfig.databaseHostname, AppConfig.databaseName, AppConfig.databaseUsername, AppConfig.databasePassword);
+        return instance;
+    }
+
     @Override
     public void initializeDatabase() throws Exception {
 
@@ -54,7 +61,7 @@ public class MSSQLDatabase extends DatabaseManager implements ISQLDatabaseAccoun
     public static void main(String[] args) {
         try {
             System.out.println("Start connecting to DB...");
-            MSSQLDatabase testConn = new MSSQLDatabase("localhost", "QLNK_Quy", "", "");
+            MSSQLDatabase testConn = new MSSQLDatabase(AppConfig.databaseHostname, AppConfig.databaseName, AppConfig.databaseUsername, AppConfig.databasePassword);
             var conn = testConn.getDatabase();
             System.out.println("Connected to DB successfully.");
             System.out.println("Test get all accounts");
