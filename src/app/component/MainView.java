@@ -1,23 +1,18 @@
 package app.component;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class MainView implements Initializable {
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
+public class MainView {
     @FXML
-    public void buttonClick(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText("Hello mike french!");
-        alert.showAndWait();
+    private AnchorPane homePane;
+    @FXML
+    private Button btnSearch;
+    @FXML
+    private AnchorPane mainView;
+    public void searchOnClick(){
+        System.out.println("You have clicked on Search button!");
     }
+
 }
