@@ -2,7 +2,7 @@ package app.services.common;
 
 import javafx.scene.control.Alert;
 
-public class NotiService implements IMessageService{
+public class NotiService {
 
     public static void info(String content) {
         noti(content, Alert.AlertType.INFORMATION);

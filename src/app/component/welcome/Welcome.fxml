@@ -9,12 +9,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="app.component.welcome.Welcome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <right>
         <AnchorPane prefHeight="700.0" prefWidth="350.0" BorderPane.alignment="CENTER">
             <children>
-                <TextField layoutX="96.0" layoutY="216.0" promptText="Tài khoản" styleClass="text_field" />
-                <TextField layoutX="96.0" layoutY="292.0" promptText="Mật khẩu" styleClass="text_field" />
+                <TextField fx:id="usernameField" layoutX="96.0" layoutY="216.0" promptText="Tài khoản" styleClass="text_field" />
+                <TextField fx:id="passwordField" layoutX="96.0" layoutY="292.0" promptText="Mật khẩu" styleClass="text_field" />
                 <FontAwesomeIconView fill="#048f68" glyphName="USER" layoutX="65.0" layoutY="243.0" size="20" />
                 <FontAwesomeIconView fill="#048f68" glyphName="LOCK" layoutX="65.0" layoutY="322.0" size="20" />
                 <FontAwesomeIconView fill="#048f68" glyphName="USERS" layoutX="143.0" layoutY="101.0" size="60" />
@@ -23,7 +23,7 @@
                         <Font size="23.0" />
                     </font>
                 </Text>
-                <Button layoutX="128.0" layoutY="356.0" mnemonicParsing="false" style="-fx-background-color: #048F68;" text="Đăng nhập" textFill="WHITE" />
+                <Button onAction="#login" layoutX="128.0" layoutY="356.0" mnemonicParsing="false" style="-fx-background-color: #048F68;" text="Đăng nhập" textFill="WHITE" />
                 <Hyperlink layoutX="116.0" layoutY="440.0" text="Quên mật khẩu?" />
             </children>
         </AnchorPane>
