@@ -1,12 +1,12 @@
 package app.database.config;
-import java.util.Date;
+
 public class PeopleConfig {
 	
-  public static final String TABLE_NHANKHAU = "NhanKhau";
+  public static final String TABLE_NAME = "NhanKhau";
   
   public static final String  PEOPLE_ID = "Id";
 
-  public static final String  PEOPLE_IDHOUSEHOLD = "IdHK";
+  public static final String  PEOPLE_IDHOUSEHOLD = "IdHoKhau";
 
   public static final String PEOPLE_FULLNAME = "HoTen";
 

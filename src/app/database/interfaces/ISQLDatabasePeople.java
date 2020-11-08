@@ -1,7 +1,4 @@
 package app.database.interfaces;
-
-import app.entity.People;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLDataException;
@@ -9,55 +6,54 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Date;
 import app.database.base.ISQLDatabase;
 import app.database.config.PeopleConfig;
-
-
+import app.entity.People;
+import java.sql.Date;
 public interface ISQLDatabasePeople extends ISQLDatabase {
 	@Override
-    default void insertPeople (People people) throws Exception{
+    default void insertPeople(People people) throws Exception{
 		
 		try {
-			PreparedStatement stmt = this.getDatabase().prepareStatement("INSERT INTO " + PeopleConfig.TABLE_NHANKHAU +
-                    " (" +PeopleConfig.PEOPLE_ID + PeopleConfig.PEOPLE_IDHOUSEHOLD +"," +
-                    PeopleConfig.PEOPLE_FULLNAME + "," + PeopleConfig.PEOPLE_NICKNAME + PeopleConfig.PEOPLE_BIRTHPLACE + 
-                    PeopleConfig.PEOPLE_JOB  + PeopleConfig.PEOPLE_DATEOFBIRTH + PeopleConfig.PEOPLE_REGISDATE +
-                    PeopleConfig.PEOPLE_HOUSEHOLDERRELA + PeopleConfig.PEOPLE_ETHNIC +PeopleConfig.PEOPLE_NATIVEPLACE +
-                    PeopleConfig.PEOPLE_GENDER  + PeopleConfig.PEOPLE_WORKPLACE +
-                    PeopleConfig.PEOPLE_IDENTITYNO +PeopleConfig.PEOPLE_IDENTITYMFG +PeopleConfig.PEOPLE_IDENTITYORIGIN +
-                    " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
+			PreparedStatement stmt = this.getDatabase().prepareStatement("INSERT INTO " + PeopleConfig.TABLE_NAME +
+                    " (" + PeopleConfig.PEOPLE_IDHOUSEHOLD +"," +
+                    PeopleConfig.PEOPLE_FULLNAME + "," + PeopleConfig.PEOPLE_NICKNAME + "," + PeopleConfig.PEOPLE_BIRTHPLACE + "," +
+                    PeopleConfig.PEOPLE_JOB  + "," + PeopleConfig.PEOPLE_DATEOFBIRTH + "," + PeopleConfig.PEOPLE_REGISDATE + "," +
+                    PeopleConfig.PEOPLE_HOUSEHOLDERRELA + "," + PeopleConfig.PEOPLE_ETHNIC + "," + PeopleConfig.PEOPLE_NATIVEPLACE + "," +
+                    PeopleConfig.PEOPLE_GENDER + "," + PeopleConfig.PEOPLE_WORKPLACE + "," +
+                    PeopleConfig.PEOPLE_IDENTITYNO + "," + PeopleConfig.PEOPLE_IDENTITYMFG + "," + PeopleConfig.PEOPLE_IDENTITYORIGIN +
+                    ")" + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			
-			stmt.setInt(1, people.getId());
+			stmt.setInt(1, people.getIdHouseHold());
 			
-			stmt.setInt(2, people.getIdHouseHold());
+			stmt.setString(2, people.getFullName());
 			
-			stmt.setString(3, people.getFullName());
+			stmt.setString(3, people.getNickName());
 			
-			stmt.setString(4, people.getNickName());
+			stmt.setString(4, people.getBirthPlace());
 			
-			stmt.setString(5, people.getBirthPlace());
+			stmt.setString(5, people.getJob());
 			
-			stmt.setString(6, people.getJob());
+			stmt.setDate(6, people.getDateOfBirth());
 			
-			stmt.setDate(7,  (Date) people.getDateOfBirth());
+			stmt.setDate(7, people.getRegisDate());   
 			
-			stmt.setDate(8,  (Date) people.getIdentityMfg());
+			stmt.setInt(8, people.getHouseHolderRela());
 			
-			stmt.setInt(9, people.getHouseHolderRela());
+			stmt.setString(9, people.getEthnic());
 			
-			stmt.setString(10, people.getEthnic());
+			stmt.setString(10, people.getNativePlace());
 			
-			stmt.setString(11, people.getNativePlace());
+			stmt.setInt(11, people.getGender());
 			
-			stmt.setInt(12, people.getGender());
+			stmt.setString(12, people.getWorkPlace());
 			
-			stmt.setString(13, people.getWorkPlace());
+			stmt.setString(13, people.getIdentityNo());
 			
-			stmt.setString(14, people.getIdentityNo());
+			stmt.setDate(14, people.getIdentityMfg()  );
 			
-			stmt.setDate(15, (Date) people.getRegisDate());
-			
-			stmt.setString(16, people.getIdentityOrigin());
+			stmt.setString(15, people.getIdentityOrigin());
 			
 			stmt.executeUpdate();
 			
@@ -74,54 +70,73 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
         }
 	}
 	
-	
+    @Override
+    default List<People> getAllPeoples() throws Exception {
+        try {
+            Statement stmt = getDatabase().createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT *" +
+                    " FROM " + PeopleConfig.TABLE_NAME + ";");
+
+            List<People> peopleList = new ArrayList<>();
+
+            while (rs.next()) {
+                peopleList.add(extractPeople(rs));
+            }
+
+            return peopleList;
+        } catch (java.sql.SQLException e) {
+            throw e;
+        }
+    }	
 	
 	@Override
     default void updatePeople(People people) throws Exception {
 		try {
-			PreparedStatement stmt = this.getDatabase().prepareStatement("UPDATE " + PeopleConfig.TABLE_NHANKHAU + " SET "
-					+ PeopleConfig.PEOPLE_IDHOUSEHOLD  + "=? " + "," + PeopleConfig.PEOPLE_FULLNAME + "=?" 
-					+ PeopleConfig.PEOPLE_NICKNAME  + "=? " + "," + PeopleConfig.PEOPLE_BIRTHPLACE + "=?" 
-					+ PeopleConfig.PEOPLE_JOB  + "=? " + "," + PeopleConfig.PEOPLE_DATEOFBIRTH + "=?" 
-					+ PeopleConfig.PEOPLE_REGISDATE  + "=? " + "," + PeopleConfig.PEOPLE_HOUSEHOLDERRELA + "=?" 
-					+ PeopleConfig.PEOPLE_ETHNIC  + "=? " + "," + PeopleConfig.PEOPLE_NATIVEPLACE + "=?" 
-					+ PeopleConfig.PEOPLE_GENDER  + "=? " + "," + PeopleConfig.PEOPLE_WORKPLACE + "=?" 
-					+ PeopleConfig.PEOPLE_IDENTITYNO  + "=? " + "," + PeopleConfig.PEOPLE_IDENTITYMFG + "=?"
+			PreparedStatement stmt = this.getDatabase().prepareStatement("Declare @P1BiDanh nvarchar "+"UPDATE " + PeopleConfig.TABLE_NAME + " SET "
+					+ PeopleConfig.PEOPLE_IDHOUSEHOLD  +   "=?"   +  ","  + PeopleConfig.PEOPLE_FULLNAME + "=?" +  ","
+					+ PeopleConfig.PEOPLE_NICKNAME  + "=? " + "," + PeopleConfig.PEOPLE_BIRTHPLACE + "=?" +  ","
+					+ PeopleConfig.PEOPLE_JOB  + "=? " + "," + PeopleConfig.PEOPLE_DATEOFBIRTH + "=?" +  ","
+					+ PeopleConfig.PEOPLE_REGISDATE  + "=? " + "," + PeopleConfig.PEOPLE_HOUSEHOLDERRELA + "=?" +  ","
+					+ PeopleConfig.PEOPLE_ETHNIC  + "=? " + "," + PeopleConfig.PEOPLE_NATIVEPLACE + "=?" +  ","
+					+ PeopleConfig.PEOPLE_GENDER  + "=? " + "," + PeopleConfig.PEOPLE_WORKPLACE + "=?" +  ","
+					+ PeopleConfig.PEOPLE_IDENTITYNO  + "=? " + "," + PeopleConfig.PEOPLE_IDENTITYMFG + "=?"+  ","
 					+ PeopleConfig.PEOPLE_IDENTITYORIGIN  + "=? " 
-					+ " WHERE " + PeopleConfig.PEOPLE_ID + "=? " + "AND   " +PeopleConfig.PEOPLE_FULLNAME 
+					+ " WHERE " + PeopleConfig.PEOPLE_ID + "= ? " 
 					);
 			
-            stmt.setInt(1, people.getId());
+       //    
 			
-			stmt.setInt(2, people.getIdHouseHold());
+			stmt.setInt(1, people.getIdHouseHold());
 			
-			stmt.setString(3, people.getFullName());
+			stmt.setString(2, people.getFullName());
 			
-			stmt.setString(4, people.getNickName());
+			stmt.setString(3, people.getNickName() );
 			
-			stmt.setString(5, people.getBirthPlace());
+			stmt.setString(4, people.getBirthPlace());
 			
-			stmt.setString(6, people.getJob());
+			stmt.setString(5, people.getJob());
 			
-			stmt.setDate(7,  (Date) people.getDateOfBirth());
+			stmt.setDate(6, people.getDateOfBirth());
 			
-			stmt.setDate(8,  (Date) people.getIdentityMfg());
+			stmt.setDate(7, people.getRegisDate()   ); 
 			
-			stmt.setInt(9, people.getHouseHolderRela());
+			stmt.setInt(8, people.getHouseHolderRela());
 			
-			stmt.setString(10, people.getEthnic());
+			stmt.setString(9, people.getEthnic());
 			
-			stmt.setString(11, people.getNativePlace());
+			stmt.setString(10, people.getNativePlace());
 			
-			stmt.setInt(12, people.getGender());
+			stmt.setInt(11, people.getGender());
 			
-			stmt.setString(13, people.getWorkPlace());
+			stmt.setString(12, people.getWorkPlace());
 			
-			stmt.setString(14, people.getIdentityNo());
+			stmt.setString(13, people.getIdentityNo());
 			
-			stmt.setDate(15, (Date) people.getRegisDate());
+			stmt.setDate(14, people.getIdentityMfg()  );
 			
-			stmt.setString(16, people.getIdentityOrigin());
+			stmt.setString(15, people.getIdentityOrigin());
+			
+			stmt.setInt(16, people.getId());
 			
 			stmt.executeUpdate();
 		}
@@ -134,7 +149,7 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
     @Override
     default void removePeople(People people) throws Exception {
     	try {
-    		PreparedStatement stmt = this.getDatabase().prepareStatement("DELETE FROM " + PeopleConfig.TABLE_NHANKHAU + " WHERE " 
+    		PreparedStatement stmt = this.getDatabase().prepareStatement("DELETE FROM " + PeopleConfig.TABLE_NAME + " WHERE " 
 					+ PeopleConfig.PEOPLE_ID + "=" + "?");
     		stmt.setInt(1, people.getId());
     		stmt.executeUpdate();
@@ -143,29 +158,6 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
     		throw e;
     	}
     }
-	
-	
-	
-	
-    @Override
-    default List<People> getAllPeople() throws Exception {
-        try {
-            Statement stmt = getDatabase().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT *" +
-                    " FROM " + PeopleConfig.TABLE_NHANKHAU + ";");
-
-            List<People> peopleList = new ArrayList<>();
-
-            while (rs.next()) {
-                peopleList.add(extractPeople(rs));
-            }
-
-            return peopleList;
-        } catch (java.sql.SQLException e) {
-            throw e;
-        }
-    }
-
 
     private People extractPeople(ResultSet rs) throws SQLException {
     	int peopleId = rs.getInt(PeopleConfig.PEOPLE_ID);
@@ -201,7 +193,7 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
     	String peopleIdentityOrigin = rs.getString(PeopleConfig.PEOPLE_IDENTITYORIGIN);
     	
 
-        return new People(peopleId,peopleIdHouseHold, peopleFullName, peopleNickName, peopleIdBirthPlace, peopleJob,peopleDateOfBirth,
+        return new People(peopleId, peopleIdHouseHold, peopleFullName, peopleNickName, peopleIdBirthPlace, peopleJob,peopleDateOfBirth,
         		peopleRegisDate, peopleHouseHolderRela, peopleEthnic, peopleNativePlace, peopleGender, peopleWorkPlace,
         		peopleIdentityNo, peopleIdentityMfg, peopleIdentityOrigin);
     }

@@ -28,13 +28,11 @@ public interface IDatabase {
 //    People region
     void insertPeople(People people) throws Exception;
 
-    List<People> getAllPeoples() throws Exception;
-
     void updatePeople(People people) throws Exception;
 
     void removePeople(People people) throws Exception;
-
-	List<People> getAllPeople() throws Exception;    
+    
+	List<People> getAllPeoples() throws Exception;    
 
 //    HouseHold region
 }

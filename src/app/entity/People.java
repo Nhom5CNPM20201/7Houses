@@ -1,205 +1,214 @@
 package app.entity;
-import java.util.Date;
-
+import java.sql.Date;
+import java.sql.*;
 public class People  {
 	
-	private int Id;
+	private int id;
 	
-	private int IdHouseHold;
+	private int idHouseHold;
 
-    private String FullName;
+    private String fullName;
 
-    private String NickName;
+    private String nickName;
 
-    private String BirthPlace;
+    private String birthPlace;
     
-    private String Job;
+    private String job;
     
-    private Date DateOfBirth ;
+    private Date dateOfBirth ;
     
-    private Date IdentityMfg ;
+    private Date regisDate;
     
-    private int HouseHolderRela;
+    private int houseHolderRela;
     
-    private String Ethnic;
+    private String ethnic;
     
-    private String NativePlace ;
+    private String nativePlace ;
     
-    private int Gender ;
+    private int gender ;
     
-    private String WorkPlace;
+    private String workPlace;
     
-    private String IdentityNo;
+    private String identityNo;
     
-    private String IdentityOrigin;
+    private Date identityMfg ;
     
-    private Date RegisDate;
-    
+    private String identityOrigin;
     
 
-	public People(int peopleId, int peopleIdHouseHold, String peopleFullName, String peopleNickName,
-			String peopleIdBirthPlace, String peopleJob, java.sql.Date peopleDateOfBirth, java.sql.Date peopleRegisDate,
-			int peopleHouseHolderRela, String peopleEthnic, String peopleNativePlace, int peopleGender,
-			String peopleWorkPlace, String peopleIdentityNo, java.sql.Date peopleIdentityMfg,
-			String peopleIdentityOrigin) {
-		
-		setId( Id);
-		
-		setIdHouseHold( IdHouseHold);
-		
-		setFullName( FullName);
-		
-		setNickName( NickName);
-		
-		setBirthPlace( BirthPlace);
-		setJob( Job);
-		setDateOfBirth( DateOfBirth);
-		setRegisDate( RegisDate);
-		setHouseHolderRela( HouseHolderRela);
-		setEthnic( Ethnic);
-		setNativePlace( NativePlace);
-		setGender( Gender);
-		setWorkPlace( WorkPlace);
-		setIdentityNo( IdentityNo);
-		setIdentityMfg( IdentityMfg);
-		setIdentityOrigin( IdentityOrigin);
-		
-		
-		
-		
-		
-	}
+    
+   public People() {
+    	
+    //	idHouseHold = 5;
+     	fullName = "mt" ;
+    	nickName = "mmnbnajksd";
+    	birthPlace = "HN";
+    	job = "sinh vien";
+    	dateOfBirth = Date.valueOf("1980-07-01");
+    	regisDate = Date.valueOf("1999-02-01");
+    	houseHolderRela = 1;
+    	ethnic = "kinh";
+    	nativePlace = "HY";
+    	gender = 1;
+    	workPlace = "HN";
+    	identityNo = "123132163";
+    	identityMfg = Date.valueOf("2000-02-01");
+    	identityOrigin = "HYYYY";    
+    }
+    
+   
+
+	public People(int id, int idHouseHold, String fullName, String nickName, String birthPlace, String job,
+		Date dateOfBirth, Date regisDate, int houseHolderRela, String ethnic, String nativePlace, int gender,
+		String workPlace, String identityNo, Date identityMfg, String identityOrigin) {
+	this.id = id;
+	this.idHouseHold = idHouseHold;
+	this.fullName = fullName;
+	this.nickName = nickName;
+	this.birthPlace = birthPlace;
+	this.job = job;
+	this.dateOfBirth = dateOfBirth;
+	this.regisDate = regisDate;
+	this.houseHolderRela = houseHolderRela;
+	this.ethnic = ethnic;
+	this.nativePlace = nativePlace;
+	this.gender = gender;
+	this.workPlace = workPlace;
+	this.identityNo = identityNo;
+	this.identityMfg = identityMfg;
+	this.identityOrigin = identityOrigin;
+}
+
+
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public int getIdHouseHold() {
-		return IdHouseHold;
+		return idHouseHold;
 	}
 
 	public void setIdHouseHold(int idHouseHold) {
-		IdHouseHold = idHouseHold;
+		this.idHouseHold = idHouseHold;
 	}
 
 	public String getFullName() {
-		return FullName;
+		return fullName;
 	}
 
 	public void setFullName(String fullName) {
-		FullName = fullName;
+		this.fullName = fullName;
 	}
 
 	public String getNickName() {
-		return NickName;
+		return nickName;
 	}
 
 	public void setNickName(String nickName) {
-		NickName = nickName;
+		this.nickName = nickName;
 	}
 
 	public String getBirthPlace() {
-		return BirthPlace;
+		return birthPlace;
 	}
 
 	public void setBirthPlace(String birthPlace) {
-		BirthPlace = birthPlace;
+		this.birthPlace = birthPlace;
 	}
 
 	public String getJob() {
-		return Job;
+		return job;
 	}
 
 	public void setJob(String job) {
-		Job = job;
+		this.job = job;
 	}
 
 	public Date getDateOfBirth() {
-		return DateOfBirth;
+	//	Date date = Date.valueOf(this.dateOfBirth);      
+		return dateOfBirth ;
 	}
 
 	public void setDateOfBirth(Date dateOfBirth) {
-		DateOfBirth = dateOfBirth;
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public Date getIdentityMfg() {
-		return IdentityMfg;
+	//	Date date = Date.valueOf(this.identityMfg);      
+		return regisDate ;
 	}
 
-	public void setIdentityMfg(Date identityMfg) {
-		IdentityMfg = identityMfg;
+	public void setIdentityMfg(Date identityMfg2) {
+		this.identityMfg = identityMfg2;
 	}
 
 	public int getHouseHolderRela() {
-		return HouseHolderRela;
+		return houseHolderRela;
 	}
 
 	public void setHouseHolderRela(int houseHolderRela) {
-		HouseHolderRela = houseHolderRela;
+		this.houseHolderRela = houseHolderRela;
 	}
 
 	public String getEthnic() {
-		return Ethnic;
+		return ethnic;
 	}
 
 	public void setEthnic(String ethnic) {
-		Ethnic = ethnic;
+		this.ethnic = ethnic;
 	}
 
 	public String getNativePlace() {
-		return NativePlace;
+		return nativePlace;
 	}
 
 	public void setNativePlace(String nativePlace) {
-		NativePlace = nativePlace;
+		this.nativePlace = nativePlace;
 	}
 
 	public int getGender() {
-		return Gender;
+		return gender;
 	}
 
 	public void setGender(int gender) {
-		Gender = gender;
+		this.gender = gender;
 	}
 
 	public String getWorkPlace() {
-		return WorkPlace;
+		return workPlace;
 	}
 
 	public void setWorkPlace(String workPlace) {
-		WorkPlace = workPlace;
+		this.workPlace = workPlace;
 	}
 
 	public String getIdentityNo() {
-		return IdentityNo;
+		return identityNo;
 	}
 
 	public void setIdentityNo(String identityNo) {
-		IdentityNo = identityNo;
+		this.identityNo = identityNo;
 	}
 
 	public String getIdentityOrigin() {
-		return IdentityOrigin;
+		return identityOrigin;
 	}
 
 	public void setIdentityOrigin(String identityOrigin) {
-		IdentityOrigin = identityOrigin;
+		this.identityOrigin = identityOrigin;
 	}
 
 	public Date getRegisDate() {
-		return RegisDate;
+	//	Date date = Date.valueOf(this.regisDate);      
+		return regisDate ;
 	}
 
 	public void setRegisDate(Date regisDate) {
-		RegisDate = regisDate;
+		this.regisDate = regisDate;
 	}
-
-
-
-
-
 }
