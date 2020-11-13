@@ -54,7 +54,7 @@ public class MSSQLDatabase extends DatabaseManager implements ISQLDatabaseHouseH
     public static void main(String[] args) {
         try {
             System.out.println("Start connecting to DB...");
-            MSSQLDatabase testConn = new MSSQLDatabase("localhost", "QLNK_Quy", "", "");
+            MSSQLDatabase testConn = new MSSQLDatabase("localhost", "QLDC", "", "");
             var conn = testConn.getDatabase();
             System.out.println("Connected to DB successfully.");
             System.out.println("Test get all accounts");
