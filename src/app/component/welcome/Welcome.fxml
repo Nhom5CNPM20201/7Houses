@@ -26,7 +26,7 @@
                 <Button onAction="#login" layoutX="170.0" layoutY="370.0" mnemonicParsing="false" style="-fx-background-color: #048F68;" text="Đăng nhập" textFill="WHITE" />
                 <Hyperlink layoutX="217.0" layoutY="477.0" text="Quên mật khẩu?" />
                 <FontAwesomeIconView fill="#048f68" glyphName="USERS" layoutX="143.0" layoutY="101.0" size="50" />
-            <Hyperlink layoutX="14.0" layoutY="477.0" text="Tư cách khách?" />
+            <Hyperlink onAction="#guestLogin" layoutX="14.0" layoutY="477.0" text="Tư cách khách?" />
             </children>
         </AnchorPane>
     </right>
