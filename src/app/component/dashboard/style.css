@@ -40,4 +40,9 @@
 .text-field{
     -fx-background-color: transparent;
 }
-
+.search_box{
+    -fx-border-color: #000000;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
