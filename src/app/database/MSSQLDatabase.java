@@ -1,17 +1,17 @@
 package app.database;
+
 import app.config.AppConfig;
 import app.database.base.DatabaseManager;
 import app.database.interfaces.ISQLDatabaseAccount;
 import app.database.interfaces.ISQLDatabaseHouseHold;
 import app.database.interfaces.ISQLDatabasePeople;
+import app.database.interfaces.ISQLDatabaseMove;
 import app.entity.Account;
 import app.entity.HouseHold;
-import app.database.interfaces.ISQLDatabaseMove;
 import app.entity.Move;
 import app.entity.People;
 import java.sql.*;
 import java.util.List;
-
 
 public class MSSQLDatabase extends DatabaseManager implements
         ISQLDatabaseAccount,

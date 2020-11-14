@@ -64,5 +64,4 @@ public interface IDatabase {
     void removeMove(Move move) throws Exception;
     
     List<Move> getAllMove() throws Exception;
-
 }
