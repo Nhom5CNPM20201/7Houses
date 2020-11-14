@@ -1,10 +1,11 @@
-package app.component.ultis;
+package app.utility.viewUtils;
 
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.SubScene;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -27,7 +28,18 @@ public class ScreenController {
         }
     }
 
-    private void makeFadeInEffect(Node node) {
+    public static void activeSubscreen(SubScene subScene, URL FXMLname) {
+        try {
+            Parent parent = FXMLLoader.load(FXMLname);
+            subScene.setRoot(parent);
+            makeFadeInEffect(parent);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void makeFadeInEffect(Node node) {
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setDuration(Duration.millis(500));
         fadeTransition.setNode(node);
@@ -36,7 +48,7 @@ public class ScreenController {
         fadeTransition.play();
     }
 
-    private void makeFadeOutEffect(Node node) {
+    private static void makeFadeOutEffect(Node node) {
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setDuration(Duration.millis(500));
         fadeTransition.setNode(node);
