@@ -2,6 +2,8 @@ package app.database.base;
 
 import java.sql.Connection;
 
+
+
 public interface ISQLDatabase extends IDatabase  {
     @Override
     void initializeDatabase() throws Exception;
@@ -11,4 +13,6 @@ public interface ISQLDatabase extends IDatabase  {
 
     @Override
     void shutdown() throws Exception;
+
+	
 }
