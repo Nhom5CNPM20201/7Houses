@@ -32,11 +32,10 @@ public class Dashboard implements Initializable {
     }
 
     private void setPosition(Account account) {
-        if (account != null) {
-            this.positionTextField.setText(account.getAccountPositionEnum().getPositionName());
-        } else {
-            this.positionTextField.setText(AccountPositionEnum.NONE.getPositionName());
-        }
+        String accountPositionName =  account != null ? account.getAccountPositionEnum().getPositionName()
+                : AccountPositionEnum.NONE.getPositionName();
+
+        this.positionTextField.setText(accountPositionName);
     }
 
     private void switchView(URL FXMLname) {
@@ -54,17 +53,17 @@ public class Dashboard implements Initializable {
     // ====> Switch view region.
     @FXML
     void dashboardOnClick(ActionEvent event) {
-        this.switchView(getClass().getResource("summary/Summary.fxml"));
+        //this.switchView(getClass().getResource("summary/Summary.fxml"));
     }
 
     @FXML
     void houseHoldOnClick(ActionEvent event) {
-        this.switchView(getClass().getResource("householdManage/HouseholdManage.fxml"));
+        //this.switchView(getClass().getResource("householdManage/HouseholdManage.fxml"));
     }
 
     @FXML
     void peopleOnClick(ActionEvent event) {
-        this.switchView(getClass().getResource("peopleManage/PeopleManage.fxml"));
+        //this.switchView(getClass().getResource("peopleManage/PeopleManage.fxml"));
     }
 
     @FXML
@@ -79,7 +78,7 @@ public class Dashboard implements Initializable {
 
     @FXML
     void searchOnClick(ActionEvent event) {
-        this.switchView(getClass().getResource("search/Search.fxml"));
+        //this.switchView(getClass().getResource("search/Search.fxml"));
     }
 
     @FXML
