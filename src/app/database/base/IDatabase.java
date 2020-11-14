@@ -6,7 +6,7 @@ import app.entity.Person;
 import app.entity.Move;
 import java.sql.Connection;
 import java.util.List;
-
+import app.entity.People;
 public interface IDatabase {
 
 //    Init database region
@@ -30,6 +30,13 @@ public interface IDatabase {
     Account searchAccount(String username) throws Exception;
 
 //    People region
+    void insertPeople(People people) throws Exception;
+
+    void updatePeople(People people) throws Exception;
+
+    void removePeople(People people) throws Exception;
+    
+	List<People> getAllPeoples() throws Exception;    
 
 //    void insertPerson(Person people) throws Exception;
 //
