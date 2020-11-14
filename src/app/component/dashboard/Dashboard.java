@@ -1,54 +1,74 @@
 package app.component.dashboard;
 
+import app.common.AccountPositionEnum;
+import app.utility.viewUtils.Mediator;
+import app.entity.Account;
+import app.services.ServiceFactory;
+import app.utility.viewUtils.ScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.SubScene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
-public class Dashboard {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+public class Dashboard implements Initializable {
     @FXML
-    private AnchorPane mainView;
-
+    private Text positionTextField;
     @FXML
-    private Button btnLogOut;
+    private SubScene mainDashboard;
 
-    @FXML
-    private Button btnDashborad;
 
-    @FXML
-    private Button btnHouseHold;
-
-    @FXML
-    private Button btnPeople;
-
-    @FXML
-    private Button btnFee;
-
-    @FXML
-    private Button btnSearch;
-
-    @FXML
-    private Button btnStatistic;
-
-    @FXML
-    private Button btnInfomation;
-
-    @FXML
-    private AnchorPane homePane;
-
-    @FXML
-    void dashboardOnClick(ActionEvent event) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setPosition(ServiceFactory.getAuthService().getCurrentAccount());
 
     }
 
-    @FXML
-    void feeOnClick(ActionEvent event) {
+    private void setPosition(Account account) {
+        if (account != null) {
+            this.positionTextField.setText(account.getAccountPositionEnum().getPositionName());
+        } else {
+            this.positionTextField.setText(AccountPositionEnum.NONE.getPositionName());
+        }
+    }
 
+    private void switchView(URL FXMLname) {
+        ScreenController.activeSubscreen(mainDashboard, FXMLname);
+    }
+
+    // ====> Function region
+    @FXML
+    void logOutOnClick(ActionEvent event) {
+        ServiceFactory.getAuthService().clearAccount();
+        Mediator.Notify("onGoingWelcome");
+    }
+
+
+    // ====> Switch view region.
+    @FXML
+    void dashboardOnClick(ActionEvent event) {
+        this.switchView(getClass().getResource("summary/Summary.fxml"));
     }
 
     @FXML
     void houseHoldOnClick(ActionEvent event) {
+        this.switchView(getClass().getResource("householdManage/HouseholdManage.fxml"));
+    }
+
+    @FXML
+    void peopleOnClick(ActionEvent event) {
+        this.switchView(getClass().getResource("peopleManage/PeopleManage.fxml"));
+    }
+
+    @FXML
+    void feeOnClick(ActionEvent event) {
 
     }
 
@@ -58,23 +78,12 @@ public class Dashboard {
     }
 
     @FXML
-    void logOutOnClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void peopleOnClick(ActionEvent event) {
-
-    }
-
-    @FXML
     void searchOnClick(ActionEvent event) {
-
+        this.switchView(getClass().getResource("search/Search.fxml"));
     }
 
     @FXML
     void statisticOnClick(ActionEvent event) {
 
     }
-
 }

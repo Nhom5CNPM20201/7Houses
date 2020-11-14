@@ -24,4 +24,17 @@ public enum AccountPositionEnum {
     public int getValue() {
         return value;
     }
+
+    public String getPositionName() {
+        switch (this) {
+            case LEADER:
+                return "Tổ trưởng";
+            case VICE_LEADER:
+                return "Tổ phó";
+            case ACCOUNTANT:
+                return "Kế toán";
+            default:
+                return "Khách";
+        }
+    }
 }

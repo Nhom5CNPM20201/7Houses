@@ -11,7 +11,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AuthService implements IService {
-    private MSSQLDatabase orm;
     private Account currentAccount;
 
     public AuthService () {
@@ -19,8 +18,7 @@ public class AuthService implements IService {
 
     public AuthMessage login(String username, String password) {
         try {
-            orm = MSSQLDatabase.getInstance();
-            Account searchedAccount = orm.searchAccount(username);
+            Account searchedAccount = MSSQLDatabase.getInstance().searchAccount(username);
 
             if (searchedAccount != null) {
                 if (password.equals(searchedAccount.getPassword())) {
@@ -39,6 +37,14 @@ public class AuthService implements IService {
             LogService.error("AuthService: " + e.getMessage());
             return new AuthMessage(false, e.getMessage());
         }
+    }
+
+    public Account getCurrentAccount() {
+        return this.currentAccount;
+    }
+
+    public void clearAccount() {
+        this.currentAccount = null;
     }
 
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 package app.component.welcome;
 
-import app.component.ultis.Mediator;
+import app.utility.viewUtils.Mediator;
 import app.model.AuthMessage;
 import app.services.ServiceFactory;
 import app.services.common.NotiService;
@@ -8,11 +8,8 @@ import app.utility.SecurityUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-import javax.annotation.processing.Messager;
-import javax.lang.model.type.NoType;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -39,5 +36,10 @@ public class Welcome implements Initializable {
         } else {
             NotiService.info(authMessage.getMessage());
         }
+    }
+
+    @FXML
+    public void guestLogin(ActionEvent e) {
+        Mediator.Notify("onGoingDashboard");
     }
 }
