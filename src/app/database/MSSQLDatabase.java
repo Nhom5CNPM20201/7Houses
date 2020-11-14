@@ -10,6 +10,7 @@ import app.database.interfaces.ISQLDatabaseHouseHold;
 import app.entity.HouseHold;
 import app.database.interfaces.ISQLDatabaseMove;
 import app.entity.Move;
+import app.entity.People;
 
 import java.sql.*;
 import java.util.List;
@@ -21,6 +22,7 @@ public class MSSQLDatabase extends DatabaseManager implements
         ISQLDatabaseMove {
 
     private Connection databaseObject;
+    
 
     public MSSQLDatabase(String hostName, String dbname, String user, String password) throws Exception {
         try {
@@ -71,10 +73,26 @@ public class MSSQLDatabase extends DatabaseManager implements
             var conn = testConn.getDatabase();
             System.out.println("Connected to DB successfully.");
             System.out.println("Test get all accounts");
+
+
+          //  People people = new People();
+          //  testConn.insertPeople(people);
+           
+          // testConn.updatePeople(people);
+           
             List<Account> accounts = testConn.getAllAccounts();
+            List<People> peoples = testConn.getAllPeoples();      
+          //  testConn.removePeople(peoples.get(8));
+            
             for(var item : accounts) {
                 System.out.println(item.getId() + " | " + item.getUsername().trim()
-                        + " | " + item.getName() + " | " + item.getPassword());
+                       + " | " + item.getName() + " | " + item.getPassword());
+            }
+            
+            System.out.println(" \n Test get all peoples ");
+            for(var j : peoples) {
+                System.out.println(j.getId() 
+                        + " | " + j.getFullName() + " | " + j.getDateOfBirth());
             }
 //          HouseHold houseHold = new HouseHold(4, "LK103", 3, "@@@");
 //          testConn.insertHouseHold(houseHold);
@@ -100,6 +118,8 @@ public class MSSQLDatabase extends DatabaseManager implements
             }
             
             conn.close();
+            
+           
         } catch (Exception e) {
             System.out.println("Error when connect to DB:");
             System.out.println(e.getMessage());
