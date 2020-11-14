@@ -3,7 +3,7 @@ package app.database.base;
 import app.entity.Account;
 import app.entity.HouseHold;
 import app.entity.Person;
-
+import app.entity.Move;
 import java.sql.Connection;
 import java.util.List;
 
@@ -40,12 +40,21 @@ public interface IDatabase {
 //    void removePerson(Person person) throws Exception;
 
 //    HouseHold region
-
-//    void insertHouseHold(HouseHold houseHold) throws Exception;
-//
-//    List<HouseHold> getAllHouseHolds() throws Exception;
-//
-//    void updateHouseHold(HouseHold houseHold) throws Exception;
-//
-//    void removeHouseHold(HouseHold houseHold) throws Exception;
+    
+    void insertHouseHold(HouseHold houseHold) throws Exception;
+    
+    void updateHouseHold(HouseHold houseHold) throws Exception;
+    
+    void removeHouseHold(HouseHold houseHold) throws Exception;
+    
+    List<HouseHold> getAllHouseHold() throws Exception;
+    
+// Move region
+    void insertMove(Move move) throws Exception;
+    
+    void updateMove(Move move) throws Exception;
+    
+    void removeMove(Move move) throws Exception;
+    
+    List<Move> getAllMove() throws Exception;
 }
