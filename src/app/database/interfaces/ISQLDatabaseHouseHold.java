@@ -86,6 +86,26 @@ public interface ISQLDatabaseHouseHold extends ISQLDatabase {
     		throw e;
     	}
     }
+    
+    @Override
+    default HouseHold searchHouseHold(String houseHoldBook) throws Exception {
+    	try {
+    		Statement stmt = this.getDatabase().createStatement();
+    		ResultSet rs = stmt.executeQuery("SELECT TOP 1 * FROM " + HouseHoldConfig.TABLE_NAME + " WHERE " 
+    		+ HouseHoldConfig.HOUSEHOLD_HOUSEHOLDBOOK + " LIKE '%" + houseHoldBook + "%';");
+    		
+    		if(rs.next()) {
+    			return extractHouseHold(rs);
+    		}
+    		else {
+    			System.out.println("khong ton tai du lieu!");
+    			return null;
+    		}
+    	}
+    	catch (SQLException e) {
+    		throw e;
+    	}
+    }
 
     private HouseHold extractHouseHold(ResultSet rs) throws SQLException {
     	int id = rs.getInt(HouseHoldConfig.HOUSEHOLD_ID);
