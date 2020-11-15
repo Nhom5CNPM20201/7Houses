@@ -24,22 +24,21 @@ public class Dashboard implements Initializable {
     @FXML
     private SubScene mainDashboard;
 
+    public Dashboard() throws IOException {
+        //this.mainDashboard = FXMLLoader.load(getClass().getResource("summary/Summary.fxml"));
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.switchView(getClass().getResource("summary/Summary.fxml"));
         setPosition(ServiceFactory.getAuthService().getCurrentAccount());
-
     }
 
     private void setPosition(Account account) {
-        String accountPositionName =  account != null ? account.getAccountPositionEnum().getPositionName()
+        String accountPositionName = account != null ? account.getAccountPositionEnum().getPositionName()
                 : AccountPositionEnum.NONE.getPositionName();
 
         this.positionTextField.setText(accountPositionName);
-    }
-
-    private void switchView(URL FXMLname) {
-        ScreenController.activeSubscreen(mainDashboard, FXMLname);
     }
 
     // ====> Function region
@@ -51,34 +50,38 @@ public class Dashboard implements Initializable {
 
 
     // ====> Switch view region.
-    @FXML
-    void dashboardOnClick(ActionEvent event) {
-        //this.switchView(getClass().getResource("summary/Summary.fxml"));
+    private void switchView(URL FXMLname) {
+        ScreenController.activeSubscreen(this.mainDashboard, FXMLname);
     }
 
     @FXML
-    void houseHoldOnClick(ActionEvent event) {
-        //this.switchView(getClass().getResource("householdManage/HouseholdManage.fxml"));
+    public void dashboardOnClick(ActionEvent event) {
+        this.switchView(getClass().getResource("summary/Summary.fxml"));
     }
 
     @FXML
-    void peopleOnClick(ActionEvent event) {
-        //this.switchView(getClass().getResource("peopleManage/PeopleManage.fxml"));
+    public void houseHoldOnClick(ActionEvent event) {
+        this.switchView(getClass().getResource("householdManage/HouseholdManage.fxml"));
     }
 
     @FXML
-    void feeOnClick(ActionEvent event) {
+    public void peopleOnClick(ActionEvent event) {
+        this.switchView(getClass().getResource("peopleManage/PeopleManage.fxml"));
+    }
+
+    @FXML
+    public void feeOnClick(ActionEvent event) {
 
     }
 
     @FXML
-    void informationOnClick(ActionEvent event) {
+    public void informationOnClick(ActionEvent event) {
 
     }
 
     @FXML
     void searchOnClick(ActionEvent event) {
-        //this.switchView(getClass().getResource("search/Search.fxml"));
+        this.switchView(getClass().getResource("search/Search.fxml"));
     }
 
     @FXML
