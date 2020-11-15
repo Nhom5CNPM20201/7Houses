@@ -4,6 +4,9 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class SecurityUtils {
     public static String getMD5Hash(String content) {
         try {
@@ -30,5 +33,21 @@ public class SecurityUtils {
         catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String validateUsername(String content) {
+         String regex = "[^0-9a-zA-Z\\._@]";
+         String subst = "";
+         Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+         Matcher matcher = pattern.matcher(content);
+
+         // The substituted value will be contained in the result variable
+        String result = matcher.replaceAll(subst).toUpperCase();
+
+        return result;
+    }
+
+    public static String validatePassword(String content) {
+        return content.trim().toLowerCase();
     }
 }
