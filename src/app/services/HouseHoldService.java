@@ -24,10 +24,8 @@ public class HouseHoldService {
 	public void createHouseHold(HouseHold houseHold) {
 		try {
 			orm = inORM();
-			Statement stmt = orm.getDatabase().createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT TOP 1 * FROM " + HouseHoldConfig.TABLE_NAME + " WHERE " 
-			+ HouseHoldConfig.HOUSEHOLD_HOUSEHOLDBOOK + " LIKE '%" + houseHold.getHouseHoldBook() + "%';");
-			if(!rs.next()) {
+			HouseHold searchHH = orm.searchHouseHold(houseHold.getHouseHoldBook());
+			if(searchHH == null) {
 				orm.insertHouseHold(houseHold);
 				System.out.println("Tao thanh cong.");
 			}
@@ -87,5 +85,6 @@ public class HouseHoldService {
 //		hService.searchHouseHold("LK104");
 //		hService.deleteHouseHold("LK104");
 //		hService.getAllHouseHold();
-	} */
+	} 
+*/
 }
