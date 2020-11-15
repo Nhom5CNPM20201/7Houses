@@ -27,10 +27,10 @@ public class Welcome implements Initializable {
 
     @FXML
     public void login(ActionEvent e) {
-        String username = usernameField.getText().trim().toUpperCase();
-        String password = passwordField.getText().trim();
+        String username = SecurityUtils.validateUsername(usernameField.getText());
+        String password = SecurityUtils.validatePassword(passwordField.getText());
 
-        AuthMessage authMessage = ServiceFactory.getAuthService().login(username, SecurityUtils.getMD5Hash(password));
+        AuthMessage authMessage = ServiceFactory.getAuthService().login(username, password);
         if (authMessage.getStatus()) {
             Mediator.Notify("onGoingDashboard");
         } else {

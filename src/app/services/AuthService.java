@@ -5,6 +5,7 @@ import app.entity.Account;
 import app.model.AuthMessage;
 import app.services.common.LogService;
 import app.services.common.NotiService;
+import app.utility.SecurityUtils;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
@@ -19,9 +20,9 @@ public class AuthService implements IService {
     public AuthMessage login(String username, String password) {
         try {
             Account searchedAccount = MSSQLDatabase.getInstance().searchAccount(username);
-
+            String hashedPassword = SecurityUtils.getMD5Hash(password);
             if (searchedAccount != null) {
-                if (password.equals(searchedAccount.getPassword())) {
+                if (hashedPassword.equals(searchedAccount.getPassword())) {
                     this.currentAccount = searchedAccount;
 
                     LogService.info("Login successfully!");
@@ -49,7 +50,7 @@ public class AuthService implements IService {
 
     public static void main(String[] args) {
         AuthService authService = new AuthService();
-        AuthMessage authMessage = authService.login("HungNQ", "81a0e01ea80220db1886e818040c1584");
+        AuthMessage authMessage = authService.login("HungNQ", "admin");
 
         System.out.println(authMessage.getMessage());
     }
