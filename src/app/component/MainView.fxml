@@ -79,7 +79,7 @@
             </Button>
             <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="1.0" layoutY="65.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="189.0" stylesheets="@MainViewStyle.css" text="Hộ khẩu" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
                <graphic>
-                  <FontAwesomeIconView glyphName="USERS" size="18" />
+                  <FontAwesomeIconView glyphName="USERS" size="18" text="" />
                </graphic>
                <padding>
                   <Insets left="30.0" />
