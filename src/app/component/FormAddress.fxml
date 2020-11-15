@@ -17,9 +17,9 @@
       <TextField fx:id="txtHouseholdNo" layoutX="22.0" layoutY="107.0" prefHeight="26.0" prefWidth="506.0" promptText="Household No" />
       <AnchorPane layoutY="-1.0" prefHeight="64.0" prefWidth="590.0" style="-fx-background-color: #008000;">
          <children>
-            <Label layoutX="281.0" layoutY="14.0" text="Địa chỉ" textFill="WHITE">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="64.0" prefWidth="150.0" text="Địa chỉ" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font size="36.0" />
                </font>
             </Label>
          </children>
