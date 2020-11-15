@@ -25,5 +25,6 @@
     <orderEntry type="library" name="fontawesomefx-materialdesignfont-2.0.26-9.1.2" level="project" />
     <orderEntry type="library" name="mssql-jdbc-8.4.1.jre14" level="project" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="fontawesomefx-materialicons-2.2.0-9.1.2" level="project" />
   </component>
 </module>
