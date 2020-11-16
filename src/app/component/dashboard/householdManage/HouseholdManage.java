@@ -23,7 +23,6 @@ public class HouseholdManage {
     void addOnClick(ActionEvent event) {
 
     }
-
     @FXML
     void deleteOnClick(ActionEvent event) {
 
