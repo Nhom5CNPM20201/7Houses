@@ -55,7 +55,7 @@ public class Dashboard implements Initializable {
     }
 
     @FXML
-    public void dashboardOnClick(ActionEvent event) {
+    public void summaryOnClick(ActionEvent event) {
         this.switchView(getClass().getResource("summary/Summary.fxml"));
     }
 
