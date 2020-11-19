@@ -3,10 +3,10 @@ package app.database.base;
 import app.entity.Account;
 import app.entity.HouseHold;
 import app.entity.Person;
-
+import app.entity.Move;
 import java.sql.Connection;
 import java.util.List;
-
+import app.entity.People;
 public interface IDatabase {
 
 //    Init database region
@@ -30,6 +30,13 @@ public interface IDatabase {
     Account searchAccount(String username) throws Exception;
 
 //    People region
+    void insertPeople(People people) throws Exception;
+
+    void updatePeople(People people) throws Exception;
+
+    void removePeople(People people) throws Exception;
+    
+	List<People> getAllPeoples() throws Exception;    
 
 //    void insertPerson(Person people) throws Exception;
 //
@@ -40,12 +47,21 @@ public interface IDatabase {
 //    void removePerson(Person person) throws Exception;
 
 //    HouseHold region
-
-//    void insertHouseHold(HouseHold houseHold) throws Exception;
-//
-//    List<HouseHold> getAllHouseHolds() throws Exception;
-//
-//    void updateHouseHold(HouseHold houseHold) throws Exception;
-//
-//    void removeHouseHold(HouseHold houseHold) throws Exception;
+    
+    void insertHouseHold(HouseHold houseHold) throws Exception;
+    
+    void updateHouseHold(HouseHold houseHold) throws Exception;
+    
+    void removeHouseHold(HouseHold houseHold) throws Exception;
+    
+    List<HouseHold> getAllHouseHold() throws Exception;
+    
+// Move region
+    void insertMove(Move move) throws Exception;
+    
+    void updateMove(Move move) throws Exception;
+    
+    void removeMove(Move move) throws Exception;
+    
+    List<Move> getAllMove() throws Exception;
 }
