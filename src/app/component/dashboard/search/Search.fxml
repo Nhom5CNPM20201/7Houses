@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
@@ -13,9 +14,9 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.dashboard.search.Search">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="265.0" prefHeight="300.0" prefWidth="808.0" styleClass="text_box" stylesheets="@../style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="82.0">
+      <AnchorPane layoutX="10.0" layoutY="265.0" prefHeight="300.0" prefWidth="808.0" styleClass="text_box" stylesheets="@../style.css" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="82.0">
          <children>
-            <HBox alignment="CENTER" layoutX="384.0" layoutY="15.41796875" prefHeight="52.0" prefWidth="808.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox alignment="CENTER" layoutX="384.0" layoutY="15.41796875" prefHeight="52.0" prefWidth="808.0" styleClass="sub_header" stylesheets="@../style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kết quả tìm kiếm">
                      <font>
@@ -55,10 +56,13 @@
             <HBox layoutX="159.0" layoutY="15.0" styleClass="search_box" stylesheets="@../style.css">
                <children>
                   <TextField prefHeight="33.0" prefWidth="215.0" promptText="Tìm kiếm" style="-fx-background-color: transparent;" />
-                  <Button fx:id="btnFind" alignment="CENTER" mnemonicParsing="false" onAction="#findOnClick" prefHeight="32.0" prefWidth="50.0" style="-fx-background-color: #D8D8D8; -fx-background-radius: 5px;">
+                  <Button fx:id="btnFind" alignment="CENTER" mnemonicParsing="false" onAction="#findOnClick" prefHeight="32.0" prefWidth="50.0" stylesheets="@../style.css">
                      <graphic>
                         <FontAwesomeIconView glyphName="SEARCH" size="20" wrappingWidth="16.571428298950195" />
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>

@@ -1,5 +1,5 @@
 .header{
-    -fx-background-color:  #048F68;
+    -fx-background-color:  #e8f5e9;
 }
 .header_box{
     -fx-border-radius: 1.5em;
@@ -8,13 +8,13 @@
     -fx-background-radius: 1.5em;
 }
 .slide_bar{
-    -fx-background-color: #01DF74;
+    -fx-background-color: #e8f5e9;
 }
 .button {
     -fx-background-color: transparent;
 }
 .button:hover{
-    -fx-background-color: #848484;
+    -fx-background-color: #76d275;
 }
 .button:cell-selection{
     -fx-background-color: #6E6E6E;
@@ -46,3 +46,10 @@
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
 }
+.sub_header{
+    -fx-background-color: #76d275;
+    -fx-border-color: #000000;
+    -fx-border-width: 0px 0px 2px 0px;
+}
+
+

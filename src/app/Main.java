@@ -19,7 +19,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("component/welcome/Welcome.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("component/dashboard/Dashboard.fxml"));
 
         Scene scene = new Scene(root, 900, 600);
         scene.getStylesheets().add("app/component/style.css");
