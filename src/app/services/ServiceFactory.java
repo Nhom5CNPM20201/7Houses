@@ -8,17 +8,18 @@ public class ServiceFactory {
 
     }
 
+    public static ServiceFactory getInstance() {
+    	return new ServiceFactory();
+    }
+    
     public static void Init() {
         authService = new AuthService();
+        houseHoldService = new HouseHoldService();
     }
 
     public static AuthService getAuthService() {
         return authService;
     }
-    
-    public static void houseHoldInstance() {
-		houseHoldService = new HouseHoldService();
-	}
 
 	public static HouseHoldService getHouseHoldService() {
 		return houseHoldService;
