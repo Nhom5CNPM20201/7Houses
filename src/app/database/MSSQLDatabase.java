@@ -79,43 +79,43 @@ public class MSSQLDatabase extends DatabaseManager implements
           //  testConn.insertPeople(people);
            
           // testConn.updatePeople(people);
-           
-            List<Account> accounts = testConn.getAllAccounts();
-            List<People> peoples = testConn.getAllPeoples();      
+//           
+//            List<Account> accounts = testConn.getAllAccounts();
+//            List<People> peoples = testConn.getAllPeoples();      
           //  testConn.removePeople(peoples.get(8));
             
-            for(var item : accounts) {
-                System.out.println(item.getId() + " | " + item.getUsername().trim()
-                       + " | " + item.getName() + " | " + item.getPassword());
-            }
-            
-            System.out.println(" \n Test get all peoples ");
-            for(var j : peoples) {
-                System.out.println(j.getId() 
-                        + " | " + j.getFullName() + " | " + j.getDateOfBirth());
-            }
+//            for(var item : accounts) {
+//                System.out.println(item.getId() + " | " + item.getUsername().trim()
+//                       + " | " + item.getName() + " | " + item.getPassword());
+//            }
+//            
+//            System.out.println(" \n Test get all peoples ");
+//            for(var j : peoples) {
+//                System.out.println(j.getId() 
+//                        + " | " + j.getFullName() + " | " + j.getDateOfBirth());
+//            }
 //          HouseHold houseHold = new HouseHold(4, "LK103", 3, "@@@");
 //          testConn.insertHouseHold(houseHold);
 //          testConn.updateHouseHold(houseHold);
-         	
-            List<HouseHold> houseHolds = testConn.getAllHouseHold();
+//         	
+//            List<HouseHold> houseHolds = testConn.getAllHouseHold();
 //            testConn.removeHouseHold(houseHolds.get(4));
-            for(var i : houseHolds) {
-            	System.out.println(i.getId() + "\t" + i.getIdAddress() + "\t" + i.getHouseHoldBook() + "\t"
-            			+ i.getIdOwner() + "\t" + i.getName());
-            }
+//            for(var i : houseHolds) {
+//            	System.out.println(i.getId() + "\t" + i.getIdAddress() + "\t" + i.getHouseHoldBook() + "\t"
+//            			+ i.getIdOwner() + "\t" + i.getName());
+//            }
 //			Move
 //            Move move = new Move(6, 2, 3, 2, 4, Date.valueOf("2019-05-10"), 1);
 //            testConn.updateMove(move);
 //            Move move = new Move(2, 3, 2, 4, Date.valueOf("2019-05-10"), 1);
 //            testConn.insertMove(move);
-            List<Move> moves = testConn.getAllMove();
+//            List<Move> moves = testConn.getAllMove();
 //            testConn.removeMove(moves.get(2));
-            for(Move i : moves) {
-            	System.out.println(i.getId() + "\t" + i.getIdHouseHold() + "\t" + i.getIdPeople() + "\t" 
-            			+ i.getIdNewAddress() + "\t" + i.getIdOldAddress() + "\t" + i.getMovingDate() + "\t"
-            			+ i.getType());
-            }
+//            for(Move i : moves) {
+//            	System.out.println(i.getId() + "\t" + i.getIdHouseHold() + "\t" + i.getIdPeople() + "\t" 
+//            			+ i.getIdNewAddress() + "\t" + i.getIdOldAddress() + "\t" + i.getMovingDate() + "\t"
+//            			+ i.getType());
+//            }
             
             conn.close();
             
