@@ -39,12 +39,20 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField layoutX="254.0" layoutY="115.0" prefHeight="33.0" prefWidth="303.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.leftAnchor="254.0" AnchorPane.topAnchor="231.0">
+      <TextField layoutX="254.0" layoutY="115.0" prefHeight="33.0" prefWidth="303.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.leftAnchor="254.0">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Button graphicTextGap="15.0" layoutX="397.0" layoutY="522.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: #048F68;" text="Lưu" AnchorPane.bottomAnchor="29.0">
+      <Button graphicTextGap="15.0" layoutX="190.0" layoutY="522.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="139.0" style="-fx-background-color: #048F68;" text="Thoát">
+         <graphic>
+            <FontAwesomeIconView glyphName="TIMES" size="25" />
+         </graphic>
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Button graphicTextGap="15.0" layoutX="397.0" layoutY="522.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="131.0" style="-fx-background-color: #048F68;" text="Lưu">
          <graphic>
             <FontAwesomeIconView glyphName="USERS" size="25" />
          </graphic>
@@ -52,17 +60,17 @@
             <Font size="25.0" />
          </font>
       </Button>
-      <TextField layoutX="254.0" layoutY="172.0" prefHeight="33.0" prefWidth="303.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.leftAnchor="254.0" AnchorPane.topAnchor="115.0">
+      <TextField layoutX="254.0" layoutY="172.0" prefHeight="33.0" prefWidth="303.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.leftAnchor="254.0">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField layoutX="254.0" layoutY="170.0" prefHeight="33.0" prefWidth="303.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.leftAnchor="254.0" AnchorPane.topAnchor="170.0">
+      <TextField layoutX="257.0" layoutY="231.0" prefHeight="33.0" prefWidth="303.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.leftAnchor="254.0">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <TextField layoutX="257.0" layoutY="291.0" prefHeight="33.0" prefWidth="303.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.bottomAnchor="263.0" AnchorPane.leftAnchor="254.0" AnchorPane.rightAnchor="143.0">
+      <TextField layoutX="257.0" layoutY="291.0" prefHeight="33.0" prefWidth="303.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.leftAnchor="254.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -86,13 +94,5 @@
             </Text>
          </children>
       </AnchorPane>
-      <Button graphicTextGap="15.0" layoutX="204.0" layoutY="517.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: #048F68;" text="Thoát">
-         <font>
-            <Font size="25.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIconView glyphName="TIMES" size="25" text="" wrappingWidth="10.857142448425293" />
-         </graphic>
-      </Button>
    </children>
 </AnchorPane>
