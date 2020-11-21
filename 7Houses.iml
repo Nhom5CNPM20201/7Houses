@@ -8,9 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="fontawesomefx-fontawesome-4.7.0-9.1.2" level="project" />
-    <orderEntry type="library" name="fontawesomefx-controls-9.1.2" level="project" />
-    <orderEntry type="library" name="fontawesomefx-commons-9.1.2" level="project" />
     <orderEntry type="library" name="fontawesomefx-materialdesignfont-1.7.22-4" level="project" />
     <orderEntry type="library" name="jfoenix-9.0.10" level="project" />
     <orderEntry type="module-library" exported="">
@@ -23,5 +20,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="lib1" level="project" />
+    <orderEntry type="library" name="lib2" level="project" />
   </component>
 </module>
