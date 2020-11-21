@@ -3,7 +3,7 @@ package app.config;
 public class AddressConfig {
     public static final String TABLE_NAME = "DiaChiTT";
 
-    //    name of columns in table 'account'
+    //    name of columns in table 'address'
     public static final String ADDRESS_ID= "Id";
 
     public static final String ADDRESS_NUMBERHOUSE = "sonha";

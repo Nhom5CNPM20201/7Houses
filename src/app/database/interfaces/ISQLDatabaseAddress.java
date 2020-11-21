@@ -4,8 +4,7 @@ import app.config.AddressConfig;
 import app.config.AppConfig;
 import app.database.MSSQLDatabase;
 import app.database.base.ISQLDatabase;
-import app.entity.Account;
-import entity.Address;
+import app.entity.Address;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -95,7 +94,7 @@ public interface ISQLDatabaseAddress extends ISQLDatabase {
 
     @Override
     default void removeAddress(int id) throws Exception {
-        try { // Delete from table where
+        try {
             PreparedStatement stmt = this.getDatabase().prepareStatement("Delete from " + AddressConfig.TABLE_NAME +
                     " where " + AddressConfig.ADDRESS_ID + " = " + id);
             stmt.executeUpdate();
@@ -103,6 +102,26 @@ public interface ISQLDatabaseAddress extends ISQLDatabase {
             throw e;
         }
     }
+    @Override
+    default Address searchAddress(int id) throws Exception {
+        try {
+            Statement stmt = this.getDatabase().createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT TOP 1 * FROM " + AddressConfig.TABLE_NAME + " WHERE "
+                    + AddressConfig.ADDRESS_ID + " LIKE '%" + id + "%';");
+
+            if(rs.next()) {
+                return extractAddress(rs);
+            }
+            else {
+                System.out.println("khong ton tai du lieu!");
+                return null;
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+    // test
     public static void main(String[] args) {
         try {
             System.out.println("Start connecting to DB...");
@@ -115,6 +134,7 @@ public interface ISQLDatabaseAddress extends ISQLDatabase {
             testConn.updateAddress(address);
             testConn.removeAddress(1);
             testConn.insertAddress(address);
+            testConn.searchAddress(20);
             List<Address> addressList = testConn.getAllAddress();
             for(var item : addressList) {
                 System.out.println(item.getId() + ", " + item.getNumberHouse()+ ", " +item.getStreet()

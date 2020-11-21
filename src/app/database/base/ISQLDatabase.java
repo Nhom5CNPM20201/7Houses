@@ -1,6 +1,6 @@
 package app.database.base;
 
-import entity.Address;
+import app.entity.Address;
 
 import java.sql.Connection;
 import java.util.List;
@@ -22,4 +22,6 @@ public interface ISQLDatabase extends IDatabase  {
     void updateAddress(Address address) throws Exception;
 
     void removeAddress(int id) throws Exception;
+
+    Address searchAddress(int id) throws Exception;
 }

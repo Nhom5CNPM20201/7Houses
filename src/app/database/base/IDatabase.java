@@ -1,7 +1,7 @@
 package app.database.base;
 
 import app.entity.*;
-import entity.Address;
+import app.entity.Address;
 
 import java.sql.Connection;
 import java.util.List;

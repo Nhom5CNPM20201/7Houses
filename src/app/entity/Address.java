@@ -1,4 +1,4 @@
-package entity;
+package app.entity;
 
 public class Address {
     private int id;
@@ -77,4 +77,5 @@ public class Address {
         this.city = city;
     }
 }
+
 
