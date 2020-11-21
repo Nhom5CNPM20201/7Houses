@@ -21,7 +21,7 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("component/dashboard/Dashboard.fxml"));
 
-        Scene scene = new Scene(root, 900, 600);
+        Scene scene = new Scene(root, 1000, 650);
         scene.getStylesheets().add("app/component/style.css");
         screenController = new ScreenController(scene);
 
