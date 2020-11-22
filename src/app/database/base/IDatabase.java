@@ -75,4 +75,13 @@ public interface IDatabase {
     void removeAddress(int id) throws Exception;
 
     List<Address> getAllAddress() throws Exception;
+    // Fee region
+    void insertFee(Fee fee) throws Exception;
+
+    void updateFee(Fee fee) throws Exception;
+
+    void removeFee(int id) throws Exception;
+
+    List<Fee> getAllFee() throws Exception;
+
 }

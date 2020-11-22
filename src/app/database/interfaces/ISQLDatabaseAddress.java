@@ -1,6 +1,6 @@
 package app.database.interfaces;
 
-import app.config.AddressConfig;
+import app.database.config.AddressConfig;
 import app.config.AppConfig;
 import app.database.MSSQLDatabase;
 import app.database.base.ISQLDatabase;
@@ -22,12 +22,6 @@ public interface ISQLDatabaseAddress extends ISQLDatabase {
                     + AddressConfig.ADDRESS_SUBDISTRICT + " , "
                     + AddressConfig.ADDRESS_DISTRICT + " , "
                     + AddressConfig.ADDRESS_CITY + ") VALUES (?, ?, ?, ?, ?, ?)");
-
-            MSSQLDatabase testConn = new MSSQLDatabase(AppConfig.databaseHostname, AppConfig.databaseName,
-                    AppConfig.databaseUsername, AppConfig.databasePassword);
-            List<Address> addressList = testConn.getAllAddress();
-            int insertedAddressID = addressList.get(addressList.size()-1).getId()+1;
-            address.setId(insertedAddressID);
             stmt.setInt(1, address.getId());
             stmt.setInt(2, address.getNumberHouse());
             stmt.setString(3, address.getStreet());
@@ -130,7 +124,7 @@ public interface ISQLDatabaseAddress extends ISQLDatabase {
             var conn = testConn.getDatabase();
 
             System.out.print("Try getting all accounts\n");
-            Address address = new Address(2, 5, "H3PO4", "C2H2OH", "CH3Cl", "H2O");
+            Address address = new Address(100, 5, "H3PO4", "C2H2OH", "CH3Cl", "H2O");
             testConn.updateAddress(address);
             testConn.removeAddress(1);
             testConn.insertAddress(address);

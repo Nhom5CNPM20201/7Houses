@@ -62,7 +62,7 @@ public class AddressService {
             System.out.println(e.getMessage());
         }
     }
-//Test
+    //Test
     public static void main(String[] args) {
         AddressService aService = new AddressService();
         Address address = new Address(6, 5, "MgOH2", "C2H2OH", "CH3Cl", "H2O");
