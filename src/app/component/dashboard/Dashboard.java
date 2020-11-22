@@ -24,8 +24,8 @@ public class Dashboard implements Initializable {
     @FXML
     private SubScene mainDashboard;
 
-    public Dashboard() throws IOException {
-        //this.mainDashboard = FXMLLoader.load(getClass().getResource("summary/Summary.fxml"));
+    public Dashboard() {
+
     }
 
     @Override
@@ -71,12 +71,12 @@ public class Dashboard implements Initializable {
 
     @FXML
     public void feeOnClick(ActionEvent event) {
-
+        this.switchView(getClass().getResource("feeManage/FeeManage.fxml"));
     }
 
     @FXML
     public void informationOnClick(ActionEvent event) {
-
+        this.switchView(getClass().getResource("information/Information.fxml"));
     }
 
     @FXML
@@ -86,6 +86,6 @@ public class Dashboard implements Initializable {
 
     @FXML
     void statisticOnClick(ActionEvent event) {
-
+        this.switchView(getClass().getResource("statistic/Statistic.fxml"));
     }
 }

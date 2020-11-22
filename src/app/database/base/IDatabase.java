@@ -1,12 +1,11 @@
 package app.database.base;
 
-import app.entity.Account;
-import app.entity.HouseHold;
-import app.entity.Person;
-import app.entity.Move;
+import app.entity.*;
+import app.entity.Address;
+
 import java.sql.Connection;
 import java.util.List;
-import app.entity.People;
+
 public interface IDatabase {
 
 //    Init database region
@@ -66,4 +65,23 @@ public interface IDatabase {
     void removeMove(Move move) throws Exception;
     
     List<Move> getAllMove() throws Exception;
+
+// Address region
+
+    void insertAddress(Address address) throws Exception;
+
+    void updateAddress(Address address) throws Exception;
+
+    void removeAddress(int id) throws Exception;
+
+    List<Address> getAllAddress() throws Exception;
+    // Fee region
+    void insertFee(Fee fee) throws Exception;
+
+    void updateFee(Fee fee) throws Exception;
+
+    void removeFee(int id) throws Exception;
+
+    List<Fee> getAllFee() throws Exception;
+
 }
