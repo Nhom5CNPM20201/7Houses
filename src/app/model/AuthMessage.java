@@ -8,7 +8,7 @@ public class AuthMessage {
 
     }
 
-    public AuthMessage(boolean status, String message) {
+    public AuthMessage(boolean status , String message) {
         this.status = status;
         this.message = message;
     }
