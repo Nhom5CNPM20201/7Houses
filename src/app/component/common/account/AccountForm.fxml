@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.common.account.AccountFormController">
+    <children>
+        <HBox layoutX="79.0" layoutY="172.0" prefHeight="33.0" prefWidth="187.0" />
+        <AnchorPane layoutX="10.0" layoutY="265.0" prefHeight="300.0" prefWidth="808.0" styleClass="text_box" stylesheets="@../../style.css" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="82.0">
+            <children>
+                <HBox layoutX="384.0" layoutY="15.41796875" prefHeight="52.0" prefWidth="808.0" styleClass="sub_header" stylesheets="@../../dashboard/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Khoản phí" textAlignment="CENTER" wrappingWidth="799.6015625">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </HBox>
+                <AnchorPane layoutX="1.0" layoutY="53.0" prefHeight="240.0" prefWidth="796.0" style="-fx-background-radius: 5px; -fx-border-color: #FFFFFF; -fx-border-radius: 5px; -fx-background-color: #FFFFFF;">
+                    <children>
+                        <TextField layoutX="24.0" layoutY="31.0" prefHeight="31.0" prefWidth="277.0" promptText="Tên khoản phí" styleClass="header_box" stylesheets="@../../style.css" />
+                        <ComboBox fx:id="comboBoxOption1" layoutX="337.0" layoutY="27.0" onAction="#optionOnAction1" prefHeight="39.0" prefWidth="194.0" promptText="Loại phí" styleClass="header_box" stylesheets="@../../dashboard/style.css" />
+                        <TextArea layoutX="24.0" layoutY="106.0" prefHeight="118.0" prefWidth="277.0" promptText="Ghi chú" styleClass="search_box" />
+                        <TextField layoutX="584.0" layoutY="105.0" prefHeight="39.0" prefWidth="146.0" promptText="Số tiền" styleClass="header_box" stylesheets="@style.css" />
+                        <FontAwesomeIconView glyphName="MONEY" layoutX="558.0" layoutY="130.0" size="18" text="" />
+                        <ComboBox fx:id="comboBoxOption2" layoutX="337.0" layoutY="105.0" onAction="#optionOnAction1" prefHeight="39.0" prefWidth="194.0" promptText="Đóng góp theo" styleClass="search_box" stylesheets="@../../dashboard/style.css" />
+                        <Button layoutX="466.0" layoutY="189.0" mnemonicParsing="false" stylesheets="@../../style.css" text="Lưu" />
+                        <Button layoutX="649.0" layoutY="189.0" mnemonicParsing="false" text="Thoát" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
