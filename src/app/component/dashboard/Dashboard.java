@@ -71,6 +71,7 @@ public class Dashboard implements Initializable {
 
     @FXML
     public void feeOnClick(ActionEvent event) {
+
         this.switchView(getClass().getResource("feeManage/FeeManage.fxml"));
     }
 
