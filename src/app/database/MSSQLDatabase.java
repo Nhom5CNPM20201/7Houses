@@ -30,7 +30,7 @@ public class MSSQLDatabase extends DatabaseManager implements ISQLDatabaseAccoun
         try {
             String url = "jdbc:sqlserver://" + hostName
                     + ";databaseName=" + dbname
-//                    + ";user=" + user
+//   /              + ";user=" + user
 //                    + ";password=" +password
                     + ";integratedSecurity=true";
             databaseObject = DriverManager.getConnection(url);
@@ -65,7 +65,7 @@ public class MSSQLDatabase extends DatabaseManager implements ISQLDatabaseAccoun
 
 
           //  People people = new People();
-          //  testConn.insertPeople(people);
+       //     testConn.insertPeople(people);
            
           // testConn.updatePeople(people);
            
@@ -85,12 +85,12 @@ public class MSSQLDatabase extends DatabaseManager implements ISQLDatabaseAccoun
             }
             
 //			Change
- //         Change change = new Change(1, 2, 1, Date.valueOf("2000-06-12"), 1,"ahabsdb");
-   //       testConn.updateChange(change);
-	//	  Change change = new Change(1, 2, 1, Date.valueOf("1999-24-10"), 0, "jasjdja");
-  //        testConn.insertChange(change);
+       //   Change change = new Change(5, 2, 1, "5-4-2000", 1,"ahabsdb");
+      //    testConn.updateChange(change);
+	//	  Change change = new Change(2, 2, 1, "1999-24-10", 0, "jasgdfgjdja");
+    //      testConn.insertChange(change);
           List<Change> changes = testConn.getAllChange();
-//          testConn.removeChange(changes.get(1));
+          testConn.removeChange(changes.get(1));
           for(Change i : changes) {
           	System.out.println(i.getId() + "|" + i.getIdHouseHold() + "|" + i.getIdPeople() + "|" 
           			 + "|" + i.getChangingDate() + "|" + i.getType() + "|" + i.getContent());

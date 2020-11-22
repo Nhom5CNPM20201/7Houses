@@ -30,7 +30,7 @@ public interface ISQLDatabaseChange extends ISQLDatabase  {
 		int id = rs.getInt(ChangeConfig.CHANGE_ID);
 		int idHouseHold = rs.getInt(ChangeConfig.CHANGE_IHOUSEHOLD);
 		int idPeople = rs.getInt(ChangeConfig.CHANGE_IDPEOPLE);
-		Date changingTime = rs.getDate(ChangeConfig.CHANGE_CHANGINGDATE);
+		String changingTime = rs.getString(ChangeConfig.CHANGE_CHANGINGDATE);
 		int type = rs.getInt(ChangeConfig.CHANGE_TYPE);
 		String content = rs.getString(ChangeConfig.CHANGE_CONTENT);
 		

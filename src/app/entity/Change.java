@@ -10,11 +10,11 @@ public class Change {
 	private int type;
 	private String content;
 	
-	public Change(int id, int idPeople, int idHouseHold, Date changingDate, int type, String content) {
+	public Change(int id, int idPeople, int idHouseHold, String changingTime, int type, String content) {
 		this.id = id;
 		this.idPeople = idPeople;
 		this.idHouseHold = idHouseHold;
-		this.changingDate = changingDate;
+		this.changingDate = Date.valueOf(changingTime);
 		this.type = type;
 		this.content = content;
 	}
