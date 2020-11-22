@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -19,7 +20,7 @@
 <?import javafx.scene.SceneAntialiasing?>
 <AnchorPane fx:id="mainView" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.dashboard.Dashboard">
     <children>
-        <AnchorPane prefHeight="50.0" prefWidth="1000.0" styleClass="header" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane prefHeight="50.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <HBox alignment="CENTER" layoutX="14.0" layoutY="10.0" prefHeight="37.0" prefWidth="139.0" styleClass="header_box" stylesheets="@style.css" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="6.0">
                     <children>
@@ -47,9 +48,9 @@
                         </Text>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER" layoutX="947.0" layoutY="10.0" prefHeight="37.0" prefWidth="26.0" styleClass="header_box" stylesheets="@style.css" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="6.0">
-                    <children>
-                        <Button fx:id="btnLogOut" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logOutOnClick" prefHeight="35.0" prefWidth="28.0" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+            <HBox layoutX="945.0" layoutY="7.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
+               <children>
+                        <Button fx:id="btnLogOut" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logOutOnClick" prefHeight="35.0" prefWidth="28.0" stylesheets="@style.css">
                             <graphic>
                                 <FontAwesomeIconView glyphName="SIGN_OUT" size="24" wrappingWidth="20.285715103149414" />
                             </graphic>
@@ -57,13 +58,13 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                    </children>
-                </HBox>
+               </children>
+            </HBox>
             </children>
         </AnchorPane>
         <AnchorPane layoutY="50.0" prefHeight="600.0" prefWidth="190.0" styleClass="slide_bar" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
             <children>
-                <Button fx:id="btnDashborad" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="1.0" mnemonicParsing="false" onAction="#dashboardOnClick" prefHeight="65.0" prefWidth="189.0" stylesheets="@style.css" text="Tổng quan" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <Button fx:id="btnSummary" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="1.0" mnemonicParsing="false" onAction="#summaryOnClick" prefHeight="65.0" prefWidth="189.0" stylesheets="@style.css" text="Tổng quan" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <graphic>
                         <FontAwesomeIconView glyphName="HOME" size="18" />
                     </graphic>
@@ -150,7 +151,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button fx:id="btnInfomation" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="1.0" layoutY="529.0" mnemonicParsing="false" onAction="#informationOnClick" prefHeight="65.0" prefWidth="189.0" stylesheets="@style.css" text="Thông tin" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                <Button fx:id="btnInformation" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="1.0" layoutY="529.0" mnemonicParsing="false" onAction="#informationOnClick" prefHeight="65.0" prefWidth="189.0" stylesheets="@style.css" text="Thông tin" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <graphic>
                         <FontAwesomeIconView glyphName="INFO_CIRCLE" size="18" />
                     </graphic>

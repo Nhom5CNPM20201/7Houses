@@ -36,7 +36,9 @@ public interface IDatabase {
 
     void removePeople(People people) throws Exception;
     
-	List<People> getAllPeoples() throws Exception;    
+	List<People> getAllPeoples() throws Exception;  
+	
+	HouseHold searchHouseHold(String houseHoldBook) throws Exception;
 
 //    void insertPerson(Person people) throws Exception;
 //
