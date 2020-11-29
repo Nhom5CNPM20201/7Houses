@@ -16,7 +16,11 @@ values
 (2, N'Hoàng Khương', N'Hoàng Khương', N'Thanh Ba', N'Phú Thọ');
 
 -- insert NhanKhau
-insert into NhanKhau(HoTen, NoiSinh, NgheNghiep, NgaySinh, NgayDK, QuanHeCH
-
+insert into NhanKhau(HoTen, NoiSinh, NgheNghiep, NgaySinh, NgayDK, DanToc, GioiTinh, NoiLamViec, SoCMND, NgayCapCMND, NoiCapCMND)
+values
+(N'Nguyễn Quang Hùng', N'Nam Tiến, Tiền Hải, Thái Bình', N'Sinh viên', '2000-09-15', '2020-11-29', N'Kinh', 0, N'Hoàn Kiếm, Hà Nội', '034200001548', '2015-09-06', N'Thái Bình'),
+(N'Nguyễn Văn Tuấn', N'Nam Tiến, Tiền Hải, Lạng Sơn', N'Làm vườn', '2000-06-11', '2020-11-30', N'Kinh', 0, N'Xuân Thủy, Hà Nội', '034200001128', '2015-10-19', N'Hà Nam')
 -- insert HoKhau
-insert into HoKhau(IdDiaChi, SoHoKhau,
+insert into HoKhau(IdDiaChi, SoHoKhau, IdChuHoKhau, HoTenChuHo) values
+(1, 'HK0001', 1, N'Nguyễn Quang Hùng'),
+(2, 'HK0002', 2, N'Nguyễn Văn Tuấn')
