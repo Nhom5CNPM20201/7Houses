@@ -36,7 +36,7 @@ public class HouseholdForm {
     private SubScene householdScene;
 
 
-    /*private void switchView(URL FXMLname) {
+    private void switchView(URL FXMLname) {
         ScreenController.activeSubscreen(this.householdScene, FXMLname);
     }
 
@@ -47,6 +47,5 @@ public class HouseholdForm {
     public void okOnClick(ActionEvent event){
         String id = idHousehold.getText();
         String houseHoldName = householdName.getText();
-     */
     }
 }
