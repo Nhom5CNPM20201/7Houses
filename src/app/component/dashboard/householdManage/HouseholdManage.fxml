@@ -13,9 +13,9 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.dashboard.householdManage.HouseholdManage">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="265.0" prefHeight="300.0" prefWidth="808.0" styleClass="text_box" stylesheets="@../style.css" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="82.0">
+      <AnchorPane layoutX="10.0" layoutY="265.0" prefHeight="300.0" prefWidth="808.0" styleClass="text_box" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="82.0">
          <children>
-            <HBox alignment="CENTER" layoutX="384.0" layoutY="15.41796875" prefHeight="52.0" prefWidth="808.0" styleClass="sub_header" stylesheets="@../style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox alignment="CENTER" layoutX="384.0" layoutY="15.41796875" prefHeight="52.0" prefWidth="808.0" styleClass="sub_header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sách hộ khẩu">
                      <font>
@@ -47,9 +47,9 @@
       </AnchorPane>
       <AnchorPane prefHeight="64.0" prefWidth="810.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox layoutX="28.0" layoutY="17.0" styleClass="text_box" stylesheets="@../style.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="12.0">
+            <HBox layoutX="28.0" layoutY="17.0" styleClass="text_box" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="12.0">
                <children>
-                  <Button fx:id="btnAdd" graphicTextGap="8.0" mnemonicParsing="false" stylesheets="@../style.css" text="Thêm ">
+                  <Button fx:id="btnAdd" graphicTextGap="8.0" mnemonicParsing="false" onAction="#addOnClick" text="Thêm ">
                      <graphic>
                         <FontAwesomeIconView glyphName="PLUS" size="18" />
                      </graphic>
