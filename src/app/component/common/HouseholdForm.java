@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 
-public class HouseHoldForm {
+public class HouseholdForm {
     @FXML
     private TextField idHousehold;
 
