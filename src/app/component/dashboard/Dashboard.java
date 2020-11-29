@@ -51,11 +51,13 @@ public class Dashboard implements Initializable {
 
     // ====> Switch view region.
     private void switchView(URL FXMLname) {
+
         ScreenController.activeSubscreen(this.mainDashboard, FXMLname);
     }
 
     @FXML
     public void summaryOnClick(ActionEvent event) {
+
         this.switchView(getClass().getResource("summary/Summary.fxml"));
     }
 
@@ -82,11 +84,13 @@ public class Dashboard implements Initializable {
 
     @FXML
     void searchOnClick(ActionEvent event) {
+
         this.switchView(getClass().getResource("search/Search.fxml"));
     }
 
     @FXML
     void statisticOnClick(ActionEvent event) {
+
         this.switchView(getClass().getResource("statistic/Statistic.fxml"));
     }
 }
