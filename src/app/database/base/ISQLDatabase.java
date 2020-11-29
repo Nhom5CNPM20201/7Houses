@@ -2,6 +2,7 @@ package app.database.base;
 
 import app.entity.Address;
 import app.entity.Fee;
+import app.entity.People;
 
 import java.sql.Connection;
 import java.util.List;
@@ -35,5 +36,10 @@ public interface ISQLDatabase extends IDatabase  {
     void removeFee(int id) throws Exception;
 
     void updateFee(Fee fee) throws Exception;
+    
+    
+    
+
+
 
 }

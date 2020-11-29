@@ -18,7 +18,8 @@ public class MSSQLDatabase extends DatabaseManager implements
         ISQLDatabasePeople,
         ISQLDatabaseMove,
         ISQLDatabaseAddress,
-        ISQLDatabaseFee{
+        ISQLDatabaseFee,
+        ISQLDatabaseChange{
 
     private Connection databaseObject;
     
@@ -77,7 +78,8 @@ public class MSSQLDatabase extends DatabaseManager implements
                 System.out.println(item.getId() + " | " + item.getUsername().trim()
                        + " | " + item.getName() + " | " + item.getPassword());
             }
-
+//            People people = testConn.searchPeople("mt");
+//            System.out.println(people.getId());
             System.out.println("Connected to DB successfully.");
             conn.close();
             

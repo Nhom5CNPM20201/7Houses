@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
 import app.database.base.ISQLDatabase;
+import app.database.config.HouseHoldConfig;
 import app.database.config.PeopleConfig;
+import app.entity.HouseHold;
 import app.entity.People;
 import java.sql.Date;
 public interface ISQLDatabasePeople extends ISQLDatabase {
@@ -158,6 +160,28 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
     		throw e;
     	}
     }
+    
+    @Override
+    default People searchPeople(String fullName) throws Exception {
+    	try {
+    		Statement stmt = this.getDatabase().createStatement();
+    		ResultSet rs = stmt.executeQuery("SELECT TOP 1 * FROM " + PeopleConfig.TABLE_NAME + " WHERE " 
+    		+ PeopleConfig.PEOPLE_FULLNAME  + " LIKE '%" + fullName + "%';");
+    		
+    		if(rs.next()) {
+    			return extractPeople(rs);
+    		}
+    		else {
+    			System.out.println("khong ton tai du lieu!");
+    			return null;
+    		}
+    	}
+    	catch (SQLException e) {
+    		throw e;
+    	}
+    }
+
+    
 
     private People extractPeople(ResultSet rs) throws SQLException {
     	int peopleId = rs.getInt(PeopleConfig.PEOPLE_ID);
