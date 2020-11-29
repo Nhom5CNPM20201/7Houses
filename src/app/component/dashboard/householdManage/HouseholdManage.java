@@ -1,14 +1,24 @@
 package app.component.dashboard.householdManage;
 
+import app.utility.viewUtils.ScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 
-public class HouseholdManage {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class HouseholdManage implements Initializable {
+    public HouseholdManage(){}
 
     @FXML
     private TableView<?> tblListHouseHold;
+
+    @FXML
+    private SubScene mainHouseHold;
 
     @FXML
     private Button btnAdd;
@@ -21,7 +31,7 @@ public class HouseholdManage {
 
     @FXML
     public void addOnClick(ActionEvent event) {
-
+        this.switchView(getClass().getResource("../../common/HouseholdForm.fxml"));
     }
     @FXML
     public void deleteOnClick(ActionEvent event) {
@@ -33,4 +43,11 @@ public class HouseholdManage {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.switchView(getClass().getResource("./HouseholdList.fxml"));
+    }
+    public void switchView(URL FXMLname){
+        ScreenController.activeSubscreen(this.mainHouseHold,FXMLname);
+    }
 }

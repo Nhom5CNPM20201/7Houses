@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 
 public class HouseHoldForm {
+<<<<<<< HEAD
     @FXML
     private TextField idHousehold;
 
@@ -45,4 +46,7 @@ public class HouseHoldForm {
         String id = idHousehold.getText();
         String houseHoldName = householdName.getText();
     }
+=======
+
+>>>>>>> sprint7_tuan_5
 }
