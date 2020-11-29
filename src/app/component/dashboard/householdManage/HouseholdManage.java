@@ -20,17 +20,16 @@ public class HouseholdManage {
     private Button btnDelete;
 
     @FXML
-    void addOnClick(ActionEvent event) {
+    public void addOnClick(ActionEvent event) {
+
+    }
+    @FXML
+    public void deleteOnClick(ActionEvent event) {
 
     }
 
     @FXML
-    void deleteOnClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void editOnClick(ActionEvent event) {
+    public void editOnClick(ActionEvent event) {
 
     }
 

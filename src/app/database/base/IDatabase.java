@@ -1,12 +1,11 @@
 package app.database.base;
 
-import app.entity.Account;
-import app.entity.HouseHold;
-import app.entity.Person;
-import app.entity.Move;
+
+import app.entity.*;
+
 import java.sql.Connection;
 import java.util.List;
-import app.entity.People;
+
 public interface IDatabase {
 
 //    Init database region
@@ -36,17 +35,21 @@ public interface IDatabase {
 
     void removePeople(People people) throws Exception;
     
-	List<People> getAllPeoples() throws Exception;    
+	List<People> getAllPeoples() throws Exception;  
+	
+// Change region	
 
-//    void insertPerson(Person people) throws Exception;
-//
-//    List<Person> getAllPersons() throws Exception;
-//
-//    void updatePerson(Person person) throws Exception;
-//
-//    void removePerson(Person person) throws Exception;
+	void insertChange(Change change) throws Exception;
+
+	void removeChange(Change change) throws Exception;
+
+	void updateChange(Change change) throws Exception; 
+	
+	List<Change> getAllChange() throws Exception;
 
 //    HouseHold region
+	
+	HouseHold searchHouseHold(String houseHoldBook) throws Exception;
     
     void insertHouseHold(HouseHold houseHold) throws Exception;
     
@@ -64,4 +67,23 @@ public interface IDatabase {
     void removeMove(Move move) throws Exception;
     
     List<Move> getAllMove() throws Exception;
+
+// Address region
+
+    void insertAddress(Address address) throws Exception;
+
+    void updateAddress(Address address) throws Exception;
+
+    void removeAddress(int id) throws Exception;
+
+    List<Address> getAllAddress() throws Exception;
+    // Fee region
+    void insertFee(Fee fee) throws Exception;
+
+    void updateFee(Fee fee) throws Exception;
+
+    void removeFee(int id) throws Exception;
+
+    List<Fee> getAllFee() throws Exception;
+
 }

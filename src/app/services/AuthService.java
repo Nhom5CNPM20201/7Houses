@@ -5,13 +5,13 @@ import app.entity.Account;
 import app.model.AuthMessage;
 import app.services.common.LogService;
 import app.services.common.NotiService;
+import app.utility.SecurityUtils;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AuthService implements IService {
-    private MSSQLDatabase orm;
     private Account currentAccount;
 
     public AuthService () {
@@ -19,11 +19,10 @@ public class AuthService implements IService {
 
     public AuthMessage login(String username, String password) {
         try {
-            orm = MSSQLDatabase.getInstance();
-            Account searchedAccount = orm.searchAccount(username);
-
+            Account searchedAccount = MSSQLDatabase.getInstance().searchAccount(username);
+            String hashedPassword = SecurityUtils.getMD5Hash(password);
             if (searchedAccount != null) {
-                if (password.equals(searchedAccount.getPassword())) {
+                if (hashedPassword.equals(searchedAccount.getPassword())) {
                     this.currentAccount = searchedAccount;
 
                     LogService.info("Login successfully!");
@@ -41,9 +40,17 @@ public class AuthService implements IService {
         }
     }
 
+    public Account getCurrentAccount() {
+        return this.currentAccount;
+    }
+
+    public void clearAccount() {
+        this.currentAccount = null;
+    }
+
     public static void main(String[] args) {
         AuthService authService = new AuthService();
-        AuthMessage authMessage = authService.login("HungNQ", "81a0e01ea80220db1886e818040c1584");
+        AuthMessage authMessage = authService.login("HungNQ", "admin");
 
         System.out.println(authMessage.getMessage());
     }
