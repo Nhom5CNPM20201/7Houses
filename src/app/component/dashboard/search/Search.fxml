@@ -48,12 +48,12 @@
       </AnchorPane>
       <AnchorPane prefHeight="64.0" prefWidth="810.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" layoutX="14.0" layoutY="16.0" stylesheets="@../style.css">
+            <HBox alignment="CENTER" layoutX="14.0" layoutY="16.0" stylesheets="@../style.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="15.0">
                <children>
                   <ComboBox fx:id="comboboxOption" onAction="#optionOnAction" pickOnBounds="false" prefHeight="31.0" prefWidth="137.0" promptText="Tùy chọn" styleClass="header_box" stylesheets="@../style.css" />
                </children>
             </HBox>
-            <HBox layoutX="159.0" layoutY="15.0" styleClass="search_box" stylesheets="@../style.css">
+            <HBox layoutX="159.0" layoutY="15.0" styleClass="search_box" stylesheets="@../style.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="15.0">
                <children>
                   <TextField prefHeight="33.0" prefWidth="215.0" promptText="Tìm kiếm" style="-fx-background-color: transparent;" />
                   <Button fx:id="btnFind" alignment="CENTER" mnemonicParsing="false" onAction="#findOnClick" prefHeight="32.0" prefWidth="50.0" stylesheets="@../style.css">
