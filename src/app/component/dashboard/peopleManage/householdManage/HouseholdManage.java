@@ -21,7 +21,7 @@ public class HouseholdManage {
 
     @FXML
     public void addOnClick(ActionEvent event) {
-
+        this.switchView(getClass().getResource("summary/Summary.fxml"));
     }
     @FXML
     public void deleteOnClick(ActionEvent event) {
