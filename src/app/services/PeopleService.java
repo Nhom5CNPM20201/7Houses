@@ -77,13 +77,14 @@ public class PeopleService {
 	}
 	
 //	Test Service
-
+/*
 	public static void main(String[] args) {
 		PeopleService pService = new PeopleService();
 		People people = new People();
 	//	pService.createPeople(people);
 //		pService.searchPeople("mt");
 //		pService.deletePeople("Nguyen Van A");
-		pService.getAllPeople();
+//		pService.getAllPeople();
 	} 
+	*/
 }
