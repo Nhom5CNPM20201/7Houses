@@ -3,34 +3,36 @@ package app.services;
 import app.database.MSSQLDatabase;
 import app.entity.Address;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddressService {
     private Address address;
-
+    private List<Address> addressList = new ArrayList<>();
     public AddressService() {
-
+        InitAddress();
     }
 
 
-    public void createAddress(Address address) {
+    public Address createAddress(Address address) {
         try {
-            Address searchA = MSSQLDatabase.getInstance().searchAddress(address.getId());
-            if (searchA == null) {
+
                 MSSQLDatabase.getInstance().insertAddress(address);
+                address.setId(addressList.toArray().length);
+                addressList.add(address);
                 System.out.println("Tao dia chi thanh cong!");
-            } else {
-                System.out.println("Da ton tai dia chi!");
-            }
+                System.out.print(address.getId());
+            return address;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return null;
         }
     }
 
-    public void getAllAddress() {
+    public void InitAddress() {
         try {
-            List<Address> address = MSSQLDatabase.getInstance().getAllAddress();
-            for (Address i : address) {
+            addressList = MSSQLDatabase.getInstance().getAllAddress();
+            for (Address i : addressList) {
                 System.out.println(i.getId() + "\t " + i.getNumberHouse() + ", " + i.getStreet() + ", " + i.getSubDistrict()
                         + ", " + i.getDistrict() + ", " + i.getCity());
             }
@@ -39,15 +41,19 @@ public class AddressService {
         }
     }
 
-    public void searchAddress(int id) {
+    public Address searchAddress(int id) {
         try {
 
             Address searchA = MSSQLDatabase.getInstance().searchAddress(id);
             if (searchA != null)
+                System.out.print("Dia chi tim kiem: \n");
                 System.out.println(searchA.getId() + "\t " + searchA.getNumberHouse() + ", " + searchA.getStreet() + ", " + searchA.getSubDistrict()
                         + ", " + searchA.getDistrict() + ", " + searchA.getCity());
+            return searchA;
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return null;
         }
     }
 
@@ -65,10 +71,10 @@ public class AddressService {
     //Test
     public static void main(String[] args) {
         AddressService aService = new AddressService();
-        Address address = new Address(6, 5, "MgOH2", "C2H2OH", "CH3Cl", "H2O");
+        Address address = new Address(5, "hhh", "MgOH2", "C2H2OH", "CH3Cl", "H2O");
         aService.createAddress(address);
         aService.searchAddress(2);
-        aService.deleteAddress(10);
-        aService.getAllAddress();
+        aService.deleteAddress(1);
+        aService.InitAddress();
     }
 }

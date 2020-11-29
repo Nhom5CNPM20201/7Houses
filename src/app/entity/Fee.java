@@ -15,6 +15,13 @@ public class Fee {
         this.otherInformation = otherInformation;
     }
 
+    public Fee(int category, String nameFee, int money, String otherInformation) {
+        this.category = category;
+        this.nameFee = nameFee;
+        this.money = money;
+        this.otherInformation = otherInformation;
+    }
+
     public int getId() {
         return id;
     }

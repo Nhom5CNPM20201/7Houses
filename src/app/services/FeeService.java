@@ -3,32 +3,33 @@ package app.services;
 import app.database.MSSQLDatabase;
 import app.entity.Fee;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FeeService {
     private Fee fee;
+    private List<Fee> feeList = new ArrayList<>();
     public FeeService() {
-
+        InitAllFee();
     }
 
-    public void createFee(Fee fee) {
+    public Fee createFee(Fee fee) {
         try {
-            Fee searchA = MSSQLDatabase.getInstance().searchFee(fee.getId());
-            if (searchA == null) {
-                MSSQLDatabase.getInstance().insertFee(fee);
-                System.out.println("Them phi thanh cong!");
-            } else {
-                System.out.println("Da ton tai khoan phi!");
-            }
+            MSSQLDatabase.getInstance().insertFee(fee);
+            fee.setId(feeList.toArray().length);
+            System.out.println("Them phi thanh cong!");
+            feeList.add(fee);
+            return fee;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return null;
         }
     }
 
-    public void getAllFee() {
+    public void InitAllFee() {
         try {
-            List<Fee> fee = MSSQLDatabase.getInstance().getAllFee();
-            for (Fee i : fee) {
+            feeList = MSSQLDatabase.getInstance().getAllFee();
+            for (Fee i : feeList) {
                 System.out.println(i.getId() + "\t " + i.getCategory() + ", " + i.getNameFee() + ", " + i.getMoney()
                         + ", " + i.getOtherInformation());
             }
@@ -37,15 +38,17 @@ public class FeeService {
         }
     }
 
-    public void searchFee(int id) {
+    public Fee searchFee(int id) {
         try {
 
             Fee searchF = MSSQLDatabase.getInstance().searchFee(id);
             if (searchF != null)
                 System.out.println(searchF.getId() + "\t " + searchF.getCategory() + ", " + searchF.getNameFee() + ", " + searchF.getMoney()
                         + ", " + searchF.getOtherInformation());
+            return searchF;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return null;
         }
     }
 
@@ -63,9 +66,8 @@ public class FeeService {
     //Test
     public static void main(String[] args) {
         FeeService f = new FeeService();
-        Fee fee = new Fee(2000, 1, "20/11", 10,"ngay nha giao VN");
-        f.searchFee(82);
+        Fee fee = new Fee(1, "11/11", 10,"ngay nha giao VN");
         f.createFee(fee);
-        f.getAllFee();
+        f.searchFee(3);
     }
 }

@@ -7,26 +7,37 @@ public class Address {
     private String subDistrict;
     private String District;
     private String city;
+    private String information;
 
-    public Address(int id, int numberHouse, String street, String subDistrict, String district, String city) {
+    public Address(int id, int numberHouse, String street, String subDistrict, String district, String city, String information) {
         this.id = id;
         this.numberHouse = numberHouse;
         this.street = street;
         this.subDistrict = subDistrict;
         District = district;
         this.city = city;
+        this.information = information;
     }
 
-    public Address(int numberHouse, String street, String subDistrict, String district, String city) {
+    public Address(int numberHouse, String street, String subDistrict, String district, String city, String information) {
         this.numberHouse = numberHouse;
         this.street = street;
         this.subDistrict = subDistrict;
         this.District = district;
         this.city = city;
+        this.information = information;
     }
 
     public Address() {
 
+    }
+
+    public String getInformation() {
+        return information;
+    }
+
+    public void setInformation(String information) {
+        this.information = information;
     }
 
     public int getId() {

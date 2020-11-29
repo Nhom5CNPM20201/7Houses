@@ -16,17 +16,21 @@ public interface ISQLDatabaseFee extends ISQLDatabase {
         try {//INSERT INTO table_name (column1, column2, column3, ...)
             //VALUES (value1, value2, value3, ...);
             PreparedStatement stmt = this.getDatabase().prepareStatement("INSERT INTO " + FeeConfig.TABLE_NAME +
-                    "(" +FeeConfig.FEE_ID + " , "
-                    + FeeConfig.FEE_CATEGORY + " , "
+                    "(" + FeeConfig.FEE_CATEGORY + " , "
                     + FeeConfig.FEE_NAMEFEE + " , "
                     + FeeConfig.FEE_MONEY + " , "
-                    + FeeConfig.FEE_OTHEINFOMATION + ") VALUES (?, ?, ?, ?, ?)");
-            stmt.setInt(1, fee.getId());
-            stmt.setInt(2, fee.getCategory());
-            stmt.setString(3, fee.getNameFee());
-            stmt.setInt(4, fee.getMoney());
-            stmt.setString(5, fee.getOtherInformation());
+                    + FeeConfig.FEE_OTHEINFOMATION + ") VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, fee.getCategory());
+            stmt.setString(2, fee.getNameFee());
+            stmt.setInt(3, fee.getMoney());
+            stmt.setString(4, fee.getOtherInformation());
             stmt.executeUpdate();
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                fee.setId(generatedKeys.getInt(1));
+            }
+            generatedKeys.close();
+            stmt.close();
         } catch (SQLDataException e) {
             throw e;
         }
@@ -112,10 +116,10 @@ public interface ISQLDatabaseFee extends ISQLDatabase {
             var conn = testConn.getDatabase();
 
             System.out.print("Try getting all accounts\n");
-           Fee fee = new Fee(14, 1, "rac", 6000, "khong co" );
+           Fee fee = new Fee(5, "rac", 6000, "khong co" );
            testConn.insertFee(fee);
-           testConn.updateFee(new Fee(7, 0, "vesinh", 10000, "khong"));
-           testConn.removeFee(10);
+           testConn.updateFee(new Fee(5, 0, "vesinh", 10000, "khong"));
+//           testConn.removeFee(10);
             List<Fee> feeList = testConn.getAllFee();
             for(var item : feeList) {
                 System.out.println(item.getId() + ", " + item.getCategory()+ ", " +item.getNameFee()
