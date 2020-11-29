@@ -9,7 +9,6 @@ Create table NhanKhau(
 	NgayDK date,
 	QuanHeCH tinyint,
 	DanToc nvarchar(100),
-	NguyenQuan nvarchar(255),
 	GioiTinh tinyint,
 	NoiLamViec nvarchar(255),
 	SoCMND char(20),
