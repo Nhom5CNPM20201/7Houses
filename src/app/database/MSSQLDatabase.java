@@ -19,7 +19,8 @@ public class MSSQLDatabase extends DatabaseManager implements
         ISQLDatabaseAccount,
         ISQLDatabaseHouseHold,
         ISQLDatabasePeople,
-        ISQLDatabaseMove {
+        ISQLDatabaseMove
+        {
 
     private Connection databaseObject;
     

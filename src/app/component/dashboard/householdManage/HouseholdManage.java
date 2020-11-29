@@ -37,17 +37,14 @@ public class HouseholdManage {
     }
     
     public static void createHouseHold(HouseHold houseHold) {
-		ServiceFactory.Init();
 		ServiceFactory.getHouseHoldService().createHouseHold(houseHold);
 	}
 	
 	public static void getAllHouseHold() {
-		ServiceFactory.Init();
 		ServiceFactory.getHouseHoldService().getAllHouseHold();
 	}
 	
 	public static void deleteHouseHold(String houseHoldBook) {
-		ServiceFactory.Init();
 		ServiceFactory.getHouseHoldService().deleteHouseHold(houseHoldBook);
 	}
 	
@@ -56,7 +53,6 @@ public class HouseholdManage {
 	}
 	
 	public static void searchHouseHold(String houseHoldBook) {
-		ServiceFactory.Init();
 		ServiceFactory.getHouseHoldService().searchHouseHold(houseHoldBook);
 	}
 
