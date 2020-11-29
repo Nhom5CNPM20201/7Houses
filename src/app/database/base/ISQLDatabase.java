@@ -6,6 +6,8 @@ import app.entity.Fee;
 import java.sql.Connection;
 import java.util.List;
 
+
+
 public interface ISQLDatabase extends IDatabase  {
     @Override
     void initializeDatabase() throws Exception;
@@ -35,5 +37,4 @@ public interface ISQLDatabase extends IDatabase  {
     void removeFee(int id) throws Exception;
 
     void updateFee(Fee fee) throws Exception;
-
 }
