@@ -1,7 +1,7 @@
 package app.database.base;
 
+
 import app.entity.*;
-import app.entity.Address;
 
 import java.sql.Connection;
 import java.util.List;
@@ -37,17 +37,19 @@ public interface IDatabase {
     
 	List<People> getAllPeoples() throws Exception;  
 	
-	HouseHold searchHouseHold(String houseHoldBook) throws Exception;
+// Change region	
 
-//    void insertPerson(Person people) throws Exception;
-//
-//    List<Person> getAllPersons() throws Exception;
-//
-//    void updatePerson(Person person) throws Exception;
-//
-//    void removePerson(Person person) throws Exception;
+	void insertChange(Change change) throws Exception;
+
+	void removeChange(Change change) throws Exception;
+
+	void updateChange(Change change) throws Exception; 
+	
+	List<Change> getAllChange() throws Exception;
 
 //    HouseHold region
+	
+	HouseHold searchHouseHold(String houseHoldBook) throws Exception;
     
     void insertHouseHold(HouseHold houseHold) throws Exception;
     
