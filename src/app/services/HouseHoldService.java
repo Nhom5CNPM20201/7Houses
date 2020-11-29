@@ -16,14 +16,9 @@ public class HouseHoldService {
 		
 	}
 	
-	private static MSSQLDatabase inORM() throws Exception{
-		if(orm == null) orm = MSSQLDatabase.getInstance();
-		return orm;
-	}
-	
 	public void createHouseHold(HouseHold houseHold) {
 		try {
-			orm = inORM();
+			orm = MSSQLDatabase.getInstance();
 			HouseHold searchHH = orm.searchHouseHold(houseHold.getHouseHoldBook());
 			if(searchHH == null) {
 				orm.insertHouseHold(houseHold);
@@ -41,7 +36,7 @@ public class HouseHoldService {
 	
 	public void getAllHouseHold() {
 		try {
-			orm = inORM();
+			orm = MSSQLDatabase.getInstance();
 			List<HouseHold> houseHolds = orm.getAllHouseHold();
 			for(HouseHold i : houseHolds) {
 				System.out.println(i.getHouseHoldBook() + "\t" + i.getName());
@@ -54,7 +49,7 @@ public class HouseHoldService {
 	
 	public void searchHouseHold(String houseHoldBook) {
 		try {
-			orm = inORM();
+			orm = MSSQLDatabase.getInstance();
 			HouseHold searchHH = orm.searchHouseHold(houseHoldBook);
 			if(searchHH != null) System.out.println(searchHH.getHouseHoldBook() + "\t" + searchHH.getName());
 		}
@@ -65,7 +60,7 @@ public class HouseHoldService {
 	
 	public void deleteHouseHold(String houseHoldBook) {
 		try {
-			orm = inORM();
+			orm = MSSQLDatabase.getInstance();
 			HouseHold searchHH = orm.searchHouseHold(houseHoldBook);
 			if(searchHH != null) {
 				orm.removeHouseHold(searchHH);
@@ -76,6 +71,11 @@ public class HouseHoldService {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	public void updateHouseHold() {
+		
+	}
+	
 //	Test Service
 /*
 	public static void main(String[] args) {

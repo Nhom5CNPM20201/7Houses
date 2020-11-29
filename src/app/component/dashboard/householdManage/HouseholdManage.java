@@ -1,5 +1,7 @@
 package app.component.dashboard.householdManage;
 
+import app.entity.HouseHold;
+import app.services.ServiceFactory;
 import app.utility.viewUtils.ScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +15,8 @@ import java.util.ResourceBundle;
 
 public class HouseholdManage implements Initializable {
     public HouseholdManage(){}
+
+
 
     @FXML
     private TableView<?> tblListHouseHold;
@@ -42,6 +46,26 @@ public class HouseholdManage implements Initializable {
     public void editOnClick(ActionEvent event) {
 
     }
+    
+    public static void createHouseHold(HouseHold houseHold) {
+		ServiceFactory.getHouseHoldService().createHouseHold(houseHold);
+	}
+	
+	public static void getAllHouseHold() {
+		ServiceFactory.getHouseHoldService().getAllHouseHold();
+	}
+	
+	public static void deleteHouseHold(String houseHoldBook) {
+		ServiceFactory.getHouseHoldService().deleteHouseHold(houseHoldBook);
+	}
+	
+	public static void updateHouseHold() {
+		
+	}
+	
+	public static void searchHouseHold(String houseHoldBook) {
+		ServiceFactory.getHouseHoldService().searchHouseHold(houseHoldBook);
+	}
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
