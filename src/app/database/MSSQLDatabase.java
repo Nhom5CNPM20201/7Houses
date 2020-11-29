@@ -81,8 +81,6 @@ public class MSSQLDatabase extends DatabaseManager implements
 
             System.out.println("Connected to DB successfully.");
             conn.close();
-            
-           
         } catch (Exception e) {
             System.out.println("Error when connect to DB:");
             System.out.println(e.getMessage());
