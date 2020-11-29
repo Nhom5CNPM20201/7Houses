@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.common.ContributeForm">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0">
@@ -32,7 +31,7 @@
                   <Font size="20.0" />
                </font>
                <graphic>
-                  <FontAwesomeIconView glyphName="USER-PLUS" size="25" text="" wrappingWidth="28.571428298950195" />
+                  <FontAwesomeIconView glyphName="USERS" size="25" />
                </graphic>
             </Button>
             <TextField layoutX="39.0" layoutY="215.0" prefHeight="46.0" prefWidth="174.0" promptText="Số tiền" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.leftAnchor="39.0" />
