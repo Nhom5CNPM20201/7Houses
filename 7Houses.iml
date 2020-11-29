@@ -7,7 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="fontawesomefx-fontawesome-4.7.0-9.1.2" level="project" />
     <orderEntry type="library" name="fontawesomefx-controls-9.1.2" level="project" />
     <orderEntry type="library" name="fontawesomefx-commons-9.1.2" level="project" />
@@ -21,9 +20,10 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="lib1" level="project" />
     <orderEntry type="library" name="fontawesomefx-materialdesignfont-1.7.22-4" level="project" />
     <orderEntry type="library" name="mssql-jdbc-8.4.1.jre14" level="project" />
     <orderEntry type="library" name="fontawesomefx-materialdesignfont-2.0.26-9.1.2" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="lib1" level="project" />
   </component>
 </module>
