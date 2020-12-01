@@ -16,63 +16,54 @@ public class PeopleForm {
 
 
 
-        @FXML
-        private SplitMenuButton hoTenCH;
+    @FXML
+    private SplitMenuButton hoTenCH;
 
-        @FXML
-        private TextField hoTen;
+    @FXML
+    private TextField hoTen;
 
-        @FXML
-        private TextField biDanh;
+    @FXML
+    private TextField biDanh;
 
-        @FXML
-        private Button onClickCancel;
+    @FXML
+    private Button onClickCancel;
 
-        @FXML
-        private Button onClickOK;
+    @FXML
+    private Button onClickOK;
 
-        @FXML
-        private DatePicker ngayDK;
+    @FXML
+    private DatePicker ngaySinh;
 
-        @FXML
-        private DatePicker ngaySinh;
+    @FXML
+    private TextField noiSinh;
 
-        @FXML
-        private TextField noiSinh;
+    @FXML
+    private TextField danToc;
 
-        @FXML
-        private TextField danToc;
+    @FXML
+    private TextField nguyenQuan;
 
-        @FXML
-        private TextField nguyenQuan;
+    @FXML
+    private TextField noiLamViec;
 
-        @FXML
-        private TextField noiLamViec;
+    @FXML
+    private TextField CMND;
 
-        @FXML
-        private TextField CMND;
+    @FXML
+    private TextField noiCapCMND;
 
-        @FXML
-        private TextField noiCapCMND;
+    @FXML
+    private DatePicker ngayDK;
 
-        @FXML
-        private DatePicker ngayCapCMND;
+    @FXML
+    void onClickOK(ActionEvent event) {
 
-        @FXML
-        void onClickOK(ActionEvent event) {
+    }
 
-                this.switchView(getClass().getResource("../../common/PeopleManage.fxml"));
-        }
+    @FXML
+    void onclickCancel(ActionEvent event) {
 
-        private void switchView(URL resource) {
-
-        }
-
-        @FXML
-        void onclickCancel(ActionEvent event)  {
-
-        }
-
+    }
 
 
 
