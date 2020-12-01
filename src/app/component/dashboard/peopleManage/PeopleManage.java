@@ -24,6 +24,11 @@ public class PeopleManage implements Initializable {
     @FXML
     private Button btnDelete;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.switchView(getClass().getResource("./PeopleList.fxml"));
+    }
+
     @FXML
     void addOnClick(ActionEvent event) {
         this.switchView(getClass().getResource("../../common/PeopleForm.fxml"));
@@ -39,10 +44,7 @@ public class PeopleManage implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.switchView(getClass().getResource("PeopleList.fxml"));
-    }
+
     public void switchView(URL FXMLname){
         ScreenController.activeSubscreen(mainPeople,FXMLname);
     }

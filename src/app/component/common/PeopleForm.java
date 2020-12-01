@@ -2,70 +2,78 @@ package app.component.common;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.net.URL;
 
 public class PeopleForm {
 
-    @FXML
-    private SplitMenuButton hoTenCH;
 
-    @FXML
-    private Button onClickCancel;
 
-    @FXML
-    private Button onClickOK;
+        @FXML
+        private SplitMenuButton hoTenCH;
 
-    @FXML
-    private DatePicker ngayCapCMND;
+        @FXML
+        private TextField hoTen;
 
-    @FXML
-    private DatePicker ngayDK;
+        @FXML
+        private TextField biDanh;
 
-    @FXML
-    private TextField hoTen;
+        @FXML
+        private Button onClickCancel;
 
-    @FXML
-    private DatePicker ngaySinh;
+        @FXML
+        private Button onClickOK;
 
-    @FXML
-    private TextField biDanh;
+        @FXML
+        private DatePicker ngayDK;
 
-    @FXML
-    private TextField noiSinh;
+        @FXML
+        private DatePicker ngaySinh;
 
-    @FXML
-    private TextField danToc;
+        @FXML
+        private TextField noiSinh;
 
-    @FXML
-    private TextField nguyenQuan;
+        @FXML
+        private TextField danToc;
 
-    @FXML
-    private TextField noiLamViec;
+        @FXML
+        private TextField nguyenQuan;
 
-    @FXML
-    private TextField CMND;
+        @FXML
+        private TextField noiLamViec;
 
-    @FXML
-    private TextField noiCapCMND;
+        @FXML
+        private TextField CMND;
 
-    @FXML
-    private MenuButton qHCH;
+        @FXML
+        private TextField noiCapCMND;
 
-    @FXML
-    private MenuButton gioiTinh;
+        @FXML
+        private DatePicker ngayCapCMND;
 
-    @FXML
-    void onClickOK(ActionEvent event) {
+        @FXML
+        void onClickOK(ActionEvent event) {
 
-    }
+                this.switchView(getClass().getResource("../../common/PeopleManage.fxml"));
+        }
 
-    @FXML
-    void onclickCancel(ActionEvent event) {
+        private void switchView(URL resource) {
 
-    }
+        }
+
+        @FXML
+        void onclickCancel(ActionEvent event)  {
+
+        }
+
+
+
 
 }
