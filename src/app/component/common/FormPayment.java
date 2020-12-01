@@ -8,10 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -53,6 +50,14 @@ public class FormPayment implements Initializable{
     void optionOnAction2(ActionEvent event) {
 
     }
+    private void showAlert(String text){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setHeaderText("Lỗi dữ liệu");
+        alert.setContentText( text);
+        alert.show();
+    }
+
 
     @FXML
     void cancelAddOnClick(ActionEvent event) {
@@ -63,15 +68,11 @@ public class FormPayment implements Initializable{
     void okOnClick(ActionEvent event){
         String feeName;
         int type_fee;
-        int money;
+        int money = 0;
         String note;
+        String type_of_fee;
 
-        feeName = feeNameField.getText();
-        money = Integer.parseInt(moneyField.getText());
-        note = noteArea.getText();
-        if(note == null) note = "";
-
-        String type_of_fee = comboBoxOption1.getValue();
+        type_of_fee = comboBoxOption1.getValue();
         if(type_of_fee == "Đóng góp"){
             type_fee = 1;
         }
@@ -80,15 +81,34 @@ public class FormPayment implements Initializable{
         }
         else type_fee = -1;
 
-//        if(feeNameField.getText() == null || moneyField.getText() == null || noteArea.getText() == null || type_fee == -1);
+        if(feeNameField.getText() == null || moneyField.getText() == null || noteArea.getText() == null || type_fee == -1)
+            showAlert("Nhập đầy đủ dữ liệu");
 
-        FeeService fee_service = ServiceFactory.getFeeService();
-        Fee fee = new Fee(-1001, type_fee, feeName, money, note);
-        fee_service.createFee(fee);
-        fee_service.getAllFee();
 
-        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
 
+        else {
+
+            feeName = feeNameField.getText();
+            try {
+                money = Integer.parseInt(moneyField.getText());
+            }catch (Exception e){
+                showAlert("Số tiền là số nguyên");
+                return;
+            }
+        note = noteArea.getText();
+        if(note == null) note = "";
+
+
+
+
+            FeeService fee_service = ServiceFactory.getFeeService();
+            Fee fee = new Fee(-1001, type_fee, feeName, money, note);
+            fee_service.createFee(fee);
+            fee_service.getAllFee();
+
+            ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+
+        }
     }
 
 
