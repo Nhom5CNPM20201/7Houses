@@ -23,8 +23,6 @@ public class HouseHoldForm {
     private Button okButton;
 
     public void okOnClick(ActionEvent event){
-        String text1 = idHouseHold.getText();
-        String text2 = houseHoldName.getText();
 
     }
 
