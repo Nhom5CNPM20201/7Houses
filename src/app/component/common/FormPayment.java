@@ -65,6 +65,7 @@ public class FormPayment implements Initializable{
         String feeName = feeNameField.getText();
         int money = Integer.parseInt(moneyField.getText());
         String note = noteArea.getText();
+        if(note == null) note = "";
         String type_of_fee = comboBoxOption1.getValue();
         if(type_of_fee == "Đóng góp"){
             type_fee = 1;
@@ -74,7 +75,7 @@ public class FormPayment implements Initializable{
         }
 
         FeeService fee_service = ServiceFactory.getFeeService();
-        Fee fee = new Fee(-1000, type_fee, feeName, money, note);
+        Fee fee = new Fee(-1001, type_fee, feeName, money, note);
         fee_service.createFee(fee);
         fee_service.getAllFee();
 
