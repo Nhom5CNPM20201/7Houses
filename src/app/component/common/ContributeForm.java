@@ -22,12 +22,12 @@ public class ContributeForm implements Initializable {
 
     @FXML
     private ComboBox<String> comboBoxOption1;
-    ObservableList<String> list1 = FXCollections.observableArrayList("hộ 1","Hộ 2 ");
+    ObservableList<String> list1 = FXCollections.observableArrayList("khoan phi 1","khoan phi 2 ");
 
 
     @FXML
     private ComboBox<String> comboBoxOption2;
-    ObservableList<String> list2 = FXCollections.observableArrayList("1","2");
+    ObservableList<String> list2 = FXCollections.observableArrayList("ho 1","ho 2");
 
 
 
