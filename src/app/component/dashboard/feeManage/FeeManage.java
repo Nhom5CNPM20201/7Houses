@@ -32,6 +32,7 @@ public class FeeManage {
     @FXML
     void editOnclick(ActionEvent event) {
 
+
     }
 
     @FXML
