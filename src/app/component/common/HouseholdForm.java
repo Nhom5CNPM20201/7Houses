@@ -4,9 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.application.Platform;
 
-public class HouseHoldForm {
+public class HouseholdForm {
     @FXML
     private TextField idHouseHold;
 
@@ -26,8 +26,9 @@ public class HouseHoldForm {
 
     }
 
-    public void cancelOnClick(ActionEvent event) {
-        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    @FXML
+    void cancelOnClick(ActionEvent event) {
+        Flatform.exit();
     }
 
 }

@@ -50,7 +50,7 @@ public class AuthService implements IService {
 
     public static void main(String[] args) {
         AuthService authService = new AuthService();
-        AuthMessage authMessage = authService.login("HungNQ", "admin");
+        AuthMessage authMessage = authService.login("admin1", "123456");
 
         System.out.println(authMessage.getMessage());
     }

@@ -10,6 +10,10 @@ public class ServiceFactory {
 
     }
 
+    public static ServiceFactory getInstance() {
+    	return new ServiceFactory();
+    }
+    
     public static void Init() {
         authService = new AuthService();
         addressService = new AddressService();
