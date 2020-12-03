@@ -72,8 +72,8 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </DatePicker>
-            <ComboBox layoutX="239.0" layoutY="104.0" prefHeight="31.0" prefWidth="110.0" promptText="Giới tính" AnchorPane.rightAnchor="417.0" AnchorPane.topAnchor="103.0" />
-            <ComboBox layoutX="418.0" layoutY="104.0" prefHeight="31.0" prefWidth="295.0" promptText="Quan hệ với chủ hộ" />
+            <ComboBox fx:id="Gioitinh" layoutX="239.0" layoutY="104.0" prefHeight="31.0" prefWidth="110.0" promptText="Giới tính" AnchorPane.rightAnchor="417.0" AnchorPane.topAnchor="104.0" />
+            <ComboBox fx:id="QuanHeCH" layoutX="418.0" layoutY="104.0" prefHeight="31.0" prefWidth="295.0" promptText="Quan hệ với chủ hộ" />
          </children>
       </AnchorPane>
    </children>

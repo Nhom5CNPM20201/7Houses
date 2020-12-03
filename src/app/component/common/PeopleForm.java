@@ -1,6 +1,8 @@
 package app.component.common;
 
 import app.utility.viewUtils.ScreenController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,10 +59,15 @@ public class PeopleForm implements Initializable{
     private DatePicker ngayCapCMND;
 
     @FXML
-    private ComboBox<?> Gioitinh;
+    private ComboBox<?> Gioitinh;{
+        ObservableList<String> list1 = FXCollections.observableArrayList("Nữ","Nam");
+    }
 
     @FXML
-    private ComboBox<?> QuanHeCH;
+    private ComboBox<String> QuanHeCH;{
+        ObservableList<String> list2 = FXCollections.observableArrayList("hộ 1","Hộ 2 ");
+    }
+
 
     private SubScene PeopleFormScene;
     private URL FXMLname;
