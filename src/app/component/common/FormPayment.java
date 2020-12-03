@@ -91,8 +91,12 @@ public class FormPayment implements Initializable{
             feeName = feeNameField.getText();
             try {
                 money = Integer.parseInt(moneyField.getText());
+                if(money <= 0 ) {
+                    showAlert("Số tiền là số nguyên dương");
+                    return;
+                }
             }catch (Exception e){
-                showAlert("Số tiền là số nguyên");
+                showAlert("Số tiền là số nguyên ");
                 return;
             }
         note = noteArea.getText();
@@ -102,7 +106,7 @@ public class FormPayment implements Initializable{
 
 
             FeeService fee_service = ServiceFactory.getFeeService();
-            Fee fee = new Fee(-1001, type_fee, feeName, money, note);
+            Fee fee = new Fee(-3, type_fee, feeName, money, note);
             fee_service.createFee(fee);
             fee_service.getAllFee();
 
