@@ -5,10 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.SubScene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.SplitMenuButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,6 +53,15 @@ public class PeopleForm implements Initializable{
     @FXML
     private DatePicker ngayDK;
 
+    @FXML
+    private DatePicker ngayCapCMND;
+
+    @FXML
+    private ComboBox<?> Gioitinh;
+
+    @FXML
+    private ComboBox<?> QuanHeCH;
+
     private SubScene PeopleFormScene;
     private URL FXMLname;
 
@@ -77,5 +83,6 @@ public class PeopleForm implements Initializable{
 
     }
 
+   
 
 }
