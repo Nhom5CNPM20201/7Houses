@@ -1,18 +1,19 @@
 package app.component.common;
 
+import app.utility.viewUtils.ScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
+import javafx.fxml.Initializable;
+import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ResourceBundle;
 
-public class PeopleForm {
+public class PeopleForm implements Initializable{
 
 
 
@@ -55,16 +56,26 @@ public class PeopleForm {
     @FXML
     private DatePicker ngayDK;
 
-    @FXML
-    void onClickOK(ActionEvent event) {
+    private SubScene PeopleFormScene;
+    private URL FXMLname;
 
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.switchView(getClass().getResource("./PeopleForm.fxml"));
+    }
+
+    private void switchView(URL resource) {
+        ScreenController.activeSubscreen(this.PeopleFormScene, FXMLname);
     }
 
     @FXML
-    void onclickCancel(ActionEvent event) {
-
+    public void onclickCancel(ActionEvent actionEvent) {
+        this.switchView(getClass().getResource("../dashboard/peopleManage/PeopleList.fxml"));
     }
 
+    @FXML
+    public void onClickOK(ActionEvent actionEvent) {
+
+    }
 
 
 }
