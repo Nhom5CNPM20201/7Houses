@@ -8,12 +8,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.SubScene;
 import javafx.scene.control.*;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PeopleForm implements Initializable{
-
 
 
     @FXML
@@ -59,25 +57,27 @@ public class PeopleForm implements Initializable{
     private DatePicker ngayCapCMND;
 
     @FXML
-    private ComboBox<?> Gioitinh;{
-        ObservableList<String> list1 = FXCollections.observableArrayList("Nữ","Nam");
-    }
+    private ComboBox<String> Gioitinh;
+    ObservableList<String> list1 = FXCollections.observableArrayList("Nữ","Nam");
 
     @FXML
-    private ComboBox<String> QuanHeCH;{
-        ObservableList<String> list2 = FXCollections.observableArrayList("hộ 1","Hộ 2 ");
-    }
+    private ComboBox<String> QuanHeCH;
+    ObservableList<String> list2 = FXCollections.observableArrayList("Bố","Mẹ ","Anh", "Chị", "Em","Chủ Hộ");
 
-
+    @FXML
     private SubScene PeopleFormScene;
-    private URL FXMLname;
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.switchView(getClass().getResource("./PeopleForm.fxml"));
-    }
+    public void switchView(URL FXMLname) {
 
-    private void switchView(URL resource) {
         ScreenController.activeSubscreen(this.PeopleFormScene, FXMLname);
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Gioitinh.setItems(list1);
+        QuanHeCH.setItems(list2);
+
+        this.switchView(getClass().getResource("./PeopleForm.fxml"));
+
     }
 
     @FXML
@@ -90,6 +90,14 @@ public class PeopleForm implements Initializable{
 
     }
 
-   
+    @FXML
+    public void comboBoxOption1(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void comboBoxOption2(ActionEvent event) {
+
+    }
 
 }
