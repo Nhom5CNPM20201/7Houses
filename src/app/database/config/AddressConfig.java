@@ -15,4 +15,7 @@ public class AddressConfig {
     public static final String ADDRESS_DISTRICT = "quan";
 
     public static final String ADDRESS_CITY = "thanhpho";
+
+    public static final String ADDRESS_INFORMATION = "thongtinthem";
+
 }
