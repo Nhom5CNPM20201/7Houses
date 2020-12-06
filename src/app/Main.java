@@ -48,5 +48,6 @@ public class Main extends Application {
 
     private void onGoingDashboard(ActionEvent event) {
         screenController.active(getClass().getResource("component/dashboard/Dashboard.fxml"));
+
     }
 }

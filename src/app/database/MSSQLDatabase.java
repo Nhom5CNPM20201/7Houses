@@ -4,6 +4,11 @@ import app.config.AppConfig;
 import app.database.base.DatabaseManager;
 import app.database.interfaces.*;
 import app.entity.Account;
+import app.database.interfaces.ISQLDatabaseHouseHold;
+import app.entity.HouseHold;
+import app.entity.Move;
+import app.entity.People;
+
 import java.sql.*;
 import java.util.List;
 
@@ -13,7 +18,8 @@ public class MSSQLDatabase extends DatabaseManager implements
         ISQLDatabasePeople,
         ISQLDatabaseMove,
         ISQLDatabaseAddress,
-        ISQLDatabaseFee{
+        ISQLDatabaseFee,
+        ISQLDatabaseChange{
 
     private Connection databaseObject;
     
@@ -72,11 +78,10 @@ public class MSSQLDatabase extends DatabaseManager implements
                 System.out.println(item.getId() + " | " + item.getUsername().trim()
                        + " | " + item.getName() + " | " + item.getPassword());
             }
-
+//            People people = testConn.searchPeople("mt");
+//            System.out.println(people.getId());
             System.out.println("Connected to DB successfully.");
             conn.close();
-            
-           
         } catch (Exception e) {
             System.out.println("Error when connect to DB:");
             System.out.println(e.getMessage());

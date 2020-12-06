@@ -16,19 +16,25 @@ public interface ISQLDatabaseAddress extends ISQLDatabase {
         try {//INSERT INTO table_name (column1, column2, column3, ...)
             //VALUES (value1, value2, value3, ...);
             PreparedStatement stmt = this.getDatabase().prepareStatement("INSERT INTO " + AddressConfig.TABLE_NAME +
-                    "(" +AddressConfig.ADDRESS_ID + " , "
-                    + AddressConfig.ADDRESS_NUMBERHOUSE + " , "
+                    "(" + AddressConfig.ADDRESS_NUMBERHOUSE + " , "
                     + AddressConfig.ADDRESS_STREET + " , "
                     + AddressConfig.ADDRESS_SUBDISTRICT + " , "
                     + AddressConfig.ADDRESS_DISTRICT + " , "
-                    + AddressConfig.ADDRESS_CITY + ") VALUES (?, ?, ?, ?, ?, ?)");
-            stmt.setInt(1, address.getId());
-            stmt.setInt(2, address.getNumberHouse());
-            stmt.setString(3, address.getStreet());
-            stmt.setString(4, address.getSubDistrict());
-            stmt.setString(5, address.getDistrict());
-            stmt.setString(6, address.getCity());
+                    + AddressConfig.ADDRESS_CITY + " , "
+                    + AddressConfig.ADDRESS_INFORMATION + ") VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, address.getNumberHouse());
+            stmt.setString(2, address.getStreet());
+            stmt.setString(3, address.getSubDistrict());
+            stmt.setString(4, address.getDistrict());
+            stmt.setString(5, address.getCity());
+            stmt.setString(6, address.getInformation());
             stmt.executeUpdate();
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                address.setId(generatedKeys.getInt(1));
+            }
+            generatedKeys.close();
+            stmt.close();
         } catch (SQLDataException e) {
             throw e;
         }
@@ -41,8 +47,10 @@ public interface ISQLDatabaseAddress extends ISQLDatabase {
         String addresssubdistrict = rs.getString(AddressConfig.ADDRESS_SUBDISTRICT);
         String addressdistrict = rs.getString(AddressConfig.ADDRESS_DISTRICT);
         String addresscity = rs.getString(AddressConfig.ADDRESS_CITY);
+        String addressinfor = rs.getString(AddressConfig.ADDRESS_INFORMATION);
 
-        return new Address(addressid, addressnumber, addressstreet, addresssubdistrict, addressdistrict, addresscity);
+
+        return new Address(addressid, addressnumber, addressstreet, addresssubdistrict, addressdistrict, addresscity,addressinfor);
     }
 
     @Override
@@ -79,7 +87,6 @@ public interface ISQLDatabaseAddress extends ISQLDatabase {
             stmt.setString(4, address.getDistrict());
             stmt.setString(5, address.getCity());
             stmt.executeUpdate();
-
         } catch (SQLDataException e) {
             throw e;
         }
@@ -124,11 +131,11 @@ public interface ISQLDatabaseAddress extends ISQLDatabase {
             var conn = testConn.getDatabase();
 
             System.out.print("Try getting all accounts\n");
-            Address address = new Address(100, 5, "H3PO4", "C2H2OH", "CH3Cl", "H2O");
-            testConn.updateAddress(address);
-            testConn.removeAddress(1);
+            Address address = new Address(29, "H3PO4", "C2H2OH", "CH3Cl", "H2O", "abc");
+            testConn.updateAddress(new Address(5, 7, "aa", "bb", "cc", "dd","hang"));
+            //testConn.removeAddress(1);
             testConn.insertAddress(address);
-            testConn.searchAddress(20);
+            testConn.searchAddress(5);
             List<Address> addressList = testConn.getAllAddress();
             for(var item : addressList) {
                 System.out.println(item.getId() + ", " + item.getNumberHouse()+ ", " +item.getStreet()
