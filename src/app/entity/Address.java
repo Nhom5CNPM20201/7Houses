@@ -9,6 +9,10 @@ public class Address {
     private String city;
     private String information;
 
+    public Address() {
+
+    }
+
     public Address(int id, int numberHouse, String street, String subDistrict, String district, String city, String information) {
         this.id = id;
         this.numberHouse = numberHouse;
@@ -29,10 +33,6 @@ public class Address {
     }
     public String getDetail(){
         return "Số "+numberHouse+", đường "+street+", Phường "+subDistrict+", Quận "+District+", Thành phố "+city;
-    }
-
-    public Address() {
-
     }
 
     public String getInformation() {

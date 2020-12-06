@@ -9,19 +9,18 @@ import java.util.List;
 public class AddressService {
     private Address address;
     private List<Address> addressList = new ArrayList<>();
+
     public AddressService() {
         InitAddress();
     }
 
-
     public Address createAddress(Address address) {
         try {
-
-                MSSQLDatabase.getInstance().insertAddress(address);
-                address.setId(addressList.toArray().length);
-                addressList.add(address);
-                System.out.println("Tao dia chi thanh cong!");
-                System.out.print(address.getId());
+            MSSQLDatabase.getInstance().insertAddress(address);
+            address.setId(addressList.toArray().length);
+            addressList.add(address);
+            System.out.println("Tao dia chi thanh cong!");
+            System.out.print(address.getId());
             return address;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -43,7 +42,6 @@ public class AddressService {
 
     public Address searchAddress(int id) {
         try {
-
             Address searchA = MSSQLDatabase.getInstance().searchAddress(id);
             if (searchA != null)
                 System.out.print("Dia chi tim kiem: \n");
