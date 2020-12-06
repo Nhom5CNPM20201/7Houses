@@ -1,19 +1,29 @@
 package app.component.dashboard.householdManage;
 
+import app.entity.HouseHold;
+import app.services.ServiceFactory;
+
+import app.utility.viewUtils.ScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
+import javafx.fxml.Initializable;
+import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
-import javafx.stage.Stage;
 
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class HouseholdManage {
+public class HouseholdManage implements Initializable {
+    public HouseholdManage(){}
 
     @FXML
     private TableView<?> tblListHouseHold;
+
+    @FXML
+    private SubScene mainHouseHold;
 
     @FXML
     private Button btnAdd;
@@ -25,12 +35,8 @@ public class HouseholdManage {
     private Button btnDelete;
 
     @FXML
-    void addOnClick(ActionEvent event) throws Exception{
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../../common/HouseHoldForm.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void addOnClick(ActionEvent event) {
+        this.switchView(getClass().getResource("../../common/HouseholdForm.fxml"));
     }
     @FXML
     public void deleteOnClick(ActionEvent event) {
@@ -42,4 +48,31 @@ public class HouseholdManage {
 
     }
 
+    public static void createHouseHold(HouseHold houseHold) {
+        ServiceFactory.getHouseHoldService().createHouseHold(houseHold);
+    }
+
+    public static List<HouseHold> getAllHouseHold() {
+        return ServiceFactory.getHouseHoldService().getAllHouseHold();
+    }
+
+    public static void deleteHouseHold(String houseHoldBook) {
+        ServiceFactory.getHouseHoldService().deleteHouseHold(houseHoldBook);
+    }
+
+    public static void updateHouseHold() {
+
+    }
+
+    public static void searchHouseHold(String houseHoldBook) {
+        ServiceFactory.getHouseHoldService().searchHouseHold(houseHoldBook);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.switchView(getClass().getResource("./HouseholdList.fxml"));
+    }
+    public void switchView(URL FXMLname){
+        ScreenController.activeSubscreen(this.mainHouseHold,FXMLname);
+    }
 }
