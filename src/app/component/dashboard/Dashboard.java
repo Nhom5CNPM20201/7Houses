@@ -63,7 +63,7 @@ public class Dashboard implements Initializable {
 
     @FXML
     public void houseHoldOnClick(ActionEvent event) {
-        this.switchView(getClass().getResource("householdManage/HouseholdManage.fxml"));
+        this.switchView(getClass().getResource("householdManage/HouseHoldManage.fxml"));
     }
 
     @FXML
