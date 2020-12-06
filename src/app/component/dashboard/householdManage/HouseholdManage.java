@@ -1,8 +1,10 @@
 package app.component.dashboard.householdManage;
 
+import app.component.common.HouseHoldForm;
 import app.entity.HouseHold;
 import app.services.ServiceFactory;
 
+import app.utility.viewUtils.Mediator;
 import app.utility.viewUtils.ScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,45 +36,35 @@ public class HouseholdManage implements Initializable {
     @FXML
     private Button btnDelete;
 
+    private Object mainHouseHoldController;
+
     @FXML
     public void addOnClick(ActionEvent event) {
-        this.switchView(getClass().getResource("../../common/HouseholdForm.fxml"));
+        this.switchView(getClass().getResource("../../common/HouseHoldForm.fxml"));
     }
     @FXML
     public void deleteOnClick(ActionEvent event) {
-
+        Mediator.Notify("onGoingMainHouseHold");
     }
 
     @FXML
     public void editOnClick(ActionEvent event) {
-
-    }
-
-    public static void createHouseHold(HouseHold houseHold) {
-        ServiceFactory.getHouseHoldService().createHouseHold(houseHold);
-    }
-
-    public static List<HouseHold> getAllHouseHold() {
-        return ServiceFactory.getHouseHoldService().getAllHouseHold();
-    }
-
-    public static void deleteHouseHold(String houseHoldBook) {
-        ServiceFactory.getHouseHoldService().deleteHouseHold(houseHoldBook);
-    }
-
-    public static void updateHouseHold() {
-
-    }
-
-    public static void searchHouseHold(String houseHoldBook) {
-        ServiceFactory.getHouseHoldService().searchHouseHold(houseHoldBook);
+        Mediator.Notify("onGoingMainHouseHold");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        onGoingMainHouseHold(null);
+
+        Mediator.unSubscribe("onGoingMainHouseHold");
+        Mediator.subscribe("onGoingMainHouseHold", event -> onGoingMainHouseHold(null));
+    }
+
+    public void onGoingMainHouseHold(ActionEvent e) {
         this.switchView(getClass().getResource("./HouseholdList.fxml"));
     }
-    public void switchView(URL FXMLname){
-        ScreenController.activeSubscreen(this.mainHouseHold,FXMLname);
+
+    private void switchView(URL FXMLname){
+        mainHouseHoldController = ScreenController.activeSubscreen(this.mainHouseHold, FXMLname);
     }
 }

@@ -10,6 +10,10 @@ public class HouseHold implements IEntity {
 	private String name;
 	private String addressDetail;
 
+	public HouseHold() {
+
+	}
+
 	public HouseHold(int id, int idAddress, String houseHoldBook, int idOwner, String name) {
 		this.id = id;
 		this.idAddress = idAddress;

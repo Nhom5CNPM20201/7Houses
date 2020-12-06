@@ -1,15 +1,19 @@
 package app.component.common;
 
 import app.entity.Address;
+import app.services.common.NotiService;
+import app.utility.viewUtils.Mediator;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class AddressForm {
-    public static Address newAdd;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+public class AddressForm implements Initializable {
     @FXML
     private TextField txtHouseHoldNo;
 
@@ -31,19 +35,35 @@ public class AddressForm {
     @FXML
     private Button btnCancel;
 
+    private Address newAddress;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    public Address getNewAddress() {
+        return this.newAddress;
+    }
+
     @FXML
     void onClickCancel(ActionEvent event) {
-        Platform.exit();
+
+
+        Mediator.Notify("onCloseAddAddress");
     }
 
     @FXML
     void onClickOK(ActionEvent event) {
-        newAdd = new Address(Integer.valueOf(txtHouseHoldNo.getText()),txtStreet.getText(),
-                txtWard.getText(), txtDistrict.getText(), txtCity.getText(), ""
-        );
-        HouseHoldForm.add = newAdd;
-        HouseHoldForm.address.setText(newAdd.getDetail());
-        Platform.exit();
+        Address add = new Address();
+        add.setNumberHouse(Integer.parseInt(txtHouseHoldNo.getText()));
+        add.setStreet(txtStreet.getText());
+        add.setSubDistrict(txtWard.getText());
+        add.setDistrict(txtDistrict.getText());
+        add.setCity(txtCity.getText());
+        this.newAddress = add;
+
+        Mediator.Notify("onCloseAddAddress");
     }
 }
 
