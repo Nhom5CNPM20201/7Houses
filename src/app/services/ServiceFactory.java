@@ -1,10 +1,13 @@
 package app.services;
 
+import app.component.dashboard.peopleManage.PeopleManage;
+
 public class ServiceFactory {
     private static AuthService authService;
     private static HouseHoldService houseHoldService;
     private static AddressService addressService;
     private static FeeService feeService;
+    private static PeopleService peopleService;
 
     public ServiceFactory() {
 
@@ -19,6 +22,7 @@ public class ServiceFactory {
         addressService = new AddressService();
         feeService = new FeeService();
         houseHoldService = new HouseHoldService();
+        peopleService = new PeopleService();
     }
 
     public static AuthService getAuthService() {
@@ -33,4 +37,14 @@ public class ServiceFactory {
 	public static HouseHoldService getHouseHoldService() {
 		return houseHoldService;
 	}
+	
+    public static void peopleInstance() {
+		
+	}
+
+	public static PeopleService getPeopleService() {
+		return peopleService;
+	}
+
+
 }

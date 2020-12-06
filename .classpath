@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="mssql-jdbc-8.4.1.jre14.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lib"/>
+	<classpathentry kind="lib" path="E:/K1-N3/NhapMonCongNghePhanMem/sqljdbc_8.4/enu/mssql-jdbc-8.4.1.jre11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
