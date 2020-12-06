@@ -42,7 +42,7 @@ public class AddressForm {
     @FXML
     void onClickOK(ActionEvent event) {
         newAdd = new Address(Integer.valueOf(txtHouseHoldNo.getText()),txtStreet.getText(),
-                txtWard.getText(), txtDistrict.getText(), txtCity.getText()
+                txtWard.getText(), txtDistrict.getText(), txtCity.getText(), ""
         );
         HouseHoldForm.add = newAdd;
         HouseHoldForm.address.setText(newAdd.getDetail());
