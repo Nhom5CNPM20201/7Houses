@@ -2,6 +2,7 @@ package app.services;
 
 import app.database.MSSQLDatabase;
 import app.entity.Address;
+import app.services.common.LogService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +17,13 @@ public class AddressService {
 
     public Address createAddress(Address address) {
         try {
-
-                MSSQLDatabase.getInstance().insertAddress(address);
-                address.setId(addressList.toArray().length);
-                addressList.add(address);
-                System.out.println("Tao dia chi thanh cong!");
-                System.out.print(address.getId());
+            if (address.getId() > 0 && addressList.stream().anyMatch(a -> a.getId() == address.getId())) {
+                return address;
+            }
+            address.setId(addressList.size() + 1);
+            MSSQLDatabase.getInstance().insertAddress(address);
+            addressList.add(address);
+            LogService.info("Tao dia chi thanh cong: " + address.getId());
             return address;
         } catch (Exception e) {
             System.out.println(e.getMessage());

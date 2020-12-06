@@ -19,8 +19,8 @@ public class ScreenController {
 
     public Object active(URL FXMLname) {
         try {
-            FXMLLoader loader = new FXMLLoader(FXMLname);
-            Parent parent = loader.load();
+            FXMLLoader loader = new FXMLLoader();
+            Parent parent = loader.load(FXMLname);
             main.setRoot(parent);
             makeFadeInEffect(parent);
             return loader.getController();

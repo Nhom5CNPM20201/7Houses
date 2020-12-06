@@ -32,6 +32,9 @@ public class Dashboard implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.switchView(getClass().getResource("summary/Summary.fxml"));
         setPosition(ServiceFactory.getAuthService().getCurrentAccount());
+
+        Mediator.unSubscribe("houseHoldOnClick");
+        Mediator.subscribe("houseHoldOnClick", event -> houseHoldOnClick(null));
     }
 
     private void setPosition(Account account) {

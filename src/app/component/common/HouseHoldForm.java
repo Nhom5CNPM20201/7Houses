@@ -53,6 +53,8 @@ public class HouseHoldForm implements Initializable {
 
     private Address newAddress;
 
+    private HouseHold newHouseHold;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Mediator.unSubscribe("onCloseAddAddress");
@@ -86,18 +88,20 @@ public class HouseHoldForm implements Initializable {
             newAddress = ServiceFactory.getAddressService().createAddress(newAddress);
         }
 
-        HouseHold newHouseHold = new HouseHold();
+        newHouseHold = new HouseHold();
         newHouseHold.setIdAddress(newAddress.getId());
+        newHouseHold.setAddressDetail(newAddress.getDetail());
+
         newHouseHold.setHouseHoldBook(houseHoldNo.getText());
         newHouseHold.setName(name.getText());
-
-        ServiceFactory.getHouseHoldService().createHouseHold(newHouseHold);
-
-        Mediator.Notify("onGoingMainHouseHold");
+        HouseHold addedHouseHold = ServiceFactory.getHouseHoldService().createHouseHold(newHouseHold);
+        if (addedHouseHold != null) {
+            Mediator.Notify("houseHoldOnClick");
+        }
     }
 
     @FXML
     public void cancelOnClick(ActionEvent event){
-        Mediator.Notify("onGoingMainHouseHold");
+        Mediator.Notify("houseHoldOnClick");
     }
 }

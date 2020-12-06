@@ -9,6 +9,7 @@ import app.database.MSSQLDatabase;
 import app.database.config.HouseHoldConfig;
 import app.entity.HouseHold;
 import app.services.common.LogService;
+import app.services.common.NotiService;
 
 public class HouseHoldService {
 	private static MSSQLDatabase orm;
@@ -33,21 +34,25 @@ public class HouseHoldService {
 		}
 	}
 	
-	public void createHouseHold(HouseHold houseHold) {
+	public HouseHold createHouseHold(HouseHold houseHold) {
 		try {
 			orm = MSSQLDatabase.getInstance();
 			HouseHold searchHH = orm.searchHouseHold(houseHold.getHouseHoldBook());
 			if(searchHH == null) {
+				houseHoldList.add(houseHold);
 				orm.insertHouseHold(houseHold);
-				System.out.println("Tao thanh cong.");
+				NotiService.info("Tao thanh cong.");
+				return houseHold;
 			}
 			else {
-				System.out.println("Da ton tai ho khau!");
+				NotiService.info("Da ton tai ho khau!");
+				return null;
 			}
 			
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
+			return null;
 		}
 	}
 	
