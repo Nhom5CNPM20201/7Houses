@@ -52,6 +52,10 @@ public class FeeService {
         }
     }
 
+    public List<Fee> getAllFee() {
+        return feeList;
+    }
+
     public void deleteFee(int id) {
         try {
             Fee searchF = MSSQLDatabase.getInstance().searchFee(id);
