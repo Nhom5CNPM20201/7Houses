@@ -12,9 +12,11 @@ import app.services.common.LogService;
 public class PeopleService {
 	private static MSSQLDatabase orm;
 	private People people;
+
+	private List<People> peoples;
 	
 	public PeopleService() {
-		
+		initPeople();
 	}
 	
 	public void createPeople(People people) {
@@ -45,17 +47,18 @@ public class PeopleService {
 		}
 	}
 	
-	public void getAllPeople() {
+	public void initPeople() {
 		try {
 			orm = MSSQLDatabase.getInstance();
-			List<People> peoples = orm.getAllPeoples();
-			for(People i : peoples) {
-				System.out.println(i.getFullName() + "\t" + i.getFullName());
-			}
+			peoples = orm.getAllPeoples();
 		}
 		catch(Exception e) {
-			System.out.println(e.getMessage());
+			LogService.error(e.getMessage());
 		}
+	}
+
+	public List<People> getAllPeople() {
+		return peoples;
 	}
 	
 	public void searchPeople(String fullName) {

@@ -24,8 +24,6 @@ public class PeopleConfig {
   
   public static final String PEOPLE_ETHNIC = "DanToc";
   
-  public static final String PEOPLE_NATIVEPLACE = "NguyenQuan";
-  
   public static final String PEOPLE_GENDER ="GioiTinh";
 	
   public static final String PEOPLE_WORKPLACE = "NoiLamViec";

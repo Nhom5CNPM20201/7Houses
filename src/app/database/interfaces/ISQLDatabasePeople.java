@@ -27,7 +27,7 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
                     " (" + PeopleConfig.PEOPLE_IDHOUSEHOLD +"," +
                     PeopleConfig.PEOPLE_FULLNAME + "," + PeopleConfig.PEOPLE_NICKNAME + "," + PeopleConfig.PEOPLE_BIRTHPLACE + "," +
                     PeopleConfig.PEOPLE_JOB  + "," + PeopleConfig.PEOPLE_DATEOFBIRTH + "," + PeopleConfig.PEOPLE_REGISDATE + "," +
-                    PeopleConfig.PEOPLE_HOUSEHOLDERRELA + "," + PeopleConfig.PEOPLE_ETHNIC + "," + PeopleConfig.PEOPLE_NATIVEPLACE + "," +
+                    PeopleConfig.PEOPLE_HOUSEHOLDERRELA + "," + PeopleConfig.PEOPLE_ETHNIC + "," +
                     PeopleConfig.PEOPLE_GENDER + "," + PeopleConfig.PEOPLE_WORKPLACE + "," +
                     PeopleConfig.PEOPLE_IDENTITYNO + "," + PeopleConfig.PEOPLE_IDENTITYMFG + "," + PeopleConfig.PEOPLE_IDENTITYORIGIN +
                     ")" + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
@@ -50,23 +50,18 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
 			
 			stmt.setString(9, people.getEthnic());
 			
-			stmt.setString(10, people.getNativePlace());
+			stmt.setInt(10, people.getGender());
 			
-			stmt.setInt(11, people.getGender());
+			stmt.setString(11, people.getWorkPlace());
 			
-			stmt.setString(12, people.getWorkPlace());
+			stmt.setString(12, people.getIdentityNo());
 			
-			stmt.setString(13, people.getIdentityNo());
+			stmt.setDate(13, people.getIdentityMfg()  );
 			
-			stmt.setDate(14, people.getIdentityMfg()  );
-			
-			stmt.setString(15, people.getIdentityOrigin());
+			stmt.setString(14, people.getIdentityOrigin());
 			
 			stmt.executeUpdate();
-			
-			
-			
-			
+
 			ResultSet generatedIDs = stmt.getGeneratedKeys();
             if (generatedIDs.next()) {
                 int insertedPeopleID = generatedIDs.getInt(1);
@@ -119,7 +114,7 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
 					+ PeopleConfig.PEOPLE_NICKNAME  + "=? " + "," + PeopleConfig.PEOPLE_BIRTHPLACE + "=?" +  ","
 					+ PeopleConfig.PEOPLE_JOB  + "=? " + "," + PeopleConfig.PEOPLE_DATEOFBIRTH + "=?" +  ","
 					+ PeopleConfig.PEOPLE_REGISDATE  + "=? " + "," + PeopleConfig.PEOPLE_HOUSEHOLDERRELA + "=?" +  ","
-					+ PeopleConfig.PEOPLE_ETHNIC  + "=? " + "," + PeopleConfig.PEOPLE_NATIVEPLACE + "=?" +  ","
+					+ PeopleConfig.PEOPLE_ETHNIC  + "=? " + "=?" +  ","
 					+ PeopleConfig.PEOPLE_GENDER  + "=? " + "," + PeopleConfig.PEOPLE_WORKPLACE + "=?" +  ","
 					+ PeopleConfig.PEOPLE_IDENTITYNO  + "=? " + "," + PeopleConfig.PEOPLE_IDENTITYMFG + "=?"+  ","
 					+ PeopleConfig.PEOPLE_IDENTITYORIGIN  + "=? " 
@@ -222,8 +217,6 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
     	
     	String peopleEthnic = rs.getString(PeopleConfig.PEOPLE_ETHNIC);
     	
-    	String peopleNativePlace = rs.getString(PeopleConfig.PEOPLE_NATIVEPLACE);
-    	
     	int peopleGender = rs.getInt(PeopleConfig.PEOPLE_GENDER);
     	
     	String peopleWorkPlace = rs.getString(PeopleConfig.PEOPLE_WORKPLACE);
@@ -236,7 +229,7 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
     	
 
         return new People(peopleId, peopleIdHouseHold, peopleFullName, peopleNickName, peopleIdBirthPlace, peopleJob,peopleDateOfBirth,
-        		peopleRegisDate, peopleHouseHolderRela, peopleEthnic, peopleNativePlace, peopleGender, peopleWorkPlace,
+        		peopleRegisDate, peopleHouseHolderRela, peopleEthnic, peopleGender, peopleWorkPlace,
         		peopleIdentityNo, peopleIdentityMfg, peopleIdentityOrigin);
     }
 
