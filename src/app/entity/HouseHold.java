@@ -9,16 +9,16 @@ public class HouseHold implements IEntity {
 	private int idOwner;
 	private String name;
 	
-	public HouseHold(int idAddress, String houseHoldBook, int idOwner, String name) {
+	public HouseHold(int id, int idAddress, String houseHoldBook, int idOwner, String name) {
+		this.id = id;
 		this.idAddress = idAddress;
 		this.idOwner = idOwner;
 		this.houseHoldBook = houseHoldBook;
 		this.name = name;
 	}
-	public HouseHold(int id, int idAddress, String houseHoldBook, int idOwner, String name) {
-		this.id = id;
+	public HouseHold(int id, String houseHoldBook, int idAddress, String name) {
 		this.idAddress = idAddress;
-		this.idOwner = idOwner;
+		this.id = id;
 		this.houseHoldBook = houseHoldBook;
 		this.name = name;
 	}

@@ -34,16 +34,15 @@ public class HouseHoldService {
 		}
 	}
 	
-	public void getAllHouseHold() {
+	public List<HouseHold> getAllHouseHold() {
 		try {
 			orm = MSSQLDatabase.getInstance();
 			List<HouseHold> houseHolds = orm.getAllHouseHold();
-			for(HouseHold i : houseHolds) {
-				System.out.println(i.getHouseHoldBook() + "\t" + i.getName());
-			}
+			return houseHolds;
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
+			return null;
 		}
 	}
 	

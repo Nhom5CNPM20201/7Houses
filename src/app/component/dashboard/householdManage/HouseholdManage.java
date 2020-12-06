@@ -2,15 +2,18 @@ package app.component.dashboard.householdManage;
 
 import app.entity.HouseHold;
 import app.services.ServiceFactory;
+
 import app.utility.viewUtils.ScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
 import javafx.fxml.Initializable;
 import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class HouseholdManage implements Initializable {
@@ -51,8 +54,8 @@ public class HouseholdManage implements Initializable {
 		ServiceFactory.getHouseHoldService().createHouseHold(houseHold);
 	}
 	
-	public static void getAllHouseHold() {
-		ServiceFactory.getHouseHoldService().getAllHouseHold();
+	public static List<HouseHold> getAllHouseHold() {
+		return ServiceFactory.getHouseHoldService().getAllHouseHold();
 	}
 	
 	public static void deleteHouseHold(String houseHoldBook) {
