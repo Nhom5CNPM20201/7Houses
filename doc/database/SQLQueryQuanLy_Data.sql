@@ -1,9 +1,9 @@
 ﻿-- insert TaiKhoan
 insert into TaiKhoan(Username, Password, ChucVu, Hoten) 
 values 
-('admin', '210cf7aa5e2682c9c9d4511f88fe2789', 0, 'Nguyễn Văn A'),
-('admin1', 'e10adc3949ba59abbe56e057f20f883e', 1, 'Nguyễn Tuấn B'),
-('kt', 'e10adc3949ba59abbe56e057f20f883e', 2, 'Trần Thị C');
+('admin', '210cf7aa5e2682c9c9d4511f88fe2789', 0, N'Nguyễn Văn A'),
+('admin1', 'e10adc3949ba59abbe56e057f20f883e', 1, N'Nguyễn Tuấn B'),
+('kt', 'e10adc3949ba59abbe56e057f20f883e', 2, N'Trần Thị C');
 
 -- insert DiaChi
 insert into DiaChiTT(SoNha, DuongPho, Phuong, Quan, ThanhPho)

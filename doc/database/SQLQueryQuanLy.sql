@@ -21,7 +21,7 @@ create table TamTruVang(
 	IdDiaChi int not null,
 	ThoiGian date not null,
 	BatDau date,
-	ThoiHan int,
+	KetThuc date,
 	TheLoai tinyint,
 	ThongTinThem ntext,
 	constraint PK_TamTruVang primary key(IdNhanKhau, ThoiGian),
