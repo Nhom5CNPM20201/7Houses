@@ -54,14 +54,6 @@ public class PeopleForm {
     @FXML
     private MenuButton gioiTinh;
 
-    @FXML
-    void onClickOK(ActionEvent event) {
 
-    }
-
-    @FXML
-    void onclickCancel(ActionEvent event) {
-
-    }
 
 }
