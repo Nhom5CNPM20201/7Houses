@@ -2,7 +2,10 @@ package app.component.dashboard.householdManage;
 
 import app.entity.HouseHold;
 import app.services.ServiceFactory;
+import app.services.common.LogService;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,6 +31,8 @@ public class HouseholdList implements Initializable {
 
     private ObservableList<HouseHold> houseHolds;
 
+    private HouseHold selectedHouseHold;
+
     public HouseholdList() {
         houseHolds = FXCollections.observableList(ServiceFactory.getHouseHoldService().getAllHouseHold());
     }
@@ -39,5 +44,16 @@ public class HouseholdList implements Initializable {
         addressColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getAddressDetail()));
 
         tblListHouseHold.getItems().setAll(houseHolds);
+
+        tblListHouseHold.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<HouseHold>() {
+            @Override
+            public void changed(ObservableValue<? extends HouseHold> observableValue, HouseHold houseHold, HouseHold t1) {
+                selectedHouseHold = tblListHouseHold.getSelectionModel().getSelectedItem();
+            }
+        });
+    }
+
+    public HouseHold getSelectedHouseHold() {
+        return selectedHouseHold;
     }
 }

@@ -43,27 +43,6 @@ public class PeopleManage implements Initializable {
     void editOnClick(ActionEvent event) {
 
     }
-    
-    public static void createPeople(People  people) {
-		ServiceFactory.getPeopleService().createPeople(people);
-	}
-	
-	public static void getAllPeople() {
-		ServiceFactory.getPeopleService().getAllPeople();
-	}
-	
-	public static void deletePeople(String fullName) {
-		ServiceFactory.getPeopleService().deletePeople(fullName);
-	}
-	
-	public static void updatePeople() {
-		
-	}
-	
-	public static void searchPeople(String fullName) {
-		ServiceFactory.getPeopleService().searchPeople(fullName);
-	}    
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

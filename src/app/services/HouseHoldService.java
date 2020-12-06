@@ -39,6 +39,7 @@ public class HouseHoldService {
 			orm = MSSQLDatabase.getInstance();
 			HouseHold searchHH = orm.searchHouseHold(houseHold.getHouseHoldBook());
 			if(searchHH == null) {
+				houseHold.setId(houseHoldList.size() + 1);
 				houseHoldList.add(houseHold);
 				orm.insertHouseHold(houseHold);
 				NotiService.info("Tao thanh cong.");

@@ -4,6 +4,8 @@ import app.component.common.HouseHoldForm;
 import app.entity.HouseHold;
 import app.services.ServiceFactory;
 
+import app.services.common.LogService;
+import app.services.common.NotiService;
 import app.utility.viewUtils.Mediator;
 import app.utility.viewUtils.ScreenController;
 import javafx.event.ActionEvent;
@@ -49,7 +51,13 @@ public class HouseholdManage implements Initializable {
 
     @FXML
     public void editOnClick(ActionEvent event) {
-        Mediator.Notify("onGoingMainHouseHold");
+        if (mainHouseHoldController != null && HouseholdList.class.isInstance(mainHouseHoldController)) {
+            HouseHold selectedHouseHold = ((HouseholdList) mainHouseHoldController).getSelectedHouseHold();
+            if (selectedHouseHold != null)
+                LogService.info("Test - " + selectedHouseHold.getAddressDetail());
+        } else {
+            NotiService.info("Bạn chưa chọn hộ khẩu.");
+        }
     }
 
     @Override

@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import javax.swing.*;
+
 public class PeopleForm {
 
     @FXML
@@ -54,6 +56,14 @@ public class PeopleForm {
     @FXML
     private MenuButton gioiTinh;
 
+    @FXML
+    public void onClickOK(ActionEvent event) {
 
+    }
+
+    @FXML
+    public void onClickCancel(ActionEvent event) {
+
+    }
 
 }

@@ -81,6 +81,12 @@ public class HouseHoldForm implements Initializable {
 
         this.addressController = loader.getController();
     }
+
+    @FXML
+    public void searchOnClick(ActionEvent event) {
+
+    }
+
     @FXML
     public void okOnClick(ActionEvent event) {
         // validate
