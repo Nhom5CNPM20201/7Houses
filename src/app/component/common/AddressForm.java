@@ -5,14 +5,11 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class AddressForm {
     public static Address newAdd;
+
     @FXML
     private TextField txtHouseHoldNo;
 
@@ -47,8 +44,6 @@ public class AddressForm {
         HouseHoldForm.add = newAdd;
         HouseHoldForm.address.setText(newAdd.getDetail());
         Platform.exit();
-
     }
-
 }
 
