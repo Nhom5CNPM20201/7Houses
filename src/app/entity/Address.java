@@ -24,6 +24,9 @@ public class Address {
         this.District = district;
         this.city = city;
     }
+    public String getDetail(){
+        return "Số "+numberHouse+", đường "+street+", Phường "+subDistrict+", Quận "+District+", Thành phố "+city;
+    }
 
     public Address() {
 
