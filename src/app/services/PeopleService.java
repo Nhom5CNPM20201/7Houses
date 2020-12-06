@@ -7,6 +7,7 @@ import java.util.List;
 import app.database.MSSQLDatabase;
 import app.database.config.PeopleConfig;
 import app.entity.People;
+import app.services.common.LogService;
 
 public class PeopleService {
 	private static MSSQLDatabase orm;
@@ -31,6 +32,16 @@ public class PeopleService {
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
+		}
+	}
+
+	public int coutAllPeople() {
+		try {
+			int count = MSSQLDatabase.getInstance().countAllPeople();
+			return count;
+		} catch(Exception e) {
+			LogService.error(e.getMessage());
+			return 0;
 		}
 	}
 	

@@ -7,9 +7,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
+
+import app.config.AppConfig;
+import app.database.MSSQLDatabase;
 import app.database.base.ISQLDatabase;
+import app.database.config.AccountConfig;
 import app.database.config.HouseHoldConfig;
 import app.database.config.PeopleConfig;
+import app.entity.Account;
 import app.entity.HouseHold;
 import app.entity.People;
 import java.sql.Date;
@@ -89,7 +94,22 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
         } catch (java.sql.SQLException e) {
             throw e;
         }
-    }	
+    }
+
+	default int countAllPeople() throws Exception {
+		try {
+			Statement stmt = getDatabase().createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT COUNT(" +  PeopleConfig.PEOPLE_ID + ")" +
+					" FROM " + PeopleConfig.TABLE_NAME + ";");
+
+			int count = 0;
+			if (rs.next()) count = rs.getInt(1);
+
+			return count;
+		} catch (java.sql.SQLException e) {
+			throw e;
+		}
+	}
 	
 	@Override
     default void updatePeople(People people) throws Exception {
@@ -181,8 +201,6 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
     	}
     }
 
-    
-
     private People extractPeople(ResultSet rs) throws SQLException {
     	int peopleId = rs.getInt(PeopleConfig.PEOPLE_ID);
     	
@@ -221,6 +239,23 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
         		peopleRegisDate, peopleHouseHolderRela, peopleEthnic, peopleNativePlace, peopleGender, peopleWorkPlace,
         		peopleIdentityNo, peopleIdentityMfg, peopleIdentityOrigin);
     }
+
+	public static void main(String[] args) {
+		try {
+			System.out.println("Start connecting to DB...");
+			MSSQLDatabase testConn = new MSSQLDatabase(AppConfig.databaseHostname, AppConfig.databaseName, AppConfig.databaseUsername, AppConfig.databasePassword);
+			var conn = testConn.getDatabase();
+			System.out.println("Try getting count people...");
+			System.out.println("Count: " + testConn.countAllPeople());
+
+			System.out.println("Connected to DB successfully.");
+			conn.close();
+		} catch (Exception e) {
+			System.out.println("Error when connect to DB:");
+			System.out.println(e.getMessage());
+			System.out.println("Connecting to DB Failed...");
+		}
+	}
 }
 
 

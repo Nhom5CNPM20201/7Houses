@@ -9,10 +9,10 @@ import java.util.List;
 public class AddressService {
     private Address address;
     private List<Address> addressList = new ArrayList<>();
+
     public AddressService() {
         InitAddress();
     }
-
 
     public Address createAddress(Address address) {
         try {
@@ -43,14 +43,9 @@ public class AddressService {
 
     public Address searchAddress(int id) {
         try {
+            Address searchA = addressList.stream().filter(x -> x.getId() == id).findFirst().get();
 
-            Address searchA = MSSQLDatabase.getInstance().searchAddress(id);
-            if (searchA != null)
-                System.out.print("Dia chi tim kiem: \n");
-                System.out.println(searchA.getId() + "\t " + searchA.getNumberHouse() + ", " + searchA.getStreet() + ", " + searchA.getSubDistrict()
-                        + ", " + searchA.getDistrict() + ", " + searchA.getCity());
             return searchA;
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;

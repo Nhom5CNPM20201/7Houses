@@ -1,5 +1,6 @@
 package app.database.interfaces;
 
+import app.database.config.PeopleConfig;
 import app.entity.Account;
 import app.entity.HouseHold;
 import app.database.config.AccountConfig;
@@ -50,6 +51,21 @@ public interface ISQLDatabaseHouseHold extends ISQLDatabase {
             }
 
             return houseHoldList;
+        } catch (java.sql.SQLException e) {
+            throw e;
+        }
+    }
+
+    default int countAllHouseHold() throws Exception {
+        try {
+            Statement stmt = getDatabase().createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT COUNT(" +  PeopleConfig.PEOPLE_ID + ")" +
+                    " FROM " + HouseHoldConfig.TABLE_NAME + ";");
+
+            int count = 0;
+            if (rs.next()) count = rs.getInt(1);
+
+            return count;
         } catch (java.sql.SQLException e) {
             throw e;
         }

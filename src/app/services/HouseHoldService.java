@@ -2,18 +2,35 @@ package app.services;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import app.database.MSSQLDatabase;
 import app.database.config.HouseHoldConfig;
 import app.entity.HouseHold;
+import app.services.common.LogService;
 
 public class HouseHoldService {
 	private static MSSQLDatabase orm;
 	private HouseHold houseHold;
+
+	private List<HouseHold> houseHoldList = new ArrayList<HouseHold>();
 	
 	public HouseHoldService() {
-		
+		Init();
+	}
+
+	public void Init() {
+		try {
+			this.houseHoldList = MSSQLDatabase.getInstance().getAllHouseHold();
+
+			for (var houseHold : houseHoldList) {
+				var address = ServiceFactory.getAddressService().searchAddress(houseHold.getIdAddress());
+				houseHold.setAddressDetail(address.getDetail());
+			}
+		} catch (Exception e) {
+			LogService.error(e.getMessage());
+		}
 	}
 	
 	public void createHouseHold(HouseHold houseHold) {
@@ -34,16 +51,17 @@ public class HouseHoldService {
 		}
 	}
 	
-	public void getAllHouseHold() {
+	public List<HouseHold> getAllHouseHold() {
+		return this.houseHoldList;
+	}
+
+	public int countAllHouseHold() {
 		try {
-			orm = MSSQLDatabase.getInstance();
-			List<HouseHold> houseHolds = orm.getAllHouseHold();
-			for(HouseHold i : houseHolds) {
-				System.out.println(i.getHouseHoldBook() + "\t" + i.getName());
-			}
-		}
-		catch(Exception e) {
-			System.out.println(e.getMessage());
+			int count = MSSQLDatabase.getInstance().countAllHouseHold();
+			return count;
+		} catch(Exception e) {
+			LogService.error(e.getMessage());
+			return 0;
 		}
 	}
 	

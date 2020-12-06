@@ -14,4 +14,6 @@ public class HouseHoldConfig {
   public static final String HOUSEHOLD_HOUSEHOLDBOOK = "SoHoKhau";
 
   public static final String HOUSEHOLD_NAME = "HoTenChuHo";
+
+  public static final String ADDRESS_DETAIL = "DiaChiChiTiet";
 }
