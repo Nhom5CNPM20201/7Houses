@@ -2,6 +2,7 @@ package app.database.base;
 
 import app.entity.Address;
 import app.entity.Fee;
+import app.entity.TemporaryResident;
 
 import java.sql.Connection;
 import java.util.List;
@@ -18,9 +19,15 @@ public interface ISQLDatabase extends IDatabase  {
 
     void insertAddress(Address address) throws Exception;
 
+    void insertTS(TemporaryResident ts) throws Exception;
+
     List<Address> getAllAddress() throws Exception;
 
+    List<TemporaryResident> getAllTS() throws Exception;
+
     void updateAddress(Address address) throws Exception;
+
+    void updateTS(TemporaryResident ts) throws Exception;
 
     void removeAddress(int id) throws Exception;
 
@@ -36,4 +43,8 @@ public interface ISQLDatabase extends IDatabase  {
 
     void updateFee(Fee fee) throws Exception;
 
+    void removeTS(int id) throws Exception;
+
+    TemporaryResident searchTS(int id) throws Exception;
 }
+

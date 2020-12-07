@@ -85,5 +85,12 @@ public interface IDatabase {
     void removeFee(int id) throws Exception;
 
     List<Fee> getAllFee() throws Exception;
+  // TS region
+  void insertTS(TemporaryResident ts) throws Exception;
 
+    void updateTS(TemporaryResident ts) throws Exception;
+
+    void removeTS(int id) throws Exception;
+
+    List<TemporaryResident> getAllTS() throws Exception;
 }

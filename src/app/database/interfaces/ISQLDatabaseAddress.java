@@ -79,13 +79,15 @@ public interface ISQLDatabaseAddress extends ISQLDatabase {
                     + " set "
                     + AddressConfig.ADDRESS_NUMBERHOUSE + " =? " + " , " + AddressConfig.ADDRESS_STREET +" =? "
                     + " , " + AddressConfig.ADDRESS_SUBDISTRICT + " =? "
-                    + " , " +AddressConfig.ADDRESS_DISTRICT + " =? "
-                    + " , " + AddressConfig.ADDRESS_CITY + " =?" + " WHERE " + AddressConfig.ADDRESS_ID + " = " +  address.getId());
+                    + " , " + AddressConfig.ADDRESS_DISTRICT + " =? "
+                    + " , " + AddressConfig.ADDRESS_CITY + " =?"
+                    + " , " + AddressConfig.ADDRESS_INFORMATION + " =?"+ " WHERE " + AddressConfig.ADDRESS_ID + " = " +  address.getId());
             stmt.setInt(1, address.getNumberHouse());
             stmt.setString(2, address.getStreet());
             stmt.setString(3, address.getSubDistrict());
             stmt.setString(4, address.getDistrict());
             stmt.setString(5, address.getCity());
+            stmt.setString(6, address.getInformation());
             stmt.executeUpdate();
         } catch (SQLDataException e) {
             throw e;
