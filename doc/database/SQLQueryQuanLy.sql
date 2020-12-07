@@ -42,6 +42,7 @@ create table HoKhau(
 	SoHoKhau char(20),
 	IdChuHoKhau	int,
 	HoTenChuHo nvarchar(255),
+	NgayDK date
 )
 
 create table DiChuyen(
