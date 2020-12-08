@@ -46,6 +46,7 @@ public class HouseholdManage implements Initializable {
     }
     @FXML
     public void deleteOnClick(ActionEvent event) {
+
         Mediator.Notify("onGoingMainHouseHold");
     }
 
