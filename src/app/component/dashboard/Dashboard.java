@@ -32,6 +32,9 @@ public class Dashboard implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.switchView(getClass().getResource("summary/Summary.fxml"));
         setPosition(ServiceFactory.getAuthService().getCurrentAccount());
+
+        Mediator.unSubscribe("houseHoldOnClick");
+        Mediator.subscribe("houseHoldOnClick", event -> houseHoldOnClick(null));
     }
 
     private void setPosition(Account account) {
@@ -63,7 +66,7 @@ public class Dashboard implements Initializable {
 
     @FXML
     public void houseHoldOnClick(ActionEvent event) {
-        this.switchView(getClass().getResource("householdManage/HouseholdManage.fxml"));
+        this.switchView(getClass().getResource("householdManage/HouseHoldManage.fxml"));
     }
 
     @FXML

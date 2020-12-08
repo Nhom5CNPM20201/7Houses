@@ -2,6 +2,7 @@ package app.services;
 
 import app.database.MSSQLDatabase;
 import app.entity.Address;
+import app.services.common.LogService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,19 +10,20 @@ import java.util.List;
 public class AddressService {
     private Address address;
     private List<Address> addressList = new ArrayList<>();
+
     public AddressService() {
         InitAddress();
     }
 
-
     public Address createAddress(Address address) {
         try {
-
-                MSSQLDatabase.getInstance().insertAddress(address);
-                address.setId(addressList.toArray().length);
-                addressList.add(address);
-                System.out.println("Tao dia chi thanh cong!");
-                System.out.print(address.getId());
+            if (address.getId() > 0 && addressList.stream().anyMatch(a -> a.getId() == address.getId())) {
+                return address;
+            }
+            address.setId(addressList.size() + 1);
+            MSSQLDatabase.getInstance().insertAddress(address);
+            addressList.add(address);
+            LogService.info("Tao dia chi thanh cong: " + address.getId());
             return address;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -43,14 +45,9 @@ public class AddressService {
 
     public Address searchAddress(int id) {
         try {
+            Address searchA = addressList.stream().filter(x -> x.getId() == id).findFirst().get();
 
-            Address searchA = MSSQLDatabase.getInstance().searchAddress(id);
-            if (searchA != null)
-                System.out.print("Dia chi tim kiem: \n");
-                System.out.println(searchA.getId() + "\t " + searchA.getNumberHouse() + ", " + searchA.getStreet() + ", " + searchA.getSubDistrict()
-                        + ", " + searchA.getDistrict() + ", " + searchA.getCity());
             return searchA;
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;

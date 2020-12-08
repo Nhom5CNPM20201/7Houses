@@ -8,13 +8,12 @@ public class HouseHold implements IEntity {
 	private String houseHoldBook;
 	private int idOwner;
 	private String name;
-	
-	public HouseHold(int idAddress, String houseHoldBook, int idOwner, String name) {
-		this.idAddress = idAddress;
-		this.idOwner = idOwner;
-		this.houseHoldBook = houseHoldBook;
-		this.name = name;
+	private String addressDetail;
+
+	public HouseHold() {
+
 	}
+
 	public HouseHold(int id, int idAddress, String houseHoldBook, int idOwner, String name) {
 		this.id = id;
 		this.idAddress = idAddress;
@@ -35,6 +34,7 @@ public class HouseHold implements IEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -47,6 +47,14 @@ public class HouseHold implements IEntity {
 		this.idAddress = idAddress;
 	}
 
+	public String getAddressDetail() {
+		return addressDetail;
+	}
+
+	public void setAddressDetail(String content) {
+		this.addressDetail = content;
+	}
+
 	public int getIdOwner() {
 		return idOwner;
 	}
@@ -54,6 +62,7 @@ public class HouseHold implements IEntity {
 	public void setIdOwner(int idOwner) {
 		this.idOwner = idOwner;
 	}
+
 	public String getHouseHoldBook() {
 		return houseHoldBook;
 	}

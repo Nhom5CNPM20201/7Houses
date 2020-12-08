@@ -1,8 +1,6 @@
 package app.database.base;
 
-import app.entity.Address;
-import app.entity.Fee;
-import app.entity.TemporaryResident;
+import app.entity.*;
 
 import java.sql.Connection;
 import java.util.List;

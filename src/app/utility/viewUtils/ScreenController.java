@@ -17,25 +17,31 @@ public class ScreenController {
         this.main = main;
     }
 
-    public void active(URL FXMLname) {
+    public Object active(URL FXMLname) {
         try {
-            Parent parent = FXMLLoader.load(FXMLname);
+            FXMLLoader loader = new FXMLLoader();
+            Parent parent = loader.load(FXMLname);
             main.setRoot(parent);
             makeFadeInEffect(parent);
+            return loader.getController();
         }
         catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
 
-    public static void activeSubscreen(SubScene subScene, URL FXMLname) {
+    public static Object activeSubscreen(SubScene subScene, URL FXMLname) {
         try {
-            Parent parent = FXMLLoader.load(FXMLname);
+            FXMLLoader loader = new FXMLLoader(FXMLname);
+            Parent parent = loader.load();
             subScene.setRoot(parent);
             makeFadeInEffect(parent);
+            return loader.getController();
         }
         catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
 

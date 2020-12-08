@@ -7,8 +7,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
+
+import app.config.AppConfig;
+import app.database.MSSQLDatabase;
 import app.database.base.ISQLDatabase;
+import app.database.config.AccountConfig;
+import app.database.config.HouseHoldConfig;
 import app.database.config.PeopleConfig;
+import app.entity.Account;
+import app.entity.HouseHold;
 import app.entity.People;
 import java.sql.Date;
 public interface ISQLDatabasePeople extends ISQLDatabase {
@@ -20,7 +27,7 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
                     " (" + PeopleConfig.PEOPLE_IDHOUSEHOLD +"," +
                     PeopleConfig.PEOPLE_FULLNAME + "," + PeopleConfig.PEOPLE_NICKNAME + "," + PeopleConfig.PEOPLE_BIRTHPLACE + "," +
                     PeopleConfig.PEOPLE_JOB  + "," + PeopleConfig.PEOPLE_DATEOFBIRTH + "," + PeopleConfig.PEOPLE_REGISDATE + "," +
-                    PeopleConfig.PEOPLE_HOUSEHOLDERRELA + "," + PeopleConfig.PEOPLE_ETHNIC + "," + PeopleConfig.PEOPLE_NATIVEPLACE + "," +
+                    PeopleConfig.PEOPLE_HOUSEHOLDERRELA + "," + PeopleConfig.PEOPLE_ETHNIC + "," +
                     PeopleConfig.PEOPLE_GENDER + "," + PeopleConfig.PEOPLE_WORKPLACE + "," +
                     PeopleConfig.PEOPLE_IDENTITYNO + "," + PeopleConfig.PEOPLE_IDENTITYMFG + "," + PeopleConfig.PEOPLE_IDENTITYORIGIN +
                     ")" + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
@@ -43,23 +50,18 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
 			
 			stmt.setString(9, people.getEthnic());
 			
-			stmt.setString(10, people.getNativePlace());
+			stmt.setInt(10, people.getGender());
 			
-			stmt.setInt(11, people.getGender());
+			stmt.setString(11, people.getWorkPlace());
 			
-			stmt.setString(12, people.getWorkPlace());
+			stmt.setString(12, people.getIdentityNo());
 			
-			stmt.setString(13, people.getIdentityNo());
+			stmt.setDate(13, people.getIdentityMfg()  );
 			
-			stmt.setDate(14, people.getIdentityMfg()  );
-			
-			stmt.setString(15, people.getIdentityOrigin());
+			stmt.setString(14, people.getIdentityOrigin());
 			
 			stmt.executeUpdate();
-			
-			
-			
-			
+
 			ResultSet generatedIDs = stmt.getGeneratedKeys();
             if (generatedIDs.next()) {
                 int insertedPeopleID = generatedIDs.getInt(1);
@@ -87,7 +89,22 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
         } catch (java.sql.SQLException e) {
             throw e;
         }
-    }	
+    }
+
+	default int countAllPeople() throws Exception {
+		try {
+			Statement stmt = getDatabase().createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT COUNT(" +  PeopleConfig.PEOPLE_ID + ")" +
+					" FROM " + PeopleConfig.TABLE_NAME + ";");
+
+			int count = 0;
+			if (rs.next()) count = rs.getInt(1);
+
+			return count;
+		} catch (java.sql.SQLException e) {
+			throw e;
+		}
+	}
 	
 	@Override
     default void updatePeople(People people) throws Exception {
@@ -97,7 +114,7 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
 					+ PeopleConfig.PEOPLE_NICKNAME  + "=? " + "," + PeopleConfig.PEOPLE_BIRTHPLACE + "=?" +  ","
 					+ PeopleConfig.PEOPLE_JOB  + "=? " + "," + PeopleConfig.PEOPLE_DATEOFBIRTH + "=?" +  ","
 					+ PeopleConfig.PEOPLE_REGISDATE  + "=? " + "," + PeopleConfig.PEOPLE_HOUSEHOLDERRELA + "=?" +  ","
-					+ PeopleConfig.PEOPLE_ETHNIC  + "=? " + "," + PeopleConfig.PEOPLE_NATIVEPLACE + "=?" +  ","
+					+ PeopleConfig.PEOPLE_ETHNIC  + "=? " + "=?" +  ","
 					+ PeopleConfig.PEOPLE_GENDER  + "=? " + "," + PeopleConfig.PEOPLE_WORKPLACE + "=?" +  ","
 					+ PeopleConfig.PEOPLE_IDENTITYNO  + "=? " + "," + PeopleConfig.PEOPLE_IDENTITYMFG + "=?"+  ","
 					+ PeopleConfig.PEOPLE_IDENTITYORIGIN  + "=? " 
@@ -158,6 +175,26 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
     		throw e;
     	}
     }
+    
+    @Override
+    default People searchPeople(String fullName) throws Exception {
+    	try {
+    		Statement stmt = this.getDatabase().createStatement();
+    		ResultSet rs = stmt.executeQuery("SELECT TOP 1 * FROM " + PeopleConfig.TABLE_NAME + " WHERE " 
+    		+ PeopleConfig.PEOPLE_FULLNAME  + " LIKE '%" + fullName + "%';");
+    		
+    		if(rs.next()) {
+    			return extractPeople(rs);
+    		}
+    		else {
+    			System.out.println("khong ton tai du lieu!");
+    			return null;
+    		}
+    	}
+    	catch (SQLException e) {
+    		throw e;
+    	}
+    }
 
     private People extractPeople(ResultSet rs) throws SQLException {
     	int peopleId = rs.getInt(PeopleConfig.PEOPLE_ID);
@@ -180,8 +217,6 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
     	
     	String peopleEthnic = rs.getString(PeopleConfig.PEOPLE_ETHNIC);
     	
-    	String peopleNativePlace = rs.getString(PeopleConfig.PEOPLE_NATIVEPLACE);
-    	
     	int peopleGender = rs.getInt(PeopleConfig.PEOPLE_GENDER);
     	
     	String peopleWorkPlace = rs.getString(PeopleConfig.PEOPLE_WORKPLACE);
@@ -194,9 +229,26 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
     	
 
         return new People(peopleId, peopleIdHouseHold, peopleFullName, peopleNickName, peopleIdBirthPlace, peopleJob,peopleDateOfBirth,
-        		peopleRegisDate, peopleHouseHolderRela, peopleEthnic, peopleNativePlace, peopleGender, peopleWorkPlace,
+        		peopleRegisDate, peopleHouseHolderRela, peopleEthnic, peopleGender, peopleWorkPlace,
         		peopleIdentityNo, peopleIdentityMfg, peopleIdentityOrigin);
     }
+
+	public static void main(String[] args) {
+		try {
+			System.out.println("Start connecting to DB...");
+			MSSQLDatabase testConn = new MSSQLDatabase(AppConfig.databaseHostname, AppConfig.databaseName, AppConfig.databaseUsername, AppConfig.databasePassword);
+			var conn = testConn.getDatabase();
+			System.out.println("Try getting count people...");
+			System.out.println("Count: " + testConn.countAllPeople());
+
+			System.out.println("Connected to DB successfully.");
+			conn.close();
+		} catch (Exception e) {
+			System.out.println("Error when connect to DB:");
+			System.out.println(e.getMessage());
+			System.out.println("Connecting to DB Failed...");
+		}
+	}
 }
 
 

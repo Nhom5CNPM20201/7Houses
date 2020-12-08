@@ -2,59 +2,91 @@ package app.services;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import app.database.MSSQLDatabase;
 import app.database.config.HouseHoldConfig;
 import app.entity.HouseHold;
+import app.helper.StringHelper;
+import app.services.common.LogService;
+import app.services.common.NotiService;
+import jdk.jshell.spi.ExecutionControl;
 
 public class HouseHoldService {
 	private static MSSQLDatabase orm;
 	private HouseHold houseHold;
+
+	private List<HouseHold> houseHoldList = new ArrayList<HouseHold>();
 	
 	public HouseHoldService() {
-		
+		Init();
 	}
-	
-	private static MSSQLDatabase inORM() throws Exception{
-		if(orm == null) orm = MSSQLDatabase.getInstance();
-		return orm;
-	}
-	
-	public void createHouseHold(HouseHold houseHold) {
+
+	public void Init() {
 		try {
-			orm = inORM();
+			this.houseHoldList = MSSQLDatabase.getInstance().getAllHouseHold();
+
+			for (var houseHold : houseHoldList) {
+				var address = ServiceFactory.getAddressService().searchAddress(houseHold.getIdAddress());
+				houseHold.setAddressDetail(address.getDetail());
+			}
+		} catch (Exception e) {
+			LogService.error(e.getMessage());
+		}
+	}
+	
+	public HouseHold createHouseHold(HouseHold houseHold) {
+		try {
+			orm = MSSQLDatabase.getInstance();
 			HouseHold searchHH = orm.searchHouseHold(houseHold.getHouseHoldBook());
 			if(searchHH == null) {
+				houseHold.setId(houseHoldList.size() + 1);
+				houseHoldList.add(houseHold);
 				orm.insertHouseHold(houseHold);
-				System.out.println("Tao thanh cong.");
+				NotiService.info("Tao thanh cong.");
+				return houseHold;
 			}
 			else {
-				System.out.println("Da ton tai ho khau!");
+				NotiService.info("Da ton tai ho khau!");
+				return null;
 			}
 			
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
+			return null;
 		}
 	}
 	
-	public void getAllHouseHold() {
+	public List<HouseHold> getAllHouseHold() {
+		return this.houseHoldList;
+	}
+
+	public int countAllHouseHold() {
 		try {
-			orm = inORM();
-			List<HouseHold> houseHolds = orm.getAllHouseHold();
-			for(HouseHold i : houseHolds) {
-				System.out.println(i.getHouseHoldBook() + "\t" + i.getName());
-			}
+			int count = MSSQLDatabase.getInstance().countAllHouseHold();
+			return count;
+		} catch(Exception e) {
+			LogService.error(e.getMessage());
+			return 0;
 		}
-		catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
+	}
+
+	public List<HouseHold> searchHouseHoldFull(String query) {
+		List<HouseHold> searchedHouseHolds = this.houseHoldList.stream()
+				.filter(h ->
+					 StringHelper.containNormalString(h.getHouseHoldBook(), query)
+					 || StringHelper.containNormalString(h.getName(), query)
+					 || StringHelper.containNormalString(h.getAddressDetail(), query)
+				).collect(Collectors.toList());
+		return searchedHouseHolds;
 	}
 	
 	public void searchHouseHold(String houseHoldBook) {
 		try {
-			orm = inORM();
+			orm = MSSQLDatabase.getInstance();
 			HouseHold searchHH = orm.searchHouseHold(houseHoldBook);
 			if(searchHH != null) System.out.println(searchHH.getHouseHoldBook() + "\t" + searchHH.getName());
 		}
@@ -65,7 +97,7 @@ public class HouseHoldService {
 	
 	public void deleteHouseHold(String houseHoldBook) {
 		try {
-			orm = inORM();
+			orm = MSSQLDatabase.getInstance();
 			HouseHold searchHH = orm.searchHouseHold(houseHoldBook);
 			if(searchHH != null) {
 				orm.removeHouseHold(searchHH);
@@ -76,6 +108,11 @@ public class HouseHoldService {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	public void updateHouseHold() {
+		
+	}
+	
 //	Test Service
 /*
 	public static void main(String[] args) {

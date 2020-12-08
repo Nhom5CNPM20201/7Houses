@@ -59,7 +59,7 @@ public class People  {
    
 
 	public People(int id, int idHouseHold, String fullName, String nickName, String birthPlace, String job,
-		Date dateOfBirth, Date regisDate, int houseHolderRela, String ethnic, String nativePlace, int gender,
+		Date dateOfBirth, Date regisDate, int houseHolderRela, String ethnic, int gender,
 		String workPlace, String identityNo, Date identityMfg, String identityOrigin) {
 	this.id = id;
 	this.idHouseHold = idHouseHold;
@@ -71,7 +71,6 @@ public class People  {
 	this.regisDate = regisDate;
 	this.houseHolderRela = houseHolderRela;
 	this.ethnic = ethnic;
-	this.nativePlace = nativePlace;
 	this.gender = gender;
 	this.workPlace = workPlace;
 	this.identityNo = identityNo;

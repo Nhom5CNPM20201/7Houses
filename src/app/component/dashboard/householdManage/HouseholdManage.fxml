@@ -14,9 +14,9 @@
    <children>
       <AnchorPane prefHeight="64.0" prefWidth="810.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox layoutX="28.0" layoutY="17.0" styleClass="text_box" stylesheets="@../style.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="12.0">
+            <HBox layoutX="28.0" layoutY="17.0" styleClass="text_box" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="12.0">
                <children>
-                  <Button fx:id="btnAdd" graphicTextGap="8.0" mnemonicParsing="false" onAction="#addOnClick" stylesheets="@../style.css" text="Thêm ">
+                  <Button fx:id="btnAdd" graphicTextGap="8.0" mnemonicParsing="false" onAction="#addOnClick" text="Thêm ">
                      <graphic>
                         <FontAwesomeIconView glyphName="PLUS" size="18" />
                      </graphic>
@@ -30,7 +30,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnEdit" graphicTextGap="8.0" mnemonicParsing="false" onAction="#editOnClick" text="Sửa">
+                  <Button fx:id="btnEdit" graphicTextGap="8.0" mnemonicParsing="false" onAction="#updateOnClick" text="Thay đổi">
                      <graphic>
                         <FontAwesomeIconView glyphName="PENCIL" size="18" />
                      </graphic>

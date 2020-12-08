@@ -31,10 +31,10 @@
                      <children>
                         <TableView prefHeight="246.0" prefWidth="796.0" style="-fx-background-radius: 5px; -fx-border-color: #FFFFFF; -fx-border-radius: 5px;" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
                            <columns>
-                              <TableColumn maxWidth="78.0" prefWidth="56.0" resizable="false" styleClass="column_header" text="STT" />
-                              <TableColumn prefWidth="239.66668701171875" styleClass="column_header" text="Chủ hộ" />
-                              <TableColumn prefWidth="321.4443359375" styleClass="column_header" text="Địa chỉ" />
-                              <TableColumn minWidth="0.0" prefWidth="159.963134765625" styleClass="column_header" text="Ngày thêm" />
+                              <TableColumn maxWidth="78.0" prefWidth="56.0" resizable="false" text="STT" />
+                              <TableColumn prefWidth="239.66668701171875" text="Chủ hộ" />
+                              <TableColumn prefWidth="321.4443359375"  text="Địa chỉ" />
+                              <TableColumn minWidth="0.0" prefWidth="159.963134765625" text="Ngày thêm" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -55,7 +55,7 @@
             </HBox>
             <HBox layoutX="159.0" layoutY="15.0" styleClass="search_box" stylesheets="@../style.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="15.0">
                <children>
-                  <TextField prefHeight="33.0" prefWidth="215.0" promptText="Tìm kiếm" style="-fx-background-color: transparent;" />
+                  <TextField fx:id="queryTextField" prefHeight="33.0" prefWidth="215.0" promptText="Tìm kiếm" style="-fx-background-color: transparent;" />
                   <Button fx:id="btnFind" alignment="CENTER" mnemonicParsing="false" onAction="#findOnClick" prefHeight="32.0" prefWidth="50.0" stylesheets="@../style.css">
                      <graphic>
                         <FontAwesomeIconView glyphName="SEARCH" size="20" wrappingWidth="16.571428298950195" />

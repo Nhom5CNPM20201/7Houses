@@ -37,6 +37,8 @@ public interface IDatabase {
     
 	List<People> getAllPeoples() throws Exception;  
 	
+	People searchPeople(String fullName) throws Exception;
+	
 // Change region	
 
 	void insertChange(Change change) throws Exception;
@@ -85,12 +87,15 @@ public interface IDatabase {
     void removeFee(int id) throws Exception;
 
     List<Fee> getAllFee() throws Exception;
+
   // TS region
-  void insertTS(TemporaryResident ts) throws Exception;
+
+    void insertTS(TemporaryResident ts) throws Exception;
 
     void updateTS(TemporaryResident ts) throws Exception;
 
     void removeTS(int id) throws Exception;
 
     List<TemporaryResident> getAllTS() throws Exception;
+
 }

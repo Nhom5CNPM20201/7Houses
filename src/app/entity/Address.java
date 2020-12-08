@@ -27,6 +27,9 @@ public class Address {
         this.city = city;
         this.information = information;
     }
+    public String getDetail(){
+        return "Số "+numberHouse+", đường "+street+", Phường "+subDistrict+", Quận "+District+", Thành phố "+city;
+    }
 
     public Address() {
 
