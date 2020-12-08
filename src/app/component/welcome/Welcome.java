@@ -8,6 +8,7 @@ import app.utility.SecurityUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
@@ -19,7 +20,6 @@ public class Welcome implements Initializable {
     private TextField usernameField;
     @FXML
     private TextField passwordField;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -42,4 +42,5 @@ public class Welcome implements Initializable {
     public void guestLogin(ActionEvent e) {
         Mediator.Notify("onGoingDashboard");
     }
+
 }

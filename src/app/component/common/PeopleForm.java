@@ -1,22 +1,20 @@
 package app.component.common;
 
+import app.entity.People;
+import app.utility.viewUtils.Mediator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
-import javax.swing.*;
+import java.net.URL;
+import java.sql.Date;
+import java.util.ResourceBundle;
 
-public class PeopleForm {
-
-    @FXML
-    private SplitMenuButton hoTenCH;
-
-    @FXML
-    private Button onClickCancel;
-
-    @FXML
-    private Button onClickOK;
-
+public class PeopleForm implements Initializable {
+    private People newPeople;
     @FXML
     private DatePicker ngayCapCMND;
 
@@ -51,19 +49,37 @@ public class PeopleForm {
     private TextField noiCapCMND;
 
     @FXML
-    private MenuButton qHCH;
+    private TextField idHoKhau;
 
     @FXML
-    private MenuButton gioiTinh;
+    private ComboBox<String> cbboxQHCH;
 
     @FXML
-    public void onClickOK(ActionEvent event) {
+    private ComboBox<String> cbboxGioiTinh;
+
+    @FXML
+    void gioitinhOnclick(ActionEvent event) {
 
     }
 
     @FXML
-    public void onClickCancel(ActionEvent event) {
+    void onClickCancel(ActionEvent event) {
+        Mediator.Notify("peopleOnClick");
+    }
+
+    @FXML
+    void onClickOK(ActionEvent event) {
+        newPeople = new People();
+        
+    }
+
+    @FXML
+    void qhchOnclick(ActionEvent event) {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
