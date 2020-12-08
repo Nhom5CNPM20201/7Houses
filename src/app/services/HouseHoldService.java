@@ -4,12 +4,15 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import app.database.MSSQLDatabase;
 import app.database.config.HouseHoldConfig;
 import app.entity.HouseHold;
+import app.helper.StringHelper;
 import app.services.common.LogService;
 import app.services.common.NotiService;
+import jdk.jshell.spi.ExecutionControl;
 
 public class HouseHoldService {
 	private static MSSQLDatabase orm;
@@ -69,6 +72,16 @@ public class HouseHoldService {
 			LogService.error(e.getMessage());
 			return 0;
 		}
+	}
+
+	public List<HouseHold> searchHouseHoldFull(String query) {
+		List<HouseHold> searchedHouseHolds = this.houseHoldList.stream()
+				.filter(h ->
+					 StringHelper.containNormalString(h.getHouseHoldBook(), query)
+					 || StringHelper.containNormalString(h.getName(), query)
+					 || StringHelper.containNormalString(h.getAddressDetail(), query)
+				).collect(Collectors.toList());
+		return searchedHouseHolds;
 	}
 	
 	public void searchHouseHold(String houseHoldBook) {

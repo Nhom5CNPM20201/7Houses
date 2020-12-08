@@ -45,9 +45,9 @@
          </children>
       </AnchorPane>
       <AnchorPane layoutY="230.0" prefHeight="238.0" prefWidth="808.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <TableView fx:id="tblListHouseHold" layoutX="50" layoutY="220" prefHeight="200" prefWidth="650">
+      <TableView fx:id="tblListPeople" layoutX="50" layoutY="220" prefHeight="200" prefWidth="650">
          <columns>
-            <TableColumn fx:id="peopleNo" maxWidth="78.0" prefWidth="56.0" resizable="false" text="STT" />
+            <TableColumn fx:id="peopleNo" maxWidth="78.0" prefWidth="56.0" resizable="false" text="Id" />
             <TableColumn fx:id="peopleName" prefWidth="239.66668701171875" text="Họ và tên" />
             <TableColumn fx:id="idCardNo" prefWidth="321.4443359375" text="Số CMND" />
          </columns>

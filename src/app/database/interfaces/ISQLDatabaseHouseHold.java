@@ -9,6 +9,7 @@ import app.database.base.ISQLDatabase;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public interface ISQLDatabaseHouseHold extends ISQLDatabase {
@@ -39,88 +40,75 @@ public interface ISQLDatabaseHouseHold extends ISQLDatabase {
 	
 	@Override
     default List<HouseHold> getAllHouseHold() throws Exception {
-        try {
-            Statement stmt = this.getDatabase().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT *" +
-                    " FROM " + HouseHoldConfig.TABLE_NAME + ";");
+        Statement stmt = this.getDatabase().createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT *" +
+                " FROM " + HouseHoldConfig.TABLE_NAME + ";");
 
-            List<HouseHold> houseHoldList = new ArrayList<>();
+        List<HouseHold> houseHoldList = new ArrayList<>();
 
-            while (rs.next()) {
-                houseHoldList.add(extractHouseHold(rs));
-            }
-
-            return houseHoldList;
-        } catch (java.sql.SQLException e) {
-            throw e;
+        while (rs.next()) {
+            houseHoldList.add(extractHouseHold(rs));
         }
+
+        return houseHoldList;
     }
 
     default int countAllHouseHold() throws Exception {
-        try {
-            Statement stmt = getDatabase().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT COUNT(" +  PeopleConfig.PEOPLE_ID + ")" +
-                    " FROM " + HouseHoldConfig.TABLE_NAME + ";");
+        Statement stmt = getDatabase().createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT COUNT(" +  HouseHoldConfig.HOUSEHOLD_ID + ")" +
+                " FROM " + HouseHoldConfig.TABLE_NAME + ";");
 
-            int count = 0;
-            if (rs.next()) count = rs.getInt(1);
+        int count = 0;
+        if (rs.next()) count = rs.getInt(1);
 
-            return count;
-        } catch (java.sql.SQLException e) {
-            throw e;
-        }
+        return count;
+    }
+
+    default int countHouseHoldFromTo(Date begin, Date end) throws Exception {
+        Statement stmt = getDatabase().createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT COUNT(" +  HouseHoldConfig.HOUSEHOLD_ID + ")" +
+                " FROM " + HouseHoldConfig.TABLE_NAME + " WHERE "  + ";");
+
+        int count = 0;
+        if (rs.next()) count = rs.getInt(1);
+
+        return count;
     }
 	
 	@Override
     default void updateHouseHold(HouseHold houseHold) throws Exception {
-		try {
-			PreparedStatement stmt = this.getDatabase().prepareStatement("UPDATE " + HouseHoldConfig.TABLE_NAME + " SET "
-					+ HouseHoldConfig.HOUSEHOLD_IDOWNER + "=? " + "," + HouseHoldConfig.HOUSEHOLD_NAME + "=?" 
-					+ " WHERE " + HouseHoldConfig.HOUSEHOLD_HOUSEHOLDBOOK + "=? " + "AND " 
-					+ HouseHoldConfig.HOUSEHOLD_IDADDRESS + "=?");
-			stmt.setInt(1, houseHold.getIdOwner());
-			stmt.setString(2, houseHold.getName());
-			stmt.setString(3, houseHold.getHouseHoldBook());
-			stmt.setInt(4, houseHold.getIdAddress());
-			stmt.executeUpdate();
-		}
-		catch(SQLException e) {
-			throw e;
-		}
-		
+        PreparedStatement stmt = this.getDatabase().prepareStatement("UPDATE " + HouseHoldConfig.TABLE_NAME + " SET "
+                + HouseHoldConfig.HOUSEHOLD_IDOWNER + "=? " + "," + HouseHoldConfig.HOUSEHOLD_NAME + "=?"
+                + " WHERE " + HouseHoldConfig.HOUSEHOLD_HOUSEHOLDBOOK + "=? " + "AND "
+                + HouseHoldConfig.HOUSEHOLD_IDADDRESS + "=?");
+        stmt.setInt(1, houseHold.getIdOwner());
+        stmt.setString(2, houseHold.getName());
+        stmt.setString(3, houseHold.getHouseHoldBook());
+        stmt.setInt(4, houseHold.getIdAddress());
+        stmt.executeUpdate();
     }
 
     @Override
     default void removeHouseHold(HouseHold houseHold) throws Exception {
-    	try {
-    		PreparedStatement stmt = this.getDatabase().prepareStatement("DELETE FROM " + HouseHoldConfig.TABLE_NAME + " WHERE " 
-					+ HouseHoldConfig.HOUSEHOLD_ID + "=" + "?");
-    		stmt.setInt(1, houseHold.getId());
-    		stmt.executeUpdate();
-    	}
-    	catch(SQLException e) {
-    		throw e;
-    	}
+        PreparedStatement stmt = this.getDatabase().prepareStatement("DELETE FROM " + HouseHoldConfig.TABLE_NAME + " WHERE "
+                + HouseHoldConfig.HOUSEHOLD_ID + "=" + "?");
+        stmt.setInt(1, houseHold.getId());
+        stmt.executeUpdate();
     }
     
     @Override
     default HouseHold searchHouseHold(String houseHoldBook) throws Exception {
-    	try {
-    		Statement stmt = this.getDatabase().createStatement();
-    		ResultSet rs = stmt.executeQuery("SELECT TOP 1 * FROM " + HouseHoldConfig.TABLE_NAME + " WHERE " 
-    		+ HouseHoldConfig.HOUSEHOLD_HOUSEHOLDBOOK + " LIKE '%" + houseHoldBook + "%';");
-    		
-    		if(rs.next()) {
-    			return extractHouseHold(rs);
-    		}
-    		else {
-    			System.out.println("khong ton tai du lieu!");
-    			return null;
-    		}
-    	}
-    	catch (SQLException e) {
-    		throw e;
-    	}
+        Statement stmt = this.getDatabase().createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT TOP 1 * FROM " + HouseHoldConfig.TABLE_NAME + " WHERE "
+                + HouseHoldConfig.HOUSEHOLD_HOUSEHOLDBOOK + " LIKE '%" + houseHoldBook + "%';");
+
+        if(rs.next()) {
+            return extractHouseHold(rs);
+        }
+        else {
+            System.out.println("khong ton tai du lieu!");
+            return null;
+        }
     }
 
     private HouseHold extractHouseHold(ResultSet rs) throws SQLException {

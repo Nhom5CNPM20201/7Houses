@@ -50,7 +50,7 @@ public class HouseholdManage implements Initializable {
     }
 
     @FXML
-    public void editOnClick(ActionEvent event) {
+    public void updateOnClick(ActionEvent event) {
         if (mainHouseHoldController != null && HouseholdList.class.isInstance(mainHouseHoldController)) {
             HouseHold selectedHouseHold = ((HouseholdList) mainHouseHoldController).getSelectedHouseHold();
             if (selectedHouseHold != null)

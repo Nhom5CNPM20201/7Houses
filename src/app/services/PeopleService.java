@@ -1,19 +1,21 @@
 package app.services;
 
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import app.database.MSSQLDatabase;
-import app.database.config.PeopleConfig;
 import app.entity.People;
+import app.helper.StringHelper;
 import app.services.common.LogService;
 
 public class PeopleService {
 	private static MSSQLDatabase orm;
 	private People people;
 
-	private List<People> peoples;
+	private List<People> peopleList = new ArrayList<People>();
 	
 	public PeopleService() {
 		initPeople();
@@ -50,7 +52,7 @@ public class PeopleService {
 	public void initPeople() {
 		try {
 			orm = MSSQLDatabase.getInstance();
-			peoples = orm.getAllPeoples();
+			peopleList = orm.getAllPeoples();
 		}
 		catch(Exception e) {
 			LogService.error(e.getMessage());
@@ -58,10 +60,21 @@ public class PeopleService {
 	}
 
 	public List<People> getAllPeople() {
-		return peoples;
+		return peopleList;
+	}
+
+	public List<People> searchPeopleFull(String query) {
+		List<People> searchedPeople = this.peopleList.stream()
+				.filter(h ->
+						StringHelper.containNormalString(h.getIdentityNo(), query)
+						|| StringHelper.containNormalString(h.getFullName(), query)
+						|| StringHelper.containNormalString(h.getNickName(), query)
+				).collect(Collectors.toList());
+
+		return searchedPeople;
 	}
 	
-	public void searchPeople(String fullName) {
+	public void searchPeopleByFullName(String fullName) {
 		try {
 			orm = MSSQLDatabase.getInstance();
 			People searchP = orm.searchPeople(fullName);
@@ -89,16 +102,13 @@ public class PeopleService {
 	public void updatePeople() {
 		
 	}
-	
-//	Test Service
-/*
+
+
 	public static void main(String[] args) {
 		PeopleService pService = new PeopleService();
-		People people = new People();
-	//	pService.createPeople(people);
-//		pService.searchPeople("mt");
-//		pService.deletePeople("Nguyen Van A");
-//		pService.getAllPeople();
-	} 
-	*/
+
+		for (var item : pService.searchPeopleFull("xxxxxx")) {
+			LogService.info(item.getFullName());
+		}
+	}
 }

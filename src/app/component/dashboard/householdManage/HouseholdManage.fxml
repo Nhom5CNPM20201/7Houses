@@ -30,7 +30,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnEdit" graphicTextGap="8.0" mnemonicParsing="false" onAction="#editOnClick" text="Sửa">
+                  <Button fx:id="btnEdit" graphicTextGap="8.0" mnemonicParsing="false" onAction="#updateOnClick" text="Thay đổi">
                      <graphic>
                         <FontAwesomeIconView glyphName="PENCIL" size="18" />
                      </graphic>
