@@ -1,3 +1,7 @@
+Create database QLDC;
+go
+use QLDC;
+
 Create table NhanKhau(
 	Id int not null primary key identity(1,1),
 	IdHoKhau int,
@@ -92,14 +96,14 @@ create table TaiKhoan(
 
 alter table TamTruVang
 add constraint FK_TamTruVang_NhanKhau foreign key(IdNhanKhau) references NhanKhau(Id);
-alter table NhanKhau
-add constraint FK_NhanKhau_HoKhau foreign key(IdHoKhau) references HoKhau(Id);
 alter table ThayDoiKhac
 add constraint FK_ThayDoiKhac_HoKhau foreign key(IdHoKhau) references HoKhau(Id);
 alter table ThayDoiKhac
 add constraint FK_ThayDoiKhac_NhanKhau foreign key(IdNhanKhau) references NhanKhau(Id);
 alter table HoKhau
 add constraint FK_HoKhau_DiaChiTT foreign key(IdDiaChi) references DiaChiTT(Id);
+alter table HoKhau
+add constraint FK_HoKhau_NhanKhau foreign key(IdChuHoKhau) references NhanKhau(Id);
 alter table DiChuyen
 add constraint FK_DiChuyen_NhanKhau foreign key(IdNhanKhau) references NhanKhau(Id);
 alter table DiChuyen
