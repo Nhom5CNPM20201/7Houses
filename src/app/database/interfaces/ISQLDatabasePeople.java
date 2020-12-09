@@ -30,7 +30,7 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
                     PeopleConfig.PEOPLE_HOUSEHOLDERRELA + "," + PeopleConfig.PEOPLE_ETHNIC + "," +
                     PeopleConfig.PEOPLE_GENDER + "," + PeopleConfig.PEOPLE_WORKPLACE + "," +
                     PeopleConfig.PEOPLE_IDENTITYNO + "," + PeopleConfig.PEOPLE_IDENTITYMFG + "," + PeopleConfig.PEOPLE_IDENTITYORIGIN +
-                    ")" + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+                    ")" + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			
 			stmt.setInt(1, people.getIdHouseHold());
 			
@@ -42,9 +42,9 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
 			
 			stmt.setString(5, people.getJob());
 			
-			stmt.setDate(6, people.getDateOfBirth());
+			stmt.setDate(6, new Date(people.getDateOfBirth().getTime()));
 			
-			stmt.setDate(7, people.getRegisDate());   
+			stmt.setDate(7, new Date(people.getRegisDate().getTime()));
 			
 			stmt.setInt(8, people.getHouseHolderRela());
 			
@@ -56,7 +56,7 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
 			
 			stmt.setString(12, people.getIdentityNo());
 			
-			stmt.setDate(13, people.getIdentityMfg()  );
+			stmt.setDate(13, new Date(people.getIdentityMfg().getTime()));
 			
 			stmt.setString(14, people.getIdentityOrigin());
 			
@@ -133,9 +133,9 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
 			
 			stmt.setString(5, people.getJob());
 			
-			stmt.setDate(6, people.getDateOfBirth());
+			stmt.setString(6, people.getDateOfBirth().toString());
 			
-			stmt.setDate(7, people.getRegisDate()   ); 
+			stmt.setString(7, people.getRegisDate().toString());
 			
 			stmt.setInt(8, people.getHouseHolderRela());
 			
@@ -149,7 +149,7 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
 			
 			stmt.setString(13, people.getIdentityNo());
 			
-			stmt.setDate(14, people.getIdentityMfg()  );
+			stmt.setString(14, people.getIdentityMfg().toString());
 			
 			stmt.setString(15, people.getIdentityOrigin());
 			

@@ -34,7 +34,9 @@ public class Dashboard implements Initializable {
         setPosition(ServiceFactory.getAuthService().getCurrentAccount());
 
         Mediator.unSubscribe("houseHoldOnClick");
+        Mediator.unSubscribe("peopleOnClick");
         Mediator.subscribe("houseHoldOnClick", event -> houseHoldOnClick(null));
+        Mediator.subscribe("peopleOnClick", event -> peopleOnClick(null));
     }
 
     private void setPosition(Account account) {

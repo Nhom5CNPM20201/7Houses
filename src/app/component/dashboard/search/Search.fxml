@@ -55,7 +55,7 @@
             </HBox>
             <HBox layoutX="159.0" layoutY="15.0" styleClass="search_box" stylesheets="@../style.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="15.0">
                <children>
-                  <TextField prefHeight="33.0" prefWidth="215.0" promptText="Tìm kiếm" style="-fx-background-color: transparent;" />
+                  <TextField fx:id="queryTextField" prefHeight="33.0" prefWidth="215.0" promptText="Tìm kiếm" style="-fx-background-color: transparent;" />
                   <Button fx:id="btnFind" alignment="CENTER" mnemonicParsing="false" onAction="#findOnClick" prefHeight="32.0" prefWidth="50.0" stylesheets="@../style.css">
                      <graphic>
                         <FontAwesomeIconView glyphName="SEARCH" size="20" wrappingWidth="16.571428298950195" />
