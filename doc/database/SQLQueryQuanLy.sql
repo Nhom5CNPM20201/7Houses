@@ -52,7 +52,6 @@ create table HoKhau(
 create table DiChuyen(
 	Id int not null primary key identity(1,1),
 	IdHoKhau int,
-	IdNhanKhau int,
 	IdDiaChiCu int,
 	IdDiaChiMoi int,
 	NgayChuyen date,
@@ -104,8 +103,6 @@ alter table HoKhau
 add constraint FK_HoKhau_DiaChiTT foreign key(IdDiaChi) references DiaChiTT(Id);
 alter table HoKhau
 add constraint FK_HoKhau_NhanKhau foreign key(IdChuHoKhau) references NhanKhau(Id);
-alter table DiChuyen
-add constraint FK_DiChuyen_NhanKhau foreign key(IdNhanKhau) references NhanKhau(Id);
 alter table DiChuyen
 add constraint FK_DiChuyen_HoKhau foreign key(IdHoKhau) references HoKhau(Id);
 alter table DiChuyen
