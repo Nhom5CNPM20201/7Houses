@@ -82,12 +82,13 @@ public interface ISQLDatabaseTemporaryResident extends ISQLDatabase {
                     + " , " + TemporaryResidentConfig.TS_DURATION + " =?"
                     + " , " + TemporaryResidentConfig.TS_CAGETORY + " =?"
                     + " , " + TemporaryResidentConfig.TS_INFOR +" =? " + " WHERE " + TemporaryResidentConfig.TS_IDPEOPLE + " = " +  ts.getIdPeople());
-            stmt.setInt(1, ts.getIdAddress());
-            stmt.setDate(2, ts.getTime());
-            stmt.setDate(3, ts.getStart());
-            stmt.setInt(4, ts.getDuration());
-            stmt.setInt(5, ts.getCagetory());
-            stmt.setString(6, ts.getInformation());
+            stmt.setInt(1, ts.getIdPeople());
+            stmt.setInt(2, ts.getIdAddress());
+            stmt.setDate(3, ts.getTime());
+            stmt.setDate(4, ts.getStart());
+            stmt.setInt(5, ts.getDuration());
+            stmt.setInt(6, ts.getCagetory());
+            stmt.setString(7, ts.getInformation());
             stmt.executeUpdate();
         } catch (SQLDataException e) {
             throw e;
@@ -98,7 +99,7 @@ public interface ISQLDatabaseTemporaryResident extends ISQLDatabase {
     @Override
     default void removeTS(int id) throws Exception {
         try {
-            PreparedStatement stmt = this.getDatabase().prepareStatement("Delete from " + AddressConfig.TABLE_NAME +
+            PreparedStatement stmt = this.getDatabase().prepareStatement("Delete from " + TemporaryResidentConfig.TABLE_NAME +
                     " where " + TemporaryResidentConfig.TS_IDPEOPLE + " = " + id);
             stmt.executeUpdate();
         } catch (SQLDataException e) {
@@ -132,14 +133,18 @@ public interface ISQLDatabaseTemporaryResident extends ISQLDatabase {
             var conn = testConn.getDatabase();
 
             System.out.print("Try getting all accounts\n");
-            System.out.println("Connected to DB successfully.");
+         //   TemporaryResident ts = new TemporaryResident(2,3,Date.valueOf("11-11-2000"), Date.valueOf("02-02-1999"), 7, 1 , "no");
+         //   testConn.insertTS(ts);
             testConn.searchTS(3);
+         //   testConn.updateTS(new TemporaryResident(2,3,Date.valueOf("11-11-2000"), Date.valueOf("02-02-1999"), 7, 1 , "no"));
+
             List<TemporaryResident> tsList = testConn.getAllTS();
             for(var i: tsList){
                 System.out.println(i.getIdPeople() + "\t " + i.getIdAddress() + ", " + i.getTime() + ", " + i.getStart()
                         + ", " + i.getDuration() + ", " + i.getCagetory());
             }
             testConn.getAllTS();
+            System.out.println("Connected to DB successfully.");
             conn.close();
 
 
