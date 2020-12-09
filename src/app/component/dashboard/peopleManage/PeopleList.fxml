@@ -11,7 +11,7 @@
    <children>
       <HBox alignment="CENTER" layoutX="384.0" layoutY="15.41796875" prefHeight="52.0" prefWidth="808.0" styleClass="sub_header" stylesheets="@../style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sách nhân khẩu">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sÃ¡ch nhÃ¢n kháº©u">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -24,10 +24,10 @@
                <children>
                   <TableView fx:id="tblListHouseHold" layoutX="14.0" layoutY="6.0" prefHeight="234.0" prefWidth="796.0" style="-fx-background-radius: 5px; -fx-border-color: #FFFFFF; -fx-border-radius: 5px;" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
                      <columns>
-                        <TableColumn maxWidth="78.0" prefWidth="56.0" resizable="false" styleClass="column_header" text="STT" />
-                        <TableColumn prefWidth="239.66668701171875" styleClass="column_header" text="Họ và tên" />
-                        <TableColumn prefWidth="321.4443359375" styleClass="column_header" text="Địa chỉ" />
-                        <TableColumn minWidth="0.0" prefWidth="184.0" styleClass="column_header" text="Số hộ khẩu" />
+                        <TableColumn fx:id = id  maxWidth="78.0" prefWidth="56.0" resizable="false" styleClass="column_header" text="STT" />
+                        <TableColumn fx:id = fullName prefWidth="239.66668701171875" styleClass="column_header" text="Há»� vÃ  tÃªn" />
+                        <TableColumn fx:id = nickName prefWidth="321.4443359375" styleClass="column_header" text="Ä�á»‹a chá»‰" />
+                        <TableColumn fx:id = idHouseHold minWidth="0.0" prefWidth="184.0" styleClass="column_header" text="Sá»‘ há»™ kháº©u" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

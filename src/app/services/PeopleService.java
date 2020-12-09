@@ -45,16 +45,15 @@ public class PeopleService {
 		}
 	}
 	
-	public void getAllPeople() {
+	public List<People> getAllPeople() {
 		try {
 			orm = MSSQLDatabase.getInstance();
 			List<People> peoples = orm.getAllPeoples();
-			for(People i : peoples) {
-				System.out.println(i.getFullName() + "\t" + i.getFullName());
-			}
+			return peoples;
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
+			return null;
 		}
 	}
 	
