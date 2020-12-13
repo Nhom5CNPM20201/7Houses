@@ -44,6 +44,20 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Button fx:id="btnTemporary" graphicTextGap="8.0" mnemonicParsing="false" onAction="#editOnClick" text="Tạm trú, vắng">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="PLUS" size="18" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                   <Button fx:id="btnDelete" graphicTextGap="8.0" mnemonicParsing="false" onAction="#deleteOnClick" text="Xóa">
                      <graphic>
                         <FontAwesomeIconView glyphName="CLOSE" size="18" />

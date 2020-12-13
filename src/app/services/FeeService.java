@@ -5,6 +5,7 @@ import app.entity.Fee;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FeeService {
     private Fee fee;
@@ -17,7 +18,6 @@ public class FeeService {
         try {
             MSSQLDatabase.getInstance().insertFee(fee);
             fee.setId(feeList.toArray().length);
-            System.out.println("Them phi thanh cong!");
             feeList.add(fee);
             return fee;
         } catch (Exception e) {
@@ -54,6 +54,15 @@ public class FeeService {
 
     public List<Fee> getAllFee() {
         return feeList;
+    }
+
+    public List<String> getAllFeeDetail() {
+        List<String> feeDetails = new ArrayList<>();
+        feeList.forEach(x -> {
+            feeDetails.add(x.getDetail());
+        });
+
+        return feeDetails;
     }
 
     public void deleteFee(int id) {

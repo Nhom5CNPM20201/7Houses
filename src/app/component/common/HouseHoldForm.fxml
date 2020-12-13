@@ -61,7 +61,8 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
       <Button fx:id="cancelButton" layoutX="582.0" layoutY="472.0" mnemonicParsing="false" onAction="#cancelOnClick" style="-fx-background-color: white;" styleClass="text_box_child" text="CANCEL">
          <font>
             <Font size="14.0" />
