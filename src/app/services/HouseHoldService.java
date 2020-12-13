@@ -2,17 +2,20 @@ package app.services;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import app.database.MSSQLDatabase;
-import app.database.config.HouseHoldConfig;
 import app.entity.HouseHold;
+import app.helper.DateHelper;
 import app.helper.StringHelper;
 import app.services.common.LogService;
 import app.services.common.NotiService;
-import jdk.jshell.spi.ExecutionControl;
+
 
 public class HouseHoldService {
 	private static MSSQLDatabase orm;
@@ -42,6 +45,7 @@ public class HouseHoldService {
 			orm = MSSQLDatabase.getInstance();
 			HouseHold searchHH = orm.searchHouseHold(houseHold.getHouseHoldBook());
 			if(searchHH == null) {
+				houseHold.setCreatedDate(new Date());
 				houseHold.setId(houseHoldList.size() + 1);
 				houseHoldList.add(houseHold);
 				orm.insertHouseHold(houseHold);
@@ -64,14 +68,14 @@ public class HouseHoldService {
 		return this.houseHoldList;
 	}
 
-	public int countAllHouseHold() {
-		try {
-			int count = MSSQLDatabase.getInstance().countAllHouseHold();
-			return count;
-		} catch(Exception e) {
-			LogService.error(e.getMessage());
-			return 0;
-		}
+	public long countAllHouseHold() {
+		return houseHoldList.stream().count();
+	}
+
+	public long countNewHouseHold() {
+		return houseHoldList.stream().filter(x ->
+				DateHelper.getDaysBetween(x.getCreatedDate(), new Date()) < 30
+		).count();
 	}
 
 	public List<HouseHold> searchHouseHoldFull(String query) {

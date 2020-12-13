@@ -1,9 +1,6 @@
 package app.database.interfaces;
 
-import app.database.config.PeopleConfig;
-import app.entity.Account;
 import app.entity.HouseHold;
-import app.database.config.AccountConfig;
 import app.database.config.HouseHoldConfig;
 import app.database.base.ISQLDatabase;
 
@@ -20,11 +17,12 @@ public interface ISQLDatabaseHouseHold extends ISQLDatabase {
             PreparedStatement stmt = this.getDatabase().prepareStatement("INSERT INTO " + HouseHoldConfig.TABLE_NAME +
                     " (" + HouseHoldConfig.HOUSEHOLD_IDADDRESS +"," +
                     HouseHoldConfig.HOUSEHOLD_HOUSEHOLDBOOK + "," + HouseHoldConfig.HOUSEHOLD_IDOWNER + "," 
-                    + HouseHoldConfig.HOUSEHOLD_NAME + ") " + " VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+                    + HouseHoldConfig.HOUSEHOLD_NAME + "," + HouseHoldConfig.HOUSEHOLD_CREATEDDATE + ") " + " VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, houseHold.getIdAddress());
             stmt.setString(2, houseHold.getHouseHoldBook());
             stmt.setInt(3, houseHold.getIdOwner());
             stmt.setString(4, houseHold.getName());
+            stmt.setDate(5, new java.sql.Date(houseHold.getCreatedDate().getTime()));
             stmt.executeUpdate();
             ResultSet generatedKeys = stmt.getGeneratedKeys();
             if (generatedKeys.next()) {
@@ -34,7 +32,7 @@ public interface ISQLDatabaseHouseHold extends ISQLDatabase {
             stmt.close();
             
         } catch (SQLDataException e) {
-
+            throw e;
         }
     }
 	
@@ -117,7 +115,11 @@ public interface ISQLDatabaseHouseHold extends ISQLDatabase {
         int idOwner = rs.getInt(HouseHoldConfig.HOUSEHOLD_IDOWNER);
         String houseBook = rs.getString(HouseHoldConfig.HOUSEHOLD_HOUSEHOLDBOOK);
         String name = rs.getString(HouseHoldConfig.HOUSEHOLD_NAME);
+        Date createdDate = new Date(rs.getDate(HouseHoldConfig.HOUSEHOLD_CREATEDDATE).getTime());
 
-        return new HouseHold(id, idAddress, houseBook, idOwner, name);
+        HouseHold houseHold = new HouseHold(id, idAddress, houseBook, idOwner, name);
+        houseHold.setCreatedDate(createdDate);
+
+        return houseHold;
     }
 }

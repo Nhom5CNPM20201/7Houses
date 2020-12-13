@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 
 import app.database.MSSQLDatabase;
 import app.entity.People;
+import app.helper.DateHelper;
 import app.helper.StringHelper;
 import app.helper.ValidateHelper;
 import app.services.common.LogService;
@@ -44,6 +45,12 @@ public class PeopleService {
 			LogService.error(e.getMessage());
 			return 0;
 		}
+	}
+
+	public long countNewPeople() {
+		return peopleList.stream().filter(x ->
+				DateHelper.getDaysBetween(x.getRegisDate(), new Date()) < 30
+		).count();
 	}
 	
 	public void initPeople() {

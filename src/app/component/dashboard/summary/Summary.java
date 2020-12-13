@@ -4,9 +4,7 @@ import app.entity.HouseHold;
 import app.services.ServiceFactory;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Service;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -21,7 +19,11 @@ public class Summary implements Initializable {
     @FXML
     private Text peopleSummaryText;
     @FXML
+    private Text newPeopleSummaryText;
+    @FXML
     private Text householdSummaryText;
+    @FXML
+    private Text newHouseHoldSummaryText;
     @FXML
     private TableView newHouseHoldTable;
     @FXML
@@ -42,10 +44,14 @@ public class Summary implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         int countAllPeople = ServiceFactory.getPeopleService().coutAllPeople();
-        int countAllHouseHold = ServiceFactory.getHouseHoldService().countAllHouseHold();
+        long countAllHouseHold = ServiceFactory.getHouseHoldService().countAllHouseHold();
+        long countNewPeople = ServiceFactory.getPeopleService().countNewPeople();
+        long countNewHouseHold = ServiceFactory.getHouseHoldService().countNewHouseHold();
 
         peopleSummaryText.setText(String.valueOf(countAllPeople));
         householdSummaryText.setText(String.valueOf(countAllHouseHold));
+        newHouseHoldSummaryText.setText("+" + String.valueOf(countNewHouseHold));
+        newPeopleSummaryText.setText("+" + String.valueOf(countNewPeople));
 
         // household table
         noColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getHouseHoldBook().trim()));
