@@ -7,6 +7,7 @@ import app.database.config.AddressConfig;
 import app.database.config.TemporaryResidentConfig;
 import app.entity.Address;
 import app.entity.TemporaryResident;
+import app.services.common.LogService;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -27,12 +28,12 @@ public interface ISQLDatabaseTemporaryResident extends ISQLDatabase {
                     + TemporaryResidentConfig.TS_CAGETORY + " , "
                     + TemporaryResidentConfig.TS_INFOR + ") VALUES (?, ?, ?, ?, ?, ?, ?)");
             stmt.setInt(1, ts.getIdPeople());
-            stmt.setInt(1, ts.getIdAddress());
-            stmt.setDate(2, ts.getTime());
-            stmt.setDate(3, ts.getStart());
-            stmt.setInt(4, ts.getDuration());
-            stmt.setInt(5, ts.getCagetory());
-            stmt.setString(6, ts.getInformation());
+            stmt.setInt(2, ts.getIdAddress());
+            stmt.setDate(3, ts.getTime());
+            stmt.setDate(4, ts.getStart());
+            stmt.setInt(5, ts.getDuration());
+            stmt.setInt(6, ts.getCagetory());
+            stmt.setString(7, ts.getInformation());
             stmt.executeUpdate();
         } catch (SQLDataException e) {
             throw e;
@@ -42,8 +43,8 @@ public interface ISQLDatabaseTemporaryResident extends ISQLDatabase {
     private TemporaryResident extractTS(ResultSet rs) throws SQLException {
         int ts_idpeople = rs.getInt(TemporaryResidentConfig.TS_IDPEOPLE);
         int ts_id = rs.getInt(TemporaryResidentConfig.TS_IDADDRESS);
-        Date ts_time = rs.getDate(TemporaryResidentConfig.TS_TIME);
-        Date ts_start = rs.getDate(TemporaryResidentConfig.TS_START);
+        String ts_time = rs.getString(TemporaryResidentConfig.TS_TIME);
+        String ts_start = rs.getString(TemporaryResidentConfig.TS_START);
         int ts_duration = rs.getInt(TemporaryResidentConfig.TS_DURATION);
         int ts_cagetory = rs.getInt(TemporaryResidentConfig.TS_CAGETORY);
         String ts_infor = rs.getString(TemporaryResidentConfig.TS_INFOR);
@@ -82,13 +83,12 @@ public interface ISQLDatabaseTemporaryResident extends ISQLDatabase {
                     + " , " + TemporaryResidentConfig.TS_DURATION + " =?"
                     + " , " + TemporaryResidentConfig.TS_CAGETORY + " =?"
                     + " , " + TemporaryResidentConfig.TS_INFOR +" =? " + " WHERE " + TemporaryResidentConfig.TS_IDPEOPLE + " = " +  ts.getIdPeople());
-            stmt.setInt(1, ts.getIdPeople());
-            stmt.setInt(2, ts.getIdAddress());
-            stmt.setDate(3, ts.getTime());
-            stmt.setDate(4, ts.getStart());
-            stmt.setInt(5, ts.getDuration());
-            stmt.setInt(6, ts.getCagetory());
-            stmt.setString(7, ts.getInformation());
+            stmt.setInt(1, ts.getIdAddress());
+            stmt.setDate(2, ts.getTime());
+            stmt.setDate(3, ts.getStart());
+            stmt.setInt(4, ts.getDuration());
+            stmt.setInt(5, ts.getCagetory());
+            stmt.setString(6, ts.getInformation());
             stmt.executeUpdate();
         } catch (SQLDataException e) {
             throw e;
@@ -133,11 +133,10 @@ public interface ISQLDatabaseTemporaryResident extends ISQLDatabase {
             var conn = testConn.getDatabase();
 
             System.out.print("Try getting all accounts\n");
-         //   TemporaryResident ts = new TemporaryResident(2,3,Date.valueOf("11-11-2000"), Date.valueOf("02-02-1999"), 7, 1 , "no");
-         //   testConn.insertTS(ts);
+//            TemporaryResident ts = new TemporaryResident(4,11,"2000-11-11", "1999-11-11", 7, 1 , "no");
+//            testConn.insertTS(ts);
             testConn.searchTS(3);
-         //   testConn.updateTS(new TemporaryResident(2,3,Date.valueOf("11-11-2000"), Date.valueOf("02-02-1999"), 7, 1 , "no"));
-
+            testConn.updateTS(new TemporaryResident(1,2,"2000-11-10","1999-11-10", 7, 1 , "no"));
             List<TemporaryResident> tsList = testConn.getAllTS();
             for(var i: tsList){
                 System.out.println(i.getIdPeople() + "\t " + i.getIdAddress() + ", " + i.getTime() + ", " + i.getStart()
@@ -149,9 +148,9 @@ public interface ISQLDatabaseTemporaryResident extends ISQLDatabase {
 
 
         } catch (Exception e) {
-            System.out.println("Error when connect to DB:");
-            System.out.println(e.getMessage());
-            System.out.println("Connecting to DB Failed...");
+            LogService.error("Error when connect to DB:");
+            LogService.error(e.getMessage());
+            LogService.error("Connecting to DB Failed...");
         }
     }
 }

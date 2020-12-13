@@ -11,20 +11,20 @@ public class TemporaryResident {
     int cagetory;
     String information;
 
-    public TemporaryResident(int idPeople, int idAddress, Date time, Date start, int duration, int cagetory, String information) {
+    public TemporaryResident(int idPeople, int idAddress, String time, String start, int duration, int cagetory, String information) {
         this.idPeople = idPeople;
         this.idAddress = idAddress;
-        this.time = time;
-        this.start = start;
+        this.time = Date.valueOf(time);
+        this.start = Date.valueOf(start);
         this.duration = duration;
         this.cagetory = cagetory;
         this.information = information;
     }
 
-    public TemporaryResident(int idAddress, Date time, Date start, int duration, int cagetory, String information) {
+    public TemporaryResident(int idAddress, String time, String start, int duration, int cagetory, String information) {
         this.idAddress = idAddress;
-        this.time = time;
-        this.start = start;
+        this.time = Date.valueOf(time);
+        this.start = Date.valueOf(start);
         this.duration = duration;
         this.cagetory = cagetory;
         this.information = information;

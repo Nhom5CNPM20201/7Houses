@@ -3,6 +3,7 @@ package app.services;
 import app.database.MSSQLDatabase;
 import app.entity.Address;
 import app.entity.TemporaryResident;
+import app.services.common.LogService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class TemporaryResidentService {
 
             MSSQLDatabase.getInstance().insertTS(ts);
             tSList.add(ts);
-            System.out.println("Tao thanh cong!");
+            LogService.info("Tao thanh cong: " + ts.getIdPeople());
             System.out.print(ts.getIdPeople());
             return ts;
         } catch (Exception e) {
@@ -67,7 +68,9 @@ public class TemporaryResidentService {
         }
     }
     public static void main(String[] args) {
-        TemporaryResidentService tsService = new TemporaryResidentService();
-        tsService.InitTS();
+        TemporaryResidentService temporaryResidentService = new TemporaryResidentService();
+        TemporaryResident temporaryResident = new TemporaryResident(1,12,"2000-10-29", "1000-10-03", 1, 1, " ");
+        temporaryResidentService.createTS(temporaryResident);
+        temporaryResidentService.InitTS();
     }
 }

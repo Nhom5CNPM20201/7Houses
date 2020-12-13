@@ -5,6 +5,7 @@ import app.config.AppConfig;
 import app.database.MSSQLDatabase;
 import app.database.base.ISQLDatabase;
 import app.entity.Address;
+import app.services.common.LogService;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -148,9 +149,9 @@ public interface ISQLDatabaseAddress extends ISQLDatabase {
 
 
         } catch (Exception e) {
-            System.out.println("Error when connect to DB:");
+            LogService.error("Error when connect to DB:");
             System.out.println(e.getMessage());
-            System.out.println("Connecting to DB Failed...");
+            LogService.error("Connecting to DB Failed...");
         }
     }
 
