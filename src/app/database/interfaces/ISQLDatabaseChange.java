@@ -1,5 +1,7 @@
 package app.database.interfaces;
 
+import app.config.AppConfig;
+import app.database.MSSQLDatabase;
 import app.database.config.ChangeConfig;
 import app.database.base.ISQLDatabase;
 import app.entity.Change;
@@ -42,7 +44,7 @@ public interface ISQLDatabaseChange extends ISQLDatabase  {
 		PreparedStatement stmt = this.getDatabase().prepareStatement("INSERT INTO " + ChangeConfig.TABLE_NAME +
                 " (" + ChangeConfig.CHANGE_IHOUSEHOLD +"," +ChangeConfig.CHANGE_IDPEOPLE + ","  
                 + ChangeConfig.CHANGE_CHANGINGDATE + "," + ChangeConfig.CHANGE_TYPE + "," + ChangeConfig.CHANGE_CONTENT + ") " 
-                + " VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS );
+                + " VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS );
 		stmt.setInt(1, change.getIdHouseHold());
 		stmt.setInt(2, change.getIdPeople());
 		stmt.setDate(3, change.getChangingDate());
@@ -68,14 +70,59 @@ public interface ISQLDatabaseChange extends ISQLDatabase  {
 		
 		stmt.close();
 	}
+	@Override
+	default Change searchChange(int id) throws Exception {
+		try {
+			Statement stmt = this.getDatabase().createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT TOP 1 * FROM " + ChangeConfig.TABLE_NAME + " WHERE "
+					+ ChangeConfig.CHANGE_ID + " LIKE '%" + id + "%';");
+
+			if(rs.next()) {
+				return extractChange(rs);
+			}
+			else {
+				System.out.println("khong ton tai du lieu!");
+				return null;
+			}
+		}
+		catch (SQLException e) {
+			throw e;
+		}
+	}
 	
 	@Override
-	default void removeChange(Change change) throws Exception{
-		PreparedStatement stmt = this.getDatabase().prepareStatement("DELETE FROM " + ChangeConfig.TABLE_NAME + " WHERE " 
-				+ ChangeConfig.CHANGE_ID + "=" + "?");
-		stmt.setInt(1, change.getId());
-		stmt.executeUpdate();
-		stmt.close();
+	default void removeChange(int id) throws Exception{
+		try {
+			PreparedStatement stmt = this.getDatabase().prepareStatement("Delete from " + ChangeConfig.TABLE_NAME +
+					" where " + ChangeConfig.CHANGE_ID + " = " + id);
+			stmt.executeUpdate();
+		} catch (SQLDataException e) {
+			throw e;
+		}
+	}
+	public static void main(String []arg){
+		try {
+			System.out.println("Start connecting to DB...");
+			MSSQLDatabase testConn = new MSSQLDatabase(AppConfig.databaseHostname, AppConfig.databaseName,
+					AppConfig.databaseUsername, AppConfig.databasePassword);
+			var conn = testConn.getDatabase();
+
+			System.out.print("Try getting all accounts\n");
+			Change change = new Change(3, 1, "2000-11-11", 5, "hi");
+			testConn.insertChange(change);
+			List<Change> changeList = testConn.getAllChange();
+			for(var i: changeList){
+				System.out.println(i.getId()+ " "+ i.getIdHouseHold()+ " " +i.getChangingDate());
+			}
+			System.out.println("Connected to DB successfully.");
+			conn.close();
+
+
+		} catch (Exception e) {
+			System.out.println("Error when connect to DB:");
+			System.out.println(e.getMessage());
+			System.out.println("Connecting to DB Failed...");
+		}
 	}
 
 }

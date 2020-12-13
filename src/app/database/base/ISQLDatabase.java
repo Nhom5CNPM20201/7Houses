@@ -44,5 +44,9 @@ public interface ISQLDatabase extends IDatabase  {
     void removeTS(int id) throws Exception;
 
     TemporaryResident searchTS(int id) throws Exception;
+
+    Change searchChange(int id) throws Exception;
+
+    void removeChange(int id) throws Exception;
 }
 

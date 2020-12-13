@@ -1,6 +1,7 @@
 package app.entity;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class Change {
 	private int id;
@@ -18,11 +19,11 @@ public class Change {
 		this.type = type;
 		this.content = content;
 	}
-	
-	public Change(int idPeople, int idHouseHold, Date changingDate, int type, String content) {
+
+	public Change(int idPeople, int idHouseHold, String changingTime, int type, String content) {
 		this.idPeople = idPeople;
 		this.idHouseHold = idHouseHold;
-		this.changingDate = changingDate;
+		this.changingDate = Date.valueOf(changingTime);
 		this.type = type;
 		this.content = content;
 	}
@@ -73,7 +74,17 @@ public class Change {
 
 	public void setContent(String content) {
 		this.content = content;
-	}	
-	
+	}
 
+	@Override
+	public String toString() {
+		return "Change{" +
+				"id=" + id +
+				", idPeople=" + idPeople +
+				", idHouseHold=" + idHouseHold +
+				", changingDate=" + changingDate +
+				", type=" + type +
+				", content='" + content + '\'' +
+				'}';
+	}
 }

@@ -7,6 +7,8 @@ public class ServiceFactory {
     private static FeeService feeService;
     private static TemporaryResidentService temporaryresidentService;
     private static PeopleService peopleService;
+    private static ChangeService changeService;
+
 
     public ServiceFactory() {
 
@@ -19,6 +21,7 @@ public class ServiceFactory {
         houseHoldService = new HouseHoldService();
         temporaryresidentService = new TemporaryResidentService();
         peopleService = new PeopleService();
+        changeService = new ChangeService();
     }
 
     public static AuthService getAuthService() {
@@ -39,4 +42,7 @@ public class ServiceFactory {
 	public static PeopleService getPeopleService() {
 		return peopleService;
 	}
+    public static ChangeService getChangeService() {
+        return changeService;
+    }
 }

@@ -43,7 +43,7 @@ public interface IDatabase {
 
 	void insertChange(Change change) throws Exception;
 
-	void removeChange(Change change) throws Exception;
+	void removeChange(int id) throws Exception;
 
 	void updateChange(Change change) throws Exception; 
 	
