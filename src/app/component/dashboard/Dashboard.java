@@ -5,6 +5,7 @@ import app.utility.viewUtils.Mediator;
 import app.entity.Account;
 import app.services.ServiceFactory;
 import app.utility.viewUtils.ScreenController;
+import com.sun.media.jfxmedia.Media;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,8 +36,10 @@ public class Dashboard implements Initializable {
 
         Mediator.unSubscribe("houseHoldOnClick");
         Mediator.unSubscribe("peopleOnClick");
-        Mediator.subscribe("houseHoldOnClick", event -> houseHoldOnClick(null));
-        Mediator.subscribe("peopleOnClick", event -> peopleOnClick(null));
+        Mediator.unSubscribe("feeOnClick");
+        Mediator.subscribe("houseHoldOnClick", this::houseHoldOnClick);
+        Mediator.subscribe("peopleOnClick", this::peopleOnClick);
+        Mediator.subscribe("feeOnClick", this::feeOnClick);
     }
 
     private void setPosition(Account account) {
@@ -78,7 +81,6 @@ public class Dashboard implements Initializable {
 
     @FXML
     public void feeOnClick(ActionEvent event) {
-
         this.switchView(getClass().getResource("feeManage/FeeManage.fxml"));
     }
 

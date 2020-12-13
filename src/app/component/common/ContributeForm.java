@@ -1,8 +1,12 @@
 package app.component.common;
 
+import app.entity.Contribute;
+import app.entity.Fee;
 import app.entity.HouseHold;
 import app.entity.People;
 import app.services.ServiceFactory;
+import app.services.common.NotiService;
+import app.utility.viewUtils.Mediator;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -14,19 +18,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import javax.print.attribute.standard.Media;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ContributeForm implements Initializable {
-
-    @FXML
-    private Button btnCancel;
-
-    @FXML
-    private Button btnOK;
-
     @FXML
     private TextField chuHoTextField;
+    @FXML
+    private TextField amountTextField;
+    @FXML
+    private TextArea noteTextArea;
 
     @FXML
     private ComboBox<String> comboBoxOption1;
@@ -82,5 +84,42 @@ public class ContributeForm implements Initializable {
     public void searchOnClick(ActionEvent event) {
         String query = chuHoTextField.getText();
         tblListHouseHold.getItems().setAll(FXCollections.observableArrayList(ServiceFactory.getHouseHoldService().searchHouseHoldFull(query)));
+    }
+
+    @FXML
+    public void onSubmit(ActionEvent event) {
+        try {
+            int selectedFeeIndex = comboBoxOption1.getSelectionModel().getSelectedIndex();
+            if (selectedFeeIndex < 0) {
+                NotiService.info("Bạn chưa chọn thông tin khoản phí");
+                return;
+            }
+
+            Fee selectedFee = ServiceFactory.getFeeService().getFee(selectedFeeIndex + 1);
+            if (selectedFee == null) {
+                NotiService.error("Không tìm thấy thông tin khoản phí");
+                return;
+            }
+
+            if (selectedHouseHold == null) {
+                NotiService.info("Chưa có thông tin hộ khẩu");
+                return;
+            }
+
+            int amount = Integer.parseInt(amountTextField.getText());
+            String note = noteTextArea.getText();
+
+            Contribute contribute = new Contribute();
+            contribute.setHouseHold(selectedHouseHold);
+            contribute.setFee(selectedFee);
+            contribute.setAmount(amount);
+            contribute.setNote(note);
+
+            ServiceFactory.getContributeService().createContribute(contribute);
+            ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+            Mediator.Notify("feeOnClick");
+        } catch (Exception e) {
+            NotiService.error(e.getMessage());
+        }
     }
 }

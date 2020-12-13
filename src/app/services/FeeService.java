@@ -65,6 +65,10 @@ public class FeeService {
         return feeDetails;
     }
 
+    public Fee getFee(int id) {
+        return feeList.stream().filter(x -> x.getId() == id).findFirst().get();
+    }
+
     public void deleteFee(int id) {
         try {
             Fee searchF = MSSQLDatabase.getInstance().searchFee(id);

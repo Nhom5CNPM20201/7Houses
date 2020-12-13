@@ -68,6 +68,10 @@ public class HouseHoldService {
 		return this.houseHoldList;
 	}
 
+	public HouseHold getHouseHold(int id) {
+		return houseHoldList.stream().filter(x -> x.getId() == id).findFirst().get();
+	}
+
 	public long countAllHouseHold() {
 		return houseHoldList.stream().count();
 	}

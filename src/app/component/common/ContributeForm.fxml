@@ -22,7 +22,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="btnOK" graphicTextGap="15.0" layoutX="227.0" layoutY="525.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="126.0" style="-fx-background-color: #048F68;" text="OK">
+            <Button onAction="#onSubmit" graphicTextGap="15.0" layoutX="227.0" layoutY="525.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="126.0" style="-fx-background-color: #048F68;" text="OK">
                <font>
                   <Font size="20.0" />
                </font>
@@ -30,14 +30,14 @@
                   <FontAwesomeIconView glyphName="USERS" size="25" />
                </graphic>
             </Button>
-            <TextField layoutX="39.0" layoutY="300.0" prefHeight="46.0" prefWidth="174.0" promptText="Số tiền" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.leftAnchor="39.0" />
+            <TextField fx:id="amountTextField" layoutX="39.0" layoutY="300.0" prefHeight="46.0" prefWidth="174.0" promptText="Số tiền" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.leftAnchor="39.0" />
             <ComboBox fx:id="comboBoxOption1" layoutX="39.0" layoutY="65.0" onAction="#optionOnAction1" prefHeight="39.0" prefWidth="321.0" promptText="Tên khoản phí" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" />
             <Text layoutX="136.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ĐÓNG GÓP">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
-            <TextArea layoutX="39.0" layoutY="362.0" prefHeight="127.0" prefWidth="321.0" promptText="Ghi chú" style="-fx-background-color: transparent; -fx-border-color: #048F68; -fx-border-width: 0px 0px 2px 0px;" styleClass="search_box" />
+            <TextArea fx:id="noteTextArea" layoutX="39.0" layoutY="362.0" prefHeight="127.0" prefWidth="321.0" promptText="Ghi chú" style="-fx-background-color: transparent; -fx-border-color: #048F68; -fx-border-width: 0px 0px 2px 0px;" styleClass="search_box" />
 <!--            <ComboBox fx:id="comboBoxOption2" layoutX="39.0" layoutY="146.0" onAction="#optionOnAction1" prefHeight="39.0" prefWidth="321.0" promptText="Tên hộ" style="-fx-background-color: transparent; -fx-border-color: #048F68; -fx-border-width: 0px 0px 2px 0px;" />-->
             <TableView fx:id="tblListHouseHold" layoutX="14.0" layoutY="200.0" prefHeight="100" prefWidth="376.0">
                <columns>

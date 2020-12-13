@@ -20,7 +20,9 @@ public class MSSQLDatabase extends DatabaseManager implements
         ISQLDatabaseAddress,
         ISQLDatabaseFee,
         ISQLDatabaseChange,
-        ISQLDatabaseTemporaryResident{
+        ISQLDatabaseTemporaryResident,
+        ISQLDatabaseContribute
+{
 
     private Connection databaseObject;
     
