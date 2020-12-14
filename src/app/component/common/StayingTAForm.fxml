@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="518.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.common.StayingTAForm">
+   <children>
+      <AnchorPane prefHeight="45.0" prefWidth="200.0" styleClass="column_header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text layoutX="377.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tạm chú tạm vắng">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="tfSearch" layoutX="70.0" layoutY="95.0" promptText="Tìm kiếm nhân khẩu" style="-fx-background-color: white;" styleClass="text_box" />
+      <Button fx:id="btnSearch" layoutX="266.0" layoutY="96.0" mnemonicParsing="false" onAction="#searchOnclick">
+         <graphic>
+            <FontAwesomeIconView glyphName="SEARCH" size="18" />
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TableView fx:id="tblContent" layoutX="70.0" layoutY="151.0" prefHeight="313.0" prefWidth="525.0">
+         <columns>
+            <TableColumn editable="false" prefWidth="84.0" text="ID" />
+            <TableColumn prefWidth="203.0" text="Tên" />
+            <TableColumn editable="false" prefWidth="237.0" text="CMND/CCCD" />
+         </columns>
+      </TableView>
+      <DatePicker fx:id="startTime" layoutX="627.0" layoutY="96.0" promptText="Bắt đầu" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
+      <DatePicker fx:id="endTime" layoutX="628.0" layoutY="151.0" promptText="Kết thúc" style="-fx-background-color: white;" styleClass="text_box" />
+      <ComboBox layoutX="628.0" layoutY="228.0" prefHeight="31.0" prefWidth="198.0" promptText="Tạm chú / Tạm vắng" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
+      <TextField layoutX="627.0" layoutY="299.0" prefHeight="31.0" prefWidth="220.0" promptText="Địa chỉ" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
+      <Button fx:id="btnAdd" layoutX="854.0" layoutY="301.0" mnemonicParsing="false" onAction="#addOnclick">
+         <graphic>
+            <FontAwesomeIconView glyphName="PLUS" size="15" />
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnOk" graphicTextGap="8.0" layoutX="652.0" layoutY="416.0" mnemonicParsing="false" onAction="#okOnclick" style="-fx-background-color: #FFFFFF;" text="OK">
+         <graphic>
+            <FontAwesomeIconView glyphName="CHECK" size="15" />
+         </graphic>
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <styleClass>
+            <String fx:value="text_box" />
+            <String fx:value="button" />
+         </styleClass>
+      </Button>
+      <Button fx:id="btnCancel" layoutX="740.0" layoutY="416.0" mnemonicParsing="false" onAction="#cancelOnclick" style="-fx-background-color: #FFFFFF;" text="CANCEL">
+         <graphic>
+            <FontAwesomeIconView glyphName="CLOSE" size="16" />
+         </graphic>
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <styleClass>
+            <String fx:value="text_box" />
+            <String fx:value="button" />
+         </styleClass>
+      </Button>
+   </children>
+</AnchorPane>

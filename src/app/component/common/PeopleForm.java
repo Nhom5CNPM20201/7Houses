@@ -2,6 +2,8 @@ package app.component.common;
 
 import app.entity.People;
 import app.utility.viewUtils.Mediator;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -56,7 +58,8 @@ public class PeopleForm implements Initializable {
 
     @FXML
     private ComboBox<String> cbboxGioiTinh;
-
+    ObservableList<String> genderList = FXCollections.observableArrayList("Nam","Nữ","Khác");
+    ObservableList<String> qhchList = FXCollections.observableArrayList("Bố", "Mẹ","Vợ","Con","Chồng");
     @FXML
     void gioitinhOnclick(ActionEvent event) {
 
@@ -70,7 +73,7 @@ public class PeopleForm implements Initializable {
     @FXML
     void onClickOK(ActionEvent event) {
         newPeople = new People();
-        
+
     }
 
     @FXML
@@ -81,5 +84,7 @@ public class PeopleForm implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        cbboxQHCH.setItems(qhchList);
+        cbboxGioiTinh.setItems(genderList);
     }
 }
