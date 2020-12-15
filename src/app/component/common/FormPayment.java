@@ -59,43 +59,59 @@ public class FormPayment implements Initializable{
 
     @FXML
     void okOnClick(ActionEvent event){
-        String feeName;
-        int type_fee;
-        int money = 0;
-        String note;
-        String type_of_fee;
+        try {
+            String feeName;
+            int type_fee;
+            int money = 0;
+            String note;
+            String type_of_fee;
 
-        type_of_fee = comboBoxOption1.getValue();
-        if(type_of_fee.equals(DONG_GOP)){
-            type_fee = 1;
-        }
-        else if(type_of_fee.equals(PHI)){
-            type_fee = 0;
-        }
-        else type_fee = -1;
+            type_of_fee = comboBoxOption1.getValue();
+            if (type_of_fee.equals(DONG_GOP)) {
+                type_fee = 1;
+            } else if (type_of_fee.equals(PHI)) {
+                type_fee = 0;
+            } else type_fee = -1;
 
-        if(feeNameField.getText() == null || moneyField.getText() == null || noteArea.getText() == null || type_fee == -1)
-            NotiService.info("Nhập đầy đủ dữ liệu");
-        else {
-            feeName = feeNameField.getText();
-            try {
-                money = Integer.parseInt(moneyField.getText());
-                if(money <= 0 ) {
-                    NotiService.info("Số tiền là số nguyên dương");
-                    return;
-                }
-            }catch (Exception e){
-                NotiService.info("Số tiền là số nguyên ");
+//            if (feeNameField.getText() == null || moneyField.getText() == null || noteArea.getText() == null || type_fee == -1)
+//                NotiService.info("Nhập đầy đủ thông tin");
+//            else {
+
+            if(feeNameField.getText() == "" ){
+                NotiService.info("Nhập đầy đủ thông tin");
                 return;
             }
-            note = noteArea.getText();
-            if(note == null) note = "";
+            if(moneyField.getText() == ""){
+                NotiService.info("Nhập đầy đủ thông tin");
+                return;
+            }
+            if(type_fee == -1){
+                NotiService.info("Nhập đầy đủ thông tin");
+                return;
+            }
+            feeName = feeNameField.getText();
+                try {
+                    money = Integer.parseInt(moneyField.getText());
+                    if (money <= 0) {
+                        NotiService.info("Số tiền là số nguyên dương");
+                        return;
+                    }
+                } catch (Exception e) {
+                    NotiService.info("Số tiền là số nguyên ");
+                    return;
+                }
+                note = noteArea.getText();
+                if (note == null) note = "";
 
-            FeeService fee_service = ServiceFactory.getFeeService();
-            Fee fee = new Fee(type_fee, feeName, money, note);
-            fee_service.createFee(fee);
+                FeeService fee_service = ServiceFactory.getFeeService();
+                Fee fee = new Fee(type_fee, feeName, money, note);
+                fee_service.createFee(fee);
 
-            ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+                ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+            //}
+        }
+        catch (Exception e){
+            NotiService.error("Nhập đầy đủ thông tin");
         }
     }
 
