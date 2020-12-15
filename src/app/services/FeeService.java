@@ -56,6 +56,15 @@ public class FeeService {
         return feeList;
     }
 
+    public List<String> getFeeName(){
+        List<String> feeName = new ArrayList<>();
+        feeList.forEach(x -> {
+            feeName.add(x.getNameFee());
+        });
+
+        return feeName;
+    }
+
     public List<String> getAllFeeDetail() {
         List<String> feeDetails = new ArrayList<>();
         feeList.forEach(x -> {
