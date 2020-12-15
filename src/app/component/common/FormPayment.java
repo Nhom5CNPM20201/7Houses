@@ -105,6 +105,9 @@ public class FormPayment implements Initializable{
 
 
 
+
+
+
             FeeService fee_service = ServiceFactory.getFeeService();
             Fee fee = new Fee(-3, type_fee, feeName, money, note);
             fee_service.createFee(fee);
