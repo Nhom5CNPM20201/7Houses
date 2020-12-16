@@ -3,6 +3,7 @@ package app.component.common;
 import app.entity.Fee;
 import app.services.FeeService;
 import app.services.ServiceFactory;
+import app.services.common.NotiService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +16,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FormPayment implements Initializable{
+    private final String DONG_GOP = "Đóng góp";
+    private final String PHI = "Phí";
+
     @FXML
     private TextField feeNameField;
 
@@ -32,24 +36,13 @@ public class FormPayment implements Initializable{
 
     @FXML
     private ComboBox<String> comboBoxOption1;
-    ObservableList<String> list1 = FXCollections.observableArrayList("Đóng góp","Phí");
-
-
-    @FXML
-    private ComboBox<String> comboBoxOption2;
-    ObservableList<String> list2 = FXCollections.observableArrayList("Đóng góp theo hộ","Đóng góp theo cá nhân");
-
-
+    private ObservableList<String> list1 = FXCollections.observableArrayList(PHI,DONG_GOP);
 
     @FXML
-    void optionOnAction1(ActionEvent event) {
+    void onSelectType(ActionEvent event) {
 
     }
 
-    @FXML
-    void optionOnAction2(ActionEvent event) {
-
-    }
     private void showAlert(String text){
         Alert alert = new Alert(Alert.AlertType.ERROR);
 
@@ -73,56 +66,42 @@ public class FormPayment implements Initializable{
         String type_of_fee;
 
         type_of_fee = comboBoxOption1.getValue();
-        if(type_of_fee == "Đóng góp"){
+        if(type_of_fee.equals(DONG_GOP)){
             type_fee = 1;
         }
-        else if(type_of_fee == "Phí"){
+        else if(type_of_fee.equals(PHI)){
             type_fee = 0;
         }
         else type_fee = -1;
 
         if(feeNameField.getText() == null || moneyField.getText() == null || noteArea.getText() == null || type_fee == -1)
-            showAlert("Nhập đầy đủ dữ liệu");
-
-
-
+            NotiService.info("Nhập đầy đủ dữ liệu");
         else {
-
             feeName = feeNameField.getText();
             try {
                 money = Integer.parseInt(moneyField.getText());
                 if(money <= 0 ) {
-                    showAlert("Số tiền là số nguyên dương");
+                    NotiService.info("Số tiền là số nguyên dương");
                     return;
                 }
             }catch (Exception e){
-                showAlert("Số tiền là số nguyên ");
+                NotiService.info("Số tiền là số nguyên ");
                 return;
             }
-        note = noteArea.getText();
-        if(note == null) note = "";
-
-
-
+            note = noteArea.getText();
+            if(note == null) note = "";
 
             FeeService fee_service = ServiceFactory.getFeeService();
-            Fee fee = new Fee(-3, type_fee, feeName, money, note);
+            Fee fee = new Fee(type_fee, feeName, money, note);
             fee_service.createFee(fee);
-            fee_service.getAllFee();
 
             ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
-
         }
     }
 
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //feeList = FXCollections.observableArrayList(ServiceFactory.getFeeService().getAllFeeDetail());
         comboBoxOption1.setItems(list1);
-        comboBoxOption2.setItems(list2);
-
-
     }
 }

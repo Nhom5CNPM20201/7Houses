@@ -61,4 +61,8 @@ public class Fee {
     public void setOtherInformation(String otherInformation) {
         this.otherInformation = otherInformation;
     }
+
+    public String getDetail() {
+        return this.nameFee + ": " + this.money;
+    }
 }

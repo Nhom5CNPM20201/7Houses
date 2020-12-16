@@ -30,10 +30,21 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnEdit" graphicTextGap="8.0" mnemonicParsing="false" onAction="#editOnClick" text="Sửa">
+                  <Button fx:id="btnEdit" graphicTextGap="8.0" mnemonicParsing="false" onAction="#updateOnClick" text="Thay đổi">
                      <graphic>
                         <FontAwesomeIconView glyphName="PENCIL" size="18" />
                      </graphic>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button graphicTextGap="8.0" mnemonicParsing="false" onAction="#moveOnClick" text="Di chuyển">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

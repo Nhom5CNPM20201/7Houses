@@ -2,6 +2,8 @@ package app.entity;
 
 import app.entity.IEntity;
 
+import java.util.Date;
+
 public class HouseHold implements IEntity {
 	private int id;
 	private int idAddress;
@@ -9,6 +11,7 @@ public class HouseHold implements IEntity {
 	private int idOwner;
 	private String name;
 	private String addressDetail;
+	private Date createdDate;
 
 	public HouseHold() {
 
@@ -66,7 +69,16 @@ public class HouseHold implements IEntity {
 	public String getHouseHoldBook() {
 		return houseHoldBook;
 	}
+
 	public void setHouseHoldBook(String houseHoldBook) {
 		this.houseHoldBook = houseHoldBook;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 }
