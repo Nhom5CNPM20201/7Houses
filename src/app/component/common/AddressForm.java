@@ -7,11 +7,14 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AddressForm implements Initializable {
     @FXML
@@ -55,8 +58,33 @@ public class AddressForm implements Initializable {
 
     @FXML
     void onClickOK(ActionEvent event) {
+        if (txtHouseHoldNo.getText().isEmpty()) {
+            NotiService.info("Bạn chưa chọn thông tin số nhà.");
+            return;
+        }
+
+        if (txtStreet.getText().isEmpty()) {
+            NotiService.info("Bạn chưa nhập thông tin đường phố.");
+            return;
+        }
+        if(txtWard.getText().isEmpty()){
+            NotiService.info("Bạn chưa nhập thông tin phường.");
+        }
+        if (txtDistrict.getText().isEmpty()) {
+            NotiService.info("Bạn chưa nhập thông tin quận huyện.");
+            return;
+        }
+        if(txtCity.getText().isEmpty()){
+            NotiService.info("Bạn chưa nhập thông tin tỉnh, thành phố.");
+        }
         Address add = new Address();
-        add.setNumberHouse(Integer.parseInt(txtHouseHoldNo.getText()));
+        try {
+            int number=Integer.parseInt(txtHouseHoldNo.getText());
+            add.setNumberHouse(number);
+        }catch (NumberFormatException e){
+            NotiService.info("Đã nhập sai dịnh dạng số nhà.");
+            return;
+        }
         add.setStreet(txtStreet.getText());
         add.setSubDistrict(txtWard.getText());
         add.setDistrict(txtDistrict.getText());
