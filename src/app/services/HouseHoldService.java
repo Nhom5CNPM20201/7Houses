@@ -49,7 +49,6 @@ public class HouseHoldService {
 				houseHold.setId(houseHoldList.size() + 1);
 				houseHoldList.add(houseHold);
 				orm.insertHouseHold(houseHold);
-				NotiService.info("Tao thanh cong.");
 				return houseHold;
 			}
 			else {

@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="518.0" prefWidth="808.0" style="-fx-background-color: #F5F5F5;" styleClass="text_box_child" stylesheets="@../dashboard/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.common.PeopleForm">
    <children>
-      <Button alignment="BASELINE_CENTER" graphicTextGap="8.0" layoutX="542.0" layoutY="445.0" mnemonicParsing="false" onAction="#onClickCancel" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #FFFFFF;" styleClass="text_box_child" text="CANCEL">
+      <Button alignment="BASELINE_CENTER" graphicTextGap="8.0" layoutX="542.0" layoutY="445.0" mnemonicParsing="false" onAction="#onClickCancel" prefHeight="40.0" prefWidth="119.0" text="CANCEL">
          <font>
             <Font size="17.0" />
          </font>
@@ -23,7 +23,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button graphicTextGap="10.0" layoutX="669.0" layoutY="445.0" mnemonicParsing="false" onAction="#onClickOK" prefHeight="40.0" prefWidth="78.0" style="-fx-background-color: #FFFFFF;" styleClass="text_box_child" text="OK" AnchorPane.rightAnchor="62.0">
+      <Button graphicTextGap="10.0" layoutX="669.0" layoutY="445.0" mnemonicParsing="false" onAction="#onClickOK" prefHeight="40.0" prefWidth="78.0" text="OK" AnchorPane.rightAnchor="62.0">
          <font>
             <Font size="17.0" />
          </font>
@@ -88,7 +88,7 @@
          </font>
       </TextField>
       <ComboBox fx:id="cbboxGioiTinh" layoutX="239.0" layoutY="122.0" onAction="#gioitinhOnclick" prefHeight="33.0" prefWidth="125.0" promptText="Giới tính" style="-fx-background-color: #FFFFFF;" styleClass="text_box" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="448.0" AnchorPane.topAnchor="119.0" />
-      <AnchorPane layoutX="1.0" prefHeight="45.0" prefWidth="808.0" style="-fx-background-color: e5e5e5;" styleClass="column_header">
+      <AnchorPane layoutX="1.0" prefHeight="45.0" prefWidth="808.0" styleClass="sub_header">
          <children>
             <Text layoutX="360.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhân Khẩu">
                <font>
