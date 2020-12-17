@@ -15,5 +15,5 @@ public class HouseHoldConfig {
 
   public static final String HOUSEHOLD_NAME = "HoTenChuHo";
 
-  public static final String ADDRESS_DETAIL = "DiaChiChiTiet";
+  public static final String HOUSEHOLD_CREATEDDATE = "NgayDK";
 }

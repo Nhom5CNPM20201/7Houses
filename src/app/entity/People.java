@@ -1,5 +1,5 @@
 package app.entity;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.*;
 public class People  {
 	
@@ -40,20 +40,20 @@ public class People  {
    public People() {
     	
     //	idHouseHold = 5;
-     	fullName = "mt" ;
-    	nickName = "mmnbnajksd";
-    	birthPlace = "HN";
-    	job = "sinh vien";
-    	dateOfBirth = Date.valueOf("1980-07-01");
-    	regisDate = Date.valueOf("1999-02-01");
-    	houseHolderRela = 1;
-    	ethnic = "kinh";
-    	nativePlace = "HY";
-    	gender = 1;
-    	workPlace = "HN";
-    	identityNo = "123132163";
-    	identityMfg = Date.valueOf("2000-02-01");
-    	identityOrigin = "HYYYY";    
+//     	fullName = "mt" ;
+//    	nickName = "mmnbnajksd";
+//    	birthPlace = "HN";
+//    	job = "sinh vien";
+//    	dateOfBirth = Date.valueOf("1980-07-01");
+//    	regisDate = Date.valueOf("1999-02-01");
+//    	houseHolderRela = 1;
+//    	ethnic = "kinh";
+//    	nativePlace = "HY";
+//    	gender = 1;
+//    	workPlace = "HN";
+//    	identityNo = "123132163";
+//    	identityMfg = Date.valueOf("2000-02-01");
+//    	identityOrigin = "HYYYY";
     }
     
    

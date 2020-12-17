@@ -5,6 +5,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,7 +17,6 @@
         <AnchorPane prefHeight="520.0" prefWidth="350.0" BorderPane.alignment="CENTER">
             <children>
                 <TextField fx:id="usernameField" layoutX="84.0" layoutY="216.0" prefHeight="33.0" prefWidth="204.0" promptText="Tài khoản" style="-fx-background-color: transparent; -fx-border-color: #048F68; -fx-border-width: 0px 0px 2px 0px;" />
-                <TextField fx:id="passwordField" layoutX="84.0" layoutY="292.0" prefHeight="33.0" prefWidth="204.0" promptText="Mật khẩu" style="-fx-background-color: transparent; -fx-border-color: #048F68; -fx-border-width: 0px 0px 2px 0px;" />
                 <FontAwesomeIconView fill="#048f68" glyphName="USER" layoutX="57.0" layoutY="241.0" size="16" />
                 <FontAwesomeIconView fill="#048f68" glyphName="LOCK" layoutX="58.0" layoutY="316.0" size="16" />
                 <Text fill="#048f68" layoutX="70.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đăng nhập hệ thống">
@@ -28,9 +28,10 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-                <Hyperlink layoutX="217.0" layoutY="477.0" text="Quên mật khẩu?" />
+                <Hyperlink visible="false" layoutX="217.0" layoutY="477.0" text="Quên mật khẩu?" />
                 <FontAwesomeIconView fill="#048f68" glyphName="USERS" layoutX="143.0" layoutY="101.0" size="50" />
-            <Hyperlink onAction="#guestLogin" layoutX="14.0" layoutY="477.0" text="Tư cách khách?" />
+            <Hyperlink layoutX="14.0" layoutY="477.0" onAction="#guestLogin" text="Tư cách khách?" />
+            <PasswordField fx:id="passwordField" layoutX="84.0" layoutY="286.0" prefHeight="33.0" prefWidth="204.0" promptText="Mật khẩu" style="-fx-background-color: transparent; -fx-border-color: #048F68; -fx-border-width: 0px 0px 2px 0px;" />
             </children>
         </AnchorPane>
     </right>

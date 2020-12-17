@@ -2,13 +2,16 @@ package app.services;
 
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import app.database.MSSQLDatabase;
 import app.entity.People;
+import app.helper.DateHelper;
 import app.helper.StringHelper;
+import app.helper.ValidateHelper;
 import app.services.common.LogService;
 
 public class PeopleService {
@@ -21,22 +24,17 @@ public class PeopleService {
 		initPeople();
 	}
 	
-	public void createPeople(People people) {
-		try {
-			orm = MSSQLDatabase.getInstance();
-			People searchP = orm.searchPeople(people.getFullName());
-			if(searchP == null) {
-				orm.insertPeople(people);
-				System.out.println("Tao thanh cong.");
-			}
-			else {
-				System.out.println("Da ton tai nhan khau!");
-			}
-			
-		}
-		catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
+	public People createPeople(People people) throws Exception {
+		orm = MSSQLDatabase.getInstance();
+
+		if (people.getId() > 0 && peopleList.stream().anyMatch(p -> p.getId() == people.getId()))
+			return people;
+
+		people.setId(peopleList.size() + 1);
+		peopleList.add(people);
+		orm.insertPeople(people);
+
+		return people;
 	}
 
 	public int coutAllPeople() {
@@ -47,6 +45,12 @@ public class PeopleService {
 			LogService.error(e.getMessage());
 			return 0;
 		}
+	}
+
+	public long countNewPeople() {
+		return peopleList.stream().filter(x ->
+				DateHelper.getDaysBetween(x.getRegisDate(), new Date()) < 30
+		).count();
 	}
 	
 	public void initPeople() {
@@ -104,11 +108,26 @@ public class PeopleService {
 	}
 
 
-	public static void main(String[] args) {
-		PeopleService pService = new PeopleService();
+	public static void main(String[] args) throws Exception {
+		try {
+			PeopleService pService = new PeopleService();
 
-		for (var item : pService.searchPeopleFull("xxxxxx")) {
-			LogService.info(item.getFullName());
+			People newPeople = new People();
+			newPeople.setFullName("Trần Tiến Đại");
+			newPeople.setNickName("DaiNgo123");
+			newPeople.setDateOfBirth(new Date(2005, 12,1));
+			newPeople.setBirthPlace("Thanh Lương, Cao Bằng");
+			newPeople.setEthnic("Kinh");
+			newPeople.setWorkPlace("Hà Nội");
+			newPeople.setIdentityNo("035545121244");
+			newPeople.setIdentityMfg(new Date(2014,6,9));
+			newPeople.setIdentityOrigin("Hà Nội");
+			//newPeople.setIdHouseHold(Integer.getInteger(idHoKhau.getText()));
+			newPeople.setRegisDate(new Date());
+
+			pService.createPeople(newPeople);
+		} catch (Exception e) {
+			throw e;
 		}
 	}
 }

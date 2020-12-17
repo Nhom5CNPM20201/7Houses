@@ -34,8 +34,8 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <TextField fx:id="moneyField" layoutX="219.0" layoutY="212.0" prefHeight="46.0" prefWidth="139.0" promptText="Số tiền" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.leftAnchor="219.0" />
-            <ComboBox fx:id="comboBoxOption1" layoutX="39.0" layoutY="146.0" onAction="#optionOnAction1" prefHeight="39.0" prefWidth="163.0" promptText="Loại phí" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" />
+            <TextField fx:id="moneyField" layoutX="39.0" layoutY="211.0" prefHeight="46.0" prefWidth="180.0" promptText="Số tiền" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.leftAnchor="39.0" />
+            <ComboBox fx:id="comboBoxOption1" layoutX="39.0" layoutY="138.0" onAction="#onSelectType" prefHeight="39.0" prefWidth="180.0" promptText="Loại phí" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" />
             <TextField fx:id="feeNameField" layoutX="39.0" layoutY="68.0" prefHeight="33.0" prefWidth="321.0" promptText="Tên khoản phí" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #048F68;" AnchorPane.leftAnchor="39.0" />
             <Text layoutX="136.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KHOẢN PHÍ">
                <font>
@@ -43,7 +43,7 @@
                </font>
             </Text>
             <TextArea fx:id="noteArea" layoutX="39.0" layoutY="292.0" prefHeight="127.0" prefWidth="321.0" promptText="Ghi chú" style="-fx-background-color: transparent; -fx-border-color: #048F68; -fx-border-width: 0px 0px 2px 0px;" styleClass="search_box" />
-            <ComboBox fx:id="comboBoxOption2" layoutX="39.0" layoutY="219.0" onAction="#optionOnAction1" prefHeight="39.0" prefWidth="163.0" promptText="Đóng góp theo" style="-fx-background-color: transparent; -fx-border-color: #048F68; -fx-border-width: 0px 0px 2px 0px;" />
+<!--            <ComboBox fx:id="comboBoxOption2" layoutX="39.0" layoutY="219.0" onAction="#optionOnAction2" prefHeight="39.0" prefWidth="163.0" promptText="Đóng góp theo" style="-fx-background-color: transparent; -fx-border-color: #048F68; -fx-border-width: 0px 0px 2px 0px;" />-->
          </children>
       </AnchorPane>
    </children>

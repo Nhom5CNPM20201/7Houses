@@ -75,7 +75,7 @@
                                              <children>
                                                 <VBox alignment="CENTER" layoutX="44.0" layoutY="11.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="11.0">
                                                    <children>
-                                                      <Text fill="#32cd13" strokeType="OUTSIDE" strokeWidth="0.0" text="+80" wrappingWidth="55.21874129772186" VBox.vgrow="ALWAYS">
+                                                      <Text fx:id="newPeopleSummaryText" fill="#32cd13" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" wrappingWidth="55.21874129772186" VBox.vgrow="ALWAYS">
                                                          <font>
                                                             <Font name="System Bold" size="24.0" />
                                                          </font>
@@ -93,7 +93,7 @@
                                              <children>
                                                 <VBox alignment="CENTER" layoutX="44.0" layoutY="11.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="11.0">
                                                    <children>
-                                                      <Text fill="#32cd13" strokeType="OUTSIDE" strokeWidth="0.0" text="+10" wrappingWidth="55.21874129772186" VBox.vgrow="ALWAYS">
+                                                      <Text fx:id="newHouseHoldSummaryText" fill="#32cd13" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" wrappingWidth="55.21874129772186" VBox.vgrow="ALWAYS">
                                                          <font>
                                                             <Font name="System Bold" size="24.0" />
                                                          </font>

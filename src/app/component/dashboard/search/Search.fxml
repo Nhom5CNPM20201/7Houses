@@ -33,7 +33,7 @@
                            <columns>
                               <TableColumn maxWidth="78.0" prefWidth="56.0" resizable="false" text="STT" />
                               <TableColumn prefWidth="239.66668701171875" text="Chủ hộ" />
-                              <TableColumn prefWidth="321.4443359375"  text="Địa chỉ" />
+                              <TableColumn prefWidth="321.4443359375" text="Địa chỉ" />
                               <TableColumn minWidth="0.0" prefWidth="159.963134765625" text="Ngày thêm" />
                            </columns>
                            <columnResizePolicy>

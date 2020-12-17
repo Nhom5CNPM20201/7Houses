@@ -16,6 +16,7 @@ import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -44,6 +45,12 @@ public class HouseholdManage implements Initializable {
     public void addOnClick(ActionEvent event) {
         this.switchView(getClass().getResource("../../common/HouseHoldForm.fxml"));
     }
+
+    @FXML
+    public void moveOnClick(ActionEvent event) {
+        NotiService.info("It's work.");
+    }
+
     @FXML
     public void deleteOnClick(ActionEvent event) {
         Mediator.Notify("onGoingMainHouseHold");
