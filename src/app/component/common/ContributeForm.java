@@ -107,6 +107,12 @@ public class ContributeForm implements Initializable {
             }
 
             int amount = Integer.parseInt(amountTextField.getText());
+            if(amount <=0){
+                NotiService.info("Số tiền không hợp lệ");
+                return;
+            }
+
+
             String note = noteTextArea.getText();
 
             Contribute contribute = new Contribute();
@@ -119,7 +125,7 @@ public class ContributeForm implements Initializable {
             ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
             Mediator.Notify("feeOnClick");
         } catch (Exception e) {
-            NotiService.error(e.getMessage());
+            NotiService.error("Mời nhập đúng thông tin");
         }
     }
 }
