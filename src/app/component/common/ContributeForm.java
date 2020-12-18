@@ -4,6 +4,7 @@ import app.entity.Contribute;
 import app.entity.Fee;
 import app.entity.HouseHold;
 import app.entity.People;
+import app.model.AuthMessage;
 import app.services.ServiceFactory;
 import app.services.common.NotiService;
 import app.utility.viewUtils.Mediator;
@@ -89,13 +90,15 @@ public class ContributeForm implements Initializable {
     @FXML
     public void onSubmit(ActionEvent event) {
         try {
+
             int selectedFeeIndex = comboBoxOption1.getSelectionModel().getSelectedIndex();
+
             if (selectedFeeIndex < 0) {
                 NotiService.info("Bạn chưa chọn thông tin khoản phí");
                 return;
             }
-
             Fee selectedFee = ServiceFactory.getFeeService().getFee(selectedFeeIndex + 1);
+
             if (selectedFee == null) {
                 NotiService.error("Không tìm thấy thông tin khoản phí");
                 return;
@@ -105,14 +108,16 @@ public class ContributeForm implements Initializable {
                 NotiService.info("Chưa có thông tin hộ khẩu");
                 return;
             }
-
+            if (amountTextField.getText()==""){
+                NotiService.info("Chưa nhập số tiền");
+                return ;
+            }
             int amount = Integer.parseInt(amountTextField.getText());
-            if(amount <=0){
-                NotiService.info("Số tiền không hợp lệ");
+
+            if( amount<=0) {
+                NotiService.error("Số tiền không hợp lệ");
                 return;
             }
-
-
             String note = noteTextArea.getText();
 
             Contribute contribute = new Contribute();
@@ -124,7 +129,9 @@ public class ContributeForm implements Initializable {
             ServiceFactory.getContributeService().createContribute(contribute);
             ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
             Mediator.Notify("feeOnClick");
+
         } catch (Exception e) {
+            NotiService.error(e.getMessage());
             NotiService.error("Mời nhập đúng thông tin");
         }
     }
