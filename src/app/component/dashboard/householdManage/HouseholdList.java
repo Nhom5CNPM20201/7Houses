@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class HouseholdList implements Initializable {
@@ -36,6 +37,7 @@ public class HouseholdList implements Initializable {
     public HouseholdList() {
         houseHolds = FXCollections.observableList(ServiceFactory.getHouseHoldService().getAllHouseHold());
     }
+    
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // household table
@@ -55,5 +57,9 @@ public class HouseholdList implements Initializable {
 
     public HouseHold getSelectedHouseHold() {
         return selectedHouseHold;
+    }
+    
+    public void searchHouseHold(List<HouseHold> houseHoldList) {
+    	tblListHouseHold.getItems().setAll(FXCollections.observableList(houseHoldList));
     }
 }
