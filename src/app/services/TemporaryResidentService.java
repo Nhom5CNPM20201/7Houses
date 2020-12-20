@@ -7,6 +7,7 @@ import app.services.common.LogService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TemporaryResidentService {
     private TemporaryResident ts;
@@ -14,7 +15,13 @@ public class TemporaryResidentService {
     public TemporaryResidentService() {
         InitTS();
     }
-
+    public int countTC(){
+        List<TemporaryResident> tc = tSList.stream().filter(o -> o.getCagetory() == 0).collect(Collectors.toList());
+        return tc.size();
+    }
+    public int countTV(){
+        return tSList.size() - countTC();
+    }
 
     public TemporaryResident createTS(TemporaryResident ts) {
         try {
