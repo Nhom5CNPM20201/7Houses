@@ -76,6 +76,7 @@ public class AddressForm implements Initializable {
         }
         if(txtCity.getText().isEmpty()){
             NotiService.info("Bạn chưa nhập thông tin tỉnh, thành phố.");
+            return;
         }
         Address add = new Address();
         try {
