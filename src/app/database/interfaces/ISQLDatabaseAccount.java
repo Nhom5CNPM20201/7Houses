@@ -67,7 +67,7 @@ public interface ISQLDatabaseAccount extends ISQLDatabase {
         try {
             Statement stmt = this.getDatabase().createStatement();
             ResultSet rs = stmt.executeQuery("SELECT TOP 1 * " +
-                    "FROM " + AccountConfig.TABLE_NAME + " WHERE " + AccountConfig.ACCOUNT_USERNAME + " LIKE '%" + username + "%';");
+                    "FROM " + AccountConfig.TABLE_NAME + " WHERE " + AccountConfig.ACCOUNT_USERNAME + " = '" + username + "';");
 
             if (rs.next()) {
                 return extractAccount(rs);
