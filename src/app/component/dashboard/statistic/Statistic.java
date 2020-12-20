@@ -12,9 +12,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.Date;
@@ -26,12 +28,6 @@ public class Statistic implements Initializable {
     private final String FEMALE = "Nữ";
     private final String MALE = "Nam";
     private final String OTHER ="Khác";
-
-    @FXML
-    private AnchorPane data;
-
-    @FXML
-    private Button btnTest;
 
     @FXML
     private ComboBox<String> gender;
@@ -51,11 +47,9 @@ public class Statistic implements Initializable {
     @FXML
     private TableView<People> tblPeoPleData;
 
-
     @FXML
     private Pane paneView;
 
-    private ObservableList<String> typeList;
     private ObservableList<String> genderList;
 
     @FXML
@@ -65,6 +59,12 @@ public class Statistic implements Initializable {
     private TableColumn<People, String> peopleName;
 
     @FXML
+    private Text chartName;
+
+    private PieChart chart = new PieChart();
+    private ObservableList<PieChart.Data> dataChart;
+
+    @FXML
     private TableColumn<People, String> peopleIdenNo;
 
     @FXML
@@ -72,10 +72,6 @@ public class Statistic implements Initializable {
 
     private List<People> peoples;
 
-    @FXML
-    void typeCbxOnAction(ActionEvent event) {
-
-    }
     @FXML
     void checkOnClick(ActionEvent event) {
         try {
@@ -87,9 +83,23 @@ public class Statistic implements Initializable {
 
             peoples = ServiceFactory.getPeopleService().statistic(genderIndex, ageFrom, ageTo, timeFrom, timeTo);
             tblPeoPleData.getItems().setAll(FXCollections.observableArrayList(peoples));
+            if(peoples != null) getChart();
         } catch (Exception e) {
             NotiService.error(e.getMessage());
         }
+    }
+    private void getChart(){
+        chartName.setVisible(true);
+        double rate = 100.00*peoples.size()/ServiceFactory.getPeopleService().coutAllPeople();
+        dataChart = FXCollections.observableArrayList(
+                new PieChart.Data("Thỏa mãn",rate),
+                new PieChart.Data("Còn lại",100.00-rate)
+        );
+        chart.setData(dataChart);
+        chart.setPrefSize(400,400);
+        chart.setLabelsVisible(true);
+        chart.setClockwise(true);
+        paneView.getChildren().add(chart);
     }
 
     @Override
@@ -101,5 +111,6 @@ public class Statistic implements Initializable {
         peopleName.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFullName()));
         peopleIdenNo.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getIdentityNo()));
         peopleGender.setCellValueFactory(c -> new SimpleStringProperty(Gender.NONE.setValue(c.getValue().getGender()).getGenderName()));
+        chartName.setVisible(false);
     }
 }
