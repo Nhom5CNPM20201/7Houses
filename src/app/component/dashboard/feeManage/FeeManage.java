@@ -61,6 +61,7 @@ public class FeeManage implements Initializable {
         Scene scene = new Scene(root2);
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
     }
 
     @FXML
@@ -74,6 +75,7 @@ public class FeeManage implements Initializable {
         Parent root2 = FXMLLoader.load(getClass().getResource("../../common/formPayment.fxml"));
         Scene scene = new Scene(root2);
         stage.setScene(scene);
-        stage.show();;
+        stage.show();
+        stage.setResizable(false);
     }
 }

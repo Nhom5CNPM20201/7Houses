@@ -44,7 +44,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnTemporary" graphicTextGap="8.0" mnemonicParsing="false" onAction="#editOnClick" text="Tạm trú, vắng">
+                  <Button fx:id="btnTemporary" graphicTextGap="8.0" mnemonicParsing="false" onAction="#temporaryOnclick" text="Tạm trú, vắng">
                      <graphic>
                         <FontAwesomeIconView glyphName="PLUS" size="18" />
                      </graphic>

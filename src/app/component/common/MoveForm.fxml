@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -12,35 +13,36 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="518.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.common.MoveForm">
+<AnchorPane prefHeight="518.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.common.MoveForm">
    <children>
-      <AnchorPane prefHeight="45.0" prefWidth="808.0" styleClass="column_header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="45.0" prefWidth="808.0" styleClass="sub_header" stylesheets="@../dashboard/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text layoutX="334.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Di chuyển nhân khẩu">
+            <Text layoutX="315.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Di chuyển nhân khẩu">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <TextField fx:id="tfSearch" layoutX="68.0" layoutY="84.0" promptText="Tìm kiếm hộ khẩu" style="-fx-background-color: white;" styleClass="text_box" />
-      <Button fx:id="btnSearch" layoutX="266.0" layoutY="85.0" mnemonicParsing="false" onAction="#searchOnClick">
+      <TextField fx:id="tfSearch" layoutX="52.0" layoutY="84.0" promptText="Tìm kiếm hộ khẩu" style="-fx-background-color: white;" styleClass="text_box" AnchorPane.leftAnchor="52.0" />
+      <Button fx:id="btnSearch" layoutX="241.0" layoutY="86.0" mnemonicParsing="false" onAction="#searchOnClick">
          <graphic>
             <FontAwesomeIconView glyphName="SEARCH" size="18" />
          </graphic>
-      </Button>
-      <TextField fx:id="tfAddress" layoutX="69.0" layoutY="409.0" prefHeight="33.0" prefWidth="323.0" promptText="Đia chỉ hiện tại" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
-      <DatePicker fx:id="dateMove" layoutX="622.0" layoutY="135.0" promptText="Ngày chuyển" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
-      <ComboBox fx:id="moveType" layoutX="622.0" layoutY="84.0" prefHeight="31.0" prefWidth="220.0" promptText="Chuyển đến / Chuyển đi" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
-      <TableView fx:id="tblContent" layoutX="69.0" layoutY="135.0" prefHeight="256.0" prefWidth="525.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <TextField fx:id="tfAddress" layoutX="53.0" layoutY="409.0" prefHeight="33.0" prefWidth="323.0" promptText="Đia chỉ hiện tại" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
+      <DatePicker fx:id="dateMove" layoutX="536.0" layoutY="135.0" promptText="Ngày chuyển" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
+      <ComboBox fx:id="moveType" layoutX="524.0" layoutY="84.0" prefHeight="31.0" prefWidth="220.0" promptText="Chuyển đến / Chuyển đi" style="-fx-background-color: #FFFFFF;" styleClass="text_box" AnchorPane.rightAnchor="52.0" />
+      <TableView fx:id="tblContent" layoutX="53.0" layoutY="135.0" prefHeight="256.0" prefWidth="452.0">
         <columns>
-          <TableColumn editable="false" prefWidth="106.0" text="Số hộ khẩu" />
-          <TableColumn prefWidth="150.0" text="Tên chủ hộ" />
-            <TableColumn editable="false" prefWidth="268.0" text="Địa chỉ" />
+          <TableColumn editable="false" prefWidth="97.0" text="Số hộ khẩu" />
+          <TableColumn prefWidth="159.0" text="Tên chủ hộ" />
+            <TableColumn editable="false" prefWidth="195.0" text="Địa chỉ" />
         </columns>
       </TableView>
-      <Button fx:id="btnOk" graphicTextGap="8.0" layoutX="644.0" layoutY="434.0" mnemonicParsing="false" onAction="#okOnclick" style="-fx-background-color: #FFFFFF;" styleClass="text_box" text="OK">
+      <Button fx:id="btnOk" graphicTextGap="8.0" layoutX="546.0" layoutY="434.0" mnemonicParsing="false" onAction="#okOnclick" stylesheets="@../dashboard/style.css" text="OK">
          <graphic>
             <FontAwesomeIconView glyphName="CHECK" size="15" />
          </graphic>
@@ -50,8 +52,12 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <styleClass>
+            <String fx:value="text_box" />
+            <String fx:value="button" />
+         </styleClass>
       </Button>
-      <Button fx:id="btnCancel" layoutX="736.0" layoutY="434.0" mnemonicParsing="false" onAction="#cancelOnclick" style="-fx-background-color: #FFFFFF;" styleClass="text_box" text="CANCEL">
+      <Button fx:id="btnCancel" layoutX="638.0" layoutY="434.0" mnemonicParsing="false" onAction="#cancelOnclick" stylesheets="@../dashboard/style.css" text="CANCEL">
          <graphic>
             <FontAwesomeIconView glyphName="CLOSE" size="16" />
          </graphic>
@@ -61,6 +67,10 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <styleClass>
+            <String fx:value="text_box" />
+            <String fx:value="button" />
+         </styleClass>
       </Button>
    </children>
    <cursor>

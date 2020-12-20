@@ -112,7 +112,7 @@ public class HouseHoldForm implements Initializable {
         stage = new Stage();
         stage.setScene(scene);
         stage.show();
-
+        stage.setResizable(false);
         this.addressController = loader.getController();
     }
 

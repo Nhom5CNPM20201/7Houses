@@ -22,7 +22,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("component/welcome/Welcome.fxml"));
 
         Scene scene = new Scene(root, 1000, 650);
-        scene.getStylesheets().add("app/component/style.css");
+        scene.getStylesheets().add("app/component/dashboard/style.css");
         screenController = new ScreenController(scene);
 
         primaryStage.setTitle("7Houses");
