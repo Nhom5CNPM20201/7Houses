@@ -12,7 +12,7 @@ public class TemporaryResidentConfig {
 
     public static final String TS_START = "batdau";
 
-    public static final String TS_DURATION = "thoihan";
+    public static final String TS_END = "ketthuc";
 
     public static final String TS_CAGETORY = "theloai";
 

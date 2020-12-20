@@ -6,9 +6,11 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.EmptyStackException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import app.component.dashboard.householdManage.HouseholdList;
 import app.database.MSSQLDatabase;
 import app.entity.HouseHold;
 import app.entity.Move;
@@ -62,6 +64,24 @@ public class HouseHoldService {
 			return null;
 		}
 	}
+
+	public HouseHold updateHouseHold(HouseHold houseHold) {
+		try {
+			HouseHold searchHH = MSSQLDatabase.getInstance().searchHouseHold(houseHold.getHouseHoldBook());
+			if(searchHH != null) {
+				int index = this.findIndex(houseHold.getHouseHoldBook());
+				houseHoldList.set(index, houseHold);
+				MSSQLDatabase.getInstance().updateHouseHold(houseHold);
+				return houseHold;
+			}
+			else {
+				throw new Exception("Không tồn tại hộ khẩu!");
+			}
+		} catch (Exception e) {
+			LogService.error(e.getMessage());
+			return null;
+		}
+	}
 	
 	public List<HouseHold> getAllHouseHold() {
 		return this.houseHoldList;
@@ -69,6 +89,16 @@ public class HouseHoldService {
 
 	public HouseHold getHouseHold(int id) {
 		return houseHoldList.stream().filter(x -> x.getId() == id).findFirst().get();
+	}
+
+	private int findIndex(String houseHoldNo) {
+		int i = 0;
+		for (var h : houseHoldList) {
+			if (h.getHouseHoldBook().equals(houseHoldNo)) return i;
+			i++;
+		}
+
+		return -1;
 	}
 
 	public long countAllHouseHold() {

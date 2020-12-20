@@ -43,6 +43,10 @@ public class AddressService {
         }
     }
 
+    public Address getAddress(int id) {
+        return addressList.stream().filter(x -> x.getId() == id).findFirst().get();
+    }
+
     public Address searchAddress(int id) {
         try {
             Address searchA = addressList.stream().filter(x -> x.getId() == id).findFirst().get();

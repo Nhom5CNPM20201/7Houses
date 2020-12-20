@@ -24,14 +24,14 @@ public interface ISQLDatabaseTemporaryResident extends ISQLDatabase {
                     + TemporaryResidentConfig.TS_IDADDRESS + " , "
                     + TemporaryResidentConfig.TS_TIME + " , "
                     + TemporaryResidentConfig.TS_START + " , "
-                    + TemporaryResidentConfig.TS_DURATION + " , "
+                    + TemporaryResidentConfig.TS_END + " , "
                     + TemporaryResidentConfig.TS_CAGETORY + " , "
                     + TemporaryResidentConfig.TS_INFOR + ") VALUES (?, ?, ?, ?, ?, ?, ?)");
             stmt.setInt(1, ts.getIdPeople());
             stmt.setInt(2, ts.getIdAddress());
-            stmt.setDate(3, ts.getTime());
-            stmt.setDate(4, ts.getStart());
-            stmt.setInt(5, ts.getDuration());
+            stmt.setDate(3, new Date(ts.getTime().getTime()));
+            stmt.setDate(4, new Date(ts.getStart().getTime()));
+            stmt.setDate(5, new Date(ts.getEnd().getTime()));
             stmt.setInt(6, ts.getCagetory());
             stmt.setString(7, ts.getInformation());
             stmt.executeUpdate();
@@ -43,14 +43,13 @@ public interface ISQLDatabaseTemporaryResident extends ISQLDatabase {
     private TemporaryResident extractTS(ResultSet rs) throws SQLException {
         int ts_idpeople = rs.getInt(TemporaryResidentConfig.TS_IDPEOPLE);
         int ts_id = rs.getInt(TemporaryResidentConfig.TS_IDADDRESS);
-        String ts_time = rs.getString(TemporaryResidentConfig.TS_TIME);
-        String ts_start = rs.getString(TemporaryResidentConfig.TS_START);
-        int ts_duration = rs.getInt(TemporaryResidentConfig.TS_DURATION);
+        Date ts_time = rs.getDate(TemporaryResidentConfig.TS_TIME);
+        Date ts_start = rs.getDate(TemporaryResidentConfig.TS_START);
+        Date ts_end = rs.getDate(TemporaryResidentConfig.TS_END);
         int ts_cagetory = rs.getInt(TemporaryResidentConfig.TS_CAGETORY);
         String ts_infor = rs.getString(TemporaryResidentConfig.TS_INFOR);
 
-
-        return new TemporaryResident(ts_idpeople, ts_id, ts_time, ts_start, ts_duration, ts_cagetory, ts_infor);
+        return new TemporaryResident(ts_idpeople, ts_id, ts_time, ts_start, ts_end, ts_cagetory, ts_infor);
     }
 
     @Override
@@ -80,13 +79,13 @@ public interface ISQLDatabaseTemporaryResident extends ISQLDatabase {
                     + TemporaryResidentConfig.TS_IDADDRESS + " =? "
                     + " , " + TemporaryResidentConfig.TS_TIME + " =? "
                     + " , " + TemporaryResidentConfig.TS_START + " =? "
-                    + " , " + TemporaryResidentConfig.TS_DURATION + " =?"
+                    + " , " + TemporaryResidentConfig.TS_END + " =?"
                     + " , " + TemporaryResidentConfig.TS_CAGETORY + " =?"
                     + " , " + TemporaryResidentConfig.TS_INFOR +" =? " + " WHERE " + TemporaryResidentConfig.TS_IDPEOPLE + " = " +  ts.getIdPeople());
             stmt.setInt(1, ts.getIdAddress());
-            stmt.setDate(2, ts.getTime());
-            stmt.setDate(3, ts.getStart());
-            stmt.setInt(4, ts.getDuration());
+            stmt.setDate(2, new Date(ts.getTime().getTime()));
+            stmt.setDate(3, new Date(ts.getStart().getTime()));
+            stmt.setDate(4, new Date(ts.getEnd().getTime()));
             stmt.setInt(5, ts.getCagetory());
             stmt.setString(6, ts.getInformation());
             stmt.executeUpdate();
@@ -136,13 +135,11 @@ public interface ISQLDatabaseTemporaryResident extends ISQLDatabase {
 //            TemporaryResident ts = new TemporaryResident(4,11,"2000-11-11", "1999-11-11", 7, 1 , "no");
 //            testConn.insertTS(ts);
             testConn.searchTS(3);
-            testConn.updateTS(new TemporaryResident(1,2,"2000-11-10","1999-11-10", 7, 1 , "no"));
             List<TemporaryResident> tsList = testConn.getAllTS();
-            for(var i: tsList){
-                System.out.println(i.getIdPeople() + "\t " + i.getIdAddress() + ", " + i.getTime() + ", " + i.getStart()
-                        + ", " + i.getDuration() + ", " + i.getCagetory());
-            }
-            testConn.getAllTS();
+//            for(var i: tsList){
+//                System.out.println(i.getIdPeople() + "\t " + i.getIdAddress() + ", " + i.getTime() + ", " + i.getStart()
+//            }
+//            testConn.getAllTS();
             System.out.println("Connected to DB successfully.");
             conn.close();
 

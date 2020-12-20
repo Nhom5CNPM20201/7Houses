@@ -33,17 +33,17 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TableView fx:id="tblContent" layoutX="43.0" layoutY="151.0" prefHeight="313.0" prefWidth="418.0">
+      <TableView fx:id="tblListPeople"  layoutX="43.0" layoutY="151.0" prefHeight="313.0" prefWidth="418.0">
          <columns>
-            <TableColumn editable="false" prefWidth="84.0" text="ID" />
-            <TableColumn prefWidth="147.0" text="Tên" />
-            <TableColumn editable="false" prefWidth="186.0" text="CMND/CCCD" />
+            <TableColumn fx:id="peopleNo" editable="false" prefWidth="84.0" text="ID" />
+            <TableColumn fx:id="peopleName" prefWidth="147.0" text="Tên" />
+            <TableColumn fx:id="idCardNo" editable="false" prefWidth="186.0" text="CMND/CCCD" />
          </columns>
       </TableView>
       <DatePicker fx:id="startTime" layoutX="519.0" layoutY="95.0" promptText="Bắt đầu" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
       <DatePicker fx:id="endTime" layoutX="519.0" layoutY="151.0" promptText="Kết thúc" style="-fx-background-color: white;" styleClass="text_box" />
       <ComboBox fx:id="typeCombobox" layoutX="519.0" layoutY="220.0" onAction="#typeCombxOnclick" prefHeight="31.0" prefWidth="198.0" promptText="Tạm chú / Tạm vắng" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
-      <TextField layoutX="519.0" layoutY="285.0" prefHeight="31.0" prefWidth="220.0" promptText="Địa chỉ" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
+      <TextField fx:id="address" layoutX="519.0" layoutY="285.0" prefHeight="31.0" prefWidth="220.0" promptText="Địa chỉ" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
       <Button fx:id="btnAdd" layoutX="739.0" layoutY="286.0" mnemonicParsing="false" onAction="#addOnclick" prefHeight="31.0" prefWidth="21.0" AnchorPane.rightAnchor="37.0">
          <cursor>
             <Cursor fx:constant="HAND" />

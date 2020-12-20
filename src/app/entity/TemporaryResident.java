@@ -1,31 +1,35 @@
 package app.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class TemporaryResident {
     int idPeople;
     int idAddress;
     Date time;
     Date start;
-    int duration;
+    Date end;
     int cagetory;
     String information;
 
-    public TemporaryResident(int idPeople, int idAddress, String time, String start, int duration, int cagetory, String information) {
+    public TemporaryResident() {
+
+    }
+
+    public TemporaryResident(int idPeople, int idAddress, Date time, Date start, Date end, int cagetory, String information) {
         this.idPeople = idPeople;
         this.idAddress = idAddress;
-        this.time = Date.valueOf(time);
-        this.start = Date.valueOf(start);
-        this.duration = duration;
+        this.time = time;
+        this.start = start;
+        this.end = end;
         this.cagetory = cagetory;
         this.information = information;
     }
 
-    public TemporaryResident(int idAddress, String time, String start, int duration, int cagetory, String information) {
+    public TemporaryResident(int idAddress, Date time, Date start, Date end, int cagetory, String information) {
         this.idAddress = idAddress;
-        this.time = Date.valueOf(time);
-        this.start = Date.valueOf(start);
-        this.duration = duration;
+        this.time = time;
+        this.start = start;
+        this.end = end;
         this.cagetory = cagetory;
         this.information = information;
     }
@@ -62,12 +66,12 @@ public class TemporaryResident {
         this.start = start;
     }
 
-    public int getDuration() {
-        return duration;
+    public Date getEnd() {
+        return this.end;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setEnd(Date end) {
+        this.end = end;
     }
 
     public int getCagetory() {

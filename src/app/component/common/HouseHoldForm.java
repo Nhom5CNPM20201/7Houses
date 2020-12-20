@@ -74,6 +74,8 @@ public class HouseHoldForm implements Initializable {
 
     private People selectedPeople;
 
+    private boolean isUpdate = false;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         peopleNo.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getId())));
@@ -89,6 +91,8 @@ public class HouseHoldForm implements Initializable {
             }
         });
 
+        tblListPeople.getItems().setAll(FXCollections.observableArrayList(ServiceFactory.getPeopleService().getAllPeople()));
+
         Mediator.unSubscribe("onCloseAddAddress");
         Mediator.subscribe("onCloseAddAddress", event -> onCloseAddAddress(null));
     }
@@ -100,6 +104,16 @@ public class HouseHoldForm implements Initializable {
             address.setText(newAddress.getDetail());
         }
         this.stage.close();
+    }
+
+    public void update(HouseHold houseHold) {
+        this.isUpdate = true;
+        this.newHouseHold = houseHold;
+
+        houseHoldNo.setText(houseHold.getHouseHoldBook());
+        tblListPeople.getSelectionModel().select(ServiceFactory.getPeopleService().getPeople(houseHold.getIdOwner()));
+        newAddress = ServiceFactory.getAddressService().getAddress(houseHold.getIdAddress());
+        address.setText(houseHold.getAddressDetail());
     }
 
     @FXML
@@ -144,9 +158,17 @@ public class HouseHoldForm implements Initializable {
         newHouseHold.setHouseHoldBook(houseHoldNo.getText());
         newHouseHold.setIdOwner(selectedPeople.getId());
         newHouseHold.setName(selectedPeople.getFullName());
-        HouseHold addedHouseHold = ServiceFactory.getHouseHoldService().createHouseHold(newHouseHold);
+        HouseHold addedHouseHold;
+
+        if (isUpdate) {
+            addedHouseHold = ServiceFactory.getHouseHoldService().updateHouseHold(newHouseHold);
+        } else {
+            addedHouseHold = ServiceFactory.getHouseHoldService().createHouseHold(newHouseHold);
+        }
         if (addedHouseHold != null) {
             Mediator.Notify("houseHoldOnClick");
+        } else {
+            NotiService.info("Vui lòng kiểm tra lại thông tin.");
         }
     }
 

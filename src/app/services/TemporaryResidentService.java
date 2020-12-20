@@ -33,10 +33,6 @@ public class TemporaryResidentService {
     public void InitTS() {
         try {
             tSList = MSSQLDatabase.getInstance().getAllTS();
-            for (TemporaryResident i : tSList) {
-                System.out.println(i.getIdPeople() + "\t " + i.getIdAddress() + ", " + i.getTime() + ", " + i.getStart()
-                        + ", " + i.getDuration() + ", " + i.getCagetory());
-            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -69,8 +65,8 @@ public class TemporaryResidentService {
     }
     public static void main(String[] args) {
         TemporaryResidentService temporaryResidentService = new TemporaryResidentService();
-        TemporaryResident temporaryResident = new TemporaryResident(1,12,"2000-10-29", "1000-10-03", 1, 1, " ");
-        temporaryResidentService.createTS(temporaryResident);
+//        TemporaryResident temporaryResident = new TemporaryResident(1,12,"2000-10-29", "1000-10-03", 1, 1, " ");
+//        temporaryResidentService.createTS(temporaryResident);
         temporaryResidentService.InitTS();
     }
 }

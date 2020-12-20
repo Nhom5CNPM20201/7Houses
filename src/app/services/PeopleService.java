@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import app.database.MSSQLDatabase;
+import app.entity.HouseHold;
 import app.entity.People;
 import app.helper.DateHelper;
 import app.helper.StringHelper;
@@ -65,6 +66,10 @@ public class PeopleService {
 
 	public List<People> getAllPeople() {
 		return peopleList;
+	}
+
+	public People getPeople(int id) {
+		return peopleList.stream().filter(x -> x.getId() == id).findFirst().get();
 	}
 
 	public List<People> searchPeopleFull(String query) {

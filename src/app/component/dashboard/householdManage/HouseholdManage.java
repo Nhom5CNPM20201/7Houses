@@ -43,12 +43,11 @@ public class HouseholdManage implements Initializable {
 
     @FXML
     public void addOnClick(ActionEvent event) {
-        this.switchView(getClass().getResource("../../common/HouseHoldForm.fxml"));
+        onGoingAddHouseHold(null);
     }
 
     @FXML
     public void moveOnClick(ActionEvent event) {
-
         this.switchView(getClass().getResource("../../common/MoveForm.fxml"));
     }
 
@@ -59,12 +58,22 @@ public class HouseholdManage implements Initializable {
 
     @FXML
     public void updateOnClick(ActionEvent event) {
-        if (mainHouseHoldController != null && HouseholdList.class.isInstance(mainHouseHoldController)) {
-            HouseHold selectedHouseHold = ((HouseholdList) mainHouseHoldController).getSelectedHouseHold();
-            if (selectedHouseHold != null)
-                LogService.info("Test - " + selectedHouseHold.getAddressDetail());
-        } else {
-            NotiService.info("Bạn chưa chọn hộ khẩu.");
+        try {
+            if (mainHouseHoldController != null && mainHouseHoldController instanceof HouseholdList) {
+                HouseHold selectedHouseHold = ((HouseholdList) mainHouseHoldController).getSelectedHouseHold();
+                if (selectedHouseHold == null) {
+                    throw new Exception("Bạn chưa chọn hộ khẩu.");
+                }
+
+                onGoingAddHouseHold(null);
+                if (mainHouseHoldController instanceof HouseHoldForm) {
+                    ((HouseHoldForm) mainHouseHoldController).update(selectedHouseHold);
+                }
+            } else {
+                throw new Exception("Vui lòng chọn hộ khẩu.");
+            }
+        } catch (Exception e) {
+            NotiService.error(e.getMessage());
         }
     }
 
@@ -74,6 +83,10 @@ public class HouseholdManage implements Initializable {
 
         Mediator.unSubscribe("onGoingMainHouseHold");
         Mediator.subscribe("onGoingMainHouseHold", event -> onGoingMainHouseHold(null));
+    }
+
+    public void onGoingAddHouseHold(ActionEvent e) {
+        this.switchView(getClass().getResource("../../common/HouseHoldForm.fxml"));
     }
 
     public void onGoingMainHouseHold(ActionEvent e) {
