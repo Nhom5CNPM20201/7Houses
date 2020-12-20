@@ -51,14 +51,6 @@
                   <TableColumn fx:id="peopleGender" prefWidth="71.0" text="Giới tính" />
               </columns>
             </TableView>
-            <TableView fx:id="tblStayingData" prefHeight="429.0" prefWidth="437.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="371.0" AnchorPane.topAnchor="0.0">
-               <columns>
-                  <TableColumn fx:id="peopleID" prefWidth="51.0" text="ID" />
-                  <TableColumn fx:id="peopleName" prefWidth="143.0" text="Tên" />
-                  <TableColumn fx:id="peopleIdenNo" prefWidth="170.0" text="Số CMND/CCCD" />
-                  <TableColumn fx:id="peopleGender" prefWidth="71.0" text="Giới tính" />
-               </columns>
-            </TableView>
             <Pane fx:id="paneView" layoutX="437.0" prefHeight="430.0" prefWidth="371.0" style="-fx-border-color: #585858;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="437.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
