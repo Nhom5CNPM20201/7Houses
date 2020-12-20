@@ -32,6 +32,7 @@ public class PeopleService {
 		if (people.getId() > 0 && peopleList.stream().anyMatch(p -> p.getId() == people.getId()))
 			return people;
 
+
 		people.setId(peopleList.size() + 1);
 		peopleList.add(people);
 		orm.insertPeople(people);

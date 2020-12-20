@@ -58,9 +58,9 @@ public class Summary implements Initializable {
         double rateTC = 100.00*ServiceFactory.getTemporaryresidentService().countTC()/allPeople;
         double rateTV = 100.00*ServiceFactory.getTemporaryresidentService().countTV()/allPeople;
         dataTCTV = FXCollections.observableArrayList(
-                new PieChart.Data("Tạm chú",rateTC),
+                new PieChart.Data("Tạm trú",rateTC),
                 new PieChart.Data("Tạm vắng",rateTV),
-                new PieChart.Data("Thường chú",100.00-rateTC-rateTV)
+                new PieChart.Data("Thường trú",100.00-rateTC-rateTV)
         );
         chartTCTV.setData(dataTCTV);
         chartTCTV.setLayoutX(-15);

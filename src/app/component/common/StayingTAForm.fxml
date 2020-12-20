@@ -17,7 +17,7 @@
    <children>
       <AnchorPane prefHeight="45.0" prefWidth="200.0" styleClass="sub_header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text layoutX="325.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tạm chú tạm vắng">
+            <Text layoutX="325.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tạm trú tạm vắng">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -42,7 +42,7 @@
       </TableView>
       <DatePicker fx:id="startTime" layoutX="519.0" layoutY="95.0" promptText="Bắt đầu" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
       <DatePicker fx:id="endTime" layoutX="519.0" layoutY="151.0" promptText="Kết thúc" style="-fx-background-color: white;" styleClass="text_box" />
-      <ComboBox fx:id="typeCombobox" layoutX="519.0" layoutY="220.0" onAction="#typeCombxOnclick" prefHeight="31.0" prefWidth="198.0" promptText="Tạm chú / Tạm vắng" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
+      <ComboBox fx:id="typeCombobox" layoutX="519.0" layoutY="220.0" onAction="#typeCombxOnclick" prefHeight="31.0" prefWidth="198.0" promptText="Tạm trú / Tạm vắng" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
       <TextField fx:id="address" layoutX="519.0" layoutY="285.0" prefHeight="31.0" prefWidth="220.0" promptText="Địa chỉ" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
       <Button fx:id="btnAdd" layoutX="739.0" layoutY="286.0" mnemonicParsing="false" onAction="#addOnclick" prefHeight="31.0" prefWidth="21.0" AnchorPane.rightAnchor="37.0">
          <cursor>
