@@ -95,6 +95,6 @@ public class Statistic implements Initializable {
         typeStatistic.setItems(typeList);
 
         genderList = FXCollections.observableArrayList(FEMALE,MALE,OTHER);
-        gender.setItems(genderList);S
+        gender.setItems(genderList);
     }
 }

@@ -80,6 +80,7 @@ public class Search implements Initializable {
 
     @FXML
     void findOnClick(ActionEvent event) {
+        if (comboboxOption.getSelectionModel().getSelectedIndex() < 0) return;
         var selectedItem = comboboxOption.getSelectionModel().getSelectedItem();
         var query = queryTextField.getText().trim();
 
