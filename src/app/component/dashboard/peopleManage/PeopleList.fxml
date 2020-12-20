@@ -22,7 +22,7 @@
          <children>
             <AnchorPane prefHeight="240.0" prefWidth="796.0" HBox.hgrow="ALWAYS">
                <children>
-                  <TableView fx:id="tblListHouseHold" layoutX="14.0" layoutY="6.0" prefHeight="234.0" prefWidth="796.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
+                  <TableView fx:id="tblListPeople" layoutX="14.0" layoutY="6.0" prefHeight="234.0" prefWidth="796.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
                      <columns>
                         <TableColumn fx:id="peopleNo" maxWidth="78.0" prefWidth="56.0" resizable="false" text="Id" />
                         <TableColumn fx:id="peopleName" prefWidth="239.66668701171875" text="Họ và tên" />

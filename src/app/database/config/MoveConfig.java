@@ -9,8 +9,6 @@ public class MoveConfig {
 
   public static final String MOVE_IHOUSEHOLD = "IdHoKhau";
 
-  public static final String MOVE_IDPEOPLE = "IdNhanKhau";
-
   public static final String MOVE_IDOLDADDRESS = "IdDiaChiCu";
 
   public static final String MOVE_IDNEWADDRESS = "IdDiaChiMoi";

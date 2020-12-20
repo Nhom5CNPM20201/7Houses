@@ -35,11 +35,11 @@
       <TextField fx:id="tfAddress" layoutX="53.0" layoutY="409.0" prefHeight="33.0" prefWidth="323.0" promptText="Đia chỉ hiện tại" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
       <DatePicker fx:id="dateMove" layoutX="536.0" layoutY="135.0" promptText="Ngày chuyển" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
       <ComboBox fx:id="moveType" layoutX="524.0" layoutY="84.0" prefHeight="31.0" prefWidth="220.0" promptText="Chuyển đến / Chuyển đi" style="-fx-background-color: #FFFFFF;" styleClass="text_box" AnchorPane.rightAnchor="52.0" />
-      <TableView fx:id="tblContent" layoutX="53.0" layoutY="135.0" prefHeight="256.0" prefWidth="452.0">
+      <TableView fx:id="tblHouseHold" layoutX="53.0" layoutY="135.0" prefHeight="256.0" prefWidth="452.0">
         <columns>
-          <TableColumn editable="false" prefWidth="97.0" text="Số hộ khẩu" />
-          <TableColumn prefWidth="159.0" text="Tên chủ hộ" />
-            <TableColumn editable="false" prefWidth="195.0" text="Địa chỉ" />
+            <TableColumn fx:id="houseHoldNo" editable="false" prefWidth="97.0" text="Số hộ khẩu" />
+            <TableColumn fx:id="houseHoldName" prefWidth="159.0" text="Tên chủ hộ" />
+            <TableColumn fx:id="houseHoldAddress" editable="false" prefWidth="195.0" text="Địa chỉ" />
         </columns>
       </TableView>
       <Button fx:id="btnOk" graphicTextGap="8.0" layoutX="546.0" layoutY="434.0" mnemonicParsing="false" onAction="#okOnclick" stylesheets="@../dashboard/style.css" text="OK">

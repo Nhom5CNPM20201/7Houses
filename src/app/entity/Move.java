@@ -1,19 +1,21 @@
 package app.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Move {
 	private int id;
-	private int idPeople;
 	private int idHouseHold;
 	private int idOldAddress;
 	private int idNewAddress;
 	private Date movingDate;
 	private int type;
+
+	public Move() {
+
+	}
 	
-	public Move(int id, int idPeople, int idHouseHold, int idOldAddress, int idNewAddress, Date movingDate, int type) {
+	public Move(int id, int idHouseHold, int idOldAddress, int idNewAddress, Date movingDate, int type) {
 		this.id = id;
-		this.idPeople = idPeople;
 		this.idHouseHold = idHouseHold;
 		this.idOldAddress = idOldAddress;
 		this.idNewAddress = idNewAddress;
@@ -21,8 +23,7 @@ public class Move {
 		this.type = type;
 	}
 	
-	public Move(int idPeople, int idHouseHold, int idOldAddress, int idNewAddress, Date movingDate, int type) {
-		this.idPeople = idPeople;
+	public Move(int idHouseHold, int idOldAddress, int idNewAddress, Date movingDate, int type) {
 		this.idHouseHold = idHouseHold;
 		this.idOldAddress = idOldAddress;
 		this.idNewAddress = idNewAddress;
@@ -35,12 +36,6 @@ public class Move {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getIdPeople() {
-		return idPeople;
-	}
-	public void setIdPeople(int idPeople) {
-		this.idPeople = idPeople;
 	}
 	public int getIdHouseHold() {
 		return idHouseHold;

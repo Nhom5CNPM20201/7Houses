@@ -30,28 +30,25 @@ public interface ISQLDatabaseMove extends ISQLDatabase{
 	private Move extractMove(ResultSet rs) throws Exception {
 		int id = rs.getInt(MoveConfig.MOVE_ID);
 		int idHouseHold = rs.getInt(MoveConfig.MOVE_IHOUSEHOLD);
-		int idPeople = rs.getInt(MoveConfig.MOVE_IDPEOPLE);
 		int idNewAddress = rs.getInt(MoveConfig.MOVE_IDNEWADDRESS);
 		int idOldAddress = rs.getInt(MoveConfig.MOVE_IDOLDADDRESS);
 		Date movingTime = rs.getDate(MoveConfig.MOVE_MOVINGDATE);
 		int type = rs.getInt(MoveConfig.MOVE_TYPE);
 		
-		return new Move(id, idHouseHold, idPeople, idOldAddress, idNewAddress, movingTime, type);
+		return new Move(id, idHouseHold, idOldAddress, idNewAddress, movingTime, type);
 	}
 	
 	@Override
 	default void insertMove(Move move) throws Exception{
 		PreparedStatement stmt = this.getDatabase().prepareStatement("INSERT INTO " + MoveConfig.TABLE_NAME +
-                " (" + MoveConfig.MOVE_IHOUSEHOLD +"," +
-                MoveConfig.MOVE_IDPEOPLE + "," + MoveConfig.MOVE_IDOLDADDRESS + "," 
+                " (" + MoveConfig.MOVE_IHOUSEHOLD +"," + MoveConfig.MOVE_IDOLDADDRESS + ","
                 + MoveConfig.MOVE_IDNEWADDRESS + "," + MoveConfig.MOVE_MOVINGDATE + "," + MoveConfig.MOVE_TYPE + ") " 
-                + " VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS );
+                + " VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS );
 		stmt.setInt(1, move.getIdHouseHold());
-		stmt.setInt(2, move.getIdPeople());
-		stmt.setInt(3, move.getIdOldAddress());
-		stmt.setInt(4, move.getIdNewAddress());
-		stmt.setDate(5, move.getMovingDate());
-		stmt.setInt(6, move.getType());
+		stmt.setInt(2, move.getIdOldAddress());
+		stmt.setInt(3, move.getIdNewAddress());
+		stmt.setDate(4, new Date(move.getMovingDate().getTime()));
+		stmt.setInt(5, move.getType());
 		stmt.executeUpdate();
 		
 		ResultSet generatedKeys = stmt.getGeneratedKeys();

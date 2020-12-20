@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import app.database.MSSQLDatabase;
 import app.entity.HouseHold;
+import app.entity.Move;
 import app.helper.DateHelper;
 import app.helper.StringHelper;
 import app.services.common.LogService;
@@ -19,7 +20,6 @@ import app.services.common.NotiService;
 
 public class HouseHoldService {
 	private static MSSQLDatabase orm;
-	private HouseHold houseHold;
 
 	private List<HouseHold> houseHoldList = new ArrayList<HouseHold>();
 	
@@ -104,8 +104,7 @@ public class HouseHoldService {
 	
 	public void deleteHouseHold(String houseHoldBook) {
 		try {
-			orm = MSSQLDatabase.getInstance();
-			HouseHold searchHH = orm.searchHouseHold(houseHoldBook);
+			HouseHold searchHH = MSSQLDatabase.getInstance().searchHouseHold(houseHoldBook);
 			if(searchHH != null) {
 				orm.removeHouseHold(searchHH);
 				System.out.println("Xoa thanh cong!");
@@ -116,8 +115,17 @@ public class HouseHoldService {
 		}
 	}
 	
-	public void updateHouseHold() {
-		
+	public void moveHouseHold(Move move) {
+		try {
+			HouseHold houseHold = this.getHouseHold(move.getIdHouseHold());
+
+			houseHold.setIdAddress(move.getIdNewAddress());
+			houseHold.setAddressDetail(ServiceFactory.getAddressService().searchAddress(move.getIdNewAddress()).getDetail());
+
+			MSSQLDatabase.getInstance().updateHouseHold(houseHold);
+		} catch (Exception e) {
+			LogService.error(e.getMessage());
+		}
 	}
 	
 //	Test Service

@@ -30,13 +30,22 @@ public class Search implements Initializable {
     private ComboBox<String> comboboxOption;
     
     @FXML
-    private TableView tblSearch;
+    private TableView tblListHouseHold;
     @FXML
-    private TableColumn<HouseHold, String> searchNo;
+    private TableColumn<HouseHold, String> houseHoldNo;
     @FXML
-    private TableColumn<HouseHold, String> searchName;
+    private TableColumn<HouseHold, String> holderNameColumn;
     @FXML
-    private TableColumn<HouseHold, String> searchAddress;
+    private TableColumn<HouseHold, String> addressColumn;
+
+    @FXML
+    private TableView tblListPeople;
+    @FXML
+    private TableColumn<People, String> peopleNo;
+    @FXML
+    private TableColumn<People, String> peopleName;
+    @FXML
+    private TableColumn<People, String> idCardNo;
 
     @FXML
     private Button btnFind;
@@ -53,6 +62,22 @@ public class Search implements Initializable {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        comboboxOption.setItems(FXCollections.observableArrayList(HO_KHAU, NHAN_KHAU));
+        tblListPeople.setVisible(false);
+
+        // household table
+        houseHoldNo.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getHouseHoldBook().trim()));
+        holderNameColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getName()));
+        addressColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getAddressDetail()));
+
+        // household table
+        peopleNo.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getId())));
+        peopleName.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFullName()));
+        idCardNo.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getIdentityNo()));
+    }
+
     @FXML
     void findOnClick(ActionEvent event) {
         var selectedItem = comboboxOption.getSelectionModel().getSelectedItem();
@@ -60,11 +85,9 @@ public class Search implements Initializable {
 
         switch(selectedItem) {
             case HO_KHAU:
-            	onGoingSearchHouseHold(event);
                 searchHouseHold(query);
                 break;
             case NHAN_KHAU:
-            	onGoingSearchPeople(event);
                 searchPeople(query);
                 break;
             default:
@@ -73,44 +96,37 @@ public class Search implements Initializable {
     }
 
     private void searchHouseHold(String query) {
-        List<HouseHold> data = ServiceFactory.getHouseHoldService().searchHouseHoldFull(query);
-        for (var item : data) {
-            LogService.info(item.getAddressDetail());
-        }
-        
+        tblListHouseHold.getItems().setAll(ServiceFactory.getHouseHoldService().searchHouseHoldFull(query));
     }
 
     private void searchPeople(String query) {
-        List<People> data = ServiceFactory.getPeopleService().searchPeopleFull(query);
-        for (var item : data) {
-            LogService.info(item.getFullName());
-        }
-
+        tblListPeople.getItems().setAll(ServiceFactory.getPeopleService().searchPeopleFull(query));
     }
 
     @FXML
     void optionOnAction(ActionEvent event) {
 
-        if(comboboxOption.getValue().equals("Tên")){
-          //  System.out.println("Tìm kiếm theo tên");
+        switch (comboboxOption.getValue()) {
+            case HO_KHAU:
+                tblListHouseHold.setVisible(true);
+                tblListPeople.setVisible(false);
+                break;
+            case NHAN_KHAU:
+                tblListHouseHold.setVisible(false);
+                tblListPeople.setVisible(true);
+                break;
         }
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        comboboxOption.setItems(FXCollections.observableArrayList(HO_KHAU, NHAN_KHAU)); 
-//        onGoingSearchHouseHold(null);
-    }
     
-    public void onGoingSearchHouseHold(ActionEvent e) {
-        this.switchView(getClass().getResource("../householdManage/HouseholdList.fxml"));
-    }
-    
-    public void onGoingSearchPeople(ActionEvent e) {
-        this.switchView(getClass().getResource("../peopleManage/PeopleList.fxml"));
-    }
-    
-    private void switchView(URL FXMLname){
-    	mainSearchController = ScreenController.activeSubscreen(this.mainSearch, FXMLname);
-    }
+//    public void onGoingSearchHouseHold(ActionEvent e) {
+//        this.switchView(getClass().getResource("../householdManage/HouseholdList.fxml"));
+//    }
+//
+//    public void onGoingSearchPeople(ActionEvent e) {
+//        this.switchView(getClass().getResource("../peopleManage/PeopleList.fxml"));
+//    }
+//
+//    private void switchView(URL FXMLname){
+//    	mainSearchController = ScreenController.activeSubscreen(this.mainSearch, FXMLname);
+//    }
 }

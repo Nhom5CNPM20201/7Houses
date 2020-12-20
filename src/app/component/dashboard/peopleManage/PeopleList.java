@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class PeopleList implements Initializable {
 
     @FXML
-    private TableView<People> tblListHouseHold;
+    private TableView<People> tblListPeople;
     @FXML
     private TableColumn<People, String> peopleNo;
     @FXML
@@ -37,11 +37,11 @@ public class PeopleList implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // household table
+        // people table
         peopleNo.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getId())));
         peopleName.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFullName()));
         idCardNo.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getIdentityNo()));
 
-        tblListHouseHold.getItems().setAll(peoples);
+        tblListPeople.getItems().setAll(peoples);
     }
 }

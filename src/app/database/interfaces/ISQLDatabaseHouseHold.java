@@ -76,13 +76,12 @@ public interface ISQLDatabaseHouseHold extends ISQLDatabase {
 	@Override
     default void updateHouseHold(HouseHold houseHold) throws Exception {
         PreparedStatement stmt = this.getDatabase().prepareStatement("UPDATE " + HouseHoldConfig.TABLE_NAME + " SET "
-                + HouseHoldConfig.HOUSEHOLD_IDOWNER + "=? " + "," + HouseHoldConfig.HOUSEHOLD_NAME + "=?"
-                + " WHERE " + HouseHoldConfig.HOUSEHOLD_HOUSEHOLDBOOK + "=? " + "AND "
-                + HouseHoldConfig.HOUSEHOLD_IDADDRESS + "=?");
+                + HouseHoldConfig.HOUSEHOLD_IDOWNER + "=? " + "," + HouseHoldConfig.HOUSEHOLD_NAME + "=?, " + HouseHoldConfig.HOUSEHOLD_IDADDRESS + "=?"
+                + " WHERE " + HouseHoldConfig.HOUSEHOLD_HOUSEHOLDBOOK + "=? ;");
         stmt.setInt(1, houseHold.getIdOwner());
         stmt.setString(2, houseHold.getName());
-        stmt.setString(3, houseHold.getHouseHoldBook());
-        stmt.setInt(4, houseHold.getIdAddress());
+        stmt.setInt(3, houseHold.getIdAddress());
+        stmt.setString(4, houseHold.getHouseHoldBook());
         stmt.executeUpdate();
     }
 
