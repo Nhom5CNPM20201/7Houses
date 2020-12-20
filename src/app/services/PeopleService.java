@@ -4,6 +4,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -110,6 +111,22 @@ public class PeopleService {
 	
 	public void updatePeople() {
 		
+	}
+
+	public List<People> statistic(int genderIndex, int ageFrom, int ageTo, Date timeFrom, Date timeTo) {
+		Predicate<People> filterGender = p -> genderIndex == -1 || genderIndex == p.getGender();
+		Predicate<People> filterAgeGreater = p -> ageFrom == -1 || p.getAge() >= ageFrom;
+		Predicate<People> filterAgeLower = p -> ageTo == -1 || p.getAge() <= ageTo;
+		Predicate<People> filterRegisGreater = p -> timeFrom == null || p.getRegisDate().after(timeFrom);
+		Predicate<People> filterRegisLower = p -> timeTo == null || p.getRegisDate().before(timeTo);
+
+		return this.getAllPeople().stream()
+				.filter(filterGender)
+				.filter(filterAgeGreater)
+				.filter(filterAgeLower)
+				.filter(filterRegisGreater)
+				.filter(filterRegisLower)
+				.collect(Collectors.toList());
 	}
 
 

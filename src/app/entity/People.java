@@ -1,4 +1,5 @@
 package app.entity;
+import java.util.Calendar;
 import java.util.Date;
 import java.sql.*;
 public class People  {
@@ -131,6 +132,16 @@ public class People  {
 	public Date getDateOfBirth() {
 	//	Date date = Date.valueOf(this.dateOfBirth);      
 		return dateOfBirth ;
+	}
+
+	public int getAge() {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(dateOfBirth);
+		int bornYear = cal.get(Calendar.YEAR);
+		cal.setTime(new Date());
+		int nowYear = cal.get(Calendar.YEAR);
+
+   		return nowYear - bornYear;
 	}
 
 	public void setDateOfBirth(Date dateOfBirth) {

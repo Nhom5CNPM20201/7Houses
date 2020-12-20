@@ -1,5 +1,7 @@
 package app.helper;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -8,6 +10,13 @@ import java.util.Date;
 
 
 public class DateHelper {
+    public static String getDateString(Date date) {
+        String pattern = "dd/MM/yyyy";
+        DateFormat df = new SimpleDateFormat(pattern);
+        String dateString = df.format(date);
+        return dateString;
+    }
+
     public static long getDaysBetween(Date date_1, Date date_2) {
         if (date_1 == null || date_2 == null) return 1000000000;
 

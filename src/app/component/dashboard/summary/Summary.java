@@ -1,6 +1,7 @@
 package app.component.dashboard.summary;
 
 import app.entity.HouseHold;
+import app.helper.DateHelper;
 import app.services.ServiceFactory;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -57,7 +58,7 @@ public class Summary implements Initializable {
         noColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getHouseHoldBook().trim()));
         holderNameColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getName()));
         addressColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getAddressDetail()));
-
+        addedTimeColumn.setCellValueFactory(c -> new SimpleStringProperty(DateHelper.getDateString(c.getValue().getCreatedDate())));
 
         newHouseHoldTable.getItems().setAll(houseHolds);
     }

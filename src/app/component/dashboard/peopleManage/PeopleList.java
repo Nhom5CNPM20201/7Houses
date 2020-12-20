@@ -2,6 +2,7 @@ package app.component.dashboard.peopleManage;
 
 import app.entity.HouseHold;
 import app.entity.People;
+import app.helper.DateHelper;
 import app.services.ServiceFactory;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -41,6 +42,7 @@ public class PeopleList implements Initializable {
         peopleNo.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getId())));
         peopleName.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFullName()));
         idCardNo.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getIdentityNo()));
+        peopleBirthDay.setCellValueFactory(c -> new SimpleStringProperty(DateHelper.getDateString(c.getValue().getDateOfBirth())));
 
         tblListPeople.getItems().setAll(peoples);
     }

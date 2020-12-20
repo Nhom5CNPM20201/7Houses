@@ -24,7 +24,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <Button fx:id="btnTest" graphicTextGap="10.0" layoutX="577.0" layoutY="119.0" mnemonicParsing="false" onAction="#testOnclick" styleClass="text_box" stylesheets="@../style.css" text="Kiểm tra" AnchorPane.rightAnchor="127.0">
+      <Button fx:id="btnTest" graphicTextGap="10.0" layoutX="577.0" layoutY="119.0" mnemonicParsing="false" onAction="#checkOnClick" styleClass="text_box" stylesheets="@../style.css" text="Kiểm tra" AnchorPane.rightAnchor="127.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
