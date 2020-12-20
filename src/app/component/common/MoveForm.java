@@ -1,5 +1,6 @@
 package app.component.common;
 
+import app.entity.Address;
 import app.entity.HouseHold;
 import app.entity.Move;
 import app.helper.ValidateHelper;
@@ -11,11 +12,17 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Service;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,16 +34,23 @@ public class MoveForm implements Initializable {
 
     @FXML
     private Button btnSearch;
+    @FXML
+    private TextField tfAddressDes;
+    @FXML
+    private Button btnAdd;
 
     @FXML
-    private TextField tfAddress;
+    private TextField tfAddressCur;
 
+    private Stage stage;
+
+    private AddressForm addressController;
     @FXML
     private DatePicker dateMove;
 
     @FXML
     private ComboBox<String> moveType;
-    public ObservableList<String> list = FXCollections.observableArrayList(CHUYEN_DEN,CHUYEN_DI);
+    public ObservableList<String> moveTypeList = FXCollections.observableArrayList(CHUYEN_DI,CHUYEN_DEN);
 
     @FXML
     private TableView<HouseHold> tblHouseHold;
@@ -47,6 +61,8 @@ public class MoveForm implements Initializable {
     @FXML
     private TableColumn<HouseHold, String> houseHoldName;
 
+    private Button btnCancel;
+    private Address newAddress;
     @FXML
     private TableColumn<HouseHold, String> houseHoldAddress;
 
@@ -60,7 +76,7 @@ public class MoveForm implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        moveType.setItems(list);
+        moveType.setItems(moveTypeList);
 
         // household table
         houseHoldNo.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getHouseHoldBook().trim()));
@@ -76,10 +92,35 @@ public class MoveForm implements Initializable {
                 if (selectedHouseHold != null)
                 {
                     tfSearch.setText(selectedHouseHold.getName());
-                    tfAddress.setText(selectedHouseHold.getAddressDetail());
+                    tfAddressCur.setText(selectedHouseHold.getAddressDetail());
                 }
             }
         });
+
+        Mediator.unSubscribe("onCloseAddAddress");
+        Mediator.subscribe("onCloseAddAddress", this::onCloseAddAddress);
+    }
+    @FXML
+    void addOnclick(ActionEvent event) throws IOException {
+        if (this.stage != null) this.stage.close();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddressForm.fxml"));
+        Parent root = (Parent) loader.load();
+        Scene scene = new Scene(root, 395, 422);
+        stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
+        this.addressController = loader.getController();
+    }
+
+    private void onCloseAddAddress(ActionEvent e) {
+        this.newAddress = this.addressController != null ? this.addressController.getNewAddress() : null;
+
+        if (newAddress != null) {
+            tfAddressDes.setText(newAddress.getDetail());
+        }
+        this.stage.close();
     }
 
     @FXML
@@ -90,10 +131,21 @@ public class MoveForm implements Initializable {
     @FXML
     void okOnclick(ActionEvent event) {
         try {
+            if (newAddress  == null) throw new Exception("Bạn chưa nhập địa chỉ mới");
+            int moveTypeIndex = moveType.getSelectionModel().getSelectedIndex();
+            if (moveTypeIndex < 0) throw new Exception("Bạn chưa chọn thể loại chuyển đi");
+            if (selectedHouseHold == null) throw new Exception("Bạn chưa chọn thông tin về họ khẩu");
+
+            newAddress = ServiceFactory.getAddressService().createAddress(newAddress);
+
             Move move = new Move();
+            move.setIdHouseHold(selectedHouseHold.getId());
             move.setIdOldAddress(selectedHouseHold.getIdAddress());
             move.setMovingDate(ValidateHelper.validateDate(dateMove.getValue()));
+            move.setIdNewAddress(newAddress.getId());
+            move.setType(moveTypeIndex);
 
+            ServiceFactory.getMoveService().createMove(move);
             Mediator.Notify("houseHoldOnClick");
         } catch (Exception e) {
             NotiService.error(e.getMessage());
@@ -102,6 +154,7 @@ public class MoveForm implements Initializable {
 
     @FXML
     void searchOnClick(ActionEvent event) {
-
+        String query = tfSearch.getText();
+        this.tblHouseHold.getItems().setAll(FXCollections.observableArrayList(ServiceFactory.getHouseHoldService().searchHouseHoldFull(query)));
     }
 }

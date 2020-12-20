@@ -17,7 +17,7 @@
    <children>
       <AnchorPane prefHeight="45.0" prefWidth="808.0" styleClass="sub_header" stylesheets="@../dashboard/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text layoutX="315.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Di chuyển nhân khẩu">
+            <Text layoutX="325.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Di chuyển hộ khẩu">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -32,8 +32,8 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <TextField fx:id="tfAddress" layoutX="53.0" layoutY="409.0" prefHeight="33.0" prefWidth="323.0" promptText="Đia chỉ hiện tại" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
-      <DatePicker fx:id="dateMove" layoutX="536.0" layoutY="135.0" promptText="Ngày chuyển" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
+      <TextField fx:id="tfAddressCur" layoutX="53.0" layoutY="409.0" prefHeight="33.0" prefWidth="323.0" promptText="Đia chỉ hiện tại" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
+      <DatePicker fx:id="dateMove" layoutX="536.0" layoutY="135.0" prefHeight="32.0" prefWidth="220.0" promptText="Ngày chuyển" style="-fx-background-color: #FFFFFF;" styleClass="text_box" />
       <ComboBox fx:id="moveType" layoutX="524.0" layoutY="84.0" prefHeight="31.0" prefWidth="220.0" promptText="Chuyển đến / Chuyển đi" style="-fx-background-color: #FFFFFF;" styleClass="text_box" AnchorPane.rightAnchor="52.0" />
       <TableView fx:id="tblHouseHold" layoutX="53.0" layoutY="135.0" prefHeight="256.0" prefWidth="452.0">
         <columns>
@@ -57,7 +57,7 @@
             <String fx:value="button" />
          </styleClass>
       </Button>
-      <Button fx:id="btnCancel" layoutX="638.0" layoutY="434.0" mnemonicParsing="false" onAction="#cancelOnclick" stylesheets="@../dashboard/style.css" text="CANCEL">
+      <Button layoutX="638.0" layoutY="434.0" mnemonicParsing="false" onAction="#cancelOnclick" stylesheets="@../dashboard/style.css" text="CANCEL">
          <graphic>
             <FontAwesomeIconView glyphName="CLOSE" size="16" />
          </graphic>
@@ -72,8 +72,11 @@
             <String fx:value="button" />
          </styleClass>
       </Button>
+      <TextField fx:id="tfAddressDes" layoutX="536.0" layoutY="189.0" prefHeight="31.0" prefWidth="220.0" promptText="Địa chỉ mới" style="-fx-background-color: #FFFFFF;" styleClass="text_box" stylesheets="@../dashboard/style.css" />
+      <Button fx:id="btnAdd" layoutX="759.0" layoutY="191.0" mnemonicParsing="false" onAction="#addOnclick">
+         <graphic>
+            <FontAwesomeIconView glyphName="PLUS" size="18" />
+         </graphic>
+      </Button>
    </children>
-   <cursor>
-      <Cursor fx:constant="HAND" />
-   </cursor>
 </AnchorPane>
