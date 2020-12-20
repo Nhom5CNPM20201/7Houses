@@ -1,187 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="summary" prefHeight="600.0" prefWidth="810.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.dashboard.summary.Summary">
+<AnchorPane fx:id="summary" prefHeight="600.0" prefWidth="810.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.dashboard.summary.Summary">
    <children>
       <AnchorPane prefHeight="255.0" prefWidth="808.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox layoutX="1.0" layoutY="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="245.0" prefWidth="300.0" styleClass="text_box" stylesheets="@../style.css" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="6.0">
                <children>
-                  <AnchorPane prefHeight="255.0" prefWidth="500.0" styleClass="text_box" stylesheets="@../style.css" HBox.hgrow="ALWAYS">
+                  <AnchorPane prefHeight="52.0" prefWidth="300.0" styleClass="sub_header" stylesheets="@../style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="52.0" prefWidth="499.0" styleClass="sub_header" stylesheets="@../style.css" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin chung">
-                                 <font>
-                                    <Font name="System Bold" size="16.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="60.0">
-                           <children>
-                              <HBox HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <AnchorPane prefHeight="190.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <AnchorPane prefHeight="80.0" prefWidth="150.0" styleClass="text_box_child" stylesheets="@../style.css" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
-                                             <children>
-                                                <VBox alignment="CENTER" layoutX="25.0" layoutY="11.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="11.0">
-                                                   <children>
-                                                      <Text fx:id="peopleSummaryText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" VBox.vgrow="ALWAYS">
-                                                         <font>
-                                                            <Font name="System Bold" size="24.0" />
-                                                         </font>
-                                                      </Text>
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nhân khẩu" VBox.vgrow="ALWAYS">
-                                                         <font>
-                                                            <Font size="20.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane layoutX="2.0" layoutY="89.0" prefHeight="80.0" prefWidth="150.0" styleClass="text_box_child" stylesheets="@../style.css" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
-                                             <children>
-                                                <VBox alignment="CENTER" layoutX="36.0" layoutY="11.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="11.0">
-                                                   <children>
-                                                      <Text fx:id="householdSummaryText" strokeType="OUTSIDE" strokeWidth="0.0" text="0" VBox.vgrow="ALWAYS">
-                                                         <font>
-                                                            <Font name="System Bold" size="24.0" />
-                                                         </font>
-                                                      </Text>
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hộ khẩu" VBox.vgrow="ALWAYS">
-                                                         <font>
-                                                            <Font size="20.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </AnchorPane>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </AnchorPane>
-                                    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="190.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <AnchorPane prefHeight="80.0" prefWidth="150.0" styleClass="text_box_child" stylesheets="@../style.css" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
-                                             <children>
-                                                <VBox alignment="CENTER" layoutX="44.0" layoutY="11.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="11.0">
-                                                   <children>
-                                                      <Text fx:id="newPeopleSummaryText" fill="#32cd13" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" wrappingWidth="55.21874129772186" VBox.vgrow="ALWAYS">
-                                                         <font>
-                                                            <Font name="System Bold" size="24.0" />
-                                                         </font>
-                                                      </Text>
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mới" VBox.vgrow="ALWAYS">
-                                                         <font>
-                                                            <Font size="20.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane layoutX="2.0" layoutY="89.0" prefHeight="80.0" prefWidth="150.0" styleClass="text_box_child" stylesheets="@../style.css" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
-                                             <children>
-                                                <VBox alignment="CENTER" layoutX="44.0" layoutY="11.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="11.0">
-                                                   <children>
-                                                      <Text fx:id="newHouseHoldSummaryText" fill="#32cd13" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" wrappingWidth="55.21874129772186" VBox.vgrow="ALWAYS">
-                                                         <font>
-                                                            <Font name="System Bold" size="24.0" />
-                                                         </font>
-                                                      </Text>
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mới" VBox.vgrow="ALWAYS">
-                                                         <font>
-                                                            <Font size="20.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </AnchorPane>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </AnchorPane>
-                                    <AnchorPane layoutX="160.0" layoutY="10.0" prefHeight="190.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <AnchorPane prefHeight="80.0" prefWidth="150.0" styleClass="text_box_child" stylesheets="@../style.css" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
-                                             <children>
-                                                <VBox alignment="CENTER" layoutX="45.0" layoutY="11.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="11.0">
-                                                   <children>
-                                                      <Text fill="#f84606" strokeType="OUTSIDE" strokeWidth="0.0" text="-16" wrappingWidth="55.21874129772186" VBox.vgrow="ALWAYS">
-                                                         <font>
-                                                            <Font name="System Bold" size="24.0" />
-                                                         </font>
-                                                      </Text>
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rời đi" VBox.vgrow="ALWAYS">
-                                                         <font>
-                                                            <Font size="20.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane layoutX="2.0" layoutY="89.0" prefHeight="80.0" prefWidth="150.0" styleClass="text_box_child" stylesheets="@../style.css" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
-                                             <children>
-                                                <VBox alignment="CENTER" layoutX="48.0" layoutY="11.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="11.0">
-                                                   <children>
-                                                      <Text fill="#f84606" strokeType="OUTSIDE" strokeWidth="0.0" text="-3" wrappingWidth="34.74609553813934" VBox.vgrow="ALWAYS">
-                                                         <font>
-                                                            <Font name="System Bold" size="24.0" />
-                                                         </font>
-                                                      </Text>
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rời đi" VBox.vgrow="ALWAYS">
-                                                         <font>
-                                                            <Font size="20.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </AnchorPane>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </AnchorPane>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </HBox>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
-                     </HBox.margin>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="243.0" prefWidth="300.0" styleClass="text_box" stylesheets="@../style.css" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets bottom="6.0" left="2.0" right="6.0" top="6.0" />
-                     </HBox.margin>
-                     <children>
-                        <HBox alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="52.0" prefWidth="273.0" styleClass="sub_header" stylesheets="@../style.css" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm">
-                                 <font>
-                                    <Font name="System Bold" size="16.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
+                        <Text layoutX="87.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin chung">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
+                  <Pane layoutX="5.0" layoutY="64.0" prefHeight="79.0" prefWidth="141.0" style="-fx-background-color: #BAD2F8;" styleClass="text_box" stylesheets="@../style.css">
+                     <children>
+                        <Text layoutX="41.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hộ khẩu">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="householdSummaryText" fill="#eb0a0a" layoutX="66.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="154.0" layoutY="64.0" prefHeight="79.0" prefWidth="141.0" style="-fx-background-color: #BAD2F8;" styleClass="text_box" stylesheets="@../style.css">
+                     <children>
+                        <Text layoutX="29.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhân khẩu">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="peopleSummaryText" fill="#eb0a0a" layoutX="65.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="5.0" layoutY="152.0" prefHeight="79.0" prefWidth="141.0" style="-fx-background-color: #BAD2F8;" styleClass="text_box" stylesheets="@../style.css">
+                     <children>
+                        <Text layoutX="35.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm mới">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="newHouseHoldSummaryText" fill="#00b92e" layoutX="54.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="154.0" layoutY="152.0" prefHeight="79.0" prefWidth="141.0" style="-fx-background-color: #BAD2F8;" styleClass="text_box" stylesheets="@../style.css">
+                     <children>
+                        <Text layoutX="35.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm mới">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="newPeopleSummaryText" fill="#00b92e" layoutX="54.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
                </children>
-            </HBox>
+            </AnchorPane>
+            <AnchorPane layoutX="474.0" layoutY="12.0" prefHeight="245.0" prefWidth="492.0" styleClass="text_box" stylesheets="@../style.css" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
+               <children>
+                  <AnchorPane layoutX="1.0" prefHeight="52.0" prefWidth="492.0" styleClass="sub_header" stylesheets="@../style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Text layoutX="187.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin thêm">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <Pane fx:id="panePeople" layoutX="1.0" layoutY="53.0" prefHeight="190.0" prefWidth="239.0" style="-fx-background-color: #F0F1F3;" styleClass="text_box" stylesheets="@../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="53.0" />
+                  <Pane fx:id="paneTCTV" layoutX="246.0" layoutY="53.0" prefHeight="190.0" prefWidth="239.0" style="-fx-background-color: #F0F1F3;" styleClass="text_box" stylesheets="@../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="53.0" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <AnchorPane layoutY="255.0" prefHeight="300.0" prefWidth="808.0" styleClass="text_box" stylesheets="@../style.css" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="255.0">

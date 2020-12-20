@@ -8,12 +8,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.dashboard.information.Information">
    <children>
       <AnchorPane prefHeight="52.0" prefWidth="808.0" styleClass="sub_header" stylesheets="@../style.css" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
          <children>
-            <Text layoutX="357.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THÔNG TIN">
+            <Text layoutX="300.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THÔNG TIN THÀNH VIÊN">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
