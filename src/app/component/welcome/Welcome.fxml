@@ -28,9 +28,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-                <Hyperlink visible="false" layoutX="217.0" layoutY="477.0" text="Quên mật khẩu?" />
+                <Hyperlink layoutX="217.0" layoutY="477.0" text="Quên mật khẩu?" visible="false" />
                 <FontAwesomeIconView fill="#048f68" glyphName="USERS" layoutX="143.0" layoutY="101.0" size="50" />
-            <Hyperlink layoutX="14.0" layoutY="477.0" onAction="#guestLogin" text="Tư cách khách?" />
+            <Hyperlink layoutX="120.0" layoutY="477.0" onAction="#guestLogin" text="Tư cách khách?" />
             <PasswordField fx:id="passwordField" layoutX="84.0" layoutY="286.0" prefHeight="33.0" prefWidth="204.0" promptText="Mật khẩu" style="-fx-background-color: transparent; -fx-border-color: #048F68; -fx-border-width: 0px 0px 2px 0px;" />
             </children>
         </AnchorPane>

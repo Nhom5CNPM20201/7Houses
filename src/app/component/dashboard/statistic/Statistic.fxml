@@ -43,15 +43,22 @@
       <Text layoutX="365.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đến" />
       <AnchorPane fx:id="data" layoutX="-2.0" layoutY="159.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="170.0">
          <children>
-            <TableView fx:id="tblPeoPleData" prefHeight="429.0" prefWidth="437.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="371.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="tblPeoPleData" prefHeight="429.0" prefWidth="439.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="369.0" AnchorPane.topAnchor="0.0">
               <columns>
                 <TableColumn fx:id="peopleID" prefWidth="51.0" text="ID" />
                 <TableColumn fx:id="peopleName" prefWidth="143.0" text="Tên" />
                   <TableColumn fx:id="peopleIdenNo" prefWidth="170.0" text="Số CMND/CCCD" />
-                  <TableColumn fx:id="peopleGender" prefWidth="71.0" text="Giới tính" />
+                  <TableColumn fx:id="peopleGender" prefWidth="74.0" text="Giới tính" />
               </columns>
             </TableView>
-            <Pane fx:id="paneView" layoutX="437.0" prefHeight="430.0" prefWidth="371.0" style="-fx-border-color: #585858;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="437.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Pane fx:id="paneView" layoutX="445.0" layoutY="7.0" prefHeight="415.0" prefWidth="358.0" style="-fx-border-color: #585858;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="445.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+               <children>
+                  <Text fx:id="chartName" layoutX="67.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biểu đồ minh họa tương ứng" wrappingWidth="236.16210988163948">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+               </children></Pane>
          </children>
       </AnchorPane>
       <DatePicker fx:id="startTime" layoutX="194.0" layoutY="119.0" prefHeight="31.0" prefWidth="149.0" style="-fx-background-color: #FFFFFF;" styleClass="text_box" stylesheets="@../style.css" />
