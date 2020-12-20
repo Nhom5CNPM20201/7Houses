@@ -51,5 +51,12 @@
     -fx-border-color: #000000;
     -fx-border-width: 0px 0px 2px 0px;
 }
-
+.avatar{
+    -fx-background-color: #F3904F;
+    -fx-background-color: -webkit-linear-gradient(to right, #3B4371, #F3904F);
+    -fx-background-color: linear-gradient(to right, #3B4371, #F3904F)
+}
+.avatar:hover{
+    -fx-background-color: #023e37;
+}
 
