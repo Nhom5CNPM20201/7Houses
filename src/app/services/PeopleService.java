@@ -51,7 +51,7 @@ public class PeopleService {
 
 	public long countNewPeople() {
 		return peopleList.stream().filter(x ->
-				DateHelper.getDaysBetween(x.getRegisDate(), new Date()) < 30
+				DateHelper.getDaysBetween(x.getRegisDate(), new Date()) < 1
 		).count();
 	}
 	

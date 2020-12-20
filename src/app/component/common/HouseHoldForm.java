@@ -76,6 +76,18 @@ public class HouseHoldForm implements Initializable {
 
     private boolean isUpdate = false;
 
+    private Button btnFee;
+    @FXML
+    private Button btnHouseHold;
+    @FXML
+    private Button btnPeople;
+    @FXML
+    private Button btnStatistic;
+    @FXML
+    private Button btnInformation;
+    @FXML
+    private Button btnSearch;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         peopleNo.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getId())));

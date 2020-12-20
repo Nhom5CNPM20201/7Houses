@@ -107,7 +107,7 @@ public class HouseHoldService {
 
 	public long countNewHouseHold() {
 		return houseHoldList.stream().filter(x ->
-				DateHelper.getDaysBetween(x.getCreatedDate(), new Date()) < 30
+				DateHelper.getDaysBetween(x.getCreatedDate(), new Date()) < 1
 		).count();
 	}
 

@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.SubScene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
@@ -24,6 +25,18 @@ public class Dashboard implements Initializable {
     private Text positionTextField;
     @FXML
     private SubScene mainDashboard;
+    @FXML
+    private Button btnFee;
+    @FXML
+    private Button btnHouseHold;
+    @FXML
+    private Button btnPeople;
+    @FXML
+    private Button btnStatistic;
+    @FXML
+    private Button btnInformation;
+    @FXML
+    private Button btnSearch;
 
     public Dashboard() {
 
@@ -32,8 +45,8 @@ public class Dashboard implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.switchView(getClass().getResource("summary/Summary.fxml"));
-        setPosition(ServiceFactory.getAuthService().getCurrentAccount());
-
+        var account = ServiceFactory.getAuthService().getCurrentAccount();
+        setPosition(account);
 
         Mediator.unSubscribe("houseHoldOnClick");
         Mediator.unSubscribe("peopleOnClick");
@@ -44,8 +57,28 @@ public class Dashboard implements Initializable {
     }
 
     private void setPosition(Account account) {
-        String accountPositionName = account != null ? account.getAccountPositionEnum().getPositionName()
-                : AccountPositionEnum.NONE.getPositionName();
+        String accountPositionName;
+        if (account != null) {
+            accountPositionName = account.getAccountPositionEnum().getPositionName();
+            switch(account.getAccountPositionEnum()) {
+                case NONE:
+                    btnFee.setVisible(false);
+                case ACCOUNTANT:
+                    btnHouseHold.setVisible(false);
+                    btnPeople.setVisible(false);
+                    btnStatistic.setVisible(false);
+                    break;
+                case VICE_LEADER:
+                case LEADER:
+                    break;
+            }
+        } else {
+            accountPositionName = AccountPositionEnum.NONE.getPositionName();
+            btnFee.setVisible(false);
+            btnHouseHold.setVisible(false);
+            btnPeople.setVisible(false);
+            btnStatistic.setVisible(false);
+        }
 
         this.positionTextField.setText(accountPositionName);
     }
