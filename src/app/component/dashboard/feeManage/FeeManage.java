@@ -20,14 +20,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FeeManage implements Initializable {
-    @FXML
-    private Button btnContributeAdd;
-
-    @FXML
-    private Button btnFeeAdd;
-
-    @FXML
-    private Button btnEdit;
 
     @FXML
     private TableView<Contribute> tblListFee;
@@ -62,11 +54,6 @@ public class FeeManage implements Initializable {
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
-    }
-
-    @FXML
-    void editOnclick(ActionEvent event) {
-
     }
 
     @FXML

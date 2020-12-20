@@ -77,17 +77,6 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnEdit" graphicTextGap="8.0" mnemonicParsing="false" onAction="#editOnclick" prefHeight="37.0" prefWidth="218.0" text="Sửa" HBox.hgrow="ALWAYS">
-                     <graphic>
-                        <FontAwesomeIconView glyphName="PENCIL" size="18" />
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
                </children>
             </HBox>
          </children>

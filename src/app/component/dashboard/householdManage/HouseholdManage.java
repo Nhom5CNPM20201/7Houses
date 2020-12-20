@@ -30,15 +30,6 @@ public class HouseholdManage implements Initializable {
     @FXML
     private SubScene mainHouseHold;
 
-    @FXML
-    private Button btnAdd;
-
-    @FXML
-    private Button btnEdit;
-
-    @FXML
-    private Button btnDelete;
-
     private Object mainHouseHoldController;
 
     @FXML
@@ -50,11 +41,6 @@ public class HouseholdManage implements Initializable {
     public void moveOnClick(ActionEvent event) {
 
         this.switchView(getClass().getResource("../../common/MoveForm.fxml"));
-    }
-
-    @FXML
-    public void deleteOnClick(ActionEvent event) {
-        Mediator.Notify("onGoingMainHouseHold");
     }
 
     @FXML

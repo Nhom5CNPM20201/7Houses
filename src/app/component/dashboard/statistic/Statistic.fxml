@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -14,7 +15,6 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.component.dashboard.statistic.Statistic">
    <children>
-      <ComboBox fx:id="typeStatistic" layoutX="39.0" layoutY="67.0" onAction="#typeCbxOnAction" prefHeight="33.0" prefWidth="177.0" promptText="Tiêu chí thống kê" style="-fx-background-color: #FFFFFF;" styleClass="text_box" stylesheets="@../style.css" AnchorPane.leftAnchor="39.0" />
       <AnchorPane layoutY="-2.0" prefHeight="52.0" prefWidth="808.0" styleClass="sub_header" stylesheets="@../style.css" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
          <children>
             <Text layoutX="361.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THỐNG KÊ">
@@ -24,7 +24,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <Button fx:id="btnTest" graphicTextGap="10.0" layoutX="690.0" layoutY="67.0" mnemonicParsing="false" onAction="#testOnclick" styleClass="text_box" stylesheets="@../style.css" text="Kiểm tra" AnchorPane.rightAnchor="14.0">
+      <Button fx:id="btnTest" graphicTextGap="10.0" layoutX="577.0" layoutY="119.0" mnemonicParsing="false" onAction="#testOnclick" styleClass="text_box" stylesheets="@../style.css" text="Kiểm tra" AnchorPane.rightAnchor="127.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -32,17 +32,15 @@
             <FontAwesomeIconView glyphName="PRINT" size="18" />
          </graphic>
       </Button>
-      <ComboBox fx:id="gender" layoutX="246.0" layoutY="69.0" prefHeight="33.0" prefWidth="118.0" promptText="Giới tính" style="-fx-background-color: #FFFFFF;" styleClass="text_box" stylesheets="@../style.css" />
-      <Text layoutX="390.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Độ tuổi: " />
-      <TextField fx:id="ageStart" layoutX="491.0" layoutY="70.0" prefHeight="31.0" prefWidth="37.0" style="-fx-background-color: #FFFFFF;" styleClass="text-field" stylesheets="@../style.css" />
-      <Text layoutX="458.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ" />
-      <Text layoutX="535.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đến" />
-      <TextField fx:id="ageFinish" layoutX="569.0" layoutY="69.0" prefHeight="31.0" prefWidth="37.0" style="-fx-background-color: #FFFFFF;" styleClass="text-field" stylesheets="@../style.css" />
-      <Text layoutX="39.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian đăng kí:" />
-      <TextField fx:id="yearStart" layoutX="200.0" layoutY="109.0" prefHeight="31.0" prefWidth="63.0" style="-fx-background-color: #FFFFFF;" styleClass="text-field" stylesheets="@../style.css" />
-      <Text layoutX="172.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ" />
-      <Text layoutX="271.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đến" />
-      <TextField fx:id="yearFinish" layoutX="305.0" layoutY="109.0" prefHeight="31.0" prefWidth="63.0" style="-fx-background-color: #FFFFFF;" styleClass="text-field" stylesheets="@../style.css" />
+      <ComboBox fx:id="gender" layoutX="34.0" layoutY="68.0" prefHeight="33.0" prefWidth="118.0" promptText="Giới tính" style="-fx-background-color: #FFFFFF;" styleClass="text_box" stylesheets="@../style.css" />
+      <Text layoutX="167.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Độ tuổi: " />
+      <TextField fx:id="ageStart" layoutX="268.0" layoutY="70.0" prefHeight="31.0" prefWidth="37.0" style="-fx-background-color: #FFFFFF;" styleClass="text-field" stylesheets="@../style.css" />
+      <Text layoutX="235.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ" />
+      <Text layoutX="312.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đến" />
+      <TextField fx:id="ageFinish" layoutX="346.0" layoutY="69.0" prefHeight="31.0" prefWidth="37.0" style="-fx-background-color: #FFFFFF;" styleClass="text-field" stylesheets="@../style.css" />
+      <Text layoutX="34.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian đăng kí:" />
+      <Text layoutX="167.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ" />
+      <Text layoutX="365.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đến" />
       <AnchorPane fx:id="data" layoutX="-2.0" layoutY="159.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="170.0">
          <children>
             <TableView fx:id="tblPeoPleData" prefHeight="429.0" prefWidth="437.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="371.0" AnchorPane.topAnchor="0.0">
@@ -53,8 +51,18 @@
                   <TableColumn fx:id="peopleGender" prefWidth="71.0" text="Giới tính" />
               </columns>
             </TableView>
+            <TableView fx:id="tblStayingData" prefHeight="429.0" prefWidth="437.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="371.0" AnchorPane.topAnchor="0.0">
+               <columns>
+                  <TableColumn fx:id="peopleID" prefWidth="51.0" text="ID" />
+                  <TableColumn fx:id="peopleName" prefWidth="143.0" text="Tên" />
+                  <TableColumn fx:id="peopleIdenNo" prefWidth="170.0" text="Số CMND/CCCD" />
+                  <TableColumn fx:id="peopleGender" prefWidth="71.0" text="Giới tính" />
+               </columns>
+            </TableView>
             <Pane fx:id="paneView" layoutX="437.0" prefHeight="430.0" prefWidth="371.0" style="-fx-border-color: #585858;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="437.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
+      <DatePicker fx:id="startTime" layoutX="194.0" layoutY="119.0" prefHeight="31.0" prefWidth="149.0" style="-fx-background-color: #FFFFFF;" styleClass="text_box" stylesheets="@../style.css" />
+      <DatePicker fx:id="endTime" layoutX="404.0" layoutY="119.0" prefHeight="31.0" prefWidth="149.0" style="-fx-background-color: #FFFFFF;" styleClass="text_box" stylesheets="@../style.css" />
    </children>
 </AnchorPane>

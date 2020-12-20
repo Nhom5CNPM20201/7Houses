@@ -20,32 +20,11 @@ public class PeopleManage implements Initializable {
 
     @FXML
     private SubScene mainPeople;
-    @FXML
-    private Button btnAdd;
-
-    @FXML
-    private Button btnEdit;
-
-    @FXML
-    private Button btnDelete;
-
-    @FXML
-    private Button btnTemporary;
 
     @FXML
     void addOnClick(ActionEvent event) {
 
         this.switchView(getClass().getResource("../../common/PeopleForm.fxml"));
-    }
-
-    @FXML
-    void deleteOnClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void editOnClick(ActionEvent event) {
-
     }
 
     @Override

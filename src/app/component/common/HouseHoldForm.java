@@ -108,7 +108,7 @@ public class HouseHoldForm implements Initializable {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AddressForm.fxml"));
         Parent root = (Parent) loader.load();
-        Scene scene = new Scene(root, 395, 422);
+        Scene scene = new Scene(root);
         stage = new Stage();
         stage.setScene(scene);
         stage.show();
