@@ -34,6 +34,7 @@ public class Dashboard implements Initializable {
         this.switchView(getClass().getResource("summary/Summary.fxml"));
         setPosition(ServiceFactory.getAuthService().getCurrentAccount());
 
+
         Mediator.unSubscribe("houseHoldOnClick");
         Mediator.unSubscribe("peopleOnClick");
         Mediator.unSubscribe("feeOnClick");

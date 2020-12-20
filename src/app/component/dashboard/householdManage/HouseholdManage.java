@@ -48,7 +48,8 @@ public class HouseholdManage implements Initializable {
 
     @FXML
     public void moveOnClick(ActionEvent event) {
-        NotiService.info("It's work.");
+
+        this.switchView(getClass().getResource("../../common/MoveForm.fxml"));
     }
 
     @FXML

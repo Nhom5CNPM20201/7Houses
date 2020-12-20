@@ -30,7 +30,11 @@ public class PeopleManage implements Initializable {
     private Button btnDelete;
 
     @FXML
+    private Button btnTemporary;
+
+    @FXML
     void addOnClick(ActionEvent event) {
+
         this.switchView(getClass().getResource("../../common/PeopleForm.fxml"));
     }
 
@@ -52,7 +56,10 @@ public class PeopleManage implements Initializable {
     public void switchView(URL FXMLname){
         ScreenController.activeSubscreen(mainPeople,FXMLname);
     }
-
+    @FXML
+    void temporaryOnclick(ActionEvent event) {
+        this.switchView(getClass().getResource("../../common/StayingTAForm.fxml"));
+    }
 	public static void main(String[] args) {
 //	People people;
 //	people = new People();

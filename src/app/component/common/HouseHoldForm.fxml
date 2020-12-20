@@ -14,9 +14,9 @@
    <children>
       <AnchorPane layoutX="92.0" layoutY="7.0" prefHeight="45.0" prefWidth="808.0" styleClass="sub_header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text layoutX="393.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hộ khẩu">
+            <Text layoutX="368.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hộ khẩu">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
          </children>
@@ -33,24 +33,33 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="plusButton" layoutX="372.0" layoutY="76.0" mnemonicParsing="false" onAction="#plusOnClick" style="-fx-background-color: white;" styleClass="text_box_child" text="+" AnchorPane.topAnchor="75.0">
+            <Button fx:id="plusButton" layoutX="372.0" layoutY="78.0" mnemonicParsing="false" onAction="#plusOnClick" AnchorPane.topAnchor="78.0">
                <font>
                   <Font size="14.0" />
                </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLUS" size="18" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <TextField fx:id="address" layoutX="78.0" layoutY="64.0" prefHeight="32.0" prefWidth="278.0" promptText="Số nhà, đường, quận, huyện, ..." style="-fx-background-color: white;" styleClass="text_box" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="75.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="searchButton" layoutX="372.0" layoutY="127.0" mnemonicParsing="false" onAction="#searchOnClick" style="-fx-background-color: white;" text="search" AnchorPane.topAnchor="127.0">
+            <Button fx:id="searchButton" layoutX="372.0" layoutY="127.0" mnemonicParsing="false" onAction="#searchOnClick" AnchorPane.topAnchor="127.0">
                <font>
                   <Font size="14.0" />
                </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="SEARCH" size="18" />
+               </graphic>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="230.0" prefHeight="238.0" prefWidth="808.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane layoutY="230.0" prefHeight="209.0" prefWidth="808.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <TableView fx:id="tblListPeople" layoutX="79.0" prefHeight="200" prefWidth="650">
                <columns>
@@ -64,20 +73,23 @@
             </TableView>
          </children>
       </AnchorPane>
-      <Button fx:id="cancelButton" layoutX="582.0" layoutY="472.0" mnemonicParsing="false" onAction="#cancelOnClick" text="CANCEL">
+      <Button fx:id="cancelButton" layoutX="548.0" layoutY="464.0" mnemonicParsing="false" onAction="#cancelOnClick" styleClass="text_box" stylesheets="@../dashboard/style.css" text="CANCEL">
          <font>
-            <Font size="14.0" />
+            <Font size="17.0" />
          </font>
          <graphic>
-            <FontAwesomeIconView glyphName="CLOSE" />
+            <FontAwesomeIconView glyphName="CLOSE" size="25" />
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Button fx:id="okButton" layoutX="675.0" layoutY="472.0" mnemonicParsing="false" onAction="#okOnClick" text="OK">
+      <Button fx:id="okButton" layoutX="674.0" layoutY="464.0" mnemonicParsing="false" onAction="#okOnClick" styleClass="text_box" stylesheets="@../dashboard/style.css" text="OK">
          <font>
-            <Font size="14.0" />
+            <Font size="17.0" />
          </font>
          <graphic>
-            <FontAwesomeIconView glyphName="CHECK" />
+            <FontAwesomeIconView glyphName="CHECK" size="25" />
          </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />

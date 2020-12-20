@@ -13,12 +13,12 @@
          <children>
             <AnchorPane prefHeight="240.0" prefWidth="796.0" HBox.hgrow="ALWAYS">
                <children>
-                  <TableView fx:id="tblListHouseHold" layoutX="14.0" layoutY="6.0" prefHeight="246.0" prefWidth="796.0" style="-fx-background-radius: 5px; -fx-border-color: #FFFFFF; -fx-border-radius: 5px;" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
+                  <TableView fx:id="tblListHouseHold" layoutX="14.0" layoutY="6.0" prefHeight="246.0" prefWidth="796.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="6.0">
                      <columns>
-                        <TableColumn fx:id="noColumn" maxWidth="78.0" prefWidth="56.0" resizable="false" styleClass="column_header" text="Số" />
-                        <TableColumn fx:id="holderNameColumn" prefWidth="239.66668701171875" styleClass="column_header" text="Chủ hộ" />
-                        <TableColumn fx:id="addressColumn" prefWidth="321.4443359375" styleClass="column_header" text="Địa chỉ" />
-                        <TableColumn fx:id="addedTimeColumn" minWidth="0.0" prefWidth="159.963134765625" styleClass="column_header" text="Ngày thêm" />
+                        <TableColumn fx:id="noColumn" maxWidth="78.0" prefWidth="56.0" resizable="false" text="Số" />
+                        <TableColumn fx:id="holderNameColumn" prefWidth="239.66668701171875" text="Chủ hộ" />
+                        <TableColumn fx:id="addressColumn" prefWidth="321.4443359375" text="Địa chỉ" />
+                        <TableColumn fx:id="addedTimeColumn" minWidth="0.0" prefWidth="159.963134765625" text="Ngày thêm" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -28,7 +28,7 @@
             </AnchorPane>
          </children>
       </HBox>
-      <HBox alignment="CENTER" style="-fx-background-color: #76d275;" layoutX="384.0" layoutY="15.41796875" prefHeight="52.0" prefWidth="808.0" styleClass="sub_header" stylesheets="@../style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER" layoutX="384.0" layoutY="15.41796875" prefHeight="52.0" prefWidth="808.0" style="-fx-background-color: #76d275;" styleClass="sub_header" stylesheets="@../style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Danh sách hộ khẩu">
                <font>
