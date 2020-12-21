@@ -28,6 +28,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class HouseHoldForm implements Initializable {
@@ -139,6 +141,15 @@ public class HouseHoldForm implements Initializable {
     @FXML
     public void okOnClick(ActionEvent event) {
         // validate
+    	Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+    	Matcher m = p.matcher(houseHoldNo.getText());
+    	boolean b = m.find();
+
+    	if (b) {
+    		NotiService.info("Tên sổ hộ khẩu không được chứa kí tự");
+    		return;
+    	}	   
+    	
         if (selectedPeople == null) {
             NotiService.info("Bạn chưa chọn thông tin chủ hộ.");
             return;

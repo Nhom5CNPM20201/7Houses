@@ -60,7 +60,7 @@ public class HouseHoldService {
 			
 		}
 		catch(Exception e) {
-			System.out.println(e.getMessage());
+			LogService.error(e.getMessage());
 			return null;
 		}
 	}
@@ -128,7 +128,7 @@ public class HouseHoldService {
 			if(searchHH != null) System.out.println(searchHH.getHouseHoldBook() + "\t" + searchHH.getName());
 		}
 		catch(Exception e) {
-			System.out.println(e.getMessage());
+			LogService.error(e.getMessage());
 		}
 	}
 	
@@ -137,11 +137,11 @@ public class HouseHoldService {
 			HouseHold searchHH = MSSQLDatabase.getInstance().searchHouseHold(houseHoldBook);
 			if(searchHH != null) {
 				orm.removeHouseHold(searchHH);
-				System.out.println("Xoa thanh cong!");
+				NotiService.info("Xoa thanh cong!");
 			}
 		}
 		catch(Exception e) {
-			System.out.println(e.getMessage());
+			LogService.error(e.getMessage());
 		}
 	}
 	
