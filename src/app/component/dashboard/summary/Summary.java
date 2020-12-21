@@ -54,7 +54,7 @@ public class Summary implements Initializable {
     public Summary() {
         houseHolds = FXCollections.observableList(ServiceFactory.getHouseHoldService().getNewHouseHold());
     }
-    private void getTCTVChart(int allPeople){
+    private void getTCTVChart(long allPeople){
         double rateTC = 100.00*ServiceFactory.getTemporaryresidentService().countTC()/allPeople;
         double rateTV = 100.00*ServiceFactory.getTemporaryresidentService().countTV()/allPeople;
         dataTCTV = FXCollections.observableArrayList(
@@ -72,7 +72,7 @@ public class Summary implements Initializable {
         chartTCTV.setPrefSize(290,290);
         paneTCTV.getChildren().add(chartTCTV);
     }
-    private void getPeopleChart(long newPeople,int allPeople){
+    private void getPeopleChart(long newPeople,long allPeople){
         double rateNew= 100.00*newPeople/allPeople;
         dataPeople = FXCollections.observableArrayList(
                 new PieChart.Data("Mới",rateNew),
@@ -90,7 +90,7 @@ public class Summary implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int countAllPeople = ServiceFactory.getPeopleService().coutAllPeople();
+        long countAllPeople = ServiceFactory.getPeopleService().coutAllPeople();
         long countAllHouseHold = ServiceFactory.getHouseHoldService().countAllHouseHold();
         long countNewPeople = ServiceFactory.getPeopleService().countNewPeople();
         long countNewHouseHold = ServiceFactory.getHouseHoldService().countNewHouseHold();

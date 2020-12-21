@@ -40,14 +40,8 @@ public class PeopleService {
 		return people;
 	}
 
-	public int coutAllPeople() {
-		try {
-			int count = MSSQLDatabase.getInstance().countAllPeople();
-			return count;
-		} catch(Exception e) {
-			LogService.error(e.getMessage());
-			return 0;
-		}
+	public long coutAllPeople() {
+		return this.peopleList.stream().count();
 	}
 
 	public long countNewPeople() {

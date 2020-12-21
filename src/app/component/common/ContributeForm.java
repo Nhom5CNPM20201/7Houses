@@ -33,7 +33,7 @@ public class ContributeForm implements Initializable {
 
     @FXML
     private ComboBox<String> comboBoxOption1;
-    ObservableList<String> list1 = FXCollections.observableArrayList(ServiceFactory.getFeeService().getFeeName());
+    ObservableList<String> list1 = FXCollections.observableArrayList(ServiceFactory.getFeeService().getAllFeeDetail());
 
     @FXML
     private TableView tblListHouseHold;

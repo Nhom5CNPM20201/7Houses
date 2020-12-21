@@ -28,6 +28,8 @@ public class FeeManage implements Initializable {
     @FXML
     private TableColumn<Contribute, String> houseHolderName;
     @FXML
+    private TableColumn<Contribute, String> feeName;
+    @FXML
     private TableColumn<Contribute, String> houseHoldAddress;
     @FXML
     private TableColumn<Contribute, String> contributeAmount;
@@ -36,6 +38,7 @@ public class FeeManage implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             contributeId.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getId())));
+            feeName.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getFee().getNameFee())));
             houseHolderName.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getHouseHold().getName()));
             houseHoldAddress.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getHouseHold().getAddressDetail()));
             contributeAmount.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getAmount())));

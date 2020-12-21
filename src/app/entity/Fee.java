@@ -63,6 +63,6 @@ public class Fee {
     }
 
     public String getDetail() {
-        return this.nameFee + ": " + this.money;
+        return this.nameFee + ": " + this.money + " đ";
     }
 }

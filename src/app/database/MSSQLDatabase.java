@@ -37,11 +37,10 @@ public class MSSQLDatabase extends DatabaseManager implements
         try {
             String url = "jdbc:sqlserver://" + hostName
                     + ";databaseName=" + dbname
-//                    + ";user=" + user
-//                    + ";password=" +password
+                    + ";user=" + user
+                    + ";password=" +password
                     + ";integratedSecurity=true";
             databaseObject = DriverManager.getConnection(url);
-//            System.out.println(databaseObject);
         } catch (SQLException e) {
             throw e;
         }
