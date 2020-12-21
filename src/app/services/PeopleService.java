@@ -75,6 +75,9 @@ public class PeopleService {
 	}
 
 	public List<People> searchPeopleFull(String query) {
+		if (query == null || query.isEmpty())
+			return this.getAllPeople();
+
 		List<People> searchedPeople = this.peopleList.stream()
 				.filter(h ->
 						StringHelper.containNormalString(h.getIdentityNo(), query)

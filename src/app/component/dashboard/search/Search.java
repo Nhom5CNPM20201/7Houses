@@ -84,9 +84,6 @@ public class Search implements Initializable {
         if (comboboxOption.getSelectionModel().getSelectedIndex() < 0) return;
         var selectedItem = comboboxOption.getSelectionModel().getSelectedItem();
         var query = queryTextField.getText().trim();
-        if (query.equals("")) {
-        	return;
-        }
 
         switch(selectedItem) {
             case HO_KHAU:

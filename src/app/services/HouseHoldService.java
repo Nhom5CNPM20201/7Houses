@@ -87,6 +87,12 @@ public class HouseHoldService {
 		return this.houseHoldList;
 	}
 
+	public List<HouseHold> getNewHouseHold() {
+		return houseHoldList.stream().filter(x ->
+				DateHelper.getDaysBetween(x.getCreatedDate(), new Date()) < 1
+		).collect(Collectors.toList());
+	}
+
 	public HouseHold getHouseHold(int id) {
 		return houseHoldList.stream().filter(x -> x.getId() == id).findFirst().get();
 	}
@@ -106,12 +112,13 @@ public class HouseHoldService {
 	}
 
 	public long countNewHouseHold() {
-		return houseHoldList.stream().filter(x ->
-				DateHelper.getDaysBetween(x.getCreatedDate(), new Date()) < 1
-		).count();
+		return this.getNewHouseHold().size();
 	}
 
 	public List<HouseHold> searchHouseHoldFull(String query) {
+		if (query == null || query.isEmpty())
+			return this.getAllHouseHold();
+
 		List<HouseHold> searchedHouseHolds = this.houseHoldList.stream()
 				.filter(h ->
 					 StringHelper.containNormalString(h.getHouseHoldBook(), query)

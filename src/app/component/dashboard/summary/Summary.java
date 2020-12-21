@@ -52,7 +52,7 @@ public class Summary implements Initializable {
     private ObservableList<PieChart.Data> dataPeople;
 
     public Summary() {
-        houseHolds = FXCollections.observableList(ServiceFactory.getHouseHoldService().getAllHouseHold());
+        houseHolds = FXCollections.observableList(ServiceFactory.getHouseHoldService().getNewHouseHold());
     }
     private void getTCTVChart(int allPeople){
         double rateTC = 100.00*ServiceFactory.getTemporaryresidentService().countTC()/allPeople;
