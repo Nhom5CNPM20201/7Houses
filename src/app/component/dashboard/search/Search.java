@@ -5,6 +5,7 @@ import app.entity.HouseHold;
 import app.entity.People;
 import app.services.ServiceFactory;
 import app.services.common.LogService;
+import app.services.common.NotiService;
 import app.utility.viewUtils.Mediator;
 import app.utility.viewUtils.ScreenController;
 import javafx.beans.property.SimpleStringProperty;
@@ -83,6 +84,9 @@ public class Search implements Initializable {
         if (comboboxOption.getSelectionModel().getSelectedIndex() < 0) return;
         var selectedItem = comboboxOption.getSelectionModel().getSelectedItem();
         var query = queryTextField.getText().trim();
+        if (query.equals("")) {
+        	return;
+        }
 
         switch(selectedItem) {
             case HO_KHAU:
