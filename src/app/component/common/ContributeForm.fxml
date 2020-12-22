@@ -57,7 +57,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button fx:id="searchButton" layoutX="230.0" layoutY="150.0" mnemonicParsing="false" onAction="#searchOnClick" style="-fx-background-color: white;" AnchorPane.topAnchor="150.0">
+            <Button fx:id="searchButton" layoutX="230.0" layoutY="150.0" mnemonicParsing="false" onAction="#searchOnClick" stylesheets="@../dashboard/style.css" AnchorPane.topAnchor="150.0">
                <font>
                   <Font size="14.0" />
                </font>

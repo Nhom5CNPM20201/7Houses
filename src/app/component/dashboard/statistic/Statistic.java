@@ -61,6 +61,7 @@ public class Statistic implements Initializable {
     @FXML
     private Text chartName;
 
+
     private PieChart chart = new PieChart();
     private ObservableList<PieChart.Data> dataChart;
 
@@ -75,6 +76,9 @@ public class Statistic implements Initializable {
     @FXML
     void checkOnClick(ActionEvent event) {
         try {
+            if(paneView.getChildren().contains(chart)){
+                paneView.getChildren().remove(chart);
+            }
             int genderIndex = gender.getSelectionModel().getSelectedIndex();
             int ageFrom = ageStart.getText().isEmpty() ? -1 : Integer.parseInt(ageStart.getText());
             int ageTo = ageFinish.getText().isEmpty() ? -1 : Integer.parseInt(ageFinish.getText());
@@ -96,9 +100,11 @@ public class Statistic implements Initializable {
                 new PieChart.Data("Còn lại",100.00-rate)
         );
         chart.setData(dataChart);
-        chart.setPrefSize(400,400);
-        chart.setLabelsVisible(true);
-        chart.setClockwise(true);
+        chart.setLayoutY(50);
+        chart.setLayoutX(40);
+        chart.setPrefSize(300,300);
+        chart.setLabelsVisible(false);
+        chart.setClockwise(false);
         paneView.getChildren().add(chart);
     }
 

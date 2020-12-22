@@ -64,7 +64,7 @@ public class Summary implements Initializable {
         );
         chartTCTV.setData(dataTCTV);
         chartTCTV.setLayoutX(-15);
-        chartTCTV.setLayoutY(-30);
+        chartTCTV.setLayoutY(-10);
         chartTCTV.setClockwise(true);
         chartTCTV.setLabelsVisible(true);
         chartTCTV.setLabelLineLength(10);
