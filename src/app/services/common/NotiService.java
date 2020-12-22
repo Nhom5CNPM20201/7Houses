@@ -1,6 +1,9 @@
 package app.services.common;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
+import java.util.Optional;
 
 public class NotiService {
 
@@ -12,9 +15,13 @@ public class NotiService {
         noti(content, Alert.AlertType.ERROR);
     }
 
-    public static void noti(String content, Alert.AlertType type) {
+    public static Optional<ButtonType> confirm(String content) {
+        return noti(content, Alert.AlertType.CONFIRMATION);
+    }
+
+    public static Optional<ButtonType> noti(String content, Alert.AlertType type) {
         Alert alert = new Alert(type);
         alert.setHeaderText(content);
-        alert.showAndWait();
+        return alert.showAndWait();
     }
 }

@@ -97,6 +97,11 @@ public class HouseHoldService {
 		return houseHoldList.stream().filter(x -> x.getId() == id).findFirst().get();
 	}
 
+	public HouseHold getHouseHoldByNo(String houseHoldNo) {
+		var items = houseHoldList.stream().filter(x -> x.getHouseHoldBook().equals(houseHoldNo));
+		return items.count() > 0 ? items.findFirst().get() : null;
+	}
+
 	private int findIndex(String houseHoldNo) {
 		int i = 0;
 		for (var h : houseHoldList) {

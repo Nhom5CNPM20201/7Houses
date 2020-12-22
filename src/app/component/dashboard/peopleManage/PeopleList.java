@@ -5,6 +5,8 @@ import app.entity.People;
 import app.helper.DateHelper;
 import app.services.ServiceFactory;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
@@ -32,6 +34,8 @@ public class PeopleList implements Initializable {
 
     private ObservableList<People> peoples;
 
+    private People selectedPeople;
+
     public PeopleList() {
         this.peoples = FXCollections.observableArrayList(ServiceFactory.getPeopleService().getAllPeople());
     }
@@ -45,5 +49,16 @@ public class PeopleList implements Initializable {
         peopleBirthDay.setCellValueFactory(c -> new SimpleStringProperty(DateHelper.getDateString(c.getValue().getDateOfBirth())));
 
         tblListPeople.getItems().setAll(peoples);
+
+        tblListPeople.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<People>() {
+            @Override
+            public void changed(ObservableValue<? extends People> observableValue, People people, People t1) {
+                selectedPeople = tblListPeople.getSelectionModel().getSelectedItem();
+            }
+        });
+    }
+
+    public People getSelectedPeople() {
+        return selectedPeople;
     }
 }

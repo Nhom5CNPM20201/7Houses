@@ -52,8 +52,11 @@ public class PeopleService {
 	
 	public void initPeople() {
 		try {
-			orm = MSSQLDatabase.getInstance();
-			peopleList = orm.getAllPeoples();
+			peopleList = MSSQLDatabase.getInstance().getAllPeoples();
+
+			for (People item : peopleList) {
+				item.setHouseHold(ServiceFactory.getHouseHoldService().getHouseHold(item.getIdHouseHold()));
+			}
 		}
 		catch(Exception e) {
 			LogService.error(e.getMessage());

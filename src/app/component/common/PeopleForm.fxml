@@ -82,7 +82,7 @@
          </font>
       </TextField>
       <ComboBox fx:id="cbboxQHCH" layoutX="443.0" layoutY="271.0" onAction="#qhchOnclick" prefHeight="32.0" prefWidth="347.0" promptText="Quan hệ với chủ hộ" style="-fx-background-color: #FFFFFF;" styleClass="text_box" AnchorPane.leftAnchor="443.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="270.0" />
-      <TextField fx:id="idHoKhau" layoutX="443.0" layoutY="219.0" prefHeight="32.0" prefWidth="347.0" promptText="Số hộ khẩu" style="-fx-background-color: #FFFFFF;" styleClass="text_box" AnchorPane.leftAnchor="443.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="218.0">
+      <TextField fx:id="houseHoldNo" layoutX="443.0" layoutY="219.0" prefHeight="32.0" prefWidth="347.0" promptText="Số hộ khẩu" style="-fx-background-color: #FFFFFF;" styleClass="text_box" AnchorPane.leftAnchor="443.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="218.0">
          <font>
             <Font size="14.0" />
          </font>

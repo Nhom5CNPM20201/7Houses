@@ -25,4 +25,9 @@ public class DateHelper {
 
         return ChronoUnit.DAYS.between(lcDate_1, lcDate_2);
     }
+
+    public static LocalDate convertLocalDate(Date date) {
+        if (date == null) return null;
+        return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+    }
 }

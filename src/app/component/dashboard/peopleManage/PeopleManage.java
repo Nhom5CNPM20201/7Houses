@@ -1,6 +1,8 @@
 package app.component.dashboard.peopleManage;
 
 
+import app.component.common.PeopleForm;
+import app.services.common.NotiService;
 import app.utility.viewUtils.ScreenController;
 
 import app.entity.People;
@@ -21,6 +23,8 @@ public class PeopleManage implements Initializable {
     @FXML
     private SubScene mainPeople;
 
+    private Object mainPeopleController;
+
     @FXML
     void addOnClick(ActionEvent event) {
 
@@ -33,7 +37,7 @@ public class PeopleManage implements Initializable {
     }
 
     public void switchView(URL FXMLname){
-        ScreenController.activeSubscreen(mainPeople,FXMLname);
+        mainPeopleController = ScreenController.activeSubscreen(mainPeople,FXMLname);
     }
     @FXML
     void temporaryOnclick(ActionEvent event) {
@@ -42,14 +46,27 @@ public class PeopleManage implements Initializable {
 
     @FXML
     void changeOnClick(ActionEvent event) {
+        try {
+            if (mainPeopleController != null  && mainPeopleController instanceof PeopleList) {
+                People selectedPeople =((PeopleList) mainPeopleController).getSelectedPeople();
+                if (selectedPeople == null)
+                    throw new Exception("Bạn chưa chọn nhân khẩu.");
+
+                onGoingUpdatePeople(null);
+
+                if (mainPeopleController instanceof PeopleForm) {
+                    ((PeopleForm) mainPeopleController).update(selectedPeople);
+                }
+
+            } else
+                throw new Exception("Vui lòng chọn nhân khẩu.");
+
+        } catch (Exception e) {
+            NotiService.error(e.getMessage());
+        }
+    }
+
+    private void onGoingUpdatePeople(ActionEvent event) {
         this.switchView(getClass().getResource("../../common/PeopleForm.fxml"));
     }
-	public static void main(String[] args) {
-//	People people;
-//	people = new People();
-		//	PeopleManage.getAllPeople();
-	//	PeopleManage.deletePeople("abc css");
-//		PeopleManage.createPeople(people);
-	}
-
 }

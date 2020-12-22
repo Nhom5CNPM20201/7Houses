@@ -1,6 +1,8 @@
 package app.component.common;
 
+import app.entity.HouseHold;
 import app.entity.People;
+import app.helper.DateHelper;
 import app.helper.StringHelper;
 import app.helper.ValidateHelper;
 import app.services.ServiceFactory;
@@ -11,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -19,6 +22,7 @@ import java.net.URL;
 import java.security.spec.ECField;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class PeopleForm implements Initializable {
@@ -56,7 +60,7 @@ public class PeopleForm implements Initializable {
     private TextField noiCapCMND;
 
     @FXML
-    private TextField idHoKhau;
+    private TextField houseHoldNo;
 
     @FXML
     private ComboBox<String> cbboxQHCH;
@@ -86,6 +90,17 @@ public class PeopleForm implements Initializable {
     void onClickOK(ActionEvent event) {
         try {
             newPeople = new People();
+
+            HouseHold houseHoldMap = ServiceFactory.getHouseHoldService().getHouseHoldByNo(ValidateHelper.validateText(houseHoldNo.getText()));
+            if (houseHoldMap == null) {
+                Optional<ButtonType> confirm = NotiService.confirm("Không tìm thấy dữ liệu về hộ khẩu bạn đã nhập. Bạn vẫn muốn tiếp tục?");
+                if (confirm.get() != ButtonType.OK)
+                    return;
+
+            } else {
+                newPeople.setIdHouseHold(houseHoldMap.getId());
+            }
+
             newPeople.setFullName(ValidateHelper.validateText(hoTen.getText()));
             newPeople.setNickName(ValidateHelper.validateText(biDanh.getText()));
             newPeople.setDateOfBirth(ValidateHelper.validateDate(ngaySinh.getValue()));
@@ -95,7 +110,6 @@ public class PeopleForm implements Initializable {
             newPeople.setIdentityNo(ValidateHelper.validateText(CMND.getText()));
             newPeople.setIdentityMfg(ValidateHelper.validateDate(ngayCapCMND.getValue()));
             newPeople.setIdentityOrigin(ValidateHelper.validateText(noiCapCMND.getText()));
-            //newPeople.setIdHouseHold(Integer.getInteger(idHoKhau.getText()));
             newPeople.setRegisDate(ValidateHelper.validateDate(ngayDK.getValue()));
 
             newPeople = ServiceFactory.getPeopleService().createPeople(newPeople);
@@ -104,6 +118,25 @@ public class PeopleForm implements Initializable {
         } catch (Exception e) {
             NotiService.error(e.getMessage());
         }
+    }
+
+    public void update(People people) {
+        newPeople = people;
+
+        hoTen.setText(people.getFullName());
+        biDanh.setText(people.getNickName());
+        ngaySinh.setValue(DateHelper.convertLocalDate(people.getDateOfBirth()));
+        noiSinh.setText(people.getBirthPlace());
+        danToc.setText(people.getEthnic());
+        noiLamViec.setText(people.getWorkPlace());
+        CMND.setText(people.getIdentityNo());
+        nguyenQuan.setText(people.getBirthPlace());
+        ngayCapCMND.setValue(DateHelper.convertLocalDate(people.getIdentityMfg()));
+        noiCapCMND.setText(people.getIdentityOrigin());
+        HouseHold houseHoldOfPeople = people.getHouseHold();
+        if (houseHoldOfPeople != null)
+            houseHoldNo.setText(houseHoldOfPeople.getHouseHoldBook());
+        ngayDK.setValue(DateHelper.convertLocalDate(people.getRegisDate()));
     }
 
     @FXML

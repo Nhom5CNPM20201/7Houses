@@ -36,10 +36,10 @@ public class People  {
     
     private String identityOrigin;
     
-
+	private HouseHold houseHold;
     
    public People() {
-    	
+
     //	idHouseHold = 5;
 //     	fullName = "mt" ;
 //    	nickName = "mmnbnajksd";
@@ -220,5 +220,13 @@ public class People  {
 
 	public void setRegisDate(Date regisDate) {
 		this.regisDate = regisDate;
+	}
+
+	public void setHouseHold(HouseHold houseHold) {
+   		this.houseHold = houseHold;
+	}
+
+	public HouseHold getHouseHold() {
+   		return this.houseHold;
 	}
 }
