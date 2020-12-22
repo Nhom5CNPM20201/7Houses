@@ -39,6 +39,11 @@ public class PeopleManage implements Initializable {
     void temporaryOnclick(ActionEvent event) {
         this.switchView(getClass().getResource("../../common/StayingTAForm.fxml"));
     }
+
+    @FXML
+    void changeOnClick(ActionEvent event) {
+        this.switchView(getClass().getResource("../../common/PeopleForm.fxml"));
+    }
 	public static void main(String[] args) {
 //	People people;
 //	people = new People();

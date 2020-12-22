@@ -30,9 +30,20 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Button fx:id="btnChange" graphicTextGap="8.0" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" onAction="#changeOnClick" stylesheets="@../style.css" text="Thay đổi">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="EDIT" size="18" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                   <Button fx:id="btnTemporary" graphicTextGap="8.0" mnemonicParsing="false" onAction="#temporaryOnclick" text="Tạm trú, vắng">
                      <graphic>
-                        <FontAwesomeIconView glyphName="PLUS" size="18" />
+                        <FontAwesomeIconView glyphName="PENCIL" size="18" />
                      </graphic>
                      <font>
                         <Font name="System Bold" size="16.0" />
