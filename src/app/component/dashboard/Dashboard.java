@@ -99,7 +99,7 @@ public class Dashboard implements Initializable {
         btnSearch.setStyle("-fx-background-color: transparent");
         btnStatistic.setStyle("-fx-background-color: transparent");
         btnSummary.setStyle("-fx-background-color: transparent");
-        button.setStyle("-fx-background-color: #BDBDBD");
+        button.setStyle("-fx-background-color: #76d275");
 
     }
 
