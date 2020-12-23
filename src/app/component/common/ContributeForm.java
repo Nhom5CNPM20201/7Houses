@@ -133,7 +133,7 @@ public class ContributeForm implements Initializable {
             Mediator.Notify("feeOnClick");
 
         } catch (Exception e) {
-            NotiService.error(e.getMessage());
+            NotiService.error("Chưa nhập đúng thông tin");
         }
     }
 }

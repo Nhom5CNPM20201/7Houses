@@ -1,6 +1,7 @@
 package app.component.dashboard.householdManage;
 
 import app.entity.HouseHold;
+import app.helper.DateHelper;
 import app.services.ServiceFactory;
 import app.services.common.LogService;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -44,6 +46,7 @@ public class HouseholdList implements Initializable {
         noColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getHouseHoldBook().trim()));
         holderNameColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getName()));
         addressColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getAddressDetail()));
+        addedTimeColumn.setCellValueFactory(c -> new SimpleStringProperty(DateHelper.getDateString(c.getValue().getCreatedDate())));
 
         tblListHouseHold.getItems().setAll(houseHolds);
 

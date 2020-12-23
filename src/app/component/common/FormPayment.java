@@ -1,6 +1,7 @@
 package app.component.common;
 
 import app.entity.Fee;
+import app.model.AuthMessage;
 import app.services.FeeService;
 import app.services.ServiceFactory;
 import app.services.common.NotiService;
@@ -15,6 +16,8 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FormPayment implements Initializable{
     private final String DONG_GOP = "Đóng góp";
@@ -61,6 +64,7 @@ public class FormPayment implements Initializable{
     @FXML
     void okOnClick(ActionEvent event){
         try {
+
             String feeName;
             int type_fee;
             int money = 0;
@@ -80,6 +84,12 @@ public class FormPayment implements Initializable{
 
             if(feeNameField.getText() == "" ){
                 NotiService.info("Nhập đầy đủ thông tin");
+                return;
+            }
+            Pattern pattern = Pattern.compile("[$%^&*#@!,;'.?=|]", Pattern.CASE_INSENSITIVE);
+            Matcher matcherUsername = pattern.matcher(feeNameField.getText());
+            if (matcherUsername.find()){
+                NotiService.info("Không được nhập ký tự đặc biệt");
                 return;
             }
             if(moneyField.getText() == ""){

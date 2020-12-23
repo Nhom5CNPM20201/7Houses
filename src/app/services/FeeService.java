@@ -17,7 +17,7 @@ public class FeeService {
     public Fee createFee(Fee fee) {
         try {
             MSSQLDatabase.getInstance().insertFee(fee);
-            fee.setId(feeList.toArray().length);
+            fee.setId(feeList.size() + 1);
             feeList.add(fee);
             return fee;
         } catch (Exception e) {

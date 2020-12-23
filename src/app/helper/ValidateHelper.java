@@ -9,11 +9,11 @@ public class ValidateHelper {
     public static String validateText(String content) throws Exception {
         if (content == null || content.equals("")) throw new Exception("Thông tin không hợp lệ.");
 
-        content = content.trim();
+        String newContent = content.trim();
 
-        if (content.equals("")) throw new Exception("Thông tin không hợp lệ.");
+        if (newContent.equals("")) throw new Exception("Thông tin không hợp lệ.");
 
-        return content;
+        return newContent;
     }
 
     public static Date validateDate(LocalDate content) throws Exception {

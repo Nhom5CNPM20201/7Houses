@@ -11,6 +11,7 @@ import java.util.Date;
 
 public class DateHelper {
     public static String getDateString(Date date) {
+        if (date == null) return "";
         String pattern = "dd/MM/yyyy";
         DateFormat df = new SimpleDateFormat(pattern);
         String dateString = df.format(date);

@@ -3,6 +3,8 @@ package app.component.common;
 import app.entity.Address;
 import app.entity.HouseHold;
 import app.entity.People;
+import app.helper.ValidateHelper;
+import app.services.HouseHoldService;
 import app.services.ServiceFactory;
 import app.services.common.NotiService;
 import app.utility.viewUtils.Mediator;
@@ -30,7 +32,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 public class HouseHoldForm implements Initializable {
     @FXML
@@ -72,7 +73,7 @@ public class HouseHoldForm implements Initializable {
 
     private Address newAddress;
 
-    private HouseHold newHouseHold;
+    private HouseHold newHouseHold = new HouseHold();
 
     private People selectedPeople;
 
@@ -152,46 +153,63 @@ public class HouseHoldForm implements Initializable {
 
     @FXML
     public void okOnClick(ActionEvent event) {
-        // validate
-    	Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
-    	Matcher m = p.matcher(houseHoldNo.getText());
-    	boolean b = m.find();
+        try {
+            // validate
+            Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+            Matcher m = p.matcher(houseHoldNo.getText());
+            boolean b = m.find();
 
-    	if (b) {
-    		NotiService.info("Tên sổ hộ khẩu không được chứa kí tự");
-    		return;
-    	}	   
-    	
-        if (selectedPeople == null) {
-            NotiService.info("Bạn chưa chọn thông tin chủ hộ.");
-            return;
-        }
+            if (b) {
+                NotiService.info("Tên sổ hộ khẩu không được chứa kí tự");
+                return;
+            }
 
-        if (newAddress == null) {
-            NotiService.info("Bạn chưa nhập thông tin địa chỉ.");
-            return;
-        }
+            if (selectedPeople == null) {
+                NotiService.info("Bạn chưa chọn thông tin chủ hộ.");
+                return;
+            }
 
-        newAddress = ServiceFactory.getAddressService().createAddress(newAddress);
+            if (newAddress == null) {
+                NotiService.info("Bạn chưa nhập thông tin địa chỉ.");
+                return;
+            }
 
-        newHouseHold = new HouseHold();
-        newHouseHold.setIdAddress(newAddress.getId());
-        newHouseHold.setAddressDetail(newAddress.getDetail());
+            newAddress = ServiceFactory.getAddressService().createAddress(newAddress);
 
-        newHouseHold.setHouseHoldBook(houseHoldNo.getText());
-        newHouseHold.setIdOwner(selectedPeople.getId());
-        newHouseHold.setName(selectedPeople.getFullName());
-        HouseHold addedHouseHold;
+            HouseHold searchHousehold = ServiceFactory.getHouseHoldService().searchHouseHold(ValidateHelper.validateText(houseHoldNo.getText()));
+            if (searchHousehold != null) {
+                if (isUpdate) {
+                    String validateSearched = ValidateHelper.validateText(searchHousehold.getHouseHoldBook()).toLowerCase();
+                    String validateUpdate = ValidateHelper.validateText(newHouseHold.getHouseHoldBook()).toLowerCase();
 
-        if (isUpdate) {
-            addedHouseHold = ServiceFactory.getHouseHoldService().updateHouseHold(newHouseHold);
-        } else {
-            addedHouseHold = ServiceFactory.getHouseHoldService().createHouseHold(newHouseHold);
-        }
-        if (addedHouseHold != null) {
-            Mediator.Notify("houseHoldOnClick");
-        } else {
-            NotiService.info("Vui lòng kiểm tra lại thông tin.");
+                    if (!validateSearched.equals(validateUpdate)) {
+                        throw new Exception("Số hộ khẩu này đã tồn tại.");
+                    }
+                } else {
+                    throw new Exception("Số hộ khẩu này đã tồn tại.");
+                }
+            }
+
+            newHouseHold.setIdAddress(newAddress.getId());
+            newHouseHold.setAddressDetail(newAddress.getDetail());
+
+            newHouseHold.setHouseHoldBook(houseHoldNo.getText());
+            newHouseHold.setIdOwner(selectedPeople.getId());
+            newHouseHold.setName(selectedPeople.getFullName());
+            HouseHold addedHouseHold;
+
+            if (isUpdate) {
+                addedHouseHold = ServiceFactory.getHouseHoldService().updateHouseHold(newHouseHold);
+            } else {
+                addedHouseHold = ServiceFactory.getHouseHoldService().createHouseHold(newHouseHold);
+            }
+            if (addedHouseHold != null) {
+                Mediator.Notify("houseHoldOnClick");
+            } else {
+                NotiService.info("Không thành công. Vui lòng kiểm tra lại thông tin.");
+            }
+        } catch (Exception e) {
+            NotiService.error(e.getMessage());
         }
     }
 

@@ -21,7 +21,6 @@ import app.services.common.NotiService;
 
 
 public class HouseHoldService {
-	private static MSSQLDatabase orm;
 
 	private List<HouseHold> houseHoldList = new ArrayList<HouseHold>();
 	
@@ -44,13 +43,12 @@ public class HouseHoldService {
 	
 	public HouseHold createHouseHold(HouseHold houseHold) {
 		try {
-			orm = MSSQLDatabase.getInstance();
-			HouseHold searchHH = orm.searchHouseHold(houseHold.getHouseHoldBook());
+			HouseHold searchHH = MSSQLDatabase.getInstance().searchHouseHold(houseHold.getHouseHoldBook());
 			if(searchHH == null) {
 				houseHold.setCreatedDate(new Date());
 				houseHold.setId(houseHoldList.size() + 1);
 				houseHoldList.add(houseHold);
-				orm.insertHouseHold(houseHold);
+				MSSQLDatabase.getInstance().insertHouseHold(houseHold);
 				return houseHold;
 			}
 			else {
@@ -67,7 +65,7 @@ public class HouseHoldService {
 
 	public HouseHold updateHouseHold(HouseHold houseHold) {
 		try {
-			HouseHold searchHH = MSSQLDatabase.getInstance().searchHouseHold(houseHold.getHouseHoldBook());
+			HouseHold searchHH = this.getHouseHold(houseHold.getId());
 			if(searchHH != null) {
 				int index = this.findIndex(houseHold.getHouseHoldBook());
 				houseHoldList.set(index, houseHold);
@@ -94,12 +92,15 @@ public class HouseHoldService {
 	}
 
 	public HouseHold getHouseHold(int id) {
+		if (id < 1) return null;
 		return houseHoldList.stream().filter(x -> x.getId() == id).findFirst().get();
 	}
 
 	public HouseHold getHouseHoldByNo(String houseHoldNo) {
-		var items = houseHoldList.stream().filter(x -> x.getHouseHoldBook().equals(houseHoldNo));
-		return items.count() > 0 ? items.findFirst().get() : null;
+		var items = houseHoldList.stream().filter(x -> houseHoldNo.trim().toLowerCase().equals(x.getHouseHoldBook().trim().toLowerCase()))
+				.collect(Collectors.toList());
+
+		return items.size() > 0 ? items.get(0) : null;
 	}
 
 	private int findIndex(String houseHoldNo) {
@@ -133,14 +134,13 @@ public class HouseHoldService {
 		return searchedHouseHolds;
 	}
 	
-	public void searchHouseHold(String houseHoldBook) {
+	public HouseHold searchHouseHold(String houseHoldBook) {
 		try {
-			orm = MSSQLDatabase.getInstance();
-			HouseHold searchHH = orm.searchHouseHold(houseHoldBook);
-			if(searchHH != null) System.out.println(searchHH.getHouseHoldBook() + "\t" + searchHH.getName());
+			return MSSQLDatabase.getInstance().searchHouseHold(houseHoldBook);
 		}
 		catch(Exception e) {
 			LogService.error(e.getMessage());
+			return null;
 		}
 	}
 	
@@ -148,7 +148,7 @@ public class HouseHoldService {
 		try {
 			HouseHold searchHH = MSSQLDatabase.getInstance().searchHouseHold(houseHoldBook);
 			if(searchHH != null) {
-				orm.removeHouseHold(searchHH);
+				MSSQLDatabase.getInstance().removeHouseHold(searchHH);
 				NotiService.info("Xoa thanh cong!");
 			}
 		}
