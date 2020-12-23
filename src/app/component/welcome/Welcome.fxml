@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
@@ -24,13 +23,13 @@
                         <Font size="23.0" />
                     </font>
                 </Text>
-                <Button layoutX="170.0" layoutY="370.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #048F68;" text="Đăng nhập" textFill="WHITE">
+                <Button layoutX="223.0" layoutY="370.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #048F68;" text="Đăng nhập" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
                 <Hyperlink layoutX="217.0" layoutY="477.0" text="Quên mật khẩu?" visible="false" />
                 <FontAwesomeIconView fill="#048f68" glyphName="USERS" layoutX="143.0" layoutY="101.0" size="50" />
-            <Hyperlink layoutX="120.0" layoutY="477.0" onAction="#guestLogin" text="Tư cách khách?" />
+            <Hyperlink layoutX="35.0" layoutY="371.0" onAction="#guestLogin" text="Tư cách khách?" />
             <PasswordField fx:id="passwordField" layoutX="84.0" layoutY="286.0" prefHeight="33.0" prefWidth="204.0" promptText="Mật khẩu" style="-fx-background-color: transparent; -fx-border-color: #048F68; -fx-border-width: 0px 0px 2px 0px;" />
             </children>
         </AnchorPane>
@@ -38,18 +37,16 @@
     <center>
         <AnchorPane prefHeight="520.0" prefWidth="500.0" style="-fx-background-color: #048F68;" BorderPane.alignment="CENTER">
             <children>
-                <FontAwesomeIconView fill="WHITE" glyphName="BOOK" layoutX="73.0" layoutY="190.0" size="75" text="" />
-                <Text fill="WHITE" layoutX="73.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7HOUSES">
+                <Text fill="WHITE" layoutX="73.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7HOUSES">
                     <font>
                         <Font size="45.0" />
                     </font>
                 </Text>
-            <Text fill="WHITE" layoutX="73.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý dân cư chưa bao giờ dễ thế" wrappingWidth="257.005859375">
+            <Text fill="WHITE" layoutX="73.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý dân cư chưa bao giờ dễ thế" wrappingWidth="257.005859375">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <MaterialDesignIconView fill="#0d0d0d" glyphName="EMOTICON_COOL" layoutX="133.0" layoutY="350.0" size="24" />
             </children>
         </AnchorPane>
     </center>

@@ -74,6 +74,10 @@ public class Information implements Initializable {
             paneHanh.getChildren().add(getImageURL("resources/hanh.jpg"));
             paneYen.getChildren().add(getImageURL("resources/yen.jpg"));
             paneQuy.getChildren().add(getImageURL("resources/quy.jpg"));
+            paneMinh.getChildren().add(getImageURL("resources/minh.jpg"));
+            paneMinhAnh.getChildren().add(getImageURL("resources/minhanh.jpg"));
+            paneTrang.getChildren().add(getImageURL("resources/trang.jpg"));
+            paneTuyen.getChildren().add(getImageURL("resources/tuyen.jpg"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
