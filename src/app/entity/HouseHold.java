@@ -21,7 +21,7 @@ public class HouseHold implements IEntity {
 		this.id = id;
 		this.idAddress = idAddress;
 		this.idOwner = idOwner;
-		this.houseHoldBook = houseHoldBook;
+		this.houseHoldBook = houseHoldBook.trim();
 		this.name = name;
 	}
 	

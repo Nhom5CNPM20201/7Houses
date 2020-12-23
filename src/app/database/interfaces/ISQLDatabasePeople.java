@@ -109,58 +109,59 @@ public interface ISQLDatabasePeople extends ISQLDatabase {
 	@Override
     default void updatePeople(People people) throws Exception {
 		try {
-			PreparedStatement stmt = this.getDatabase().prepareStatement("Declare @P1BiDanh nvarchar "+"UPDATE " + PeopleConfig.TABLE_NAME + " SET "
-					+ PeopleConfig.PEOPLE_IDHOUSEHOLD  +   "=?"   +  ","  + PeopleConfig.PEOPLE_FULLNAME + "=?" +  ","
-					+ PeopleConfig.PEOPLE_NICKNAME  + "=? " + "," + PeopleConfig.PEOPLE_BIRTHPLACE + "=?" +  ","
-					+ PeopleConfig.PEOPLE_JOB  + "=? " + "," + PeopleConfig.PEOPLE_DATEOFBIRTH + "=?" +  ","
-					+ PeopleConfig.PEOPLE_REGISDATE  + "=? " + "," + PeopleConfig.PEOPLE_HOUSEHOLDERRELA + "=?" +  ","
-					+ PeopleConfig.PEOPLE_ETHNIC  + "=? " + "=?" +  ","
-					+ PeopleConfig.PEOPLE_GENDER  + "=? " + "," + PeopleConfig.PEOPLE_WORKPLACE + "=?" +  ","
-					+ PeopleConfig.PEOPLE_IDENTITYNO  + "=? " + "," + PeopleConfig.PEOPLE_IDENTITYMFG + "=?"+  ","
-					+ PeopleConfig.PEOPLE_IDENTITYORIGIN  + "=? " 
-					+ " WHERE " + PeopleConfig.PEOPLE_ID + "= ? " 
+			PreparedStatement stmt = this.getDatabase().prepareStatement("UPDATE " + PeopleConfig.TABLE_NAME + " SET "
+					+ PeopleConfig.PEOPLE_IDHOUSEHOLD 		+ "=? " + ","
+					+ PeopleConfig.PEOPLE_FULLNAME 			+ "=? " + ","
+					+ PeopleConfig.PEOPLE_NICKNAME  		+ "=? " + ","
+					+ PeopleConfig.PEOPLE_BIRTHPLACE 		+ "=? " + ","
+					+ PeopleConfig.PEOPLE_JOB  				+ "=? " + ","
+					+ PeopleConfig.PEOPLE_DATEOFBIRTH 		+ "=? " + ","
+					+ PeopleConfig.PEOPLE_REGISDATE  		+ "=? " + ","
+					+ PeopleConfig.PEOPLE_HOUSEHOLDERRELA 	+ "=?" +  ","
+					+ PeopleConfig.PEOPLE_ETHNIC  			+ "=? " + ","
+					+ PeopleConfig.PEOPLE_GENDER  			+ "=? " + ","
+					+ PeopleConfig.PEOPLE_WORKPLACE 		+ "=? " + ","
+					+ PeopleConfig.PEOPLE_IDENTITYNO  		+ "=? " + ","
+					+ PeopleConfig.PEOPLE_IDENTITYMFG 		+ "=? " + ","
+					+ PeopleConfig.PEOPLE_IDENTITYORIGIN	+ "=? "
+					+ " WHERE " + PeopleConfig.PEOPLE_ID + "=?;"
 					);
-			
-       //    
-			
+
 			stmt.setInt(1, people.getIdHouseHold());
 			
 			stmt.setString(2, people.getFullName());
 			
-			stmt.setString(3, people.getNickName() );
+			stmt.setString(3, people.getNickName());
 			
 			stmt.setString(4, people.getBirthPlace());
 			
 			stmt.setString(5, people.getJob());
 			
-			stmt.setString(6, people.getDateOfBirth().toString());
+			stmt.setDate(6, new Date(people.getDateOfBirth().getTime()));
 			
-			stmt.setString(7, people.getRegisDate().toString());
+			stmt.setDate(7, new Date(people.getRegisDate().getTime()));
 			
 			stmt.setInt(8, people.getHouseHolderRela());
 			
 			stmt.setString(9, people.getEthnic());
 			
-			stmt.setString(10, people.getNativePlace());
+			stmt.setInt(10, people.getGender());
 			
-			stmt.setInt(11, people.getGender());
+			stmt.setString(11, people.getWorkPlace());
 			
-			stmt.setString(12, people.getWorkPlace());
+			stmt.setString(12, people.getIdentityNo());
 			
-			stmt.setString(13, people.getIdentityNo());
+			stmt.setDate(13, new Date(people.getIdentityMfg().getTime()));
 			
-			stmt.setString(14, people.getIdentityMfg().toString());
+			stmt.setString(14, people.getIdentityOrigin());
 			
-			stmt.setString(15, people.getIdentityOrigin());
-			
-			stmt.setInt(16, people.getId());
+			stmt.setInt(15, people.getId());
 			
 			stmt.executeUpdate();
 		}
 		catch(SQLException e) {
 			throw e;
 		}
-		
     }
 
     @Override

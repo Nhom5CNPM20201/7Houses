@@ -40,6 +40,17 @@ public class PeopleService {
 		return people;
 	}
 
+	public People updatePeople(People people) throws Exception {
+		if (!(people.getId() > 0 && peopleList.stream().anyMatch(p -> p.getId() == people.getId())))
+			throw new Exception("Không tìm thấy thông tin nhân khẩu này trong hệ thống.");
+
+		MSSQLDatabase.getInstance().updatePeople(people);
+
+		this.initPeople();
+
+		return people;
+	}
+
 	public long coutAllPeople() {
 		return this.peopleList.stream().count();
 	}
@@ -55,7 +66,8 @@ public class PeopleService {
 			peopleList = MSSQLDatabase.getInstance().getAllPeoples();
 
 			for (People item : peopleList) {
-				item.setHouseHold(ServiceFactory.getHouseHoldService().getHouseHold(item.getIdHouseHold()));
+				HouseHold mappingHouseHold = ServiceFactory.getHouseHoldService().getHouseHold(item.getIdHouseHold());
+				item.setHouseHold(mappingHouseHold);
 			}
 		}
 		catch(Exception e) {
@@ -108,10 +120,6 @@ public class PeopleService {
 		catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-	}
-	
-	public void updatePeople() {
-		
 	}
 
 	public List<People> statistic(int genderIndex, int ageFrom, int ageTo, Date timeFrom, Date timeTo) {

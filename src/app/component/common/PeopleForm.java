@@ -70,7 +70,9 @@ public class PeopleForm implements Initializable {
     ObservableList<String> genderList = FXCollections.observableArrayList("Nam","Nữ","Khác");
     ObservableList<String> qhchList = FXCollections.observableArrayList("Bố", "Mẹ","Vợ","Con","Chồng");
 
-    private People newPeople;
+    private boolean isUpdate = false;
+
+    private People newPeople = new People();
 
     public PeopleForm() {
 
@@ -87,9 +89,8 @@ public class PeopleForm implements Initializable {
     }
 
     @FXML
-    void onClickOK(ActionEvent event) {
-        try {
-            newPeople = new People();
+    void onClickOK(ActionEvent event) throws Exception {
+//        try {
 
             HouseHold houseHoldMap = ServiceFactory.getHouseHoldService().getHouseHoldByNo(ValidateHelper.validateText(houseHoldNo.getText()));
             if (houseHoldMap == null) {
@@ -112,15 +113,19 @@ public class PeopleForm implements Initializable {
             newPeople.setIdentityOrigin(ValidateHelper.validateText(noiCapCMND.getText()));
             newPeople.setRegisDate(ValidateHelper.validateDate(ngayDK.getValue()));
 
-            newPeople = ServiceFactory.getPeopleService().createPeople(newPeople);
+            if (isUpdate)
+                newPeople = ServiceFactory.getPeopleService().updatePeople(newPeople);
+            else
+                newPeople = ServiceFactory.getPeopleService().createPeople(newPeople);
 
             Mediator.Notify("peopleOnClick");
-        } catch (Exception e) {
-            NotiService.error(e.getMessage());
-        }
+//        } catch (Exception e) {
+//            NotiService.error(e.getMessage());
+//        }
     }
 
     public void update(People people) {
+        isUpdate = true;
         newPeople = people;
 
         hoTen.setText(people.getFullName());
