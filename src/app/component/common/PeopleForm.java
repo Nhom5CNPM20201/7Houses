@@ -90,9 +90,9 @@ public class PeopleForm implements Initializable {
 
     @FXML
     void onClickOK(ActionEvent event) throws Exception {
-//        try {
+        try {
 
-            HouseHold houseHoldMap = ServiceFactory.getHouseHoldService().getHouseHoldByNo(ValidateHelper.validateText(houseHoldNo.getText()));
+            HouseHold houseHoldMap = ServiceFactory.getHouseHoldService().getHouseHoldByNo(houseHoldNo.getText());
             if (houseHoldMap == null) {
                 Optional<ButtonType> confirm = NotiService.confirm("Không tìm thấy dữ liệu về hộ khẩu bạn đã nhập. Bạn vẫn muốn tiếp tục?");
                 if (confirm.get() != ButtonType.OK)
@@ -119,9 +119,9 @@ public class PeopleForm implements Initializable {
                 newPeople = ServiceFactory.getPeopleService().createPeople(newPeople);
 
             Mediator.Notify("peopleOnClick");
-//        } catch (Exception e) {
-//            NotiService.error(e.getMessage());
-//        }
+        } catch (Exception e) {
+            NotiService.error(e.getMessage());
+        }
     }
 
     public void update(People people) {

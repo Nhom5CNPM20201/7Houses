@@ -21,7 +21,6 @@ import app.services.common.NotiService;
 
 
 public class HouseHoldService {
-	private static MSSQLDatabase orm;
 
 	private List<HouseHold> houseHoldList = new ArrayList<HouseHold>();
 	
@@ -49,7 +48,7 @@ public class HouseHoldService {
 				houseHold.setCreatedDate(new Date());
 				houseHold.setId(houseHoldList.size() + 1);
 				houseHoldList.add(houseHold);
-				orm.insertHouseHold(houseHold);
+				MSSQLDatabase.getInstance().insertHouseHold(houseHold);
 				return houseHold;
 			}
 			else {
@@ -98,7 +97,7 @@ public class HouseHoldService {
 	}
 
 	public HouseHold getHouseHoldByNo(String houseHoldNo) {
-		var items = houseHoldList.stream().filter(x -> houseHoldNo.toLowerCase().equals(x.getHouseHoldBook().trim().toLowerCase()))
+		var items = houseHoldList.stream().filter(x -> houseHoldNo.trim().toLowerCase().equals(x.getHouseHoldBook().trim().toLowerCase()))
 				.collect(Collectors.toList());
 
 		return items.size() > 0 ? items.get(0) : null;
@@ -149,7 +148,7 @@ public class HouseHoldService {
 		try {
 			HouseHold searchHH = MSSQLDatabase.getInstance().searchHouseHold(houseHoldBook);
 			if(searchHH != null) {
-				orm.removeHouseHold(searchHH);
+				MSSQLDatabase.getInstance().removeHouseHold(searchHH);
 				NotiService.info("Xoa thanh cong!");
 			}
 		}
