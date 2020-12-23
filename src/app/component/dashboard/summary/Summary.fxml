@@ -102,7 +102,7 @@
                      </children></Pane>
                   <Pane fx:id="paneTCTV" layoutX="246.0" layoutY="53.0" prefHeight="190.0" prefWidth="239.0" style="-fx-background-color: #F0F1F3;" styleClass="text_box" stylesheets="@../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="53.0">
                      <children>
-                        <Text layoutX="47.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tạm chú/Tạm vắng">
+                        <Text layoutX="47.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tạm trú/Tạm vắng">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
